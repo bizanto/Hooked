@@ -1,0 +1,230 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php 
+/**********************************************************************************
+ * 								CONFIGURATION & SETUP
+ * Read instructions towards the bottom of the file to limit results to certain
+ * categories or sections when the select list is not shown in the form
+ **********************************************************************************/
+$module_id = Sanitize::getVar($this->params,'module_id','');
+$dir_id = Sanitize::getVar($this->params['module'],'dir_id','');
+$criteria_id = Sanitize::getVar($this->params['module'],'criteriaid');
+$query_type = 'all'; // all|exact|any
+$search_review_comments = false;    
+?>
+
+<?php
+/**********************************************************************************
+ * 								JAVASCRIPT
+ **********************************************************************************/
+$Assets->Html = &$Html;
+$Assets->load();
+
+include('templates/jreviews_overrides/views/themes/geomaps/search/related_items.php');
+
+$document =& JFactory::getDocument();
+$document->addStyleSheet('components/com_relate/assets/jquery-ui-1.8.11.custom.css');
+
+?>
+
+<?php 
+/**********************************************************************************
+ * 						HTML BEGINS HERE
+ **********************************************************************************/
+
+if (preg_match("/keywords:([\w\s]+)/", $this->params['url']['url'], $matches)) {
+    $keywords = $matches[1];
+}
+
+if (preg_match("/related:([\d_]+)/", $this->params['url']['url'], $matches)) {
+    $related = explode('_', $matches[1]);
+}
+
+if (preg_match("/jr_state:([\w-]+)/", $this->params['url']['url'], $matches)) {
+    $jr_state = $matches[1];
+}
+?>
+
+<script type="text/javascript" src="<?php echo JURI::base(); ?>components/com_relate/assets/jquery-ui-1.8.11.custom.min.js"></script>
+<script type="text/javascript">
+/*
+function countChecked() {
+
+      jQuery("div").text(n + (n <= 1 ? " is" : " are") + " checked!");
+    }
+*/
+
+jQuery(function ($) {
+	
+
+	$('.trigger').click(function() {
+		$(this).parent().siblings('.fields').slideToggle('fast');
+    });	
+    
+	$('.intro-trigger').click(function() {
+		$(this).parent().parent().toggle();
+		$(this).parent().parent().siblings('.txt').toggle();
+    });
+
+    <?php if (isset($related)) { foreach ($related as $relid) { ?>
+    $('select option[value=<?php echo $relid; ?>]').closest('select').val(<?php echo $relid; ?>);
+    <?php } } ?>
+
+    <?php if (isset($jr_state)): ?>
+    $('#jr_state').val('<?php echo $jr_state; ?>');
+    <?php endif; ?>
+    
+    $('#jr_startdate105_ph').datepicker({
+		dateFormat: 'dd.mm.yy',
+		altField: '#jr_startdate105',
+		altFormat: 'yy-mm-dd'
+	});
+	
+	$('#jr_startdate105_ph').next().click(function () { $('#jr_startdate105_ph').datepicker('show'); });
+    $('#jr_startdatehigh_ph').datepicker({
+		dateFormat: 'dd.mm.yy',
+		altField: '#jr_startdatehigh',
+		altFormat: 'yy-mm-dd'
+	});
+    $('#jr_startdatehigh_ph').next().click(function () { $('#jr_startdatehigh_ph').datepicker('show'); });
+	
+});
+
+</script>
+<div id="show-spot-search" class="txt" style="display:none">
+	<div class="tar"><a href="javascript:void(0);" class="smalltext intro-trigger">Show search options</a></div>
+   	<div class="clear"></div>
+</div>
+
+<div id="spot-search" class="txt">     
+	<div class="tar"><a href="javascript:void(0);" class="smalltext intro-trigger"><?php __t("Hide"); ?></a></div>
+
+<form name="JreviewsAdvSearch_<?php echo $module_id;?>" action="<?php echo WWW_ROOT;?>index.php?option=<?php echo S2Paths::get('jreviews','S2_CMSCOMP');?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>" method="post">		
+    <?php 
+    /**********************************************************************************
+     * 						EDIT HTML BELOW THIS LINE
+     **********************************************************************************/
+    ?>		
+    <div>
+	    <h2><?php __t("Search hatch reports"); ?></h2>
+    </div>	
+   <div class="fr width33 hatchSearch">
+        <label for="advanced_button"><?php __t("Keywords"); ?>:</label>
+        <input type="text" id="jr_advSearchKeywords<?php echo $module_id;?>" name="data[keywords]" value="<?php if (isset($keywords)) echo $keywords; ?>" />
+    </div>
+	<div class="fl width66">
+    <label for="jr_startdate105"><?php __t("Date range"); ?>:</label> 
+		<input type="hidden" value="between" name="data[Field][Listing][jr_startdate_operator]" />
+            <?php
+			$format = 'd.m.Y';
+			$format_hidden = 'Y-m-d';
+			$date = date ( $format ); 
+			?>
+        <input type="text" id="jr_startdate105_ph" value="<?php echo date ( $format, strtotime ( '-7 day' . $date ) );  ?>" onchange="if (this.value == '') document.getElementById('jr_startdate105').value = '';" />
+        <img class="ui-datepicker-trigger" src="/components/com_jreviews/jreviews/views/themes/default/theme_images/calendar.gif" alt="Calendar" title="Calendar">
+        <input type="hidden" id="jr_startdate105" name="data[Field][Listing][jr_startdate][]" value="<?php echo date ( $format_hidden, strtotime ( '-7 day' . $date ) );  ?>" />
+        
+        <?php __t("To"); ?>
+        <span id="jr_startdatehighDiv" style="">&nbsp;
+        <input type="text" id="jr_startdatehigh_ph" value="<?php echo date ( $format, strtotime ( $date ) ); ?>" onchange="if (this.value == '') document.getElementById('jr_startdatehigh').value = '';" />        
+        <img class="ui-datepicker-trigger" src="/components/com_jreviews/jreviews/views/themes/default/theme_images/calendar.gif" alt="Calendar" title="Calendar"></span>
+        <input type="hidden" id="jr_startdatehigh" name="data[Field][Listing][jr_startdate][]" value="<?php echo date ( $format_hidden, strtotime ( $date ) ); ?>" />
+	</div>
+    <div class="clear"></div>
+    <div class="searchdiv search_states">    
+        <h4><a href="javascript:void(0);" class="trigger"><?php __t("State"); ?> <span class="chkcount"></span> +</a></h4>
+        <div class="fields" style="display:block;">
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_1" type="checkbox" value="akershus">&nbsp;<label for="jr_state_1">Akershus</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_2" type="checkbox" value="aust-agder">&nbsp;<label for="jr_state_2">Aust-Agder</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_3" type="checkbox" value="buskerud">&nbsp;<label for="jr_state_3">Buskerud</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_4" type="checkbox" value="finnmark">&nbsp;<label for="jr_state_4">Finnmark</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_5" type="checkbox" value="hedmark">&nbsp;<label for="jr_state_5">Hedmark</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_6" type="checkbox" value="hordaland">&nbsp;<label for="jr_state_6">Hordaland</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_7" type="checkbox" value="more-og-romsdal">&nbsp;<label for="jr_state_7">More og Romsdal</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_8" type="checkbox" value="nord-trondelag">&nbsp;<label for="jr_state_8">Nord-Tr&oslash;ndelag</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_9" type="checkbox" value="nordland">&nbsp;<label for="jr_state_9">Nordland</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_10" type="checkbox" value="oppland">&nbsp;<label for="jr_state_10">Oppland</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_11" type="checkbox" value="oslo">&nbsp;<label for="jr_state_11">Oslo</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_12" type="checkbox" value="rogaland">&nbsp;<label for="jr_state_12">Rogaland</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_13" type="checkbox" value="sogn-og-fjordane">&nbsp;<label for="jr_state_13">Sogn og Fjordane</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_14" type="checkbox" value="sor-trondelag">&nbsp;<label for="jr_state_14">S&oslash;r-Tr&oslash;ndelag</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_15" type="checkbox" value="telemark">&nbsp;<label for="jr_state_15">Telemark</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_16" type="checkbox" value="troms">&nbsp;<label for="jr_state_16">Troms</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_17" type="checkbox" value="vest-agder">&nbsp;<label for="jr_state_17">Vest-Agder</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_18" type="checkbox" value="vestfold">&nbsp;<label for="jr_state_18">Vestfold</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_19" type="checkbox" value="ostfold">&nbsp;<label for="jr_state_19">&Oslash;stfold</label></div>        
+		</div>
+        <?php /*
+		<label>State:</label>
+        {jr_state} */ ?>
+    </div>
+    <div class="clear"></div>
+    <div class="fl width49 searchdiv search_hatches">
+        <h4><a href="javascript:void(0);" class="trigger"><?php __t("Insect"); ?> <span class="chkcount"></span> +</a></h4>
+        <div class="clear"></div>
+	    <div class="fields" style="display:block;">
+        <?php echo getRelatedItemsList(118,119,120,121,122,123); ?>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="searchdiv">
+        <div class="bttn-wrap">
+            <div class="bttn-btn">
+                <input type="submit" name="advanced_button" id="advanced_button" value="<?php __t("Search");?>" class="button" />
+             </div>
+         </div>
+         <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <?php 
+    /**********************************************************************************
+     * 						EDIT HTML ABOVE THIS LINE
+     **********************************************************************************/
+    ?>
+    <input type="hidden" name="data[tmpl_suffix]" value="_map_hatch" />
+    <input type="hidden" name="data[order]" value="rjr_startdate" />
+    <input type="hidden" name="data[categories]" value="15" />
+    
+    <input name="data[contentoptions][]" type="hidden" value="title" />		
+    <input name="data[contentoptions][]" type="hidden" value="introtext" />
+    <input name="data[contentoptions][]" type="hidden" value="fulltext" />
+    <?php if($search_review_comments):?>
+    <input name="data[contentoptions][]" type="hidden" value="reviews" />
+    <?php endif;?>					
+    <!--<input name="data[search_query_type]" type="hidden" value="<?php echo $query_type;?>" />-->
+    <input name="data[search_query_type]" type="hidden" value="any" /> 
+                                                    
+    <input type="hidden" name="data[controller]" value="search" />
+    <input type="hidden" name="data[action]" value="_process" />
+    <input type="hidden" name="Itemid" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+    <input type="hidden" name="data[menu_id]" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+    <input type="hidden" name="data[dir]" id="dir<?php echo $module_id;?>" value="<?php echo $dir_id;?>" />
+    <input type="hidden" name="criteria" id="criteria<?php echo $module_id;?>" value="<?php echo $criteria_id;?>" />
+    <input type="hidden" name="data[form_id]" id="form_id<?php echo $module_id;?>" value="JreviewsAdvSearch_<?php echo $module_id;?>" />
+    <input type="hidden" name="data[module_id]" id="module_id<?php echo $module_id;?>" value="<?php echo $module_id;?>" />   
+
+    <?php
+    /*****************************************************************************************************
+    * Example html code for limiting results to certain categories only if you decide to remove 
+    * the {categories} tag for the select list. If you want to filter by section, then use the same input, 
+    * but pre-pend an "s" before the section number. For example: s29 limits results to section 29.
+    *****************************************************************************************************/
+    //<input type="hidden" name="data[categories][]" value="29" />
+    //<input type="hidden" name="data[categories][]" value="34" />
+    ?>                               			
+
+    <?php /* Change the default search result ordering */ 
+    // <input type="hidden" name="data[order]" value="rdate" />
+    ?>
+</form>
+</div>

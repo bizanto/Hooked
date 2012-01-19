@@ -1,0 +1,91 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * New/edit listing form
+ * create_form.thtml view is a separate file because it's used in ajax calls when selecting a category
+ * on new listing submissions
+ *
+ * YOU NEED TO RENAME THIS VIEW create.thtml AND REPLACE THE EXISTING FILE OF THE SAME NAME
+ * BY USING THIS ONE YOU CAN HIDE THE SELECT LISTS AND HARD CODE A SINGLE SECTION AND CATEGORY
+ * /
+?>
+
+<?php 
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/    
+$section_id = 1;
+$category_id = 1;
+?>
+
+<?php 
+/**********************************************************************************
+ *                                 JAVASCRIPT
+ **********************************************************************************/    
+# Trigger new form if both section and category are selected
+$Editor->load(); 
+?>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    jreviews.listing.submitCategory(jQuery('#cat_id'));
+    <?php 
+    # Transforms class="wysiwyg_editor" textareas
+    $Editor->transform(true);
+    ?>
+});
+</script>
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/?>
+ 
+<?php if(in_array(1,$submit_step)):?>
+<div id="form_container" class="jr_pgContainer">
+    <iframe id="listing_submit" name="listing_submit" width="0" height="0" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" ></iframe>
+
+    <form target="listing_submit" id="jr_listingForm" name="jr_listingForm" action="<?php displayAjaxUri('jreviews');?>&amp;tmpl=component&amp;Itemid=<?php echo $menu_id;?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>&amp;url=listings/_save" enctype="multipart/form-data" method="post">
+
+        <?php if(!(int)$listing['Listing']['listing_id']):?>            
+            <h1 class="contentheading"><?php __t("Submission instructions");?></h1>
+            <ul>
+                <li><?php __t("All fields marked with asterisks are required.");?></li>
+                <li><?php __t("Make sure any image files conform to the required specifications (.jpg,.gif,.png)");?></li>
+            </ul>    
+            <br />
+        <?php endif;?>
+    
+
+        <?php 
+        /**********************************************************************************
+         *                     SECTION AND CATEGORY HIDDEN FIELDS
+         **********************************************************************************/?>
+
+        <input id="section_id" name="data[Listing][sectionid]" type="hidden" value="<?php echo $section_id;?>" />
+        <input id="cat_id" name="data[Listing][catid]" type="hidden" value="<?php echo $category_id;?>" />
+
+        <div class="jr_form jr_formContainer">
+            <div id="jr_newFields"><!-- div required to show/hide form on section/category selection -->
+            <?php if(in_array(2,$submit_step)):?><?php echo $this->renderControllerView('listings','create_form');?><?php endif;?>
+            </div>
+            
+            <?php echo $Form->token('jr_ListingToken');?>
+            <input type="hidden" name="option" value="com_jreviews" />
+            <input type="hidden" id="listing_id" name="data[Listing][id]" value="<?php echo $listing['Listing']['listing_id'];?>" />
+            <input type="hidden" name="tmpl" value="component" />     
+            <input type="hidden" name="no_html" value="1" />     
+            <input type="hidden" name="format" value="raw" />     
+            <input type="hidden" name="Itemid" value="<?php echo $public_menu_id;?>" />            
+        </div>            
+    </form>    
+</div>
+<?php endif;?>

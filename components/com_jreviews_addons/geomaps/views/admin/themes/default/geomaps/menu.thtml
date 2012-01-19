@@ -1,0 +1,27 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>     
+
+<table width="165" class="sidemenu-box" width="100%" border="0" cellpadding="0" cellspacing="1">
+<tr>
+	<td>
+	<div class="title-menu">GeoMaps Addon</div>
+	<div id="about" style="display:block; margin:0px; padding:0px;">
+		<ul class="title-submenu">
+            <li><a id="geomaps-config" href="#geomaps_config" onclick="jreviews_admin.menu.load(\'admin_geomaps\',\'index\'); return false;"><?php __a("Configuration");?></a></li>
+            <li><a id="geomaps-geocode" href="#geomaps_geocode" onclick="jreviews_admin.menu.load(\'admin_geomaps\',\'geocode\'); return false;"><?php __a("Geocode Addresses");?></a></li>
+            <li><a id="geomaps-markers" href="#geomaps_markers" onclick="jQuery(\'#marker_dialog\').remove();jreviews_admin.menu.load(\'admin_geomaps\',\'markers\'); return false;"><?php __a("Assign Custom Markers");?></a></li>
+			<li><a id="jreviews" href="index2.php?option=com_jreviews">Back to JReviews</a></li>
+		</ul>
+	</div>
+	</td>
+</tr>
+</table>

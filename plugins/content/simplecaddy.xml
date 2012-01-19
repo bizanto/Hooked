@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content" method="upgrade">
+	<name>simplecaddy</name>
+	<author>Henk von Pickartz</author>
+	<creationDate>March 2010</creationDate>
+	<authorEmail>henk@atlanticintelligence.net</authorEmail>
+	<authorUrl>atlanticintelligence.net</authorUrl>
+	<version>1.7.3</version>
+	<description><![CDATA[Replaces {simplecaddy code=yourproductcode} tag in content with Add to Cart button --Or-- replaces {simplecaddy category=yourcategoryname} with a list of all products in your category]]></description>
+	<files>
+		<filename plugin="simplecaddy">simplecaddy.php</filename>
+		<filename>plg_simplecaddy.css</filename>
+	</files>
+	<params>
+		<param name="showproductcodetext" type="radio" default="1" label="Product code text" description="SHOWPRODCODETEXT">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showproductcode" type="radio" default="1" label="Product code" description="SHOWPRODCODE">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showtitle" type="radio" default="1" label="Product title" description="SHOWTITLE">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showunitpricetext" type="radio" default="1" label="Unitprice text" description="UNITPRICETEXT">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showunitprice" type="radio" default="1" label="Unitprice" description="UNITPRICE">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showquantitytext" type="radio" default="1" label="Quantity field text" description="QUANTITYTEXT">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showquantity" type="radio" default="1" label="Quantity field" description="QUANTITYFIELD">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="showcartoptionstitle" type="radio" default="1" label="Options title (if options defined)" description="CARTOPTIONSTITLE">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="stayonpage" type="radio" default="0" label="Stay on page after clicking AddToCart" description="STAYONPAGE">
+			<option value="0">Goto Show Cart</option>
+			<option value="1">Stay on page</option>
+		</param>
+	</params>
+</install>

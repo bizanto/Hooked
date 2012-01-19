@@ -1,0 +1,99 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * New/edit listing form
+ * create_form.thtml view is a separate file because it's used in ajax calls when selecting a category
+ * on new listing submissions
+ */
+$listing_id = Sanitize::getInt($listing['Listing'],'listing_id');
+?>
+                                                                
+<?php 
+/**********************************************************************************
+ * 								JAVASCRIPT
+ **********************************************************************************/	
+# Trigger new form if both section and category are selected
+if(!$listing_id && $listing['Listing']['section_id'] && $listing['Listing']['cat_id']):?>
+<script type="text/javascript">jQuery(document).ready(function() {jreviews.listing.submitCategory(jQuery('#cat_id'));});</script>
+<?php elseif(!$listing_id && $listing['Listing']['section_id']):?>
+<script type="text/javascript">jQuery(document).ready(function() {jreviews.listing.submitSection(jQuery('#section_id'));});</script>
+<?php endif;?>
+
+<?php 
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+<?php if(in_array(1,$submit_step)):?>
+<div id="jr_listingFormOuter" class="jr_pgContainer">
+    
+    <iframe id="listing_submit" name="listing_submit" width="0" height="0" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" ></iframe>
+   
+    <form target="listing_submit" id="jr_listingForm" name="jr_listingForm" action="<?php displayAjaxUri('jreviews');?>&amp;tmpl=component&amp;Itemid=<?php echo $menu_id;?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>&amp;url=listings/_save" enctype="multipart/form-data" method="post">
+     
+		<?php if(!$listing_id):?>
+			<h1 class="contentheading"><?php __t("Submission instructions");?></h1>
+			<ul>
+				<li><?php __t("Select the section and category where you want to submit the new item.");?></li>
+				<li><?php __t("All fields marked with asterisks are required.");?></li>
+				<li><?php __t("Make sure any image files conform to the required specifications (.jpg,.gif,.png)");?></li>
+			</ul>	
+			<br />
+		<?php endif;?>
+	
+		<?php if(!$listing_id || (in_array($Access->gid,array(20,21,23,24,25)))):?>
+		<div class="jr_formChooser">
+									
+			<span id="jr_Sections">
+			<?php echo $Form->select(
+						'data[Listing][sectionid]',
+						array_merge(array(array('value'=>null,'text'=>__t("Select Section",true))),$sections),
+						$listing['Listing']['section_id'],
+						array(
+                            'id'=>'section_id',
+                            'class'=>'inputbox',
+                            'size'=>'1',
+                            'onchange'=>"jreviews.listing.submitSection(this);"
+                        )
+					);
+			?>
+			</span>
+			&nbsp;&nbsp;
+			<span id="jr_Categories"><?php echo $this->element('category_list');?></span>
+			
+			<span class="jr_loadingSmall jr_hidden"></span>
+											
+			<br />
+		</div>
+		<?php else:?>
+		<input id="sectionid" name="data[Listing][sectionid]" type="hidden" value="<?php echo $listing['Listing']['section_id'];?>" />
+		<input id="catid" name="data[Listing][catid]" type="hidden" value="<?php echo $listing['Listing']['cat_id'];?>" />
+		<?php endif;?>
+
+		<div class="jr_form jr_formContainer">
+			<div id="jr_newFields"><!-- div required to show/hide form on section/category selection -->
+			<?php if(in_array(2,$submit_step)):?><?php echo $this->renderControllerView('listings','create_form');?><?php endif;?>
+			</div>
+			
+			<?php echo $Form->token('jr_ListingToken');?>
+            <input type="hidden" name="option" value="com_jreviews" />
+            <input type="hidden" id="section" name="data[section]" value="<?php echo $listing_id ? $listing['Section']['title'] : '';?>" /> 
+            <input type="hidden" id="category" name="data[category]" value="<?php echo $listing_id ? $listing['Category']['title'] : '';?>" />
+            <input type="hidden" id="listing_id" name="data[Listing][id]" value="<?php echo $listing['Listing']['listing_id'];?>" />
+            <input type="hidden" name="tmpl" value="component" />     
+            <input type="hidden" name="no_html" value="1" />     
+            <input type="hidden" name="format" value="raw" />     
+            <input type="hidden" name="Itemid" value="<?php echo $public_menu_id;?>" />    		
+        </div>			
+	</form>	
+</div>
+<?php endif;?>

@@ -1,0 +1,15 @@
+*.rar
+*.zip
+
+configuration.php
+
+error_log
+
+images/
+logs/
+
+dev/
+
+cache/
+testing/
+tmp/

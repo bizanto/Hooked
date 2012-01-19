@@ -1,0 +1,47 @@
+<?php
+if (isset($api)) { /* posting from api */
+	$entry_url = JURI::base().ContentHelperRoute::getArticleRoute($listing->id, $listing->catid, $listing->sectionid);
+	$entry_title = $listing->title;
+	$published = $is_published;
+	$entry_link = '<a href="'.htmlentities($entry_url).'">'.$entry_title.'</a>';
+}
+else { /* post from jreviews */
+	/**********************************************************************************
+	 *                                 CONFIGURATION AND SETUP
+	 **********************************************************************************/
+	$entry_url = cmsFramework::makeAbsUrl($listing['Listing']['url'],array('sef'=>true));
+	$entry_title = Sanitize::getString($listing['Listing'],'title');
+	$published = $review['Review']['published'];
+	$entry_link = $Html->link($entry_title,$entry_url,array('sef'=>false));
+}
+?>
+
+<?php
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+<?php if($isNew): // New review ?>
+    <p>
+    Det har kommet en ny kommentar p&aring; '<?php echo $entry_title;?>'. Les kommentaren ved &aring; klikke p&aring; denne linken:
+    <br /><br />
+     <?php echo $entry_link; ?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>We typically moderate user reviews and publish them only after they've been verified by our staff. Please check your listing later on to find the new review.</p>
+    <?php endif;?>
+<?php endif;?>
+
+<?php if(!$isNew): // Edited review ?>
+    <p>
+    You're receiving this e-mail because a user has edited his review for your listing, '<?php echo $entry_title;?>'. You will find your listing at:
+    <br /><br />
+     <?php echo $entry_link;?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>We typically moderate user reviews and publish them only after they've been verified by our staff. Please check your listing later on to find the new review.</p>
+    <?php endif;?>
+<?php endif;?>

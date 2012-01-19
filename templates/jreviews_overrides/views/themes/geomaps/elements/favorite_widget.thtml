@@ -1,0 +1,18 @@
+<?php if($listing['Favorite']['my_favorite']): // Already in user's favorites?>
+  
+    <?php
+		echo '<a id="jr_favoriteImg'.$listing['Listing']['listing_id'].'" href="javascript:void(0);" onclick="jreviews.favorite.remove(this,{listing_id:'.$listing['Listing']['listing_id'].'})">'.__t("Remove from favorites",true).'</a>';
+	?>
+    
+<?php elseif($User->id): // Not in user's favorites?>
+
+    <?php
+		echo '<a id="jr_favoriteImg'.$listing['Listing']['listing_id'].'" href="javascript:void(0);" onclick="jreviews.favorite.add(this,{listing_id:'.$listing['Listing']['listing_id'].'})">'.__t("Add to favorites",true).'</a>';
+	?>
+
+<?php else: // This is a guest user, needs to register to use the favorites widget?>
+    
+    <?php
+		echo '<a id="jr_favoriteImg'.$listing['Listing']['listing_id'].'" href="javascript:void(0);" onclick="s2Alert(\''.__t("Register to add this entry to your favorites",true).'\')">'.__t("Add to favorites",true).'</a>';
+	?>
+<?php endif;?>

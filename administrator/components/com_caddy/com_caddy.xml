@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0" method="upgrade">
+	<name>Caddy</name>
+	<author>Henk von Pickartz</author>
+	<copyright>(c) Henk von Pickartz</copyright>
+	<authorEmail>henk@atlanticintelligence.net</authorEmail>
+	<authorUrl>www.atlanticintelligence.net</authorUrl>
+	<version>1.75</version>
+	<creationDate>May-05-2011</creationDate>
+	<description>
+	<![CDATA[
+	<h1>SimpleCaddy 1.75 for Joomla for Joomla 1.5.x</h1>
+	A simple shopping cart solution with integrated shop and email/PayPal checkout system.
+	]]>
+	</description>
+	<!-- frontend files -->
+	<files folder="front">
+		<filename>index.html</filename>
+		<filename>caddy.php</filename>
+		<filename>caddy.html.php</filename>
+		<filename>caddy.class.php</filename>
+		<filename>caddy.cart.class.php</filename>
+		<filename>caddy.pg.class.php</filename>
+		<filename>caddy.shipping.class.php</filename>
+		<filename>caddy.vouchers.class.php</filename>
+		<filename>scpaypal.class.php</filename>
+		<filename>css/simplecaddy.css</filename>
+		<filename>css/index.html</filename>
+		<filename>images/cal.gif</filename>
+		<filename>images/loader.gif</filename>
+		<filename>images/index.html</filename>
+		<filename>js/ajax.js</filename>
+		<filename>js/datetimepicker.js</filename>
+		<filename>js/index.html</filename>
+	</files>
+	<installfile>install.caddy.php</installfile>
+	<languages folder="langfront">
+		<language tag="en-GB">en-GB.com_simplecaddy.ini</language>
+		<language tag="en-GB">en-GB.plg_simplecaddy.ini</language>
+		<language tag="en-GB">en-GB.mod_simplecaddy.ini</language>
+	</languages>
+	<!-- backend files -->
+	<administration>
+		<menu link="option=com_caddy&amp;task=control">SimpleCaddy</menu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>install.caddy.php</filename>
+			<filename>admin.caddy.php</filename>
+			<filename>admin.caddy.html.php</filename>
+			<filename>admin.caddy.pg.html.php</filename>
+			<filename>admin.shipping.html.php</filename>
+			<filename>admin.shipping.class.php</filename>
+			<filename>images/about.png</filename>
+			<filename>images/cal.gif</filename>
+			<filename>images/config.png</filename>
+			<filename>images/fields.png</filename>
+			<filename>images/orders.png</filename>
+			<filename>images/products.png</filename>
+			<filename>images/sc_logo15.png</filename>
+			<filename>images/ship.jpg</filename>
+			<filename>images/shipping.png</filename>
+			<filename>images/vouchers.png</filename>
+			<filename>images/p-pg.png</filename>
+			<filename>images/index.html</filename>
+			<filename>css/simplecaddy.css</filename>
+			<filename>js/caddy.js</filename>
+			<filename>js/datetimepicker.js</filename>
+			<filename>js/index.html</filename>
+			<filename>exports/index.html</filename>
+		</files>
+		<languages folder="langadmin">
+			<language tag="en-GB">en-GB.com_simplecaddy.ini</language>
+		</languages>
+	</administration>
+</install>

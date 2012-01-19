@@ -1,0 +1,30 @@
+<?php echo $Html->image($this->viewImages.'favorite.png',array('width'=>8,'height'=>14,'title'=>__t("Favorites",true),'alt'=>__t("Favorites",true)));?>
+<span id="jr_favoriteCount<?php echo $listing['Listing']['listing_id'];?>"><?php echo $listing['Favorite']['favored'];?></span> 
+<?php if($listing['Favorite']['my_favorite']): // Already in user's favorites?>
+    
+    <?php echo $Html->image(
+        $this->viewImages.'favorite_remove.png',array(
+            'width'=>42,'height'=>13,
+            'id'=>'jr_favoriteImg'.$listing['Listing']['listing_id'],                        
+            'alt'=>__t("Remove from favorites",true),'class'=>'imgFavoriteAdd',
+            'onclick'=>"jreviews.favorite.remove(this,{listing_id:{$listing['Listing']['listing_id']}})"
+    ));?>
+    
+<?php elseif($User->id): // Not in user's favorites?>
+
+    <?php echo $Html->image(
+        $this->viewImages.'favorite_add.png',array(
+            'width'=>42,'height'=>13,
+            'id'=>'jr_favoriteImg'.$listing['Listing']['listing_id'],                        
+            'alt'=>__t("Add to favorites",true),'class'=>'imgFavoriteAdd',
+            'onclick'=>"jreviews.favorite.add(this,{listing_id:{$listing['Listing']['listing_id']}})"
+    ));?>
+
+<?php else: // This is a guest user, needs to register to use the favorites widget?>
+    <?php echo $Html->image(
+        $this->viewImages.'favorite_add.png',array(
+            'width'=>42,'height'=>13,
+            'alt'=>__t("Add to favorites",true),'class'=>'imgFavoriteAdd',
+            'onclick'=>"s2Alert('".__t("Register to add this entry to your favorites",true)."');"
+    ));?>
+<?php endif;?>

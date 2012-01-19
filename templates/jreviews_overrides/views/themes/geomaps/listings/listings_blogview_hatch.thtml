@@ -1,0 +1,83 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php
+/**********************************************************************************
+ *                                 PAGINATION HELPER
+ **********************************************************************************/
+$Paginator->paginate(array(
+        'current_page'=>$this->page,
+        'items_per_page'=>$this->limit,
+        'items_total'=>$pagination['total'],
+));
+?>
+  
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+
+// summary, parent, etc. helpers
+include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php'); 
+?>        
+    <div class="header-spots"><?php echo $this->renderControllerView('listings','listings_header');?></div>
+    
+
+<div id="jr_pgResults" class="paper topspots">    
+	<div class="pad10">
+        <div id="top-spots">
+            <div class="left">
+            <ul>
+            <?php foreach($listings AS $listing):?>
+            <?php
+				$jr_startdate = $CustomFields->field('jr_startdate', $listing, false, false);
+				$jr_enddate = $CustomFields->field('jr_enddate', $listing, false, false);
+				$jr_time = $CustomFields->field('jr_time', $listing, false, false);
+				?>
+                
+                <li class="listItem">
+                <?php $location = getParentLocation($listing['Listing']['listing_id']); ?>
+                <?php echo $Routes->content($listing['Listing']['title'],$listing,array('id'=>'jr_listing'.$listing['Listing']['listing_id'],'class'=>'jr_listingTitle')); ?>
+                <?php
+				if ($jr_startdate) {
+					echo '<div>'.$jr_startdate.'</div>';
+				}
+				?>
+                </li>
+                <?php endforeach;?>
+                </ul>
+                <br />
+                <div>
+                <?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?>
+                </div>
+                <div>
+                <?php if($pagination['total'] > 0):?>    
+                    <?php if($pagination['total'] > $this->limit):?>
+                    <?php echo $Paginator->display_pages();?>
+                    <?php endif;?>        
+                <?php endif;?>
+                </div>
+                
+                <div style="clear:left; width: 95%;" class="post-catch">
+                	<a href="/index.php?option=com_relate&amp;view=create&amp;type=hatch" title="<?php __t("Add a hatch report"); ?>"><?php __t("Add a hatch report"); ?></a>
+                </div>
+                
+                
+            </div>
+            <div id="gm_mapColumn" class="right">
+                <?php echo $this->renderControllerView('geomaps','map_results',array('width'=>'541','height'=>'316'));?>
+            </div>
+            <br clear="all" />
+        </div>       
+    </div>
+</div>

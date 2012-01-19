@@ -1,0 +1,60 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php
+/**********************************************************************************
+ *                                 PAGINATION HELPER
+ **********************************************************************************/
+$Paginator->paginate(array(
+        'current_page'=>$this->page,
+        'items_per_page'=>$this->limit,
+        'items_total'=>$pagination['total'],
+));
+?>
+  
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+
+
+$showmap = 1;
+
+// load related count
+include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php');
+//
+
+?>        
+
+            
+    <?php if(!empty($listings)):?>         
+    <div id="jr_pgResults">
+    <!--  BLOGVIEW  -->
+        <ul class="thumbs-only">
+		<?php foreach($listings AS $listing): ?>
+        <?php
+		listinglink = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'],$listing['Listing']['cat_id'],$listing['Listing']['section_id']);
+		
+		$photos = getRelatedThumb($fish->id,1);
+			$photocount = 0;
+			foreach ($photos as $photo) {
+					$catchthumb = $photo->thumbnail;
+				$photocount++;
+			}
+		?>
+       <li>
+       	<a href="<?php echo $listinglink; ?>"><img src="<?php echo $catchthumb; ?>" class="jomTips" alt="<?php echo $listing['Listing']['title'];; ?>" title="<?php echo $listing['Listing']['title']; ?>::<?php echo $listing['Listing']['summary']; ?>" /></a>
+       </li>	
+        <?php endforeach;?>
+        </ul>
+    </div>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+	<name>Quickcontent</name>
+	<creationDate>2009-08-26</creationDate>
+	<author>Thomas Lengler</author>
+	<authorEmail>info@einszuzwei.de</authorEmail>
+	<authorUrl>http://www.einszuzwei.de</authorUrl>
+	<version>1.0.3</version>
+	<copyright>Copyright 2009 Thomas Lengler - All rights reserved</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Ajax content editor for Joomla!</description>
+
+	<installfile>install.quickcontent.php</installfile>
+    <uninstallfile>uninstall.quickcontent.php</uninstallfile>
+	
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu>Quickcontent</menu>
+		  
+		<files folder="admin">
+	       	<filename>index.html</filename>
+	       	<filename>config.xml</filename>
+			<filename>admin.quickcontent.php</filename>
+			<filename>controller.php</filename>
+			<filename>install.quickcontent.php</filename>
+			<filename>uninstall.quickcontent.php</filename>
+			<folder>assets</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			
+		</files>
+
+	<languages folder="admin/language/en-GB">
+            <language tag="en-GB">en-GB.com_quickcontent.ini</language>
+        </languages>
+        
+			
+	</administration>
+	
+	    <params>
+			<param name="cleanfields" type="radio" default="0" label="Clean form fields after saving item (reload page after changing this value)" description="cleans form fields after saving item. Check NO for content stays in fields after saving item with AJAX. Reload page after changing this value!">
+		    	<option value="0">No</option>
+		  	    <option value="1">Yes</option>
+			</param>
+			<param name="paraformenu" type="radio" default="1" label="Use published and access parameters also for created menu " description="Sets the published and the access value you have choosed for your item also for the new menu item when link to menu is checked.">
+		    	<option value="0">No</option>
+		  	    <option value="1">Yes</option>
+			</param>		
+    	</params>
+    	
+</install>
+

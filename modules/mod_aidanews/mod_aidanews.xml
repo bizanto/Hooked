@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>AiDaNews</name>
+	<author>Danilo A.</author>
+	<creationDate>3/9/10</creationDate>
+	<copyright>GNU/GPL</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>dan@cdh.it</authorEmail>
+	<version>1.2.1</version>
+	<description>UPDATE_SUCCESS</description>
+	<files>
+		<filename module="mod_aidanews">mod_aidanews.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>Changelog.txt</filename>
+		<filename>License.txt</filename>
+		<filename>logo.png</filename>
+		<filename>aidanewsstructure.jpg</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>hit.png</filename>
+		<filename>rating.png</filename>
+		<filename>comment.png</filename>
+		<filename>twitter.gif</filename>
+        <filename>elements/index.html</filename>
+        <filename>elements/jutabs.php</filename>
+		<filename>elements/flexisql.php</filename>
+		<filename>elements/flexiimgsql.php</filename>
+		<filename>elements/flexiradio.php</filename>
+		<filename>elements/flexiradiorev.php</filename>
+		<filename>elements/flexicheck.php</filename>
+		<filename>elements/flexisection.php</filename>
+		<filename>elements/flexitextarea.php</filename>
+		<filename>elements/exfcategory.php</filename>
+		<filename>elements/fleximulti.php</filename>
+		<filename>elements/flexicategories.php</filename>
+		<filename>elements/category.php</filename>
+		<filename>elements/excategory.php</filename>
+        <filename>elements/Credits.txt</filename>
+		<filename>elements/multi.php</filename>
+	</files>
+	<languages>
+        <language tag="en-GB">en-GB.mod_aidanews.ini</language>
+		<language tag="fr-FR">fr-FR.mod_aidanews.ini</language>
+		<language tag="it-IT">it-IT.mod_aidanews.ini</language>
+		<language tag="de-DE">de-DE.mod_aidanews.ini</language>
+    </languages>
+
+	<params addpath="/modules/mod_aidanews/elements/">
+		<param name="flexicheck_novar" type="flexicheck" default="" />
+			<param name="cache" type="radio" default="0" label="CACHING" description="CACHINGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="URLtype" type="radio" default="0" label="URLTYPE" description="URLTYPEDESC">
+				<option value="0">STANDARD</option>
+				<option value="2">FLEXIURL</option>
+				<option value="3">MyBlog</option>
+			</param>
+			<param name="item_id" type="text" default="" label="ITEMID" description="ITEMIDDESC" />
+		<param name="" type="jutabs" description="CONTENTCATS" />
+			<param name="secid" type="flexisection" default="" label="SECIDS" description="SECIDSDESC" />
+			<param name="catid" type="category" default="" label="CATIDS" description="CATIDSDESC" />
+			<param name="excatid" type="excategory" default="" label="EXCATIDS" description="EXCATIDSDESC" />
+			<param name="show_front" type="flexiradiorev" default="1" label="FRONTPAGE" description="FRONTPAGEDESC">
+				<option value="1">ANSSHOW</option>
+				<option value="0">ANSHIDE</option>
+				<option value="2">ANSONLY</option>
+			</param>
+		<param name="" type="jutabs" description="FLEXICATS" />	
+			<param name="categories" type="flexicategories" label="CATIDS" description="FCATIDSDESC" />
+			<param name="excategories" type="exfcategory" default="" label="EXCATIDS" description="EXCATIDSDESC" />
+			<param name="flexitags" type="fleximulti" sql="SELECT name, id FROM #__flexicontent_tags" key_field="id" value_field="name" default="" multiple="multiple" label="TAGS" description="TAGSDESC"></param>
+		<param name="" type="jutabs" description="WHAT_TO_SHOW" />	
+			<param name="count" type="text" default="5" label="HOWMANY" description="HOWMANYDESC" />
+			<param name="recent" type="text" default="" label="RECENTONLY" description="RECENTONLYDESC" />
+			<param name="startfrom" type="text" default="" label="STARTFROM" description="STARTFROMDESC" />
+			<param name="limitwrittenby" type="list" default="0" label="WRITTENBY" description="WRITTENBYDESC">
+				<option value="0">NOLIMIT</option>
+				<option value="1">WRITTENBYME</option>
+				<option value="2">NOTME</option>
+				<option value="3">CBFRIENDS</option>
+				<option value="4">JSFRIENDS</option>
+				<option value="5">ANSSELECTION</option>
+			</param>
+			<param name="authors" type="multi" sql="SELECT name, id FROM #__users" key_field="id" value_field="name" default="" multiple="multiple" label="AUTHORS" description="AUTHORSDESC"></param>
+		<param name="" type="jutabs" description="HOW_TO_ORDER" />	
+			<param name="order" type="list" default="0" label="NEWSORDERING" description="NEWSORDERINGDESC">
+				<option value="0">RECENT</option>
+				<option value="9">OLD</option>
+				<option value="6">RECENTLYEDITED</option>
+				<option value="3">UPCOMING</option>
+				<option value="1">MOSTREAD</option>
+				<option value="10">LEASTREAD</option>
+				<option value="8">HIGHERRATING</option>
+				<option value="11">LOWERRATING</option>
+				<option value="14">MOSTCOM</option>
+				<option value="15">LEASTCOM</option>
+				<option value="4">ALPHABETAZ</option>
+				<option value="5">ALPHABETZA</option>
+				<option value="7">ORDER</option>
+				<option value="2">RANDOM</option>
+				<option value="12">FLEXIDATEORDER</option>
+				<option value="13">FLEXIDATEUPCOMING</option>
+			</param>
+		<param name="" type="jutabs" description="RELATED_ARTICLES" />
+			<param name="related" type="flexiradiorev" default="0" label="RELATED" description="RELATEDDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSMETAKEY</option>
+			</param>
+			<param name="flexirelated" type="flexiradio" default="0" label="FLEXIRELATED" description="FLEXIRELATEDDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSMETAKEY</option>
+				<option value="2">ANSTAGS</option>
+			</param>
+			<param name="relatednoid" type="text" default="" label="RELATEDNOID" description="RELATEDNOIDDESC" />
+		<param name="" type="jutabs" description="SET_LAYOUT" />
+			<param name="display_top_1" type="textarea" cols="30" rows="3" default="[title][date][author][category]" label="TOPONE" description="LAYOUTDESC" />
+			<param name="display_top_2" type="textarea" cols="30" rows="3" default="[empty]" label="TOPTWO" description="LAYOUTDESC" />
+			<param name="display_top_3" type="textarea" cols="30" rows="3" default="[empty]" label="TOPTHREE" description="LAYOUTDESC" />
+			<param name="display_top_4" type="textarea" cols="30" rows="3" default="[empty]" label="TOPFOUR" description="LAYOUTDESC" />
+			<param name="display_bottom" type="textarea" cols="30" rows="3" default="[readmore][comments][hits][rating]" label="BOTTOM" description="LAYOUTDESC" />
+			<param name="display_flexi" type="flexitextarea" cols="30" rows="3" default="[empty]" label="FLEXI" description="FLAYOUTDESC" />
+		<param name="" type="jutabs" description="LAYOUT_OPTIONS" />
+			<param name="grid_display" type="radio" default="0" label="GRIDDISPLAY" description="GRIDDISPLAYDESC">
+				<option value="1">ANSYES</option>
+				<option value="0">ANSNO</option>
+			</param>
+			<param name="colmax" type="text" default="1" label="COLMAX" description="COLMAXDESC" />
+			<param name="colwidth" type="text" default="" label="COLWIDTH" description="COLWIDTHDESC" />
+			<param name="gridattr" type="textarea" cols="30" rows="3" default="border: 1px solid #C3C3C3;" label="GRIDATTR" description="GRIDATTRDESC" />
+			<param name="grid_valign" type="radio" default="1" label="VALIGN" description="VALIGNDESC">
+				<option value="1">ANSTOP</option>
+				<option value="0">ANSBOT</option>
+			</param>
+			<param type="spacer"/>
+			<param name="clearboth" type="radio" default="1" label="CLEARTOGGLE" description="CLEARTOGGLEDESC">
+				<option value="1">ANSYES</option>
+				<option value="0">ANSNO</option>
+			</param>
+			<param type="spacer"/>
+			<param name="show_more" type="radio" default="1" label="SHOWMORE" description="SHOWMOREDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="more_what" type="text" default="Select a custom link to display here in the backend" label="MOREWHAT" description="MOREWHATDESC" />
+			<param name="more_link" type="text" default="index.php" label="MORELINK" description="MORELINKDESC" />
+			<param name="moreblank" type="radio" default="0" label="MOREBLANK" description="MOREBLANKDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+		<param name="" type="jutabs" description="CSS_VALUES" />
+			<param name="moduleclass_sfx" type="text" default="" label="MODULECLASS" description="MODULECLASSDESC" />
+			<param name="maincss" type="textarea" cols="30" rows="3" default="" label="CSSMAIN" description="CSSMAINDESC" />
+			<param name="title_css" type="textarea" cols="30" rows="3" default="font-weight: bold; font-size: 105%;" label="CSSTITLE" description="CSSTITLEDESC" />
+			<param name="link_css" type="textarea" cols="30" rows="3" default="" label="CSSLINKS" description="CSSLINKSDESC" />
+			<param name="date_css" type="textarea" cols="30" rows="3" default="font-size: 75%;" label="CSSDATE" description="CSSDATEDESC" />
+			<param name="author_css" type="textarea" cols="30" rows="3" default="font-size: 75%;" label="CSSAUTHOR" description="CSSAUTHORDESC" />
+			<param name="category_css" type="textarea" cols="30" rows="3" default="font-size: 75%;" label="CSSCATEGORY" description="CSSCATEGORYDESC" />
+			<param name="image_css" type="textarea" cols="30" rows="3" default="padding: 2px; margin: 3px; border: 1px solid #C3C3C3;" label="CSSIMAGE" description="CSSIMAGEDESC" />
+			<param name="body_intro_css" type="textarea" cols="30" rows="3" default="padding-top: 5px;" label="CSSINTRO" description="CSSINTRODESC" />
+			<param name="readmore_css" type="textarea" cols="30" rows="3" default="font-weight:bold; padding: 0; margin: 0;" label="CSSREADMORE" description="CSSREADMOREDESC" />
+			<param name="body_bottom_css" type="textarea" cols="30" rows="3" default="padding: 0; margin: 0;" label="CSSBOTTOM" description="CSSBOTTOMDESC" />
+			<param name="bottom_more_css" type="textarea" cols="30" rows="3" default="" label="CSSBOTTOMMORE" description="CSSBOTTOMMOREDESC" />
+		<param name="" type="jutabs" description="CATEGORY_DISPLAY" />
+			<param name="disp_catblock" type="radio" default="0" label="DISPCATBLOCK" description="DISPCATBLOCKDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="catblock_css" type="textarea" cols="30" rows="3" default="" label="CSSCATBLOCK" description="CSSCATBLOCKDESC" />
+			<param name="catcat" type="sql" default="" label="CATCAT" description="CATCATDESC" query="SELECT id, title FROM #__categories" key_field="id" value_field="title" />
+			<param name="disp_cattit" type="radio" default="1" label="DISPCATTIT" description="DISPCATTITDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="cattitle_css" type="textarea" cols="30" rows="3" default="font-weight: bold; font-size: 105%;" label="CSSCATTITLE" description="CSSCATTITLEDESC" />
+			<param name="disp_catimg" type="radio" default="1" label="DISPCATIMG" description="DISPCATIMGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="catimagewidth" type="text" default="auto" label="CATIMAGEWIDTH" description="CATIMAGEWIDTHDESC" />
+			<param name="catimageheight" type="text" default="60" label="CATIMAGEHEIGHT" description="CATIMAGEHEIGHTDESC" />
+			<param name="catimage_css" type="textarea" cols="30" rows="3" default="padding: 2px; margin: 3px; border: 1px solid #C3C3C3;" label="CSSCATIMAGE" description="CSSCATIMAGEDESC" />
+			<param name="disp_catdesc" type="radio" default="1" label="DISPCATDESC" description="DISPCATDESCDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="catdesc_css" type="textarea" cols="30" rows="3" default="padding-top: 5px;" label="CSSCATDESC" description="CSSCATDESCDESC" />
+			<param name="disp_catline" type="radio" default="1" label="DISPCATLINE" description="DISPCATLINEDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+		<param name="" type="jutabs" description="WHAT_TO_DISPLAY_HEADER" />		
+			<param type="spacer" default="SPACER_TITLE"/>
+			<param name="linktitle" type="radio" default="1" label="LINKTITLE" description="LINKTITLEDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="limittitle" type="text" default="" label="SHORTENTITLE" description="SHORTENTITLEDESC" />
+			<param name="artblank" type="radio" default="0" label="ARTBLANK" description="ARTBLANKDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="title_ending" type="text" default="" label="TITLEEND" description="TITLEENDDESC" />
+			<param type="spacer" default="SPACER_INTRO"/>
+			<param name="show_intro" type="radio" default="1" label="SHOWDESC" description="SHOWDESCDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="number" type="text" default="222" label="SHORTENDESC" description="SHORTENDESCDESC" />
+			<param name="shorten" type="radio" default="1" label="HOWTOSHORTEN" description="HOWTOSHORTENDESC">
+				<option value="0">SWORDS</option>
+				<option value="1">SKEYS</option>
+			</param>
+			<param name="intro_ending" type="text" default="" label="INTROEND" description="INTROENDDESC" />
+			<param name="fulltext" type="radio" default="0" label="FULLTEXT" description="FULLTEXTDESC">
+				<option value="0">ANSINTROTEXT</option>
+				<option value="1">ANSFULLTEXT</option>
+			</param>
+			<param name="allow" type="text" default="" label="ALLOW" description="ALLOWDESC" />
+			<param name="stripplugs" type="radio" default="0" label="STRIPPLUG" description="STRIPPLUGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="startfromp" type="radio" default="0" label="PARAGRAPH" description="PARAGRAPHDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param type="spacer" default="SPACER_DATE"/>
+			<param name="what_date" type="list" default="0" label="WHATDATE" description="WHATDATEDESC">
+				<option value="0">ANSCREATED</option>
+				<option value="1">ANSMODIFIED</option>
+				<option value="2">ANSPUBLISHED</option>
+				<option value="3">ANSUNPUBLISHED</option>
+			</param>
+			<param name="flexi_date" type="flexiradio" default="0" label="FLEXIDATE" description="FLEXIDATEDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="datefieldid" type="flexisql" default="2" label="FLEXIDATEFIELD" description="FLEXIDATEFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified'" key_field="id" value_field="label" />
+			<param name="dateoutput" type="text" default="" label="DATEOUTPUT" description="DATEOUTPUTDESC" />
+			<param type="spacer" default="SPACER_AUTHOR"/>
+			<param name="what_username" type="radio" default="0" label="WHATAUTHOR" description="WHATAUTHORDESC">
+				<option value="0">ANSNAME</option>
+				<option value="1">ANSUSERNAME</option>
+				<option value="2">ANSALIASNAME</option>
+				<option value="3">ANSALIASUSERNAME</option>
+			</param>
+			<param name="profilesystem" type="list" default="0" label="PROFILELINK" description="PROFILELINKDESC">
+				<option value="0">NOPROFILE</option>
+				<option value="1">Community Builder</option>
+				<option value="2">JomSocial</option>
+				<option value="3">JSocialSuite</option>
+			</param>
+		<param name="" type="jutabs" description="WHAT_TO_DISPLAY_MIDDLE" />
+			<param type="spacer" default="SPACER_READMORE"/>
+			<param name="continue_reading" type="radio" default="1" label="CONTINUE" description="CONTINUEDESC">
+				<option value="0">ANSCONTINUE</option>
+				<option value="1">ANSREADMORE</option>
+				<option value="2">ANSRTREADMORE</option>
+			</param>
+			<param name="readmore_introtext" type="radio" default="0" label="RMINTRO" description="RMINTRODESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param type="spacer" default="SPACER_HITS"/>
+			<param name="show_hits_image" type="radio" default="1" label="SHOWHITSIMG" description="SHOWHITSIMGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param type="spacer" default="SPACER_RATING"/>
+			<param name="show_rating_image" type="radio" default="1" label="SHOWRATINGIMG" description="SHOWRATINGIMGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="show_rating_average" type="radio" default="1" label="SHOWRATINGAV" description="SHOWRATINGAVDESC">
+				<option value="0">ANSTOTAL</option>
+				<option value="1">ANSAVERAGE</option>
+			</param>
+			<param name="roundrating" type="radio" default="0" label="ROUNDRATING" description="ROUNDRATINGDESC">
+				<option value="0">ANSINTEGER</option>
+				<option value="1">ANSONE</option>
+				<option value="2">ANSTWO</option>
+			</param>
+			<param type="spacer" default="SPACER_COMMENTS"/>
+			<param name="commentstable" type="list" default="0" label="COMMENTSTABLE" description="COMMENTSTABLEDESC">
+				<option value="0">NOCOMMENTS</option>
+				<option value="1">JComments</option>
+				<option value="9">JomComment</option>
+				<option value="4">!JoomlaComment</option>
+				<option value="8">Joomla Commentator!</option>
+				<option value="7">RDBS Comments</option>
+				<option value="5">yvComment</option>
+				<option value="3">Webee Comment</option>
+				<option value="6">ZiMB Comment</option>
+				<option value="2">CUSTOM</option>
+			</param>
+			<param name="customtable" type="text" default="" label="CUSTOMTABLE" description="CUSTOMTABLEDESC" />
+			<param name="customartcol" type="text" default="" label="CUSTOMARTCOL" description="CUSTOMARTCOLDESC" />
+			<param name="show_comment_image" type="radio" default="1" label="SHOWCOMMENTIMG" description="SHOWCOMMENTIMGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param type="spacer" default="SPACER_LINE"/>
+			<param name="show_line" type="radio" default="1" label="SHOWLINE" description="SHOWLINEDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="line_color" type="text" default="#c3c3c3" label="LINECOLOR" description="LINECOLORDESC" />
+		<param name="" type="jutabs" description="IMAGE_SETTINGS" />
+			<param name="show_image" type="list" default="1" label="CHOOSEIMAGETYPE" description="CHOOSEIMAGETYPEDESC">
+				<option value="0">NOIMAGE</option>
+				<option value="2">DEFAULTIMAGE</option>
+				<option value="1">VARIOUSIMAGES</option>
+				<option value="5">IMGCATEGORY</option>
+				<option value="6">FIRSTCAT</option>
+				<option value="3">FLEXIIMGALWAYS</option>
+				<option value="4">FLEXIIMGIF</option>
+				<option value="7">FLEXIIMGCAT</option>
+				<option value="8">FLEXIFIRSTCAT</option>
+				<option value="9">IMGCBAVATAR</option>
+				<option value="10">IMGJSAVATAR</option>
+			</param>
+			<param name="youthumb" type="radio" default="0" label="YOUTHUMB" description="YOUTHUMBDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="gallery" type="radio" default="0" label="GALLERY" description="GALLERYDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="basfold" type="text" default="images/stories" label="BASFOLD" description="BASFOLDDESC" />
+			<param name="use_thumbs" type="radio" default="0" label="USETHUMBS" description="USETHUMBSDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="imageWidth" type="text" default="auto" label="IMAGEWIDTH" description="IMAGEWIDTHDESC" />
+			<param name="imageHeight" type="text" default="60" label="IMAGEHEIGHT" description="IMAGEHEIGHTDESC" />
+			<param name="imagefloat" type="radio" default="1" label="IMAGEFLOAT" description="IMAGEFLOATDESC">
+				<option value="4">ALTSTARTLEFT</option>
+				<option value="1">FLOATLEFT</option>
+				<option value="2">NOFLOAT</option>
+				<option value="0">FLOATRIGHT</option>				
+				<option value="3">ALTSTARTRIGHT</option>
+			</param>
+			<param name="image_default" type="text" default="images/stories/articles.jpg" label="DEFAULTIMAGEURL" description="DEFAULTIMAGEURLDESC" />
+			<param name="hide_default_image" type="radio" default="0" label="HIDEDEFAULT" description="HIDEDEFAULTDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param name="use_tooltips" type="radio" default="0" label="USETOOLTIPS" description="USETOOLTIPSDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSTITLE</option>
+				<option value="2">ANSTITLEINTRO</option>
+			</param>
+			<param type="spacer"/>
+			<param name="quality" type="text" default="100" label="QUALITY" description="QUALITYDESC" />
+			<param name="thumbsuffix" type="text" default="" label="TSUFF" description="TSUFFDESC" />
+			<param type="spacer"/>
+			<param name="js_avatar" type="radio" default="1" label="JSAVATARCHOICE" description="JSAVATARCHOICEDESC">
+				<option value="0">JSAVATAR</option>
+				<option value="1">JSTHUMB</option>
+			</param>
+			<param type="spacer"/>
+			<param name="imagefieldid" type="flexiimgsql" default="" label="FLEXIIMAGEFIELD" description="FLEXIIMAGEFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'image'" key_field="id" value_field="label" />
+			<param name="flexiwatermark" type="flexiradio" default="1" label="FLEXIWATERMARK" description="FLEXIWATERMARKDESC">
+				<option value="0">ANSORIGINAL</option>
+				<option value="1">ANSSMALL</option>
+				<option value="2">ANSMEDIUM</option>
+				<option value="3">ANSLARGE</option>
+				<option value="4">ANSCUSTOM</option>
+			</param>
+			<param name="FLEXIcustom" type="text" default="" label="FLEXICUSTOMIMAGE" description="FLEXICUSTOMIMAGEDESC" />
+		<param name="" type="jutabs" description="FLEXI_FIELDS" />
+			<param name="field_1_id" type="flexisql" default="" label="FLEXIFIELDONE" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param name="field_2_id" type="flexisql" default="" label="FLEXIFIELDTWO" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param name="field_3_id" type="flexisql" default="" label="FLEXIFIELDTHREE" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param name="field_4_id" type="flexisql" default="" label="FLEXIFIELDFOUR" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param name="field_5_id" type="flexisql" default="" label="FLEXIFIELDFIVE" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param name="field_6_id" type="flexisql" default="" label="FLEXIFIELDSIX" description="FLEXIFIELDDESC" query="SELECT id, label FROM #__flexicontent_fields WHERE field_type = 'date' OR field_type = 'created' OR field_type = 'modified' OR field_type = 'email' OR field_type = 'text' OR field_type = 'textarea' OR field_type = 'weblink'" key_field="id" value_field="label" />
+			<param type="spacer"/>
+			<param name="fields_box_css" type="flexitextarea" cols="30" rows="3" default="" label="CSSFIELDSBOX" description="CSSFIELDSBOXDESC" />
+			<param name="flexi_fields_css" type="flexitextarea" cols="30" rows="3" default="" label="CSSFLEXIFIELDS" description="CSSFLEXIFIELDSDESC" />
+			<param name="gounder" type="flexiradio" default="1" label="GOUNDER" description="GOUNDERDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+		<param name="" type="jutabs" description="LANGUAGE_SETTINGS" />
+			<param name="fishsupport" type="flexiradio" default="0" label="FISHSUPPORT" description="FISHSUPPORTDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSCURRENT</option>
+				<option value="2">ANSCHOOSE</option>
+			</param>
+			<param name="limitlang" type="text" default="" label="LIMITLANG" description="LIMITLANGDESC" />
+			<param name="uselangfile" type="radio" default="0" label="USELANG" description="USELANGDESC">
+				<option value="0">ANSNO</option>
+				<option value="1">ANSYES</option>
+			</param>
+			<param type="spacer"/>
+			<param name="nothingtoshow" type="text" default="" label="NORESULT" description="NORESULTDESC" />
+			<param name="date_prefix" type="text" default="" label="DATEPREFIX" description="DATEPREFIXDESC"/>
+			<param name="auth_prefix" type="text" default="" label="AUTHPREFIX" description="AUTHPREFIXDESC"/>
+			<param name="cat_prefix" type="text" default="" label="CATPREFIX" description="CATPREFIXDESC"/>
+			<param name="readmore" type="text" default="Read More" label="RMTEXT" description="RMTEXTDESC" />
+			<param name="addcomm" type="text" default="Add Comments" label="ACTEXT" description="ACTEXTDESC" />
+			<param name="fbshare" type="text" default="Share" label="SHARE" description="SHAREDESC" />
+			<param name="hit_prefix" type="text" default="" label="HITPREFIX" description="HITPREFIXDESC" />
+			<param name="hit_title_S" type="text" default="Hit" label="HITTITLE_S" description="HITTITLEDESC_S" />	
+			<param name="hit_title_P" type="text" default="Hits" label="HITTITLE_P" description="HITTITLEDESC_P" />
+			<param name="rating_prefix" type="text" default="" label="RATINGPREFIX" description="RATINGPREFIXDESC" />
+			<param name="rating_title_S" type="text" default="Rating" label="RATINGTITLE_S" description="RATINGTITLEDESC_S" />
+			<param name="rating_title_P" type="text" default="Ratings" label="RATINGTITLE_P" description="RATINGTITLEDESC_P" />
+			<param name="comment_prefix" type="text" default="" label="COMMENTPREFIX" description="COMMENTPREFIXDESC" />
+			<param name="comment_title_S" type="text" default="Comment" label="COMMENTTITLE_S" description="COMMENTTITLEDESC_S" />
+			<param name="comment_title_P" type="text" default="Comments" label="COMMENTTITLE_P" description="COMMENTTITLEDESC_P" />
+	</params>
+</install>

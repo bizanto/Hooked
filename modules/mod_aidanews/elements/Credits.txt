@@ -1,0 +1,11 @@
+The jutabs.php file has been taken from the module JU News Ultra.
+You can find it here:
+http://extensions.joomla.org/extensions/news-display/frontend-news/7232
+
+flexisql, flexiradio, flexicheck, flexisection, flexitextarea, flexiimgsql, flexiradiorev are modifications of standard Joomla xml parameters.
+
+The category.php file has been taken from the module mod_lofarticlesslideshow.
+You can get it here:
+http://extensions.joomla.org/extensions/news-display/articles-showcase/11309
+
+The excategory.php file is a modification of the category.php file.

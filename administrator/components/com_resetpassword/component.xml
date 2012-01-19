@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<install method="upgrade" type="component" version="1.5.0">
+	
+	<name>Reset Password</name>
+		<author>Mark Totzke</author>
+		<creationDate>2011-01-20</creationDate>
+		<copyright></copyright>
+		<license>GPL</license>
+		<authorEmail>mark.totzke@gmail.com</authorEmail>
+		<authorUrl>http://subclosure.com</authorUrl>
+		<version>0.1</version>
+		<description>Attemping to make the password reset easier and fix the invalid token issue</description>	
+	
+	<administration>
+	    <menu link="option=com_resetpassword">Reset Password</menu>
+		<files folder="administrator/components/com_resetpassword" > </files>
+	</administration>
+		
+	<files folder="components/com_resetpassword"> </files>
+	
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.sql</file>
+		</sql>
+	</install>	
+	
+	<uninstall>
+		<sql>
+			<file driver="mysql">uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	
+	<languages>
+			<language tag="de-DE">de-DE.com_resetpassword.ini</language>
+			<language tag="el-GR">el-GR.com_resetpassword.ini</language>
+            <language tag="en-GB">en-GB.com_resetpassword.ini</language>
+			<language tag="es-ES">es-ES.com_resetpassword.ini</language>
+			<language tag="fi-FI">fi-FI.com_resetpassword.ini</language>
+			<language tag="fr-FR">fr-FR.com_resetpassword.ini</language>
+			<language tag="it-IT">it-IT.com_resetpassword.ini</language>
+			<language tag="nl-NL">nl-NL.com_resetpassword.ini</language>
+			<language tag="pl-PL">pl-PL.com_resetpassword.ini</language>
+			<language tag="pt-PT">pt-PT.com_resetpassword.ini</language>
+    </languages>	
+		
+</install>

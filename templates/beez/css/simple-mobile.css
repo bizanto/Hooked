@@ -1,0 +1,152 @@
+
+body, html { margin: 0; padding: 0; font: 14px/19px Helvetica, Arial, sans-serif; }
+
+body.body { background: #394018 url(http://hooked.no.s3.amazonaws.com/bg-page.jpg) top center repeat-x; position: relative; color: #391d0d; }
+
+img { border: 0; }
+
+p { margin: 0; padding: 0 0 10px; }
+ul, li { margin: 0; padding: 0; }
+ul li { list-style: none; background: url(http://hooked.no.s3.amazonaws.com/bg-li.png) 0 0 no-repeat; padding-left: 10px; }
+
+a { text-decoration: none; color: #391D0D; }
+a:hover { color:  #000; }
+
+
+div#cWindowContent .inputbox, #community-wrap .jsTogSearch .inputbox, #cWindowContentWrap input, #community-wrap .inputbox, #community-wrap textarea, #community-wrap select, .main-content textarea, .main-content input { border: 1px solid #878f66; background: #b1b693; color: #52630E; padding: 6px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; width: auto; }
+
+h1,h2,h3,
+.componentheading, .contentheading { margin: 0 0 15px; padding: 0; font-weight: bold; }
+
+h1.no-access { margin: 0 0 60px; }
+
+h1 .jr_pathway, h1 .jr_pathway a, h1.contentheading .subline a { color: #EEB; font-size: 12.5px; font-weight: normal; text-shadow: none; font-family: Helvetica, Arial, sans-serif }
+.jr_pathway { float: none; width: auto; padding: 0; margin: 0; color: #EEB; }
+
+h1.contentheading .subline a { display: block; }
+
+.jr_pathway a, .statusbar a { color: #ffc; }
+
+h2, .jr_blogview .contentInfoContainer .contentTitle a { font-size: 115%; line-height: 140%; font-weight: bold; margin: 0 0 10px; }
+
+h1.contentheading, h1, .componentheading, .contentheading { font-size: 180%; line-height: 135%; color: #efefd4; font-family: 'Arial Black',Helvetica; font-weight: normal; text-shadow: 0 -2px #111; }
+h4,h5 { margin: 5px 0; padding: 0; }
+
+#cWindowContentWrap { background: url(../images/bg-content.png) center top repeat; }
+#cWindowContentWrap .loginform { text-align: center;} 
+#cWindowContentWrap .loginform input  { margin: 0; }
+#cWindowContentWrap h1 { color: #391D0D; text-shadow: none; font-family: Arial, Helvetica, sans-serif; }
+
+.fl { float: left; display: inline; }
+.fr { float: right; display: inline; }
+.imgr { margin: 0 0 10px 10px; }
+.imgl { margin: 0 10px 10px 0; }
+.tar { text-align: right; }
+.tal { text-align: left; }
+.tac { text-align: center; }
+.width45 { width: 45%; } 
+.width49 { width: 49%; }
+.width33 { width: 33%; }
+.width25 { width: 25%; }
+.width50 { width: 50%; }
+.width66 { width: 66%; }
+.width67 { width: 67%; }
+.width75 { width: 75%; }
+
+.pad5 { padding: 5px; }
+.pad10 { padding: 10px; }
+.pad20 { padding: 20px; }
+
+span.bquote { display: block; padding-left: 20px; margin: 0 0 10px; }
+
+.clear { clear: both; }
+
+.smalltext { font-size: 80%; line-height: 135%; }
+.contentpaneopen_edit, p.buttonheading { display: none; }
+
+
+
+#header { height:125px; }
+#hooked-logo { display: block; height: 90px; width: 298px; background: url(/images/hooked-light.png) center 50% no-repeat; text-indent: -9999px; }
+
+#header p { margin: 0; }
+
+#header .left { width: 451px; float: left; display: inline; }
+#header .right { width: 539px; float: right; display: inline; position: relative; }
+#header .right a:hover { color: #fff; }
+
+
+#main-container-wrap-outer { background: url(http://hooked.no.s3.amazonaws.com/bg-leather.png) left top repeat; -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; margin: -35px 0 10px; }
+#main-container-wrap { background: url(http://hooked.no.s3.amazonaws.com/bg-stitches.png) left top repeat-y; padding: 0 0 0 12px; }
+#main-container-wrap .stitches-right { background: url(http://hooked.no.s3.amazonaws.com/bg-stitches.png) 100% top repeat-y; padding: 0 12px 0 0; }
+#main-container-bg { background: url(http://hooked.no.s3.amazonaws.com/bg-content.png) center top repeat; }
+#main-container-top { background: url(http://hooked.no.s3.amazonaws.com/bg-statusbar.png) left top no-repeat; }
+
+#main-container { padding: 0; color: #655533; position: relative; z-index: 5; clear: both; }
+.stitches-top, .stitches-bottom { background: url(http://hooked.no.s3.amazonaws.com/bg-stitches-topbot.png) center 60% no-repeat; height: 12px; margin: 0 12px; }
+
+/* COPYRIGHT FOOTER */
+.copyright { text-align: center; color: #666633; line-height: 150%; padding: 20px; }
+.copyright a { color: #666633; }
+	.njf a { display: block; height: 102px; width: 102px; background: url(../images/bg-njf.png) top left no-repeat; margin: 0 auto 20px; text-align: center; text-indent: -9999px; }
+
+#content-bottom { clear: both; display: block; }
+
+
+	#footer { padding: 20px; }
+	#footer { color: #a9ac78; }
+	#footer h2, #footer h3, #footer a { color: #a07c3a; }
+	#footer .footer-middle a { color: #fff; }
+	#footer .moduletable { }
+	
+	#footer .social-media .fl { border-right: 1px solid #a9ac78; width: 47%; margin-right: 2%; }
+	#footer .social-media ul { }
+	#footer .social-media ul li { background: none; padding: 0; }
+	#footer .social-media ul li a { background: url(http://hooked.no.s3.amazonaws.com/social-media-icons.png) 0 0 no-repeat; padding: 0 0 0 40px; height: 33px; line-height: 33px; display: block; margin: 0 0 5px; }
+	#footer a:hover { color: #fff; }
+	#footer .social-media ul li a.feedback { background-position: 0 -33px; }
+	#footer .social-media ul li a.twitter { background-position: 0 -66px; }
+	#footer .social-media ul li a.facebook { background-position: 0 -99px; }
+	
+	#footer .footer-middle ul { margin: 0 20px; }
+	#footer .footer-middle ul li { background: url(http://hooked.no.s3.amazonaws.com/bg-btn-footer.png) 0 0 no-repeat; padding: 0; padding-left: 16px; margin: 0 0 5px; }
+	#footer .footer-middle ul li a { background: url(http://hooked.no.s3.amazonaws.com/bg-btn-footer.png) 100% -88px no-repeat; padding-right: 16px; }
+	#footer .footer-middle ul li a:hover { color: #A07C3A; }
+	#footer .footer-middle ul li a span { background: url(http://hooked.no.s3.amazonaws.com/bg-btn-footer.png) 0 -44px repeat-x; font-weight: bold; text-align: center; }
+	#footer .footer-middle ul li, #footer .footer-middle ul li a, #footer .footer-middle ul li a span{ height: 44px; line-height: 44px; display: block; }
+	
+	.bottomfooter { height: 30px; line-height: 30px; background: #333916; }
+	.bottomfooter a { color: #663; }
+	.bottomfooter a:hover { color: #fff; }
+	.bottomfooter ul li { background: none; display: inline; margin: 0 10px 0 0; }
+
+	.bottomfooter .bottom-footer { width: 990px; margin: 0 auto; text-align: center; }
+	
+#doc div.ctitle,
+body #community-wrap div#profile-status { border: 0; line-height: inherit; padding: 0 0 10px; margin: 0 0 10px; background: url(../images/bg-stitches-paper.png) left 100% repeat-x; }
+
+
+/* REGISTRATION */
+body.simple { background: #394018 }
+body.loginn .main-content { text-align: center; }
+body.loginn ul li { background: none; margin: 5px 0; }
+body.loginn #doc label { font-weight: bold; width: 100px; display: inline-block; }
+body.loginn .componentheading { margin: 0 0 25px; }
+
+body.simple #mtns { bottom: 0; top: auto; z-index: 9999; }
+body.simple .bttn-btn input { padding: 5px 10px; line-height: 100%; }
+.main-wrapper-simple #content { width: auto; padding: 12px 12px 0 ; float: none; display: block; position: relative; }
+.main-wrapper-simple { width: 100%; max-width: 600px; margin: 0 auto; position: relative; }
+.main-wrapper-simple #main-container-top { background: url(../images/bg-statusbar-reg.png) left top repeat-x; }
+.main-wrapper-simple #community-wrap  { min-width: 0; width: auto; display: block; }
+.main-wrapper-simple .componentheading { text-align: center; }
+
+.main-wrapper-simple #community-wrap .componentheading, .main-wrapper-simple .title-container, .main-wrapper-simple .statusbar { margin: 0 0 25px; height: 30px; line-height: 30px; padding: 0; }
+.main-wrapper-simple .paramlist_value { text-align: left; }
+.main-wrapper-simple #community-wrap div.ctitle h2, .main-wrapper-simple .content-bottom { text-align: center; }
+.main-wrapper-simple #hooked-logo { margin: 0 auto; }
+.main-wrapper-simple table.paramlist { margin: 0 auto; }
+.main-wrapper-simple #header .left { float: none; display: block; width: 100%; }
+
+body.simple #community-wrap table.ccontentTable td.paramlist_key { width: auto; }
+body.simple #community-wrap table.ccontentTable td input[type="text"], body.simple #community-wrap table.ccontentTable td input[type="password"] { width: 75%; }

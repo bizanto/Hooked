@@ -1,0 +1,7 @@
+Polish translation: Piotr Gąsiorowski <woodzu123@googlemail.com>
+German translation: Urs Brülhart <u.bruelhart@frefeldigital.com>
+Finnish translation: Anne Mattila <anne.mattila@internet-content.org>
+Greek Translation: Christopher Valmas <cvalmas@freemail.gr>
+Spanish Translation: Manuel Gonzalez <manugzwebs@gmail.com>
+French and Dutch Translation: Irina Malinovskaia <im_design@live.be>
+Italian: Marco Maiella <marco.maiella@gmail.com>

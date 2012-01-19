@@ -1,0 +1,36 @@
+<div  style="float:right;">
+    <button id="startGeocode" class="ui-button ui-corner-all" onclick="
+        jQuery('#abortUpdate').hide();jQuery('#statusUpdate').html('Starting...'); jQuery('body').data('Geocode.abort',0); jQuery(this).attr('disabled','disabled');
+        jQuery.get(s2AjaxUri,{'data[controller]':'admin/admin_geomaps','data[action]':'_geocodeAll','task':'start','debug_info':jQuery('input[name=debug_info]:checked').val(),'process_increment':jQuery('#process_increment').val()},function(s2Out){
+            jQuery('#s2AjaxResponse').html(s2Out.response);
+        },'json');return false;">Start</button>
+    <button id="abortGeocode" class="ui-button ui-corner-all" onclick="jQuery('#statusUpdate').html('Aborting...please wait.');jQuery('body').data('Geocode.abort',1);return false;">Stop</button>
+</div>
+    
+<ul>
+    <li>Only listings that have not been geocoded will be processed.</li>
+    <li>Use of the Google Geocoding API is subject to a query limit of 2,500 geolocation requests per day. (User of Google Maps API Premier may perform up to 100,000 requests per day.)</li>
+</ul>  
+                                         
+<div style="margin: 2px; text-align: center; padding: 3px;">
+    Show debug info: <?php echo $Form->radioYesNo( "debug_info", array('id'=>"debug_info"), 0); ?>
+<?php /*    &nbsp;&nbsp;
+    Processing increment: */?><?php echo $Form->hidden( "process_increment", array('id'=>"process_increment",'value'=>1,'style'=>'width:2em;')); ?>
+</div>      
+
+<div style="margin: 2px; width: 31%; text-align: center; padding: 3px; float: left;" class="ui-widget-content ui-corner-all">
+  Remaining<br /><span id="remaining" style="font-size: 40px;"><?php echo $total;?></span>
+</div>
+
+<div style="margin: 2px; width: 31%; text-align: center; padding: 3px; float: left;" class="ui-widget-content ui-corner-all">
+  Processed Successfully<br /><span id="processedSuccessful" style="font-size: 40px;">0</span>
+</div>
+
+<div style="margin: 2px; width: 31%; text-align: center; padding: 3px; float: left;" class="ui-widget-content ui-corner-all">
+  Skipped or Errors (*)<br /><span id="processedError" style="font-size: 40px;">0</span>
+</div>
+          
+<div style="clear:both;"></div>
+<div style="margin:3px;">(*) No address found, geocoder error response or request sent too fast.</div>
+<span id="statusUpdate" style="color:green;font-style:italic;"></span><br /><br />
+<span id="abortUpdate" style="display:none;color:red;font-style:italic;">Execution stopped. Click start to continue or close the dialog.</span>

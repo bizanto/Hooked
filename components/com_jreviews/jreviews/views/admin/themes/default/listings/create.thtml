@@ -1,0 +1,55 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );        
+?>
+
+<iframe id="listing_submit" name="listing_submit" width="0" height="0" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" ></iframe>    
+
+
+<div id="jr_listingSubmit" class="jr_form jr_pgContainer">
+	
+	<form target="listing_submit" id="jr_listingForm" name="jr_listingForm" action="<?php echo WWW_ROOT;?>administrator/index3.php?no_html=1&amp;option=com_jreviews&amp;url=admin_listings/_save" enctype="multipart/form-data" method="post">
+
+		<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+			<button id="submitButton" name="submitButton" class="ui-button ui-corner-all" onclick="jreviews_admin.listing.submit();return false;"><?php __a("Submit");?></button>
+			<button id="cancel" onclick="jQuery('.wysiwyg_editor').RemoveTinyMCE();jQuery('#jr_editContainer').fadeOut('fast',function(){jQuery('#jr_pgContainer').fadeIn('fast');});return false;" class="ui-button ui-corner-all"><?php __a("Cancel");?></button>
+        </div>
+	
+        <div id="msg"></div>                  
+
+		<div class="jr_formChooser">									
+            <span id="jr_Sections">
+			<?php echo $Form->select(
+					'data[Listing][sectionid]',
+					array_merge(array(array('value'=>null,'text'=>__a("Select section",true))),$sections),
+					$listing['Listing']['section_id'],
+					array('id'=>'sectionid','class'=>'inputbox','size'=>'1','onchange'=>'jreviews.listing.submitSection(this);'));?>
+			</span>
+			&nbsp;&nbsp;
+            <span id="jr_Categories"><?php echo $this->element('category_list');?></span>
+
+			<br />
+		</div>
+
+		<div id="new_fields">
+			<?php echo $this->renderControllerView('listings','create_form');?>
+		</div>
+		
+		<?php //echo $Form->token('jr_ListingToken');?>
+        <input type="hidden" id="referrer" name="data[referrer]" value="<?php echo $referrer;?>" />
+        <input type="hidden" name="option" value="com_jreviews" />
+        <input type="hidden" id="section" name="data[section]" value="" /> 
+        <input type="hidden" id="category" name="data[category]" value="" />
+        <input type="hidden" id="listing_id" name="data[Listing][id]" value="<?php echo $listing['Listing']['listing_id'];?>" />
+        <input type="hidden" name="tmpl" value="component" />     
+        <input type="hidden" name="no_html" value="1" />     
+        <input type="hidden" name="format" value="raw" />     
+	</form>	
+</div>

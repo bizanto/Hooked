@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="user" method="upgrade">
+	<name>FirstFriend</name>
+	<author>SocialableStudios</author>
+	<creationDate>25 March 2009</creationDate>
+	<copyright>Copyright (C) 2005 - 2010 Socialables.com All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>webmaster@socialables.com</authorEmail>
+	<authorUrl>www.sociaalables.com</authorUrl>
+	<version>3.0</version>
+	<description>
+		Add a member as someone's first friend and sends a welcome letter PLEASE SEE THE README IF YOU PLAN TO USE ANY OF THE ADVANCED FEATURES.
+	</description>
+	<files>
+		<file plugin="firstfriend">firstfriend.php</file>
+	</files>
+
+	<params>
+		<param name="sendreq" type="list" default="1" label="Send Friend Request" description="Enable/Disable Send friend request">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>	
+		<param name="firstfriend" type="text" default="62" label="First Friend ID(s)" description="The id of the 1st person(s) to send a friend request from, similar to myspaces tom, To add multiple friends separate with a comma ie. 62,63,64,65" size="20" />
+		<param name="method" type="list" default="1" label="Request Method" description="When a request is sent the receiver must approve the friend, this can be over riddin with the autoapprove feature.">			
+			<option value="0">Auto Add and Approve</option>
+			<option value="1">Send From First Friend - User must approve</option>
+			<option value="2">Send To First Friend - First Friend must approve</option>
+			<option value="3">Make New user Friends with Everyone</option>
+			</param>							
+		<param type="spacer" />
+		<param type="spacer" default="&lt;b&gt;Email Parameters&lt;/b&gt;" />
+		<param type="spacer" default="&lt;HR&gt;" />
+			
+		<param name="sendletter" type="list" default="1" label="Send Welcome Letter" description="Enable/Disable sending the welcome letter">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="senderid" type="text" default="62" label="Sender ID" description="Id of the User to send the welcome letter" size="5" />
+		<param name="subject" type="text" default="Welcome to our site" label="Email Subject" description="Enter the subject of the welcome letter" size="40" />
+		<param name="body" type="textarea" rows="15" cols="30" default="Dear {target},\n\nI want to take a moment and welcome you to the website.\nWe have a lot available to you.\n\n* A custom profile system\n* Your own photo album\n* Your own groups\n\nThere are so many things to discover, I hope you enjoy your time here.\n\n\n\n\n--\nSincerly,\nSite Management\n%1$s\n"  label="Letter" description="The body of the welcome letter. Dynamic placeholders are {target} will be replaced with the users name and %1$s will be replaced with your website name"/>		
+	
+		<param type="spacer" />
+		<param type="spacer" default="&lt;b&gt;PM Parameters&lt;/b&gt;" />
+		<param type="spacer" default="&lt;HR&gt;" />
+		
+		<param name="sendpm" type="list" default="1" label="Send Private Message Welcome letter" description="Enable/Disable sending the welcome letter to PM">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="pmsenderid" type="text" default="62" label="Sender ID" description="Id of the User to send the welcome letter" size="5" />
+		<param name="pmsubject" type="text" default="Welcome to our site" label="Email Subject" description="Enter the subject of the welcome letter" size="40" />
+		<param name="pmbody" type="textarea" rows="15" cols="30" default="Dear {target},\n\nI want to take a moment and welcome you to the website.\nWe have a lot available to you.\n\n* A custom profile system\n* Your own photo album\n* Your own groups\n\nThere are so many things to discover, I hope you enjoy your time here.\n\n\n\n\n--\nSincerly,\nSite Management\n%1$s\n"  label="Letter" description="The body of the welcome letter. Dynamic placeholders are {target} will be replaced with the users name and %1$s will be replaced with your website name"/>		
+</params>
+	<params group="advanced">
+
+		<param type="spacer" />
+		<param type="spacer" default="&lt;b&gt;Gift Parameters (requires The Gift Exchange Component)&lt;/b&gt;" />
+		<param type="spacer" default="&lt;HR&gt;" />
+		
+		<param name="sendgift" type="list" default="0" label="Send Gift at registration" description="Enable/Disable sending a gift(s) when a user registers">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="giftfriend" type="text" default="62" label="Sender ID" description="Id of the User to send the gift from" size="5" />
+		<param name="giftids" type="text" default="" label="Gift ID's" description="Get these from the ID field on the right side of the gift manager listing. ALL gifts must be separated by the pipe symbol | and the gift must end with the pipe symbol as well so for one gift enter 1| for a package containing 3 gift enter 1|2|3| " size="15" />		
+		<param name="giftvalue" type="text" default="0" label="Gift Package Value" description="This doesnt have a real purpose yet, but in the future when we enable regifting and gift redemption this will be the point value of the package the user has in their showcase, enter it here for when we impliment features which depend on gift values." size="5" />
+		<param name="giftmessage" type="textarea" rows="15" cols="30" default="{target},Here is a welcoming gift for you!"  label="Gift Message" description="The Gift Message, {target} will be replaced with the users Display name"/>		
+
+		
+	</params>
+</install>
+

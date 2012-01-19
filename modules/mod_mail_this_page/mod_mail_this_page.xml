@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Mail this page</name>
+	<author>Fiona Coulter</author>
+	<creationDate>march 2009</creationDate>
+	<copyright>Inspiration Web Design</copyright>
+	<license>GPL</license>
+	<authorEmail>joomla@iswebdesign.co.uk</authorEmail>
+	<authorUrl>www.iswebdesign.co.uk</authorUrl>
+	<version>1.2.0</version>
+	<description>Mails a link to the current page</description>
+	<files>
+		<filename module="mod_mail_this_page">mod_mail_this_page.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>tmpl/default.php</filename>	
+		<filename>tmpl/index.html</filename>
+		<folder>assets</folder>
+	</files>
+	<params>
+	    <param name="fromEmail" type="text" default="" label="from email address" description="DESCFROMEMAIL" />
+        <param name="bcc" type="text" default="" label="bcc" description="DESCBCC" />		
+		<param name="filterEmails" type="textarea" cols="20" rows="3" label="invalid emails" description="DESCINVALIDEMAILS" />
+	    <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="use_slider" type="list" default="0" label="Use mootools slider" description="PARAMUSESLIDE">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>					
+		<param name="use_cookie" type="list" default="1" label="Remember slide state" description="PARAMREMEMBERSLIDE">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>	
+		<param name="use_detection" type="list" default="0" label="Use Extended URL detection" description="PARAMUSEURLDETECTION">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+							
+	</params>
+<config>
+  <fields name="params">
+    <fieldset name="basic" label="Module Parameters" description="Configure Module">
+    <field name="fromEmail" type="text" default="" label="from email address" description="DESCFROMEMAIL" />
+    <field name="bcc" type="text" default="" label="bcc" description="DESCBCC" />
+    <field name="filterEmails" type="textarea" cols="20" rows="3" label="invalid emails" description="DESCINVALIDEMAILS" />
+    <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+    <field name="use_slider" type="list" default="0" label="Use mootools slider" description="PARAMUSESLIDE">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </field>
+    <field name="use_cookie" type="list" default="1" label="Remember slide state" description="PARAMREMEMBERSLIDE">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </field>
+    <field name="use_detection" type="list" default="0" label="Use Extended URL detection" description="PARAMUSEURLDETECTION">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </field>
+    </fieldset>
+  </fields>
+</config>	
+		<languages>
+		   <language tag="en-GB">en-GB.mod_mail_this_page.ini</language>
+		   <language tag="en-US">en-US.mod_mail_this_page.ini</language>
+	    </languages>
+</install>

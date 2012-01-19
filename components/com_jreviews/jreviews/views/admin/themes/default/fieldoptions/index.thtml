@@ -1,0 +1,66 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<div class="admin_header">Field Options Manager:  <?php echo $fieldtitle?></div>
+								
+<form name="adminForm" id="adminForm" class="adminform">
+
+	<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+		<button class="ui-button ui-corner-all" onclick="jQuery('#controller').val('admin/fields'); jQuery('#action').val('index');jQuery.post(s2AjaxUri,jQuery('#adminForm').serialize(),function(s2Out){jQuery('#page').fadeOut('fast',function(){jQuery(this).html(s2Out).fadeIn('slow');});},'html');return false;">
+        Go back to fields</button>            
+	</div>
+
+	<p style="text-align:left;">
+		1. <b>Text</b>: this is what the site visitor will see and it is translatable when using Joomfish.<br />
+		2. <b>Value</b>: this is a reference value, the site visitor will not see it.<br />
+		3. <b>Image</b>: if you enter an image, it will be displayed instead of the text with the text as the title of the image.<br />
+	</p>
+
+	<p>
+		<u>Default path for the images</u>: /components/com_jreviews/jreviews/views/themes/default/theme_images.<br />
+		If you write "image_name.jpg", it will look for the image in /components/com_jreviews/jreviews/views/themes/default/theme_images/image_name.jpg.<br />
+		If you have a multilingual site, you can enter "image_name.jpg" and if you place images in the folder like "english.image_name.jpg" and "spanish.image_name.jpg" they will be used automatically.<br />
+	</p>
+	
+	<br />
+    
+    <table class="admin_list" style="width:400px;" border="0" cellpadding="3" cellspacing="0">
+        <tr><th colspan="2">Add a new field option</th></tr>
+        <tr>            
+            <td width="200"><b>Option text</b><span class="required">*</span></td>
+            <td><input id="text" name="data[FieldOption][text]" type="text" size="25" maxsize="50" value="" /></td>
+        </tr>                    
+        <tr>
+            <td width="200"><b>Option value</b><span class="required">*</span></td>
+            <td><input id="value" name="data[FieldOption][value]" type="text" size="25" maxsize="50" value="" /></td>
+        </tr>
+        <tr>
+            <td width="200"><b>Option image</b></td>
+            <td><input id="image" name="data[FieldOption][image]" type="text" size="25" maxsize="50" value="" /></td>
+        </tr>              
+        <tr>
+            <td>&nbsp;</td>
+            <td><button class="ui-button ui-corner-all" onclick="xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fieldoptions','_save','jreviews',xajax.getFormValues('adminForm')]});return false;">Add</button></td>
+        </tr>    
+    </table>
+
+	
+	<br /><br />
+	
+	<div id="optionlist"><?php echo $table?></div>
+	
+	<input type="hidden" id="fieldid" name="data[FieldOption][fieldid]" value="<?php echo $fieldid?>" />
+	<input type="hidden" name="data[FieldOption][ordering]" value="" />
+	<input type="hidden" name="data[Field][location]" value="<?php echo $location;?>" />	
+	<input type="hidden" name="data[Field][groupid]" value="<?php echo $groupid;?>" />
+</form>
+

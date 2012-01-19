@@ -1,0 +1,55 @@
+#application-twitter ul,
+#application-twitter li {
+    background: none;
+    list-style: none;
+    line-height: 1.3 !important; /*invoking template list styling*/
+    padding: 0;
+    margin: 0;
+    }
+#application-twitter li {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    }
+#application-twitter li + li {
+    border-top: 1px solid #ddd;
+    padding: 5px 0 0;
+    margin: 5px 0 0;
+    }
+.cModule #application-twitter li {
+    float: left;
+    display: inline-block;
+    margin: 0 4px 5px 0;
+    }
+#application-twitter .twitter-post{
+	margin-right:4px;
+	line-height: 1.2;
+	padding-bottom: 5px;
+	}
+#application-twitter img.avatar {
+    width: 23px;
+    height: 23px;
+    }
+#application-twitter .twitter-user-avatar img.avatar {
+    width: 45px;
+    height: 45px;
+    }
+#application-twitter .twitter-user-avatar {
+    }
+.cMain #application-twitter img.avatar {
+    width: 36px;
+    height: 36px;
+    }
+#application-twitter div.twitter-avatar {
+    float: left;
+    display: inline;
+    width: 35px;
+    }
+#application-twitter .twitter-user-avatar {
+    float: left;
+    display: inline;
+    width: 55px;
+    }
+.cMain #application-twitter div.twitter-avatar {
+    width: 45px;
+    }

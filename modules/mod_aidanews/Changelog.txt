@@ -1,0 +1,220 @@
+New in 1.2.1
+
+	+ You can now order by number of comments (most/least commented)
+	+ Use the new [fb] and [tweet] tags to allow your users to share your articles in their profiles!
+	+ If you don't like using the default image you can now choose not to display an image when the default one would be triggered
+	+ The [id] tag lets you show the article's ID number
+	+ FLEXIcontent users can now select the categories to which limit the articles usin a field that follows the categories hierarchy. It is now limited to categories inclusion and not exclusion due to a conflict in the FLEXIcontent library used
+	+ You can now limit the output for FLEXIcontent TAGs
+	> Multiple values are now supported for every FLEXIcontent field but the weblink type
+	> Links are now handled correctly (based on com_content, with whom FLEXIcontent is anyway compatible)
+	> References to Sections and Frontpage articles were removed in the FLEXIcontent part of the module
+	* Fix: Profile linking works again
+	* Fix: FLEXIcontent secondary category toggle removed
+	* Fix: Custom date type works with FLEXIcontent date fields too (thanks vlester)
+
+New in 1.2
+
+	+ Joomla's Core Tooltips support - you can now show the article's title and introtext or title only when hovering the image. This will be expanded in the near future. (Be sure you have css settings for tooltips in your template's css!)
+	+ With two new options you'll have the possibility to automatically get the article's thumbnails right from your {gallery} and {youtube} plugins! If you published an article with a {gallery} in it the module will automatically make a thumbnail of the first image of the folder you selected (I personally use JoomlaWork's Simple Image Gallery PRO, but I'll soon test it with Simple Image Gallery, Very Simple Image Gallery and other free plugins I find in the JED). If an article features a youtube video embedded with a {youtube} tag containing the video's ID, the module will automatically get the thumb Youtube.com uses next to the video! (I personally use JoomlaWork's AllVideos plugin, but I'll test this with other plugins too.) The image will be resize and/or cropped if you set the thumbs to yes!
+	> FLEXIcontent secondary category support is now BUILT IN! The "FLEXIcontent categories" toggle has been removed, and the option will automatically switch to on if FLEXIcontent is installed (this is for the module to maintain full compatibility with com_content)
+	> The module will now strip both the {plugin tags} and their content! (if the option is set to yes)
+	* Bugfix: "Undefined variables: titolo, fishjoin and fishlimit" error should now be solved
+
+New in 1.1.1
+
+	+ "Weblink" FLEXIcontent Fields can now be selected and shown using the [flexifX] tag
+	+ New display option for the Read More link: if you're using a RocketTheme template, select "Readmore (RocketTheme)" to make it perfectly blend into the template
+	+ Articles can be limited by Author (example: only show articles written by John and Mary, exclude every other article). You can select the author(s) as you do with categories
+	+ Author Alias can now be shown along with name and username. Two different options allow you to choose what to show if no alias has been determined (name or username). Aliases won't be linked to profiles even when you turn the related option on
+	+ Using the "Allowed Tags" option you can now choose to display a certain html tag in the introtext (if you want links to be displayed, for example, write '<a>' in that field!)
+	> FLEXIcontent fields will now be shown without their own label. If you want the label to be shown, just write it in the "Layout Setup" tab before the [flexifX] tag. You can use HTML to style it
+	> Articles in Grid Layout now automatically get to the top instead of being displayed mid-way
+	> "Shorten by number of keys" will now avoid truncating words in half
+	> "Shorten by number of words" option has been completely rewritten and should now work properly
+	* Bugfix: If the article didn't have any image in the FLEXIcontent image field chosen, it showed a list of errors in Thumbnails mode
+	* Bugfix: default article image is now turned into a thumbnail correctly
+	* Bugfix: JoomFish errors if FLEXIcontent wasn't installed have been corrected
+	* Bugfix: "No Image" option should now avoid the full images handling code from being read
+	
+From now on a new series of symbols will be used to indicate the changes:
++ : New feature
+> : Tweak or minor addiction
+* : Bugfix or adjustment
+
+New in 1.1
+
+	* Thumbnails support!
+	* Bugfix: a couple of errors in JomSocial's avatar images handling - they now work correctly
+	* Bugfix: "Strip Plugins" option spelling error
+	* Links CSS will only be displayed in the page header if it's been defined in the module's backend
+	
+
+New in 1.0.1
+
+	* Bugfix: Introtexts couldn't be shortened by number of keys (Now it works again)
+	* Bugfix: Random variable errors if FLEXIcontent was not installed (Corrected)
+
+New in 1.0
+
+	* The old code coming from the previous module has been rewritten of cleaned
+	* Categories are now selected using a special menu. It doesn't recognise FLEXIcontent's nested categories, but it's much easier to use than adding catids manually
+	-> The category menu has been taken from the module mod_lofarticlesslideshow. Get it here: http://extensions.joomla.org/extensions/news-display/articles-showcase/11309
+	* You can now choose NOT to display articles coming from selected categories (using the same new menu as above)
+	* Module Class Suffix - tell me if it works properly
+	* A new CSS fields lets you input the links' style in the module. This feature works properly, but adds the CSS in the head of the page multiple times for multiple modules - all the modules will share this setting even if you only wrote something in one module, unless you used a module class suffix
+	* The '...' at the end of shortened titles and intros can now be customised
+	* The module is now W3C validated
+	* Fixed [addcomments] (didn't work)
+	* Category Inclusion/Exclusion rewritten - it can handle multiple categories correctly, as well as FLEXIcontent secondary categories (E.G. it will take all the articles selected with "Limit to Category" and remove from these ones the ones also belonging to a category that has been selected in the "Exclude Categories" list. The module also supports the "Uncategorized" articles, but they will only be displayed if they're the only selected category.
+	
+Name Changed to AiDaNews
+
+New in 2.5.5:
+
+	* Date can now be shown with a custom value
+	* Bugfix: "Limit author to" field only works with logged in users
+	* New "Limit Author" option: Limit to news written by my JomSocial friends
+	* You can now show the author's JomSocial avatar as the article's image
+	* New Intro options: show article's introtext (default) or fulltext, strip {plugin tags} and start from the first <p> tag occurrence
+	* Some fixes in the code to make it lighter: avoided two database queries that were useless
+	* Bugfix: Undefined variable errors showing up when some elements weren't displayed
+	* A link similar to "Readmore", named "Add Comments", can now be shown wherever you need using the tag [addcomments]. It takes the user to the news, or specifically to the comments form if you're using jcomments
+	* Bigfix: Every article got redundant divs around every position based on their location (article #1 had 1 div, article #12 had 12 divs... @_@). This has been corrected
+	* FLEXIcontent fields can now be displayed everywhere in the module! They still share the same CSS and need the label to be displayed, but this will be arranged in the next version. The 'Flexi' position will only be available if FLEXIcontent has been installed on the site.
+
+New in 2.5.4:
+
+	* The code that manages images display has been adjusted a bit. The option that allows FLEXIcontent images to be shown has been changed: selecting "FLEXI image fiels - First Image" you'll be shown the image from the field you selected, or (if there's none) the first image displayed in that article or (if there's none) the default image. The other option keeps on displaying the FLEXIcontent image or the default one.
+	* Show Category's image - four new options have been added in the "Image to Display" menu. Remember that the first image in the option will be shown if present, and if it isn't present other images will be shown in order. The last one is always the default one, so you'd better choose a default image!
+	* You can now show User CB Avatar instead of the article's image
+	* The title can now be shown with no link on it
+
+New in 2.5.3b:
+
+	* Bugfix: JomSocial and JSocialSuite support were coded in the right way but mistied in the backend. All links should now work correctly
+    * Support for JomComment added - remember you have to add the tag [comments] in the Layout Setup!
+    * Some French language strings added for the backend
+    * Removed a couple of default values in the module's backend, as they kept getting back if the field was left blank
+
+New in 2.5.3:
+
+	* Bugfix: Date didn't display properly if FLEXicontent wasn't installed on the site - the issue has now been corrected
+	* Output is now formed mainly by functions - this helps the ordering feature (see below)
+	* $moduleclass_sfx removed, as it didn't offer anything more than the other CSS options
+	* Advanced templating: just write the TAG corresponding to what you want to be shown to get it! This allows free ordering and positioning. See the template in the module's description for more info.
+	* Backend Tabs ordered again - This ordering should be final
+	* Show Frontpage articles only / Hide Frontpage articles / Show both Normal and Frontpage articles option corrected (it was incomplete and didn't work properly)
+
+New in 2.5.2:
+
+	* You can now link the article's author to their CB/JomSocial/JSocialSuite profile. I couldn't test it with JomSocial and JSocialSuite as I haven't bought any of them - let me know if the links work!
+	* New options to limit the output: Written by me, Not written by me, Written by Friends (only CB is supported ATM - if you own JomSocial or JSocialSuite and want this option added, help me letting me see the tables structure and names)
+	* Article and More Articles links can now be directed to a new window/tab (target: _blank)
+
+New in 2.5.1:
+
+	* Rating average will be rounded to the nearest integer. A toggle also allows you to decide how to approximate the number (1 / 1,2 / 1,23)
+	* Bugfix: module looking for a FLEXIcontent table when date is activated, even if the flexi_date option wasn't active or FLEXIcontent wasn't installed on the site
+
+New in 2.5:
+
+	* The module can now be used as a Related News module! You can use metakeys with jos_content, and choose between metakeys and TAGs in FLEXIcontent!
+	* FLEXIcontent URLs support added (Beta): selecting this option, the module will feature the same URLs as FLEXIcontent. It gave some errors to me, get back to Standard if it does to you too
+	* Bugfix: a couple of "Undefined Variable" errors that showed up if hits and rating weren't shown have been corrected
+	* Module now fully supports PHP 5.3 (A couple of deprecated strings have been rewritten) (Thx newbieinprogress)
+	* Backend has been rearranged - Options are now easier to find	
+	* Added language files support: this allows the module to change its output following the site's language when using JoomFISH. Pretty useless otherwise, as all the elements in the Language file are actually in the module's backend too
+	* You can now choose to display articles of a specified language, whatever the current one is
+	* A field to set grid column width can now be found
+	* A message will show up if no article matching the limitations set has been found	
+
+New in 2.4.3d:
+
+	* Bugfix: no image field results in error notices sometimes - I should have solved it, but if it happens again a message will help the user to solve the problem this time
+	* Bugfix: ";" was shown in the introtext replacing the <br /> tag. This option was deleted from the corresponding function
+	
+New in v 2.4.3c:
+
+    * Bugfix: FLEXIcontent-only radio buttons only displayed the "No" option
+    * Bugfix: corrected Webee Comments" table
+
+New in v 2.4.3b:
+
+    * Bugfix: a blank row appeared in some cases when using the grid layout
+    * Bugfix: corrected a bug that prevented the module from being used when FLEXIcontent wasn't installed on the site
+    * Added possibility of not displaying "clear:both" in the article's main style (displayed by default - I recommend keeping it there, but you may need to remove it...)
+
+New in v 2.4.3
+
+	* JoomFish support added - module will only show news in the current language if the option is set to yes
+	* Grid Layout - turn it on, select number of columns and you're ready to go! (PLEASE NOTE: this option uses tables, but they only appear if you turn this option on)
+	* Bugfix: corrected a little mistake that prevented the module from being used if FLEXIcontent wasn't installed on the site (OPS!)
+
+New in v 2.4.2
+
+	* You can upgrade the module by installing it on any previous version, without first uninstalling it. This will make it keep all the previous settings, with no need of rewriting them from the ground-up every time
+	* Possibility of writing different Rating and Hits title for singular and plural and automatic detection of when to apply them. (Example: 1 -> vote, 72 -> votes)
+	* SEF urls can be toggled from the backend (The new URLs introduced in v 2.4.1 caused conflicts with some external SEF components. Disabling this option you should be able to use your favourite component again)
+	* You can now insert a custom path to retrieve FLEXIcontent's image fields images from.
+	* Comment systems support - you can now choose to display comments number next to the article's hits and rating. Some Comment Systems I found on the JED are supported, but virtually any comment system can be used with the custom option. An X will be displayed instead of the number of comments if the infos you provided are wrong, or if you select a Commenting System you haven't installed on your site.
+	* Bugfix - a little coding mistake
+	* Logo image is now smaller and quicker to load
+	
+New in v 2.4.1
+
+	* Article alias and category alias shown in link (SEF urls)
+	* Possibility of excluding first X articles that would be displayed using the ordering condition you selected. Useful if you don't want to show an article that is already being shown in another module, or if you want to show more instances of the module in a column with different display options
+	* You can now display the bottom fields (hits and rating) on the top, next to the title. This will help creating a no-image listing. They will hinerit the CSS attributes you gave to the top section
+	* You can now decide wheter to display the image for Rating and Hits or not. If the image isn't displayed, the title you gave to it will be shown if present
+	* You can now choose to add a prefix to Rating and Hits, no matter the position they are displayed in.
+	* Choose what date to display between 4 alternatives. "Unpublished" is useful when using the "Upcoming Events" ordering method.
+	* "Upcoming Events" ordering method debugged and adjusted. More infos about it can be found in the tooltips.
+
+New in v 2.4
+
+	* Section IDs field will disappear if FLEXIcontent is detected on the site
+	* Better detection of actual date and time (Thx conquerlol)
+	* Decide wether to display Rating sum or average
+	* Images can be displayed in alternate position (1: left, 2: right, 3: left and so on)
+	* "Read More" text can be followed by article title to obtain something like "Keep on reading (article title)". The title will be shortened based on title's shorten option
+	* Up to 6 custom text fields can be displayed. You can choose how to arrange them (1 or 2 columns), wheter to display them under the image or next to it (useful in some cases) and style the fields' output, the labels and the box containing them from the backend
+	* Bugfix: Articles no longer overlay when an image and no body is selected in tableless mode. There's no motivation to keep the "Tableless output" option on, so it has been removed. The output uses no tables
+	* Added separators for different elements in the backend
+
+New in v 2.3.2
+
+    * The module will check if FLEXIcontent has been installed on the site and display FLEXIcontent specific options if it's the case.
+    * FLEXIcontent Fields can be selected using a drop-down menu. It will only display fieldtypes suitable for the use they're selected for
+
+New in v 2.3.1
+
+    * CSS Styling from the backend
+    * Backend re-organized using TABs (Credits: JU News Ultra Module)
+
+New in v 2.3b
+
+    * Bug Fix: links not showing when hits were hidden
+    * Full title now appears when moving the cursor on shortened title
+
+New in v 2.3
+
+    * Multiple istances of the module can be presented on the same page.
+    * Possibility of choosing between FLEXIcontent's small, medium or large images. Set Width and Height fields of the module to auto to see the images in their real dimensions.
+    * FLEXIimage code recoded to be more precise
+    * Possibility of showing the item's category (only primary. Secondary FLEXIcontent categories support coming afterwards)
+
+New in v 2.2.2:
+
+    * FLEXIcontent date field support
+    * Possibility of ordering by rating
+    * Display author's name or username
+    * Code has been slightly changed and ordered to make it faster to load and easier to scan
+
+New in v 2.2
+
+	* FLEXIcontent image field support
+
+New in v 2.1
+
+	* FLEXIcontent Secondary Category system support

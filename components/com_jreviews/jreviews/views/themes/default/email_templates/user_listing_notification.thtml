@@ -1,0 +1,38 @@
+<?php
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+$entry_url = cmsFramework::makeAbsUrl($listing['Listing']['url'],array('sef'=>true));
+$entry_title = $listing['Listing']['title'];
+$published = $listing['Listing']['state'];
+?>
+
+<?php
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+ 
+<?php if($isNew): // New listing ?>
+    <p>
+    Takk for at du opprettet '<?php echo $entry_title;?>'. Du finner artikkelen her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>Vi godkjenner typisk nye artikler manuelt og aktiverer de etter at en av HOOKEDs medarbeidere har godkjent innholdet.</p>
+    <?php endif;?>
+<?php endif;?>
+
+<?php if(!$isNew): // Edited listing ?>
+    <p>
+    Du mottar denne e-posten som bekrefter at artikkelen '<?php echo $entry_title;?>' har blitt oppdatert / endret. Du finner artikkelen her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>Vi godkjenner typisk nye artikler manuelt og aktiverer de etter at en av HOOKEDs medarbeidere har godkjent innholdet.</p>
+    <?php endif;?>
+<?php endif;?>

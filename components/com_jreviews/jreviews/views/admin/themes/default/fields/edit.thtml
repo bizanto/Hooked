@@ -1,0 +1,183 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<div class="admin_header">Add/Edit Field</div>
+
+<form name="adminForm" id="adminForm" class="adminform">
+     
+	<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="status" class="jr_floatLeft">&nbsp;</span>        
+		<button id="save" name="save" class="ui-button ui-corner-all" onclick="jreviews_admin.field.submit('adminForm');return false;">Save</button>
+        <?php if($row['fieldid']>0):?>
+        &nbsp;
+        <button class="ui-button ui-corner-all" onclick="jreviews_admin.apply = true; jreviews_admin.field.submit('adminForm');return false;">Apply</button>
+		<?php endif;?>
+        &nbsp;
+        <button class="ui-button ui-corner-all" onclick="jQuery('#action').val('index');jQuery.post(s2AjaxUri,jQuery('#adminForm').serialize(),function(s2Out){jQuery('#page').fadeOut('fast',function(){jQuery(this).html(s2Out).fadeIn('slow');});},'html');return false;">Back</button>
+	</div>
+
+	<table class="admin_list" style="margin:0px;" cellpadding="3" cellspacing="0">
+		<tr>
+			<td><strong>Field location:</strong></td>
+			<td><?php echo $location; ?></td>
+			<td>Is this a custom field for listings or reviews?</td>
+	 	</tr>
+		<tr>
+			<td><strong>Name:</strong></td>
+			<td><input type="text" <?php echo ($row['name'] ?"READONLY":'');?> onchange="fieldValidate(this);" size="25" maxsize="50" name="data[Field][name]" value="<?php echo $row['name']; ?>" /></td>
+			<td>Use lowercase name. Will be used for database reference only.</td>
+		</tr>
+		<tr>
+			<td><strong>Title:</strong></td>
+			<td><input type="text" size="25" maxsize="255" name="data[Field][title]" value="<?php echo $row['title']; ?>" /></td>
+			<td>This is the label that will be displayed in your listing if show title is set to yes.</td>
+		</tr>
+		<tr>
+			<td width="160"><strong>Type:</strong><td>
+			<select name="data[Field][type]" id="type" <?php echo ($row['type']!='' ? "DISABLED":'');?> onchange="xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','checkType','jreviews',this.value,'<?php echo $location;?>']});">
+				<option value="">Select field type</option>
+				<option value="text" <?php echo ($row['type']=='text'? "SELECTED" : "");?>>Text field</option>
+				<option value="textarea" <?php echo ($row['type']=='textarea'? "SELECTED" : "");?>>Text area</option>
+				<option value="code" <?php echo ($row['type']=='code'? "SELECTED" : "");?>>Code enabled text area</option>
+				<option value="email" <?php echo ($row['type']=='email'? "SELECTED" : "");?>>Email address (text field)</option>
+				<option value="website" <?php echo ($row['type']=='website'? "SELECTED" : "");?>>Website url (text field)</option>
+				<option value="integer" <?php echo ($row['type']=='integer'? "SELECTED" : "");?>>Integer (text field)</option>
+				<option value="decimal" <?php echo ($row['type']=='decimal'? "SELECTED" : "");?>>Decimal (text field)</option>
+				<option value="select" <?php echo ($row['type']=='select'? "SELECTED" : "");?>>Single select list</option>
+				<option value="selectmultiple" <?php echo ($row['type']=='selectmultiple'? "SELECTED" : "");?>>Multiple select list</option>
+				<option value="checkboxes" <?php echo ($row['type']=='checkboxes'? "SELECTED" : "");?>>Checkboxes</option>
+				<option value="radiobuttons" <?php echo ($row['type']=='radiobuttons'? "SELECTED" : "");?>>Radio buttons</option>
+				<option value="date" <?php echo ($row['type']=='date'? "SELECTED" : "");?>>Date field</option>
+			</select>
+			</td>
+			<td>
+				<div id="type_desc"></div>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Group:</strong></td>
+			<td>
+				<div id="groupList">
+				<?php
+					echo $Form->select(
+						'data[Field][groupid]',
+						array_merge(array(array('value'=>'','text'=>'Select field group')),$fieldGroups),						
+						$row['groupid'],
+						array('id'=>'groupid')							
+					);				
+				?>
+				</div>
+			</td>
+			<td>You can group fields together and assign several groups to the categories. The fields will also be shown as groups in your listings.</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<a style="color:#FF0000;" href="#" onclick="jQuery('#advanced_options').slideToggle();"><strong>[Click here for Advanced Options]</strong></a>
+				<div id="advanced_options" style="margin-top:5px;display:none;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Show Title:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][showtitle]", "", (isset($row['showtitle']) ? $row['showtitle'] : 1));?></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><strong>Show in listing detail view:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][contentview]", "", (isset($row['contentview']) ? $row['contentview']: 1));?></td>
+			<td>Shows the field value in the actual content page. Set to NO if you are placing the field manully on the template instead of using the default output.</td>
+		</tr>
+<?php if ($location == 'content') { ?>
+		<tr>
+			<td><strong>Show in list view:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][listview]", "", (isset($row['listview']) ? $row['listview']: 0));?></td>
+			<td>Shows the field value in the category/section list views.</td>
+		</tr>
+          <tr>
+            <td><strong>Show in comparison view:</strong></td>
+            <td><?php echo $Form->radioYesNo( "data[Field][compareview]", "", (isset($row['compareview']) ? $row['compareview']: 1));?></td>
+            <td>Shows the field value in the comparison list views.</td>
+        </tr>
+		<tr id ="jr_sortlist_tr">
+			<td><strong>Sort by this field in list view:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][listsort]", "", (@$row['listsort'] ? $row['listsort'] : 0));?></td>
+			<td id ="jr_sortlist">Shows the field in the dropdown list.</td>
+		</tr>
+		<tr id ="jr_click2search_tr">
+			<td><strong>Click to Search: </strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][params][click2search]", '', Sanitize::getVar($fieldParams,'click2search',0));?></td>
+			<td id ="jr_click2search">Makes field text clickable to find other items with the same value, except website and email fields.</td>
+		</tr>
+		<tr>
+			<td><strong>Click to Add:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][params][click2add]", '', Sanitize::getVar($fieldParams,'click2add',0));?></td>
+			<td><strong>For select lists only</strong>. Allows adding more options on the fly while adding/editing a new item.</td>
+		</tr>
+<?php } ?>
+		<tr>
+			<td colspan="3"><strong>Description:</strong> it  will be shown as a tooltip (little informative popup window), to remind users of what they are expected to fill in.
+				<br /><textarea cols="15" rows="1" name="data[Field][description]" style="width:100%";><?php echo $row['description'];?></textarea></td>
+		</tr>
+		<tr>
+			<td><strong>Required:</strong></td>
+			<td><?php echo $Form->radioYesNo( "data[Field][required]", "", (isset($row['required']) ? $row['required'] : 0));?></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><strong>Published:</strong></td>
+			<td><?php echo $Form->radioYesNo( "published", "", (isset($row['published']) ? $row['published'] : 1)); ?></td>
+			<td>The field needs to be published in order for it to show up in the form to submit a new item and for its value to be available in the templates if you decide to place them there manually.. </td>
+		</tr>
+		<tr valign="top">
+			<td width="160"><strong>Field Access:</strong>
+			<br />To select more than one group press and hold the CTRL key.<br />The access settings are used on submission and edititing.</td>
+			<td>
+				<div class="jtooltip" title="Submit/Edit Access|The selected groups will see this field when submitting/editing a new entry. Edit access is set in the Access Settings menu.">
+					<strong>Submit/Edit Access</strong>
+					<img  src="../includes/js/ThemeOffice/tooltip.png" />
+				</div>
+				<?php echo $Form->select(
+						'data[Field][access]',
+						array_merge(array(array('value'=>0,'text'=>'Guest')),$accessGroups),						
+						($row['access'] !='none' && $row['access'] !='' ? explode(',',$row['access']) : array_merge(array(array('value'=>0,'text'=>'Guest')),$accessGroups)),
+						array('id'=>'access_new','multiple'=>'multiple','size'=>8, 'style'=>'width:150px;')							
+					);
+				?>					
+			</td>
+			<td>
+				<div class="jtooltip" title="View/Search Access|The selected groups will be able to see/search this field. You could use them to display certain fields only to a certain group.">
+					<strong>View/Search Access</strong>
+					<img src="../includes/js/ThemeOffice/tooltip.png" alt="tooltip">
+				</div>
+				<?php echo $Form->select(
+						'data[Field][access_view]',
+						array_merge(array(array('value'=>0,'text'=>'Guest')),$accessGroups),						
+						($row['access_view']!='none' && $row['access'] !='' ? explode(',',$row['access_view']) : array_merge(array(array('value'=>0,'text'=>'Guest')),$accessGroups)),
+						array('id'=>'access_view','multiple'=>'multiple','size'=>8, 'style'=>'width:150px;')							
+					);
+				?>					
+			</td>
+		</tr>
+	</table>
+
+    <input type="hidden" id="controller" name="data[controller]" value="admin/fields" />
+    <input type="hidden" id="action" name="data[action]" value="_save" />
+	<input type="hidden" id="location" name="data[Field][location]" value="<?php echo $location; ?>" />		
+	<input type="hidden" id="fieldid" name="data[Field][fieldid]" value="<?php echo $row['fieldid']; ?>" />
+	<input type="hidden" name="data[Field][ordering]" value="<?php echo $row['ordering']; ?>" />
+	<input type="hidden" id="limistart" name="data[limitstart]" value="<?php echo $limitstart; ?>" />
+	<input type="hidden" id="limit" name="data[limit]" value="<?php echo $limit; ?>" />
+	<input type="hidden" id="page_number" name="data[page]" value="<?php echo $this->page; ?>" />
+	
+	<?php if ($row['type'])
+		echo '<input type="hidden" name="data[Field][type]" value="'.$row['type'].'" />';
+	?>
+</form>

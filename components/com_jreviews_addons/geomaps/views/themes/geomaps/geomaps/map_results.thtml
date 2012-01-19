@@ -1,0 +1,93 @@
+<?php 
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+if(!$json_data) return;
+$width = isset($width) ? $width : '300';
+$height = isset($height) ? $height : '300';
+$infowindow_suffix = '_'.Sanitize::getString($this->Config,'geomaps.infowindow','google');
+$streetview = Sanitize::getBool($this->Config,'geomaps.streetview_list',true);
+$google_url = Sanitize::getString($this->Config,'geomaps.google_url','http://maps.google.com');
+?>
+
+<s2:nocache>
+<?php 
+/**********************************************************************************
+ *                                 JAVASCRIPT & CSS
+ **********************************************************************************/
+// Other required assets are added in the geomaps plugin file so they can be loaded with view cache enabled
+cmsFramework::addScript('<script src="'.$google_url.'/maps?file=api&amp;v=2&amp;sensor=false&amp;key='.Sanitize::getString($this->Config,'geomaps.google_key').'" type="text/javascript"></script>');
+?>
+</s2:nocache>
+              
+<script type="text/javascript">    
+// Create marker data array
+GeomapsResults = new GeomapsDisplayMap('gm_map_results',{'clustering':false});
+GeomapsResults.setData(<?php echo $json_data;?>);
+jQuery(document).ready(function()
+{
+    GeomapsResults.init();
+    
+    jQuery('.gm_resizeMap').click(function(){ GeomapsResults.toggleSizeMap(GeomapsResults,<?php echo $width;?>); });    
+    jQuery('#gm_streetView').click(function(){ 
+        GeomapsResults.setStreetView(this.checked);
+        if(this.checked)
+            jQuery('#gm_map_results_streetview').slideDown();
+        else
+            jQuery('#gm_map_results_streetview').slideUp(); 
+    });    
+
+    // Initiate map scroll
+    jQuery('#gm_map_wrapper').scrollFollow({container:'jr_pgResults',offset: 150,killSwitch:'gm_pageScroll',onText:'<?php __t("Stop following");?>',offText:'<?php __t("Follow me");?>'});
+    
+    // Add marker infowindow theme
+    if(jQuery('#gm_infowindowContainer').length == 0)
+    {
+        jQuery('body').append('<?php echo Sanitize::stripWhitespace($this->renderControllerView('Geomaps','map_infowindow'.$infowindow_suffix));?>');  
+    }
+    // Attach onmouseover event to listing titles to show map Tooltip
+    jQuery('.jr_listingTitle').each(function(i){
+        jQuery('#'+this.id)
+        .bind('mouseover',function(){
+                GeomapsResults.panToCenter();
+                var id = this.id.replace('jr_listing','');
+                GeomapsResults.switchMarkerImageById(id,'_hover');
+                GeomapsResults.showTooltipById(id);
+                GeomapsResults.getStreetViewById(id);
+        })
+        .bind('mouseout',function(){
+                var id = this.id.replace('jr_listing','');
+                GeomapsResults.switchMarkerImageById(id,'');
+                GeomapsResults.closeTooltip();
+            }); 
+        }
+    );   
+}
+);
+</script>
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?> 
+
+<!-- Map canvas -->
+<div id="gm_map_wrapper">
+    <div id="gm_map_results_above" class="gm_abovemap">
+        <a href="javascript:void(0);" id="gm_resizeL" class="gm_resizeMap"><?php __t("&#171; Large Map");?></a>
+        <a href="javascript:void(0);" id="gm_resizeS" class="gm_resizeMap" style="display:none;"><?php __t("Small Map &#187;");?></a>
+        <a id="gm_pageScroll" href="javascript:void(0);"></a>
+        <?php if($streetview):?>
+        <label for="gm_streetView"><input type="checkbox" value="1" id="gm_streetView"/>
+            <span title="<?php __t("Enable and click on a marker to see the streetview");?>"><?php __t("Streetview");?></span>
+        </label>
+        <?php endif;?>
+    </div>
+    <?php if($streetview):?>
+    <div id="gm_map_results_streetview" style="width:<?php echo $width;?>px;height:200px;">
+        <div id="gm_streetview_msg" style="margin:10px;"><?php __t("Click on a marker to show it's street view.");?></div>
+    </div>
+    <?php endif;?>
+    <div id="gm_map_results" style="width:<?php echo $width;?>px;height:<?php echo $height;?>px;"></div>
+</div>

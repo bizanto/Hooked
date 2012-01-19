@@ -1,0 +1,38 @@
+<?php
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+$entry_url = cmsFramework::makeAbsUrl($listing['Listing']['url'],array('sef'=>true));
+$entry_title = Sanitize::getString($listing['Listing'],'title');
+$published = $review['Review']['published'];
+?>
+
+<?php
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+<?php if($isNew): // New review ?>
+    <p>
+    Du mottar denne e-posten fordi du har en artikkel, '<?php echo $entry_title;?>', som har mottat en ny omtale. Du finner den her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>We typically moderate user reviews and publish them only after they've been verified by our staff. Please check your listing later on to find the new review.</p>
+    <?php endif;?>
+<?php endif;?>
+
+<?php if(!$isNew): // Edited review ?>
+    <p>
+    Du mottar denne e-posten fordi en bruker har endret/oppdatert sin omtale på din artikkel, '<?php echo $entry_title;?>'. Du finner den her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>We typically moderate user reviews and publish them only after they've been verified by our staff. Please check your listing later on to find the new review.</p>
+    <?php endif;?>
+<?php endif;?>

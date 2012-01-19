@@ -1,0 +1,200 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php	
+# Initialize paginator helper
+$Paginator->paginate(array(
+	'current_page'=>$this->page,
+	'items_per_page'=>$this->limit,
+	'items_total'=>$pagination['total']
+));
+?>
+	
+<div class="admin_header">Custom Fields Manager</div>
+	
+<form id="adminForm" name="adminForm">
+
+	<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+	    <button class="ui-button ui-corner-all" onclick="xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','_edit','jreviews',xajax.getFormValues('adminForm')]});return false;">New</button>
+	</div>
+
+	<div class="admin_filter">
+		<strong>Location:</strong> 
+		<?php		
+			echo $Form->select(
+				'data[Field][location]',
+				array('content'=>'Listing','review'=>'Review'),
+				$location,
+				array(
+					'id'=>'group_type',
+					'onchange'=>"
+                        jQuery('#groupid').val(0);
+						jQuery('#page_number').val(1);
+						jQuery.post(s2AjaxUri,jQuery('#adminForm').serialize(),function(s2Out){jQuery('#page').html(s2Out);},'html');
+                    "				
+				)				
+			);
+		?>  
+		<strong>Group:</strong> 
+		<?php		
+			echo $Form->select(
+				'data[Field][groupid]',
+				array_merge(array(array('value'=>0,'text'=>'All')),$groups),
+				$groupid,
+				array(
+					'id'=>'groupid',
+					'onchange'=>"jQuery.post(s2AjaxUri,jQuery('#adminForm').serialize(),function(s2Out){jQuery('#page').html(s2Out);},'html');"
+				)				
+			);
+		?>
+	</div>
+	
+	<div>For review fields, you need to select the Review location before pressing the New button.</div>
+		
+	<div id="fieldtable">
+	
+		<table class="admin_list">
+			<tr>
+				<th width="5">#</th>
+				<th width="180">Group(ID)</th>
+				<th width="100">Field name</th>
+				<th >Title</th>
+				<th width="50" style="text-align:center;">Options</th>
+				<th width="50" style="text-align:center;">Type</th>
+				<th width="60" style="text-align:center;">Required</th>
+				<th width="60" style="text-align:center;" >Detail View</th>
+				
+				<?php if ($location != 'review' ):?>
+					<th width="60" style="text-align:center;">List View</th>
+                    <th width="60" style="text-align:center;">Comparison View</th>
+					<th width="60" style="text-align:center;">List Sort</th>
+					<th width="60" style="text-align:center;">Advanced Search</th>
+				<?php endif?>
+				
+				<th align="center" width="10">Published</th>
+				<th colspan="2" align="center" width="5%">Reorder</th>
+				<th width="10">Order</th>
+				<th width="10">
+					<a href="javascript:void(0);" onclick="xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','_saveOrder','jreviews',xajax.getFormValues('adminForm')]});">
+					<img src="images/filesave.png" border="0" width="16" height="16" alt="Save Order" />
+					</a>
+				</th>
+				<th align="center" width="10">Delete</th>
+			</tr>
+			
+			<?php 
+			$i = $this->page*$this->limit - ($this->limit - 1); 
+			foreach($rows AS $key=>$row):
+			?>	
+				<tr id="fields<?php echo $row->fieldid?>" >
+					<td><?php echo $i++;?><input type="hidden" id="cid" name="data[cid][]" value="<?php echo $row->fieldid?>" /></td>
+					<td align="left" width="180"><?php echo $row->group?>(<?php echo $row->groupid?>)</td>
+					<td align="left">
+						<a href="javascript:void(0);" onclick="xajax.$('fieldid').value='<?php echo $row->fieldid;?>';xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','_edit','jreviews',xajax.getFormValues('adminForm')]});"><?php echo $row->name?></a>
+					</td>
+					<td align="left"><?php echo $row->title?></td>
+					<td style="text-align:center;">
+						<?php if(in_array($row->type,array("select","selectmultiple","checkboxes","radiobuttons"))):?>
+							<a href="javascript:void(0);" onclick="xajax.$('page').style.display='none';xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fieldoptions','index','jreviews',{data:{FieldOption:{fieldid:<?php echo $row->fieldid?>},Field:{groupid:xajax.$('groupid').value,location:xajax.$('group_type').value}}}]});">Add/Edit</a>
+						<?php else:?>
+							N/A		
+						<?php endif;?>
+					</td>
+					<td><?php echo $row->type?></td>
+					<td style="text-align:center;">
+						<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'reqImg_','required','#__jreviews_fields','fieldid']});">
+							<img id="reqImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->required ? 'tick.png' : 'publish_x.png')?>" border="0">
+						</a>
+					</td>
+					<td style="text-align:center;">
+						<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'viewContentImg_','contentview','#__jreviews_fields','fieldid']});">
+							<img id="viewContentImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->contentview ? 'tick.png' : 'publish_x.png')?>" border="0">
+						</a>
+					</td>
+					<?php if ($location != 'review' ):?>
+						<td style="text-align:center;">
+							<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'viewImg_','listview','#__jreviews_fields','fieldid']});">
+								<img id="viewImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->listview ? 'tick.png' : 'publish_x.png')?>" border="0">
+							</a>
+						</td>
+                        <td style="text-align:center;">
+                            <a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'compareviewImg_','compareview','#__jreviews_fields','fieldid']});">
+                                <img id="compareviewImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->compareview ? 'tick.png' : 'publish_x.png')?>" border="0">
+                            </a>
+                        </td>
+						<td style="text-align:center;">
+							<?php if(!in_array($row->type,array("selectmultiple","checkboxes"))):?>
+									<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'sortImg_','listsort', '#__jreviews_fields','fieldid']});">
+									<img id="sortImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->listsort ? 'tick.png' : 'publish_x.png')?>" border="0"></a>
+							<?php else:?>
+								N/A		
+							<?php endif;?>					
+						</td>
+						<td style="text-align:center;">
+							<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'searchImg_','search','#__jreviews_fields','fieldid']});">
+								<img id="searchImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->search? 'tick.png' : 'publish_x.png')?>" border="0"></a>
+						</td>
+					<?php endif;?>
+					<td style="text-align:center;">
+						<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/common','toggleIcon','jreviews',<?php echo $row->fieldid?>,'pubImg_','published','#__jreviews_fields','fieldid']});">
+							<img id="pubImg_<?php echo $row->fieldid?>" src="images/<?php echo ($row->published ? 'tick.png' : 'publish_x.png')?>" border="0"></a>
+					</td>
+					<td align="right">
+						<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>');
+							xajax.$('row_id').value = <?php echo $row->fieldid?>;
+							xajax.$('direction').value = -1;
+							xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','_changeOrder','jreviews',xajax.getFormValues('adminForm')]});">
+							<img src="<?php echo WWW_ROOT?>administrator/images/uparrow.png" alt="del" border="0">
+						</a>
+					</td>
+					<td align="left">
+						<a href="javascript:void(0);" onclick="flashRow('fields<?php echo $row->fieldid?>');
+							xajax.$('row_id').value = <?php echo $row->fieldid?>;
+							xajax.$('direction').value = 1;
+							xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/fields','_changeOrder','jreviews',xajax.getFormValues('adminForm')]});">
+							<img src="<?php echo WWW_ROOT?>administrator/images/downarrow.png" alt="del" border="0">
+						</a>
+					</td>
+					<td align="center" colspan="2">
+						<input type="text" name="data[order][]" size="5" value="<?php echo $row->ordering?>" class="text_area" style="text-align: center" />
+					</td>
+					<td style="text-align:center;">
+                        <button type="button" class="ui-button-small ui-state-default ui-corner-all" onclick="deleteField(<?php echo $row->fieldid?>);">
+                        <span class="ui-icon ui-icon-trash"></span>
+                        </button>                           
+					</td>
+				</tr>
+			<?php endforeach;?>
+		</table>
+		
+		<!-- PAGINATION BEGINS HERE -->
+		<table class="jr_pagination" width="100%" cellpadding="0" cellspacing="0">
+		 <tr>
+		    <td class="jr_pagenav_results"><?php echo $pagination['total']?> results - Showing <?php echo ($this->page-1)*$this->limit+1;?> - <?php echo min($pagination['total'],$this->page*$this->limit);?></td>
+		    <td class="jr_pagenav_pages"><?php echo ($pagination['total'] > $this->limit) ? $Paginator->display_pages() : '';?></td>
+		    <td class="jr_pagenav_limitbox"><?php echo $Paginator->display_items_per_page();?></td>
+		 </tr>
+		</table>
+		<input type="hidden" id="page_number" name="data[page]" value="<?php echo $this->page;?>" />
+		<input type="hidden" id="limit" name="data[limit]" value="<?php echo $this->limit;?>" />
+        <input type="hidden" id="controller" name="data[controller]" value="admin/fields" />
+        <input type="hidden" id="action" name="data[action]" value="index" />
+		<!-- PAGINATION ENDS HERE -->
+		
+		<!-- REORDER INPUTS -->
+		<input type="hidden" id="row_id" name="data[row_id]" value="" />		
+		<input type="hidden" id="direction" name="data[direction]" value="" />
+		<!-- REORDER INPUTS -->			
+
+		<input type="hidden" id="fieldid" name="data[Field][fieldid]" value="" />
+	</div>
+</form>	

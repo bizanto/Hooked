@@ -1,0 +1,38 @@
+<?php
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+$entry_url = cmsFramework::makeAbsUrl($listing['Listing']['url'],array('sef'=>true));
+$entry_title = $listing['Listing']['title'];
+$published = $listing['Listing']['state'];
+?>
+
+<?php
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+ 
+<?php if($isNew): // New review ?>
+    <p>
+    Takk for at du ga din omtale om '<?php echo $entry_title;?>'. Du finner den her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>Vi moderer enkelte ganger omtaler. Vennligst vær talmodig hvis vi behandler din omtale.</p>
+    <?php endif;?>
+<?php endif;?>
+
+<?php if(!$isNew): // Edited review ?>
+    <p>
+    Du mottar denne e-posten fordi din omtale om '<?php echo $entry_title;?>' har blitt oppdatert / endret. Du finner den her:
+    <br /><br />
+     <?php echo $Html->link($entry_title,$entry_url,array('sef'=>false));?>
+    </p>
+
+    <?php if(!$published):?>
+    <p>Vi moderer enkelte ganger omtaler. Vennligst vær talmodig hvis vi behandler din omtale.</p>
+    <?php endif;?>
+<?php endif;?>

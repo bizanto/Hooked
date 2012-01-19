@@ -1,0 +1,18 @@
+<form id="jr_ownerReplyForm" name="jr_ownerReplyForm" class="jr_form" action="" method="">
+	
+	<div class="jr_fieldDiv">
+        <textarea id="reply_text" name="data[OwnerReply][owner_reply_text]" rows="10" cols="250" class="smallArea"></textarea>
+    </div>
+    	
+	<input type="hidden" id="review_id" name="data[OwnerReply][id]" value="<?php echo $review_id?>" />
+    <input name="data[controller]" type="hidden" value="owner_replies" />                                                              
+    <input name="data[action]" type="hidden" value="_save" /> 
+    <input type="hidden" name="option" value="com_jreviews" />
+    <?php echo $Form->token('s2Token');?>    
+    
+    <input type="hidden" name="tmpl" value="component" />     
+    <input type="hidden" name="no_html" value="1" />     
+    <input type="hidden" name="format" value="raw" />     
+    <input type="hidden" name="Itemid" value="<?php echo $public_menu_id;?>" />         
+    
+</form>

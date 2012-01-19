@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="1.0.0">
+	<name>CSV_Import</name>
+	<creationDate>November 2008</creationDate>
+	<author>NakedJoomla and Alejandro Schmeichler</author>
+	<copyright>(C) 2008 NakedJoomla, Alejandro Schmeichler. All rights reserved.</copyright>
+	<license>http://www.nakedjoomla.com/license/csv_import_license.html</license>
+	<authorEmail>info@nakedjoomla.com</authorEmail>
+	<authorUrl>http://www.nakedjoomla.com</authorUrl>
+	<version>1.0.13</version>
+	<description><![CDATA[
+		<p>This component is used to import data from CSV files into Joomla and, if installed, jReviews 1.0.12 - 1.0.15. Easily create hundreds or thousands of new content items from the data stored in your existing spreadsheets without any reformatting. Simply point to the a CSV file, associate the column titles with Joomla and/or jReviews fields, then import the file. A new content item will be created for each row in your spreadsheet. You can even save the import profile for future use.</p>
+		<p>Feature highlights include: <p/>
+		<ul>
+			<li>Save multiple import profiles: align the CSV columns to your Joomla/jReviews fields once, then save the import configuration for use with future imports. </li>
+			<li>Specify global settings for all new content items: specify the category, author, access setting, publish dates, and default image for all new content items (very convenient, as this information does not need to be included in your CSV file).</li>
+			<li>Specify global jReviews field values for all new content items.</li>
+		</ul>
+		<p>Simply point to a CSV file (it must include a header row with column names), align the columns in the file with your Joomla and jReviews fields, set any global settings, give the import profile a friendly name, and voila: your new content items are instantly created.</p>
+	]]>
+	</description>	
+	<install>
+		<queries>
+			<query>
+				DROP TABLE IF EXISTS `#__im_fields`;
+			</query>
+			<query>
+				CREATE TABLE `#__im_fields` (
+				  `id` int(11) NOT NULL auto_increment,
+				  `profiler_id` int(11) default NULL,
+				  `column_no` int(11) default NULL,
+				  `column_title` varchar(255) default NULL,
+				  `field` varchar(255) default NULL,
+				  PRIMARY KEY  (`id`)
+				)
+			</query>
+			<query>
+				DROP TABLE IF EXISTS `#__im_global`;
+			</query>
+			<query>
+				CREATE TABLE `#__im_global` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `profiler_id` int(11) default NULL,
+			  `field_name` varchar(255) default NULL,
+			  `field_value` varchar(255) default NULL,
+			  PRIMARY KEY  (`id`)
+			)
+			</query>
+			<query>
+				DROP TABLE IF EXISTS `#__im_profiler`;
+			</query>
+			<query>
+				CREATE TABLE `#__im_profiler` (
+				  `id` int(11) NOT NULL auto_increment,
+				  `name` varchar(255) default NULL,
+				  `description` varchar(255) default NULL,
+				  `number_run` int(11) default NULL,
+				  `last_run` datetime default NULL,
+				  `created` datetime default NULL,
+				  `column_separator` varchar(50) default NULL,
+				  `author_id` int(11) default NULL,
+				  `section_id` int(11) default NULL,
+				  `category_id` int(11) default NULL,
+				  `pushlished` int(10) unsigned default NULL,
+				  `meta_keys` text default NULL,
+				  `meta_des` text default NULL,
+				  `created_date` datetime default NULL,
+				  `publish_up_date` datetime default NULL,
+				  `publish_down_date` datetime default NULL,
+				  `access_level` tinyint(3) unsigned default NULL,
+				  `published` tinyint(4) NOT NULL default '0',
+				  PRIMARY KEY  (`id`)
+				)
+			</query>
+		</queries>		
+	</install>
+	<uninstall>
+		<queries>
+			<query>
+				DROP TABLE IF EXISTS `#__im_profiler`;
+			</query>
+			<query>
+				DROP TABLE IF EXISTS `#__im_fields`;
+			</query>
+			<query>
+				DROP TABLE IF EXISTS `#__im_global`;
+			</query>
+		</queries>	
+	</uninstall>
+	<administration>
+		<menu>CSV Import for Joomla and jReviews</menu>		
+		<files>			
+			<filename>admin.csv_import.php</filename>
+			<filename>csv_import.class.php</filename>
+			<filename>admin.csv_import.html.php</filename>
+			<filename>character_conversion_map.php</filename>						
+			<filename>toolbar.csv_import.html.php</filename>	
+			<filename>toolbar.csv_import.php</filename>			
+			<filename>csvLib.php</filename>
+			<filename>arrow.gif</filename>
+			<filename>csv_import.css</filename>
+			<filename>csv_import_title.gif</filename>
+		</files>
+	</administration>
+</mosinstall>

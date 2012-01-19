@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="community">
+	<name>Community - Status To Wall</name>
+	<author>Socialcode</author>
+	<creationDate>28/09/2009</creationDate>
+	<copyright>Copyright (C) 2009. All rights reserved.</copyright>
+	<license>http://www.socialcode.co.uk</license>
+	<authorEmail>sales@socialcode.co.uk</authorEmail>
+	<authorUrl>www.socialcode.co.uk</authorUrl>
+	<version>1.0</version>
+	<isapplication>false</isapplication>
+	<isbrowsable>false</isbrowsable>
+	<description>
+		Automatically copies the status the user updated and copy it to the wall area so that it can be commented on.
+	</description>
+	<languages>
+	    <language tag="en-GB">en-GB.plg_statustowall.ini</language>
+	</languages>
+	<files>
+		<file plugin="statustowall">statustowall.php</file>
+	</files>
+</install>

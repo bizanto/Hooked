@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.0.0">
+	<name>ND EditorSwitch</name>
+	<author>Netdream</author>
+	<creationDate>Sep 2008</creationDate>
+	<copyright>Copyright (C) 2008 Netdream. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>joomla@netdream.it</authorEmail>
+	<authorUrl>joomla.netdream.it</authorUrl>
+	<version>1.2</version>
+	<description>This module add a toolbar icon used to change editor</description>
+	<files>
+		<filename module="mod_ndeditorswitch_switcher">mod_ndeditorswitch_switcher.php</filename>
+	</files>
+	<params>
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="0">Never</option>
+	  	</param>
+	</params>
+</install>

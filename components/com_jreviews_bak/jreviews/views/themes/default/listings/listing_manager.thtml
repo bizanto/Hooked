@@ -1,0 +1,82 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * Listing manager widget
+ * Used in list and detail pages
+ * Shows the edit, publish and delete icons for users with enough access rights
+ */
+$canEdit = $Access->canEditListing($listing['Listing']['user_id']);
+$canPublish = $Access->canPublishListing($listing['Listing']['user_id']);
+$canDelete = $Access->canDeleteListing($listing['Listing']['user_id']);
+$isManager = $Access->isManager();
+$listing_id = $listing['Listing']['listing_id'];
+$canOrder = isset($Paid) && $Paid->canOrder($listing);   
+?>
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+<?php if($canEdit || $canPublish || $canDelete || $isManager || $canOrder):?>
+    
+    <?php if($canOrder): // Load assets for paid listings onclick?>
+    <script type="text/javascript">
+    function jr_paidLoadScript(afterLoad)
+    {                        
+        if(jQuery('body').data('jrOrderAssets') == true)
+        {
+            if(undefined!=afterLoad) afterLoad();
+        } else {
+            jQuery.getScript('<?php echo $this->locateScript('paidlistings');?>',function(){
+                jQuery.getCSS("<?php echo pathToUrl($this->locateThemeFile('theme_css','paidlistings','.css'));?>",function()
+                {
+                    jQuery('body').data('jrOrderAssets',true);
+                    if(afterLoad!=undefined) afterLoad();
+                });
+            });        
+        }
+    };
+    </script>
+    <?php endif;?>
+    
+    <div id="jr_listing_manager<?php echo $listing_id;?>" class="jr_listingManager">
+       <?php if($canOrder):?>
+       <?php echo $PaidRoutes->getPaymentLink($listing,array('lazy_load'=>true));?>
+       <?php endif;?>
+                            
+        <?php if($canEdit):?>
+        <?php echo $Routes->listingEdit(__t("Edit",true),$listing,array('class'=>'jr_edit'));?>
+        <?php endif;?>    
+
+        <?php if($canPublish):?>
+
+            <a href="#publish" id="jr_publishLink<?php echo $listing_id;?>" class="<?php echo $listing['Listing']['state'] ? 'jr_published' : 'jr_unpublished';?>" onclick="jreviews.listing.publish(this,{listing_id:<?php echo $listing_id;?>,unpublished:'<?php __t("Unpublished",false,true);?>',published:'<?php __t("Published",false,true);?>'});return false;"><?php echo ($listing['Listing']['state'] ? __t("Published",true): __t("Unpublished",true));?></a>
+    
+        <?php endif;?>
+         
+        <?php if($isManager):?>
+        
+            <a href="#feature" id="jr_featuredLink<?php echo $listing_id;?>" class="<?php echo $listing['Listing']['featured'] ? 'jr_published' : 'jr_unpublished';?>" onclick="jreviews.listing.feature(this,{listing_id:<?php echo $listing_id;?>,state:<?php echo (int)$listing['Listing']['featured'];?>,unpublished:'<?php __t("Not featured",false,true);?>',published:'<?php __t("Featured",false,true);?>'});return false;"><?php echo ($listing['Listing']['featured'] == 1 ? __t("Featured",true): __t("Not featured",true));?></a>
+
+            <a href="#frontpage" id="jr_frontpageLink<?php echo $listing_id;?>" class="<?php echo $listing['Listing']['frontpage'] ? 'jr_published' : 'jr_unpublished';?>" onclick="jreviews.listing.frontpage(this,{listing_id:<?php echo $listing_id;?>,state:<?php echo (int)$listing['Listing']['frontpage'];?>,unpublished:'<?php __t("Not frontpaged",false,true);?>',published:'<?php __t("Frontpaged",false,true);?>'});return false;"><?php echo ($listing['Listing']['frontpage'] > 0 ? __t("Frontpaged",true): __t("Not frontpaged",true));?></a>
+            
+        <?php endif;?>
+                
+        <?php if($canDelete):?>    
+
+            <a href="#delete" id="jr_deleteLink<?php echo $listing_id;?>" class="jr_delete" onclick="jreviews.listing.remove(this,{title:'<?php __t("Delete",false,true);?>',listing_id:<?php echo $listing['Listing']['listing_id'];?>,text:'<?php __t("Are you sure you want to delete this listing?",false,true);?>'});return false;"><?php __t("Delete");?></a>
+
+        <?php endif;?>
+
+    </div>    
+
+<?php endif;?>

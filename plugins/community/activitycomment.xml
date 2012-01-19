@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="community">
+	<name>Community - Activity Comments</name>
+	<author>Socialcode</author>
+	<creationDate>13/10/2009</creationDate>
+	<copyright>Copyright (C) 2009 - 2010 SocialCode. All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>sales@socialcode.co.uk</authorEmail>
+	<authorUrl>http://www.socialcode.co.uk</authorUrl>
+	<version>3.0</version>
+	<isapplication>false</isapplication>
+	<isbrowsable>false</isbrowsable>
+	<description>
+		Allows site members to comment on activities
+	</description>
+	<files>
+		<file plugin="activitycomment">activitycomment.php</file>
+		<folder>activitycomment</folder>
+	</files>	
+	<params>
+		<param name="respect_privacy" type="radio" default="0" label="Respect user privacy" description="When enabled, only friends can like or comment on their activity">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="updatestatus" type="radio" default="0" label="Auto Update Status" description="When enabled, the message here will be automatically updated as your profile status" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="enablesubscribe" type="radio" default="0" label="Enable Subscribe" description="When enabled, subscribe will appear in the activity stream which allows user to subscribe on a users activity like and comments without participating.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="enablerepost" type="radio" default="0" label="Enable Reposting" description="When enabled, Repost will appear in the activity stream which allows user to Repost a particular activity.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>	
+		<param name="uselikeicon" type="radio" default="0" label="Like icon" description="Enable or disable like icon">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="usecommenticon" type="radio" default="0" label="Comment icon" description="Enable or disable comment icon">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="usesubscribeicon" type="radio" default="0" label="Subscribe icon" description="Enable or disable subscribe icon">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="usereposticon" type="radio" default="0" label="Repost icon" description="Enable or disable repost icon">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="notifylike" type="radio" default="0" label="Notify likes via email" description="Enable or disable author email notifications when a user likes an item. When enabled, author of the activity will receive an email.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="notifycomment" type="radio" default="0" label="Notify comments via email" description="Enable or disable author email notifications when a user comments an item. When enabled, author of the activity will receive an email.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="commentordering" type="list" default="desc" label="Ordering of comments" description="Set the ordering of comments from either newest first or oldest first.">
+			<option value="desc">Newest First</option>
+			<option value="asc">Oldest First</option>
+		</param>
+		<param name="commentlimit" type="text" default="5" label="Limit comments" size="3" description="Limit number of comments to be displayed. Any other comments will be displayed using the more link. To disable this option, set 0" />
+		<param name="autoclose" type="radio" default="0" label="Automatically close textarea" description="Automatically close textarea once a comment is submitted.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="photopreview" type="radio" default="1" label="Enable photo preview in shared links" description="Enable or disable photo preview when a user shares a link.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="joingroup" type="radio" default="1" label="Enable join group link in activities" description="Enable or disable join group links in activity content.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="addfriend" type="radio" default="1" label="Enable or disable add friend" description="Enable or disable add friend links in activity content.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="sharemessage" type="radio" default="1" label="Allow user to share message in sharing box" description="Enable or disable message sharing in sharing area.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="sharephoto" type="radio" default="1" label="Allow user to share photos in sharing box" description="Enable or disable photo sharing in sharing area.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="shareurl" type="radio" default="1" label="Allow user to share url in sharing box" description="Enable or disable url sharing in sharing area.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="shareurltarget" type="list" default="1" label="Select action when user clicks a shared link" description="Set to have shared links open in new page or current page.">
+			<option value="0">Opens on the same page</option>
+			<option value="1">Opens in new page</option>
+		</param>
+		<param name="sharefrontpage" type="radio" default="1" label="Status sharing on JomSocial frontpage" description="Enable or disable sharing box in JomSocial front page.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="shareprofile" type="radio" default="1" label="Status sharing on Profile page" description="Enable or disable sharing box in users profile page">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>

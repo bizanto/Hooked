@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  
+  <params>
+	  <param name="authentication" type="radio" default="username" label="Authentication by" description="select if users should specify their username or email address when choosing a new password.">
+		  <option value="username">username</option>
+		  <option value="email">email</option>
+	</param>
+	<param name="randompassword" type="radio" default="no" label="Send Random password" description="User get a new random password rather then a link to create a new password." >
+		  <option value="no">no</option>
+		  <option value="yes">yes</option>
+	</param>
+	
+  </params>
+  
+  
+  	<fieldset 
+		name="settings"
+		label="Component Settings"
+		description="" 
+	>
+	  	<field name="authentication" type="radio" default="username" label="Authentication by" description="select if users should specify their username or email address when choosing a new password." >
+				<option value="username">username</option>
+			  	<option value="email">email</option>
+		</field>
+		
+		<field name="randompassword" type="radio" default="no" label="Send Random password" description="User get a new random password rather then a link to create a new password." >
+				<option value="no">no</option>
+				<option value="yes">yes</option>
+		</field>
+		
+ 	</fieldset>
+  
+</config>

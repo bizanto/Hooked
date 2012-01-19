@@ -1,0 +1,77 @@
+<?php
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+$db =& JFactory::getDBO();
+$sql = "SELECT v.id, v.title, v.description, v.creator, v.storage, v.created, v.hits, v.thumb, u.username ".
+       "FROM #__community_videos v, #__users u WHERE ".
+       "v.id IN (SELECT video_id FROM #__relate_videos WHERE listing_id = '".$listing['Listing']['listing_id']."') ".
+       "AND v.creator = u.id";
+$db->setQuery($sql);
+
+$related_videos = $db->loadObjectList();
+
+
+?>
+
+<div class="related-videos">
+    <ul>
+        <?php foreach ($related_videos as $video): ?>
+        <?php
+		$jr_catchanonymous = $CustomFields->fieldValue('jr_catchanonymous', $listing, false, false);
+		$jr_catchanonymous = $jr_catchanonymous[0];
+		if ($jr_catchanonymous=="ja")
+			$anon_location = 1;
+		else
+			$anon_location = "";
+		if (!$anon_location) {
+			// RELATED SPOTS
+			if (JRequest::getString("catid") != 17 ) { // dont show the related SPOT for fish photos/videos
+				$spots = getRelatedList($listing['Listing']['listing_id'],array(3,4));
+				$parentSpots = getRelatedList($listing['Listing']['listing_id'],array(1,2,100));
+			}
+		}
+        ?>
+        <?php if ($video->storage == "s3") $prefix=""; else $prefix =""; ?>
+        <li>
+            <a class="vidleft jomTips" href="index.php?option=com_community&view=videos&task=video&videoid=<?php echo $video->id; ?>&Itemid=101" title="<?php echo $video->title; ?>::<?php echo $video->description; ?>"><img class="vidthumb" src="<?php echo $prefix; echo $video->thumb; ?>" alt="<?php echo $video->title; ?>" title="<?php echo $video->title; ?>" /></a>
+            <div class="vidright">
+                <a class="vidtitle jomTips" href="index.php?option=com_community&view=videos&task=video&videoid=<?php echo $video->id; ?>&Itemid=101" title="<?php echo $video->title; ?>::<?php echo $video->description; ?>"><?php echo $video->title; ?></a><br />
+                <?php echo $video->hits; ?> <?php echo JText::_('views'); ?><br />
+                <?php echo JText::_('Uploaded'); ?> <?php echo date("d/m/Y", strtotime($video->created)); ?><br />
+                <a class="" href="index.php?option=com_community&view=profile&userid=<?php echo $video->creator; ?>&Itemid=2"><?php echo $video->username; ?></a><br />
+                                
+                <?php if ($spots) : ?>
+				<?php $spotcount= 0; foreach ($spots as $spot) : ?>
+                <?php
+                if (!$spotcount) {
+                $spotlink = ContentHelperRoute::getArticleRoute($spot->id,$spot->catid,1);
+                ?>
+                    <a class="spot-title" href="<?php echo $spotlink; ?>"><?php echo $spot->title; ?>
+                    <?php 
+                    $parentSpots = getRelatedList($spot->id,array(1,2,100));
+                    if ($parentSpots)
+                        foreach ($parentSpots as $parentSpot)
+                            echo ' @ '.$parentSpot->title.'';	
+                    
+                    ?>
+                    </a>
+                <?php } $spotcount++; endforeach; ?>
+                
+                
+                <?php elseif ($parentSpots) : ?>
+                    <?php $parentSpotcount= 0; foreach ($parentSpots as $parentSpot) : ?>
+                    <?php
+                    if (!$parentSpotcount) {
+                    $parentSpotlink = ContentHelperRoute::getArticleRoute($parentSpot->id,$parentSpot->catid,1);
+                    ?>
+                    <a class="spot-title" href="<?php echo $parentSpotlink; ?>"><?php echo $parentSpot->title; ?></a>
+                    <?php } $parentSpotcount++; endforeach; ?>
+                <?php endif; ?>
+                
+                
+            </div>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="clr"></div>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.8.2" type="plugin" group="community" method="upgrade">
+	<name>Editor - My Photos</name>
+	<author>JomSocial</author>
+	<creationDate>29 June 2008</creationDate>
+	<copyright>Copyright 2008 - 2010 by Slashes &amp; Dots Sdn Bhd. All rights reserved</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@azrul.com</authorEmail>
+	<authorUrl>http://www.jomsocial.com</authorUrl>
+	<version>1.8.2</version>
+	<description>
+		Editor My Photos Application for Jom Social.
+	</description>
+	<languages>
+	    <language tag="en-GB">en-GB.plg_editormyphotos.ini</language>
+	</languages>
+	<files>
+		<file plugin="editormyphotos">editormyphotos.php</file>
+		<folder>editormyphotos</folder>
+	</files>
+</install>

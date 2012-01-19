@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>ND EditorSwitch</name>
+	<creationDate>April 2009</creationDate>
+	<author>Netdream</author>
+	<authorEmail>joomla@netdream.it</authorEmail>
+	<authorUrl>http://joomla.netdream.it</authorUrl>
+	<copyright>(C) 2008 Netdream - Como, Italy. All rights reserved.</copyright>
+	<license>GNU/GPLv2</license>
+	<version>1.3</version>
+	<description>Easily switches the current editor (AJAX version)</description>
+	<administration>
+        <menu img="components/com_ndeditorswitch/media/images/icon-16-nd.png" link="option=com_ndeditorswitch">NDEditorSwitch</menu>
+
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB/en-GB.com_ndeditorswitch.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_ndeditorswitch.ini</language>
+		</languages>
+
+		<files folder="admin">
+			<file>admin.ndeditorswitch.php</file>
+			<file>index.html</file>
+			<file>CHANGELOG.php</file>
+			<file>toolbar.ndeditorswitch.php</file>
+			<file>toolbar.ndeditorswitch.html.php</file>
+			<folder>help</folder>
+			<folder>media</folder>
+			<folder>js</folder>
+		</files>
+	</administration>
+
+	<installfile>install.ndeditorswitch.php</installfile>
+	<uninstallfile>uninstall.ndeditorswitch.php</uninstallfile>
+	
+	<modules>
+		<module module="mod_ndeditorswitch_switcher" position="status" client="administrator" title="ND Editor Switcher">
+			<files folder="mod_admin_ndeditorswitch_switcher">
+				<file>index.html</file>
+				<file>mod_ndeditorswitch_switcher.php</file>
+				<file>mod_ndeditorswitch_switcher.xml</file>
+			</files>
+
+			<languages folder="admin/language">
+				<language tag="en-GB">en-GB/en-GB.mod_ndeditorswitch_switcher.ini</language>
+				<language tag="it-IT">it-IT/it-IT.mod_ndeditorswitch_switcher.ini</language>
+			</languages>
+			
+			<media />
+		</module>
+	</modules>
+	
+	<plugins />
+	
+</install>

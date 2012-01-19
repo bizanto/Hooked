@@ -1,0 +1,15 @@
+<div class="reviewHelpful"><?php __t("Was this review helpful to you?");?><br />                
+    <div id="jr_reviewVote<?php echo $review_id;?>">  
+        
+        <span class="jr_pointer" onclick="jreviews.review.voteYes(this,{review_id:<?php echo $review_id;?>})">
+            <?php echo $Html->image($this->viewImages.'yes.png',array('width'=>23,'height'=>11,'alt'=>__t("Yes",true)));?>
+        </span>
+        
+        <span class="jr_pointer" onclick="jreviews.review.voteNo(this,{review_id:<?php echo $review_id;?>})">
+            <?php echo $Html->image($this->viewImages.'no.png',array('width'=>23,'height'=>11,'alt'=>__t("No",true)));?>
+        </span>     
+        
+        <span class="jr_loadingSmall jr_hidden"></span>                                                                                                 
+        
+    </div>                                                            
+</div>

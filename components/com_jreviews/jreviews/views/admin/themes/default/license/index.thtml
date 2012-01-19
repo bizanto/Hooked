@@ -1,0 +1,40 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<div class="admin_header">jReviews License</div>
+
+<?php if($msg!=''):?>
+<br />
+<div class="ui-widget" style="width:650px;">
+    <div style="padding: 0pt 0.7em;" class="ui-state-error ui-corner-all"> 
+        <p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span> 
+        <?php echo $msg;?></p>
+    </div>
+</div>           
+<?php endif;?>
+
+<div class="jr_form" style="width:600px;padding:15px;margin-top:10px">
+    <form name="LicenseForm" id="LicenseForm" method="post" action="index.php?option=<?php echo S2Paths::get('jreviews','S2_CMSCOMP');?>">
+        <fieldset>
+            <legend>License number</legend>
+            <input name="data[license]" id="license" type="text" value="<?php echo $license;?>" size="50" />
+        </fieldset>
+        <fieldset>
+            <legend>Local Key</legend>
+            <p>If the local key cannot be automatically created after submitting the license number, paste the content of the key.php file from the client area here:</p>
+            <textarea name="data[local_key]" id="local_key" rows="10" cols="75" style="width:100%;height:200px;"><?php echo $local_key;?></textarea>
+        </fieldset>
+        <button class="ui-button ui-corner-all" onclick="validateSubmitLicense();return false;">Submit</button>
+	    <input name="data[controller]" type="hidden" value="admin/license" />
+	    <input name="data[action]" type="hidden" value="_save" />
+    </form>
+</div>    

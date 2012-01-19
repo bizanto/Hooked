@@ -1,0 +1,104 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php 
+/**********************************************************************************
+ * 								CONFIGURATION & SETUP
+ * Read instructions towards the bottom of the file to limit results to certain
+ * categories or sections when the select list is not shown in the form
+ **********************************************************************************/
+$module_id = Sanitize::getVar($this->params,'module_id','');
+$dir_id = Sanitize::getVar($this->params['module'],'dir_id','');
+$criteria_id = Sanitize::getVar($this->params['module'],'criteriaid');
+$query_type = 'all'; // all|exact|any
+$search_review_comments = false;
+?>
+
+<?php
+/**********************************************************************************
+ * 								JAVASCRIPT
+ **********************************************************************************/
+$Assets->Html = &$Html;
+$Assets->load();
+?>
+          
+<?php 
+/**********************************************************************************
+ * 						HTML BEGINS HERE
+ **********************************************************************************/
+?>
+<div class="jr_pgContainer jr_form" style="margin:0px;padding:0px;">
+<!-- BEGIN ROUND PANNEL -->
+<div class="jr_listScope roundedPanel">
+	<div class="box_upperOuter">
+		<div class="box_upperInner">
+			<!-- BEGIN PANEL CONTENT-->
+            
+			<form name="JreviewsAdvSearch_<?php echo $module_id;?>" action="<?php echo WWW_ROOT;?>index.php?option=<?php echo S2Paths::get('jreviews','S2_CMSCOMP');?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>" method="post">		
+				
+                <?php 
+				/**********************************************************************************
+				 * 						EDIT HTML BELOW THIS LINE
+				 **********************************************************************************/
+				?>
+				<div class="jr_fieldDiv">   
+					<?php __t("Category");?>: {category}&nbsp;&nbsp;&nbsp;
+					Keywords: <input type="text" id="jr_advSearchKeywords<?php echo $module_id;?>" name="data[keywords]" value="" />&nbsp;&nbsp;
+					<input type="submit" name="advanced_button" value="<?php __t("Search");?>" class="button" />
+				</div>
+
+				<div class="clr"></div>
+				<?php 
+				/**********************************************************************************
+				 * 						EDIT HTML ABOVE THIS LINE
+				 **********************************************************************************/
+				?>
+
+				<input name="data[contentoptions][]" type="hidden" value="title" />		
+				<input name="data[contentoptions][]" type="hidden" value="introtext" />
+				<input name="data[contentoptions][]" type="hidden" value="fulltext" />
+				<?php if($search_review_comments):?>
+				<input name="data[contentoptions][]" type="hidden" value="reviews" />
+				<?php endif;?>					
+				<input name="data[search_query_type]" type="hidden" value="<?php echo $query_type;?>" />
+
+				<input type="hidden" name="data[controller]" value="search" />
+				<input type="hidden" name="data[action]" value="_process" />
+				<input type="hidden" name="Itemid" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+				<input type="hidden" name="data[menu_id]" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+				<input type="hidden" name="data[dir]" id="dir<?php echo $module_id;?>" value="<?php echo $dir_id;?>" />
+				<input type="hidden" name="criteria" id="criteria<?php echo $module_id;?>" value="<?php echo $criteria_id;?>" />
+                <input type="hidden" name="data[form_id]" id="form_id<?php echo $module_id;?>" value="JreviewsAdvSearch_<?php echo $module_id;?>" />
+                <input type="hidden" name="data[module_id]" id="module_id<?php echo $module_id;?>" value="<?php echo $module_id;?>" />   
+                
+                <?php
+                /*****************************************************************************************************
+                * Example html code for limiting results to certain categories only if you decide to remove 
+                * the {categories} tag for the select list. If you want to filter by section, then use the same input, 
+                * but pre-pend an "s" before the section number. For example: s29 limits results to section 29.
+                *****************************************************************************************************/
+                //<input type="hidden" name="data[categories][]" value="29" />
+                //<input type="hidden" name="data[categories][]" value="34" />
+                ?>                               			
+
+                <?php /* Change the default search result ordering */ 
+                // <input type="hidden" name="data[order]" value="rdate" />
+                ?>
+			</form>
+			<!-- END PANEL CONTENT-->
+		</div>
+	</div>
+	 <div class="box_lowerOuter">
+	    <div class="box_lowerInner">&nbsp;</div>
+	 </div>
+</div>
+<!-- END ROUND PANNEL -->			
+</div>

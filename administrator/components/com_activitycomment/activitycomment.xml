@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0" method="upgrade">
+	<name>Activity Comment</name>
+	<creationDate>10/10/2009</creationDate>
+	<author>Socialcode</author>
+	<authorEmail>support@socialcode.co.uk</authorEmail>
+	<authorUrl>http://www.socialcode.co.uk</authorUrl>
+	<copyright>Copyright 2009 All rights reserved</copyright>
+	<license>GNU/GPL</license>
+	<version>3.7</version>
+	<description>Adds user interactivity to JomSocial activities so that it will display comments and like into the activity</description>
+	<installfile>install.activitycomment.php</installfile>
+	<uninstallfile>uninstall.activitycomment.php</uninstallfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<administration>
+		<menu link="option=com_activitycomment">JomSocial Activity Comment</menu>
+		<files folder="admin">
+			<filename>admin.activitycomment.php</filename>
+			<filename>install.mysql.utf8.sql</filename>
+			<filename>activitycomment.zip</filename>
+			<filename>helper.php</filename>
+			<filename>en-GB.plg_activitycomment.ini</filename>
+			<filename>patch.txt</filename>
+		</files>
+	</administration>
+</install>

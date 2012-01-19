@@ -1,0 +1,80 @@
+.tdright {
+	text-align: right;
+}
+.tdcenter {
+	text-align: center;
+}
+
+.new {
+	font-weight: bold;
+	color: red;
+}
+
+.review {
+	color:  green;
+}
+
+a.scbutton {
+	background-color: blue;
+	color: white !important;
+	border-top: solid 2px green;
+	border-left: solid 2px green;
+	border-bottom: solid 2px navy;
+	border-right: solid 2px navy;
+    margin-left: 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.scerror {
+	color: red;
+	font-weight: bold;
+}
+
+.codelist {
+	font-family: "Helvetica";
+	font-size: 12pt;
+}
+
+a.codelist {
+	font-family: "Arial";
+	font-size: 12px;
+	padding-top: 2px;
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+}
+
+.codelist th{
+	background-color: #EEEEEE;
+	color: gray;
+}
+
+.codelist .row0 {
+	background-color: #7FFF7F;
+}
+
+.codelist .row1 {
+	background-color: #D4FF55;
+}
+
+.icon-32-export {
+	background-image: url(../images/toolbar/icon-32-export.png); 
+}
+
+.checksumtable td {
+	background-color: #EEEEEE;
+	padding-left:5px;
+}
+
+.button2-left .simplecaddy {
+	background: url(/administrator/components/com_caddy/images/icon-button.png) 100% 0 no-repeat;
+}
+
+.configkey {
+	width:300px;
+	background-color: #EEEEEE;
+	border: 1px outset;
+}

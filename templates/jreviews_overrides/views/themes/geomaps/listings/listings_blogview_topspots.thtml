@@ -1,0 +1,36 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php
+/**********************************************************************************
+ *                                 PAGINATION HELPER
+ **********************************************************************************/
+$Paginator->paginate(array(
+        'current_page'=>$this->page,
+        'items_per_page'=>$this->limit,
+        'items_total'=>$pagination['total'],
+));
+?>
+  
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+
+// summary, parent, etc. helpers
+include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php'); 
+?>        
+    <div class="header-spots"><?php echo $this->renderControllerView('listings','listings_header');?></div>
+    <h2> Skriv inn en destinasjon, velg et fiskeslag og/eller velg geografisk område og teknikker.</h2>
+    <h4> Finner du ikke stedet du leter etter? <a href="http://www.hooked.no/index.php?option=com_content&view=article&id=56123:datagrunnlag-og-status&catid=22:news&Itemid=301">Klikk her</a> </h4> 
+

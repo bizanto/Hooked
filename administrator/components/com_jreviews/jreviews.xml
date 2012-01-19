@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+    <name>jReviews</name>
+    <author>ClickFWD LLC</author>
+    <creationDate>October 2010</creationDate>
+    <copyright>Copyright (C) 2006-2010. ClickFWD LLC. All rights reserved.</copyright>
+    <license>Commercial</license>
+    <authorEmail>sales@reviewsforjoomla.com</authorEmail>
+    <authorUrl>www.reviewsforjoomla.com</authorUrl>
+	<version>2.2.06.181</version>
+    <description>JReviews - Joomla CCK and Reviews</description>
+    <files>
+        <filename>index.html</filename>
+        <filename>jreviews.php</filename>
+        <filename>router.php</filename>
+        <filename>sef_ext.php</filename>
+        <filename>xajax.jreviews.php</filename>        
+    </files>    
+    <installfile>install.jreviews.php</installfile>
+    <uninstallfile>uninstall.jreviews.php</uninstallfile>
+    
+    <administration>
+    
+        <menu>jReviews</menu>
+        <submenu>
+            <menu>Configuration &amp; Management</menu>
+            <menu act="license">Enter License Information</menu>
+        </submenu>
+        
+        <files>
+            <filename>index.html</filename>
+            <filename>jreviews.xml</filename>
+            <filename>admin.jreviews.php</filename>
+            <filename>install.jreviews.php</filename>
+            <filename>uninstall.jreviews.php</filename>
+            <filename>jreviews.s2</filename>            
+            <filename>jreviews.plugin.s2</filename>        
+        </files>
+
+    </administration>
+    
+    <params>
+        <param name="action" type="list" default="" label="Type of Menu" description="Choose a menu type: Directory, Section List, Category List or Submit New Item">
+            <option value="0" selected="1">Directory (DIRID)</option>
+            <option value="1">Section List (SECTIONID)</option>
+            <option value="2" >Category List (CATID)</option>
+            <option value="3">Submit new listing</option>
+            <option value="4">Top user rated (Special)</option>
+            <option value="5">Top editor rated (Special)</option>
+            <option value="6">Most recent (Special)</option>
+            <option value="7">Most popular (Special)</option>
+            <option value="8">Most reviews (Special)</option>
+            <option value="9">Featured (Special)</option>
+            <option value="10">My reviews</option>
+            <option value="12">My listings</option>
+            <option value="13">My Favorites</option>
+            <option value="11">Advanced search</option>
+            <option value="14">Reviews - Latest reviews (all)</option>
+            <option value="15">Reviews - Latest user reviews</option>
+            <option value="16">Reviews - Latest editor reviews</option>
+            <option value="17">Discussion - Latest comments</option>    
+            <option value="18">Reviewers</option>
+            <option value="19">My account (PaidListings Add-on)</option>            
+            <option value="20">Category Plans (PaidListings Add-on)</option>            
+        </param>
+        <param name="@spacer" type="spacer" default="" label="Fill appropriate IDs below." description="" />
+        <param name="dirid" type="text" size="25" default="" label="Directory ID" description="Required for Directory, Section and Category Lists. Can be used for other options to narrow results." />
+        <param name="sectionid" type="text" size="25" default="" label="Section ID" description="Use to limit results to the specified section, not used for directory option. Required for section list." />
+        <param name="catid" type="text" size="25" default="" label="Category ID" description="Use to limit results to the specified category, not used for directory option. Required for category list." />
+        <param name="criteriaid" type="text" size="25" default="" label="Listing Type ID (Advanced search)" description="Use this if you want to display the form directly for a particular listing type, otherwise a dropdown list is shown with the different options to choose from." />
+        <param name="extension" type="text" size="30" default="" label="Extension" description="Use to filter by component when selecting the latest user reviews menu and can be combined with the cat id filter (i.e. com_content, com_virtuemart, com_sobi2)." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="total_special" type="text" size="3" default="" label="Page total (Special tasks)" description="Total number of entries shown for tasks marked as (special) in the Menu Type list above." />
+        <param name="limit_special" type="text" size="3" default="" label="Limit per page (Special tasks)" description="Number of entries per page." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="dirtitle" type="radio" default="1" label="Show Menu name/Title" description="Show/Hide the title at the top of the page.">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+        <param name="title" type="text" size="25" default="" label="Page title" description="If you enter something here it will be used as page title instead of the menu name or directory title in the configuration. DOES NOT work for adv. search menus." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="listview" type="list" default="" label="List view theme" description="Overrides the section and category settings of the theme manager.">
+            <option value="" selected="1">Use global/theme manager setting</option>
+            <option value="0">Table view</option>
+            <option value="1" >Blog view</option>
+            <option value="2">Thumb view</option>
+        </param>
+        <param name="tmpl_suffix" type="text" size="20" default="" label="Theme suffix" description="Use a different theme for this menu by renaming the theme file using the suffix." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="sef_name" type="text" size="25" default="" label="SEF Menu Name" description="If filled in, this is the text that will be used for the SEF urls for menu types other than section and category lists. It's especially useful for languages with special characters." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="menu_image" type="imagelist" directory="/images/stories" hide_default="1" default="" label="Menu Image" description="A small image to be placed to the left or right of your menu item, images must be in images/stories/. ONLY works for Joomla 1.0. For Joomla 1.5 use the Parameters (System) section. " />
+    </params>        
+</install>

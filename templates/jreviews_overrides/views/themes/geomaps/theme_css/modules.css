@@ -1,0 +1,257 @@
+div.jr_modContainer tbody, div.jr_modContainer tr, div.jr_modContainer td {
+     vertical-align: top;
+}
+
+/*************************************
+JR LISTINGS MODULE
+*************************************/
+div.jr_listings_mod { 
+    border-top: solid 0px #ccc;
+    padding-top: 5px; 
+    }
+    
+div.jr_listings_mod .listItem    {
+    float: left; 
+    padding-right: 10px; 
+    margin: 0;
+    }
+    
+div.jr_listings_mod .contentTitle    {
+
+    }
+    
+div.jr_listings_mod .contentTitle a {
+
+    }
+    
+
+div.jr_listings_mod .contentInfo    {
+    padding: 0 0 .4em 0}
+
+div.jr_listings_mod .contentIndicators    {
+    display: none;
+    }
+    
+div.jr_listings_mod .contentThumbnail {
+    margin:0 0 5px 0;
+    overflow:visible;
+    }    
+        
+div.jr_listings_mod .contentThumbnail img {
+    border: 1px solid #CCC;    
+    }    
+
+div.jr_listings_mod .listItem .jr_modColumn0 {
+    vertical-align: top;
+    padding-right: 2px;
+    font-weight: bold; 
+    width: 1.5em;   
+}
+    
+div.jr_listings_mod .listItem .jr_modColumn1 {
+    padding: 0 5px 0 0;
+    }
+        
+div.jr_listings_mod .listItem .contentheading a {
+    font-size: 11px; 
+    font-weight:bold;
+    }
+    
+div.jr_listings_mod .jr_category {
+    font-size: 10px; 
+    }    
+
+div.jr_listings_mod .jr_category a {
+    font-size: 10px; 
+    }    
+
+div.jr_listings_mod table.rating_table    {
+    margin-bottom: 0px;
+    }
+    
+div.jr_listings_mod table.rating_table    td.rating_label {
+    width: 14px;
+    display:none;
+    }    
+    
+div.jr_listings_mod table.rating_table    td.rating_stars {
+    width: 60px;
+    }
+    
+div.jr_listings_mod div.jr_divider {
+    border:0;
+    clear:both;
+    line-height: 1px;
+    margin: 0;
+    padding:2.5px;
+}    
+
+                       
+/*************************************
+JR REVIEWS MODULE
+*************************************/
+div.jr_reviews_mod { 
+    border-top: solid 0px #ccc;
+    padding-top: 5px; 
+    }
+    
+div.jr_reviews_mod .listItem    {
+    float: left; 
+    padding-right: 10px;
+    margin: 0;
+    }
+    
+div.jr_reviews_mod .contentTitle    {
+    font-size: 11px;
+    }
+    
+div.jr_reviews_mod .contentTitle a {
+    font-size: 11px;
+    }    
+
+div.jr_reviews_mod .contentInfo    {
+    padding: 0 0 .4em 0}
+
+div.jr_reviews_mod .contentIndicators    {
+    display: none;
+    }
+    
+div.jr_reviews_mod .contentThumbnail {
+    margin:0 0 5px 0;
+    overflow:visible;
+    }    
+        
+div.jr_reviews_mod .contentThumbnail img {
+    border: 1px solid #CCC;    
+    }    
+
+div.jr_reviews_mod .listItem .jr_modColumn0 {
+    vertical-align:top;
+    padding-right:2px;
+    font-weight:bold;
+    width: 1.5em;           
+}
+div.jr_reviews_mod .listItem .jr_modColumn1 {
+    padding: 0 5px 0 0;
+    }
+        
+div.jr_reviews_mod .listItem .contentheading a {
+    font-size: 11px; 
+    font-weight:bold;
+    }
+    
+div.jr_reviews_mod .jr_category {
+    font-size: 10px; 
+    }    
+
+div.jr_reviews_mod .jr_category a {
+    font-size: 10px; 
+    }    
+
+div.jr_reviews_mod table.rating_table    {
+    margin-bottom: 0px;
+    }
+    
+div.jr_reviews_mod table.rating_table td.rating_label {
+    width: 14px;
+    display:none;
+    }    
+    
+div.jr_reviews_mod table.rating_table td.rating_stars {
+    width: 60px;}
+    
+div.jr_reviews_mod .comments {
+    font-size:95%;font-style:italic;}    
+
+div.jr_reviews_mod .reviewer {
+    font-size:70%;}    
+
+div.jr_reviews_mod div.jr_divider {
+    border:0;
+    clear:both;
+    line-height: 1px;
+    margin: 0;
+    padding:2.5px;
+}        
+
+
+
+/*************************************
+JR FIELDS MODULE
+*************************************/
+div.jr_fields_mod { 
+    border-top: solid 0px #ccc;
+    padding-top: 15px; 
+    display: inline;
+    }
+    
+div.jr_fields_mod ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+    
+div.jr_fields_mod ul li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    text-indent: 0;}
+    
+div.jr_fields_mod_horiz ul li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    text-indent: 0;
+    float:left;
+    width:33%;
+    display:block;}
+
+/*************************************
+JR FAVORITE USERS MODULE
+*************************************/
+div.jr_favoriteCbUsers { 
+    border-top: solid 0px #ccc;
+    }
+
+div.jr_favoriteCbUsers span.listingTitle { 
+    font-weight:normal;
+    line-height: 1.2em;
+    margin-bottom:5px;
+    display:block;
+    }
+
+div.jr_favoriteCbUsers div.listItem    {
+    float: left; 
+    padding-right: 10px; 
+    margin: 0 0 10px 0;
+    }
+    
+div.jr_favoriteCbUsers div.listItem    a {
+    display:block;
+    text-align:center;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;}    
+    
+div.jr_favoriteAvatar {
+    margin:0 0 5px 0;
+    border: 1px solid #ccc;
+    padding: 1px;
+    height: 49px;
+    width:49px;
+    overflow:hidden;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;}
+    
+            
+div.jr_favoriteCbUsers img.jr_avatar{
+    width:49px;
+    text-align:center;}
+    
+div.jr_favoriteCbUsers div.jr_divider {
+    border:0;
+    clear:both;
+    line-height: 1px;
+    margin: 0;
+    padding:2.5px;
+}    

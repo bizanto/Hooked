@@ -1,0 +1,46 @@
+<script type="text/javascript">
+var geoAddressObj = {};
+<?php foreach($address_fields AS $key=>$field):?>
+    geoAddressObj.<?php echo $key;?> = '<?php echo $field;?>';
+<?php endforeach;?> 
+</script>
+
+
+<div id="gm_popupMsg" style="display:none;float:left;width:300px;"></div>   
+          
+<div style="width:250px;float:right; margin-bottom: 3px;">      
+        <button class="ui-button ui-corner-all" onclick="jQuery('#gm_popupMsg').html('');geomaps.showAddressOnMap();return false;">Geocode Address</button>    
+        <button class="ui-button ui-corner-all" onclick="
+            jQuery('#gm_popupMsg').html('');jQuery.post(s2AjaxUri,jQuery('#gm_listingAddress').serialize(),function(response){
+                if(response==true){
+                    jQuery('#gm_popupMsg').html('<strong>Your changes were saved.</strong>').css('color','green').fadeIn('slow');
+                } else {
+                    jQuery('#gm_popupMsg').html('<strong>There was a problem saving the changes.</strong>').css('color','red').fadeIn('slow');
+                }
+            },'html');return false;">Apply Changes</button>
+    </div>
+<div>
+
+<div class="clr"></div>
+
+<form id="gm_listingAddress" name="gm_listingAddress" method="post">         
+    <div class="jr_form" style="padding: 10px 10px 0 10px; margin:0;">
+        <?php echo $CustomFields->makeFormFields($listing_fields,'listing',null,__t("Select",true));?>
+        <input type="hidden" id="section" name="data[section]" value="<?php echo $listing['Section']['title'];?>" /> 
+        <input type="hidden" id="category" name="data[category]" value="<?php echo $listing['Category']['title'];?>" />    
+    </div>
+    <input name="data[Listing][id]" type="hidden" value="<?php echo $listing['Listing']['listing_id'];?>" />
+    <input name="data[Field][Listing][contentid]" type="hidden" value="<?php echo $listing['Listing']['listing_id'];?>" />
+    <input name="data[controller]" type="hidden" value="admin/admin_geomaps" />
+    <input name="data[action]" type="hidden" value="_saveGeoData" />
+</form>
+    
+<div class="ui-widget" style="margin-bottom: 5px;">
+    <div style="padding: 0pt 0.7em;" class="ui-state-highlight ui-corner-all"> 
+        <p><span style="float:left;margin-right:0.3em;" class="ui-icon ui-icon-info"></span> 
+        <strong>Drag the marker to fine-tune the geographic location on the map.</strong>
+        </p>
+    </div>
+</div>  
+
+<div id="gm_mapPopupCanvas" style="width: 580px; height: 300px"></div>   

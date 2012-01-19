@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JomSocial People You May Know</name>
+	<author>Techjoomla</author>
+	<creationDate>27th Apr 2011</creationDate>
+	<copyright>Techjoomla. All Rights Reserved.</copyright>
+	<authorEmail>extensions@techjoomla.com</authorEmail>
+	<authorUrl>http://www.techjoomla.com</authorUrl>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>2.0</version>
+	<description>
+	<![CDATA[
+		<h2>Techjoomla.com. For All things Joomla ! </h2>
+		Thank You for downloading this module from our extension shop at <a href="http://www.techjoomla.com">www.techjoomla.com</a>
+		<p>
+		<h3>People You May Know ! For JomSocial</h3>
+		<p>This Module intelligently finds people you may know based on your current Friends.</p>
+		<p>This is similar to the Facebook 'People You May Know' Feature. </p>
+		<h3>Here's how it works</h3>
+		<ul>
+			<li> publish the module and login to the frontend of your site</li>
+			<li>Once in, you should see a list of users who you are likely to know</li>
+		</ul>
+		</p>
+	]]>	
+	</description>
+	<languages folder="language/nb-NO">
+        <language tag="nb-NO">nb-NO.mod_js_pum.ini</language>
+  </languages>	
+	<files>
+		<filename module="mod_js_pum">mod_js_pum.php</filename>
+		<filename>helper.php</filename>
+		<folder>assets</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>tmpl</folder>
+	</files>
+	<params addpath="/modules/mod_js_pum/element">
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+		
+		<param name="no_of_users" type="text" default="5" label="No of users to show" description="To give no of users to show" />		
+		<param name="no_of_rows" type="text" default="5" label="No of rows to show" description="To give no of rows to show.Please Don't enter 0" />
+		<param name="no_of_columns" type="text" default="1" label="No of columns to show" description="To give no of columns to show.Please Don't enter 0" />		
+		<param name="disp_name" type="radio" default="0" label="Display Name" description="Show Which Name ">
+			<option value="0">Username</option>
+			<option value="1">RealName</option>
+		</param>
+		<param name="image" type="radio" default="1" label="image" description="Show/Hide the image ">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>	
+		<param name="photo" type="radio" default="1" label="SHOW_WIT_PIC" description="SHOW_WIT_PIC">
+		    <option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>			
+		<param name="rando" type="radio" default="1" label="RANDO" description="RANDO_DES">
+			<option value="0">Disabled</option>
+			<option value="1">Enabled</option>
+		</param>
+		<param name="int_jbolo" type="radio" default="1" label="INT_JBOLO" description="INT_JBOLO_DES">
+			<option value="0">Disabled</option>
+			<option value="1">Enabled</option>
+   		</param>
+	</params>
+	<!--for joomla 1.6-->
+	<config name="params">
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text" default="" label="MOD_JS_PUM_LBL_MCS" description="MOD_JS_PUM_DESC_MCS" />
+				<field name="no_of_users" type="text" default="5" label="MOD_JS_PUM_LBL_NOU" description="MOD_JS_PUM_DESC_NOU" />		
+				<field name="no_of_rows" type="text" default="5" label="MOD_JS_PUM_LBL_NOR" description="MOD_JS_PUM_DESC_NOR" />
+				<field name="no_of_columns" type="text" default="1" label="MOD_JS_PUM_LBL_NOC" description="MOD_JS_PUM_DESC_NOC" />		
+				<field name="disp_name" type="radio" default="0" label="MOD_JS_PUM_LBL_DN" description="MOD_JS_PUM_DESC_DN">
+					<option value="0">Username</option>
+					<option value="1">RealName</option>
+				</field>
+				<field name="image" type="radio" default="1" label="MOD_JS_PUM_LBL_IMG" description="MOD_JS_PUM_DESC_IMG">
+					<option value="0">Hide</option>
+					<option value="1">Show</option>
+				</field>	
+				<field name="photo" type="radio" default="0" label="SHOW_WIT_PIC" description="SHOW_WIT_PIC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>			
+				<field name="rando" type="radio" default="1" label="RANDO" description="RANDO_DES">
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</field>
+				<field name="int_jbolo" type="radio" default="0" label="INT_JBOLO" description="INT_JBOLO_DES">
+			<option value="0">Disabled</option>
+			<option value="1">Enabled</option>
+   		</field>
+			</fieldset>
+		</fields>
+	</config>
+</install>

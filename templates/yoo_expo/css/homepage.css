@@ -1,0 +1,30 @@
+div.basiclist div.yoo-carousel {background: transparent url(../../../images/bg-trans90.png) top left repeat; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; -moz-box-shadow: 0 0 2px 2px rgba(0,0,0,0.8);
+-webkit-box-shadow:0 2px 5px rgba(0,0,0,0.8); box-shadow: 0 0 2px 2px rgba(0,0,0,0.8); height:273px!important; margin: 0 auto; }
+
+div.basiclist div.yoo-carousel .panel-container,
+div.basiclist div.yoo-carousel div.left ul.tabs,
+div.basiclist div.yoo-carousel .panel-container-b {border:none; background: none; }
+div.basiclist div.yoo-carousel div.left div.tabs-container {background:#2e330f;}
+
+
+div.basiclist div.yoo-carousel div.left ul.tabs li a span span {font-size:18px; padding:0; height:auto; line-height:18px;}
+
+div.basiclist div.yoo-carousel div.left ul.tabs li.selected a,
+div.basiclist div.yoo-carousel div.left ul.tabs li.selected a span,
+div.basiclist div.yoo-carousel div.left ul.tabs li.selected a span span
+{background:none; font-size:18px;}
+
+div.basiclist div.yoo-carousel div.left ul.tabs li {background:url(../images/border_dots.png) 0 bottom repeat-x; text-align:left; width:210px; margin:0 18px 0 10px; padding:5px 5px 13px;}
+div.basiclist div.yoo-carousel div.left ul.tabs li a {color:#996;}
+div.basiclist div.yoo-carousel div.left ul.tabs li.selected a,
+div.basiclist div.yoo-carousel div.left ul.tabs li a:hover {color:#ffc;}
+
+.yoo-carousel .layout-default div.media-left {float:right; margin:0 auto;}
+.yoo-carousel .layout-default div.description {color:#fff; margin:20px auto;}
+.yoo-carousel .layout-default h3.title a {color:#996; font-size:22px;}
+.yoo-carousel .layout-default p.links span a {background:url(../images/bgd_button_carousel.jpg) 0 bottom repeat-x; display:inline-block; font-size:12px; color:#595a23; text-transform:uppercase; font-family: 'SketchBlockBold', Georgia, "Times New Roman"; padding:7px; height:24px; overflow:hidden; text-align:center; -moz-box-shadow: 0 0 2px 2px rgba(0,0,0,0.8);
+-webkit-box-shadow:0 2px 5px rgba(0,0,0,0.8); box-shadow: 0 0 2px 2px rgba(0,0,0,0.8);}
+.yoo-carousel .layout-default p.links span a:hover {color:#303512;}
+.yoo-carousel .layout-default p.links span a::after {content:"";}
+
+div.basiclist div.yoo-carousel .panel-container { padding: 0; border: 0; }

@@ -1,0 +1,404 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php
+/**********************************************************************************
+ *                                 PAGINATION HELPER
+ **********************************************************************************/
+$Paginator->paginate(array(
+        'current_page'=>$this->page,
+        'items_per_page'=>$this->limit,
+        'items_total'=>$pagination['total'],
+));
+?>
+  
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php');  
+
+
+require_once JPATH_SITE.DS.'components'.DS.'com_content'.DS.'helpers'.DS.'route.php';
+
+?>	
+ 
+<script type="text/javascript">
+jQuery(function ($) {
+	$('.intro-trigger').click(function() {
+		$(this).parent().parent().toggle();
+		$(this).parent().parent().siblings('.txt').toggle();
+    });	
+});
+</script>
+
+ <div class="jr_pgContainer">
+
+    <!--  BEGIN PAGE HEADER AREA -->
+    <?php echo $this->renderControllerView('listings','listings_header');?>
+    <!--  END PAGE HEADER AREA -->
+           
+	<?php
+    $position = 'search-results-top';
+    $params		= array('style'=>'');
+    $document	= &JFactory::getDocument();
+    $renderer	= $document->loadRenderer('module');
+    $contents = '';
+    foreach (JModuleHelper::getModules($position) as $mod)  {	
+        $contents .= $renderer->render($mod, $params);
+    }
+    // echo $contents;
+    ?>
+           
+    <?php if(!empty($listings)):?>         
+    <div id="jr_pgResults">
+    <!--  BLOGVIEW  -->
+        <div id="article-list" class="jr_blogview">
+        
+	<?php if($pagination['total'] > 0):?>
+    <!-- PAGINATION BEGINS HERE -->
+    <div class="width50 fl tal">
+		<span class="smalltext"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></span>
+    </div>
+    <div class="width50 fl tar">
+		<?php if($this->Config->list_show_orderselect && in_array($this->action,array('search','section','category','alphaindex','list','mylistings'))):?>     
+            <?php $order_options = array('featured','alpha','ralpha','date','rdate','hits','rhits','rating','rrating','editor_rating','reditor_rating','reviews','author','rauthor');?>
+            <?php echo $Jreviews->orderingList(Sanitize::getString($this->params,'order'), $order_options, $order_list)?>
+        <?php endif;?>
+	</div>
+    <div class="clear"></div>
+    <div class="pad10 tal">    
+        <?php if($pagination['total'] > $this->limit):?>
+        	<?php echo $Paginator->display_pages();?>
+        <?php endif;?>
+    </div>
+    <!-- PAGINATION ENDS HERE -->             
+    <?php endif;?>     
+        <?php $blogcount=0; ?>
+        <?php foreach($listings AS $listing):?>
+        <?php
+			$listinglink = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'],$listing['Listing']['cat_id'],$listing['Listing']['section_id']);
+		?>
+            <div class="listItem paper-light">
+                <div class="contentInfoContainer">
+					<?php
+                        $relatedThumb = getRelatedThumb($listing['Listing']['listing_id'],1);
+                        $preview_html = $listing['Listing']['title'].'::';
+                        foreach ($relatedThumb as $thumb) {
+							$thumbnail = $thumb->thumbnail;
+							/*
+                            if ($thumb->storage == "file") {
+                                $tnlink = "";
+                            }
+                            else {
+                                $tnlink = ""; //todo prefix with amazon url
+                            }
+                            $tnlink .= $thumb->thumbnail;
+							*/
+                            $preview_html .= "&lt;img src=&quot;".$tnlink."&quot; class=&quot;jomtips&quot; /&gt;";
+                        }
+                        $preview_html .= '&lt;br /&gt;Click to see catch details &raquo;';
+						if ($thumbnail)
+							echo '<div class="listing-thumbnail fr"><a href="'.$listinglink.'"><img src="'.$thumbnail.'" alt="" title="" /></a></div>';
+						$thumbnail = '';
+						
+                    ?>
+                    
+            
+                	<div class="contentTitle"><?php echo $Routes->content($listing['Listing']['title'],$listing,array('id'=>'jr_listing'.$listing['Listing']['listing_id'],'class'=>'jr_listingTitle'))?>            
+                        <span class="contentIndicators">
+                        <?php if($this->Config->list_featured && $listing['Listing']['featured']):?>
+                            <?php echo $Html->image($this->viewImages.'featured.png', array('width'=>43,'height'=>11,'title'=>__t("Featured",true),'alt'=>__t("Featured",true),'border'=>0));?>
+                        <?php endif;?>                        
+                        <?php if($this->Config->list_new && $Jreviews->newIndicator($this->Config->list_new_days,$listing['Listing']['created'])):?>
+                            <?php echo $Html->image($this->viewImages.'new.png', array('width'=>28,'height'=>11,'title'=>__t("New",true),'alt'=>__t("New",true),'border'=>0));?>
+                        <?php endif;?>
+                        <?php if($this->Config->list_hot && $this->Config->list_hot_hits <= $listing['Listing']['hits']):?>
+                            <?php echo $Html->image($this->viewImages.'hot.png', array('width'=>29,'height'=>11,'title'=>__t("Hot",true),'alt'=>__t("Hot",true),'border'=>0));?>
+                        <?php endif;?>
+                        </span>           
+                    </div>
+                    <div class="subTitle">
+                    	<?php
+                        $jr_state = $CustomFields->field('jr_state', $listing, false, false);
+						$jr_area = $CustomFields->field('jr_area', $listing, false, false);
+						$jr_state_value = $CustomFields->fieldValue('jr_state', $listing, false, false);
+						$jr_state_value = $jr_state_value[0];
+
+						if ($jr_state) $jr_state=$jr_state;
+						?>
+						<?php 
+                        if ($jr_area) echo '<div>'.$jr_area.'</div>';
+                        ?>
+                        <?php if ($jr_state) : ?>
+                        	<?php echo __t("Located in"); ?>&nbsp;<a href="index.php?option=com_jreviews&Itemid=161&url=search-results_m161/query:any/jr_state:<?php echo $jr_state_value; ?>/order:rhits"><?php echo $CustomFields->field('jr_state', $listing, true,true); ?></a>
+                        <?php endif; ?>
+                    	<?php if($listing['Criteria']['state'] == 1 && ($this->Config->author_review || $this->Config->user_reviews)):?>
+                            <!-- BEGIN RATINGS -->
+                            <?php /* if($this->Config->author_review): // author reviews ?>
+                            <tr>
+                              <td align="left" class="rating_stars" style="cursor:help;" title="<?php __t("Editor rating");?>"><?php echo $Rating->drawStars($listing['Review']['editor_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'editor');?></td>
+                              <td align="left" class="rating_value"><?php echo $Rating->round($listing['Review']['editor_rating'],$this->Config->rating_scale);?><?php if ( $listing['Review']['editor_rating_count'] > 1 ) echo ' (',$listing['Review']['editor_rating_count'],')';?></td>
+                            </tr>
+                            <?php endif; */ ?>    
+                            
+                            <?php if($this->Config->user_reviews && $this->Config->list_show_user_rating):?>
+                            <span title="<?php __t("User rating");?>"><?php echo $Rating->drawStars($listing['Review']['user_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'user');?></span>
+                            
+                            <?php /*<span><?php echo $Rating->round($listing['Review']['user_rating'],$this->Config->rating_scale);?>
+                                (<span style="cursor:help;" title="<?php __t("User reviews");?>"><?php echo (int) $listing['Review']['user_rating_count'];?></span>)
+                            </span> */
+							?>
+                            <?php endif;?>
+                        <!-- END RATINGS-->
+	                    <?php endif;?>
+                    </div>
+                    <div class="list-relations">
+                        <ul>
+                        <?php
+							// tooltip max characters
+							$maxchar = 100;
+							
+                            $related = getRelatedCount($listing['Listing']['listing_id'], 'photos');
+                            if ($related) {
+                                echo '<li>'.$related.' ';
+                                echo __t("Photos");
+                                echo '</li>';
+                            }
+							$related = getRelatedCount($listing['Listing']['listing_id'], 'videos');
+                            if ($related) {
+                                echo '<li>'.$related.' ';
+                                echo __t("Videos");
+                                echo '</li>';
+                            }
+							//SPOTS
+							$related = getRelatedCount($listing['Listing']['listing_id'], array(3, 4));
+                            if ($related) {
+								
+								$spots = getRelatedList($listing['Listing']['listing_id'],array(3,4));
+								$spotlist = array();
+								
+								?>
+								
+								<?php foreach ($spots as $spot) : ?>
+									<?php $spotlist[] = $spot->title; ?>
+								<?php endforeach; ?>
+								<?php
+								if ($spotlist) {
+									$fullspotlist = implode(", ", $spotlist);
+									$count = getRelatedCount($listing['Listing']['listing_id'], array(1,2,3,4,100));
+									if (strlen($fullspotlist) > $maxchar)
+										$trimmed='..';
+									$spotlist = substr($fullspotlist,0,$maxchar);
+									
+									echo '<li>';
+									echo '<a href="'.$listinglink.'" class="jomTips" title="';
+									__t("Fishing Spots");
+									echo '::'.$spotlist.$trimmed.'">';
+									echo $count.' ';
+									echo __t("Fishing Spots");
+									echo '</a>';
+									echo '</li>';
+									$trimmed='';
+								}
+							}
+							?>
+                            
+                            <?php
+							// catches
+							$related = getRelatedCount($listing['Listing']['listing_id'], 14);
+                            if ($related) {
+                                $catches = getRelatedList($listing['Listing']['listing_id'],14);
+								$catchlist = array();
+								
+								?>
+								
+								<?php foreach ($catches as $catch) : ?>
+									<?php $catchlist[] = $catch->title; ?>
+								<?php endforeach; ?>
+								<?php
+								if ($catchlist) {
+									$fullcatchlist = implode(", ", $catchlist);
+									$count = getRelatedCount($listing['Listing']['listing_id'], 14);
+									if (strlen($fullcatchlist) > $maxchar)
+										$trimmed='..';
+									$catchlist = substr($fullcatchlist,0,$maxchar);
+									
+									echo '<li>';
+									echo '<a href="'.$listinglink.'" class="jomTips" title="';
+									__t("Catch Reports");
+									echo '::'.$catchlist.$trimmed.'">';
+									echo $count.' ';
+									echo __t("Catch Reports");
+									echo '</a>';
+									echo '</li>';
+									$trimmed='';
+								}
+                            }
+
+						// RELATED FISH
+						$fishes = getRelatedList($listing['Listing']['listing_id'],17);
+						$fishlist = array();
+						?>						
+							<?php foreach ($fishes as $fish) : ?>
+								<?php $fishlist[] = $fish->title; ?>
+							<?php endforeach; ?>
+                            <?php
+                            if ($fishlist) {
+                            	$fullfishlist = implode(", ", $fishlist);
+								$count = getRelatedCount($listing['Listing']['listing_id'],17);
+								if (strlen($fullfishlist) > $maxchar)
+									$trimmed='...';
+								$fishlist = substr($fullfishlist,0,$maxchar);
+								
+								echo '<li>';
+				
+								echo '<a href="'.$listinglink.'" class="jomTips" title="';
+								__t("Fish Species");
+								echo '::'.$fishlist.$trimmed.'">';
+								echo $count.' ';
+								echo __t("Fish Species");
+								echo '</a>';
+								echo '</li>';
+								$trimmed='';
+							}
+							?>
+                            
+                            <?php // RELATED TECHNIQUES
+						$techniques = getRelatedList($listing['Listing']['listing_id'],array(24,48,79));
+						$techlist = array();
+						?>						
+							<?php foreach ($techniques as $tech) : ?>
+								<?php $techlist[] = $tech->title; ?>
+							<?php endforeach; ?>
+                            <?php
+                            if ($techlist) {
+                            	$fulltechlist = implode(", ", $techlist);
+								$count = getRelatedCount($listing['Listing']['listing_id'], array(24,48,79));
+								if (strlen($fulltechlist) > $maxchar)
+									$trimmed='...';
+								$techlist = substr($fulltechlist,0,$maxchar);
+								
+								echo '<li>';
+								echo '<a href="'.$listinglink.'" class="jomTips" title="';
+								__t("Fishing Techniques");
+								echo '::'.$techlist.$trimmed.'">';
+								echo $count.' ';
+								echo __t("Fishing Techniques");
+								echo '</a>';
+								echo '</li>';
+								$trimmed='';
+							}
+							?>
+                        
+                        </ul>  
+                        <div class="clear"></div>  
+                    </div>
+                                
+                </div>                                      
+               
+              
+               
+               <!-- BEGIN INTROTEXT --> 
+               <?php if ($listing['Listing']['summary']) : ?>
+				<div class="contentIntrotext">
+                	<?php
+						$introtext = strip_tags($listing['Listing']['summary']);
+						if (strlen($introtext) > $maxchar)
+							$trimmed=1;
+						if ($trimmed) {
+							$introtext = substr($introtext, 0, $maxchar);
+							echo $introtext;
+							echo '... ';	
+						}
+						else 
+							echo $introtext;
+						?>
+	                        <span class="read-more"><?php echo $Routes->content(__t("Read more",true),$listing,array('class'=>'jr_readon','rel'=>'nofollow')); ?></span>
+                        <?php
+					?>
+                </div>                                               
+				<?php endif; ?>
+               <!-- END INTROTEXT -->
+                
+                <!-- BEGIN LISTING MANAGER -->
+				<?php
+                $user = & JFactory::getUser();
+				$loggedin_user = $user->id;
+				$isAdmin = ($user->usertype=="Super Administrator") ? 1 : 0;
+				if ($isAdmin) : ?>
+                    <div> 
+                        <div class="edit-listing txt">
+                            <div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo __t("Edit"); echo '&nbsp;&raquo;'; ?></a></div>
+                        </div>
+                        <div class="edit-listing txt" style="display:none;">
+                            <div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo ' &laquo;&nbsp;'; echo __t("Hide options"); ?></a></div>
+                            <?php echo $this->renderControllerView('listings','listing_manager',array('listing'=>$listing));?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <!-- END LISTING MANAGER -->
+
+               <!-- END CONTENT ACTIONS ZONE -->
+            </div>
+            <?php
+            if ($blogcount) { 
+				echo '<div class="clear"></div>';
+				$blogcount--;
+			}
+			else $blogcount++;
+			?>
+        <?php endforeach;?>
+        
+	        <?php if($pagination['total'] > 0):?>
+            <!-- PAGINATION BEGINS HERE -->
+            <div class="pad10 tac">    
+                <?php if($pagination['total'] > $this->limit):?>
+                    <?php echo $Paginator->display_pages();?>
+                <?php endif;?>
+            </div>
+            <div class="clear"></div>
+            <div class="width50 fl tal">
+                <span class="smalltext"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></span>
+            </div>
+            <div class="width50 fl tar">
+                <?php echo $Paginator->display_items_per_page();?>
+            </div>
+            <div class="clear"></div>
+            <!-- PAGINATION ENDS HERE -->             
+            <?php endif;?>  
+        </div>
+		<div class="clear">&nbsp;</div>
+         
+    </div><!-- end jr_pgResults -->
+    <div class="clr">&nbsp;</div>
+    <?php endif;?> 
+</div>
+
+<?php if(empty($listings)):?>
+    <?php switch($this->action) {
+        case 'search':
+            __t("Your search did not return any results. Try adjusting your search values.<br /><br /><a href=\"javascript:window.history.go(-1)\">Click here to go back.</a>");
+            break;
+        case 'favorites':
+            echo __t("Your favorites list is empty.");
+            break; 
+        case 'section':
+            if($this->Config->list_show_sectionlist)
+                echo __t("No entries were found");
+        break;    
+        default:
+            echo __t("No entries were found");
+            break; 
+    }?>
+<?php endif;?>

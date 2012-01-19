@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<install method="upgrade" type="component" version="1.5.0">
+	
+	<name>Reset Password</name>
+		<author>Mark Totzke</author>
+		<creationDate>2011-01-20</creationDate>
+		<copyright/>
+		<license>GPL</license>
+		<authorEmail>mark.totzke@gmail.com</authorEmail>
+		<authorUrl>http://subclosure.com</authorUrl>
+		<version>0.1</version>
+		<description>Attemping to make the password reset easier and fix the invalid token issue</description>	
+	
+	<administration>
+	    <menu link="option=com_resetpassword">Reset Password</menu>
+		<files folder="administrator/components/com_resetpassword"> <file>config.xml</file><file>component.xml</file><file>controller.php</file><file>install.mysql.sql</file><file>models/resetpassword.php</file><file>resetpassword.php</file><file>uninstall.mysql.sql</file><file>views/resetpassword/tmpl/default.php</file><file>views/resetpassword/view.html.php</file></files>
+	</administration>
+		
+	<files folder="components/com_resetpassword"><file>translation_credits.txt</file> <file>controller.php</file><file>resetpassword.php</file><file>views/newpassword/tmpl/default.php</file><file>views/newpassword/view.html.php</file><file>views/resetpassword/tmpl/default.php</file><file>views/resetpassword/tmpl/success.php</file><file>views/resetpassword/view.html.php</file></files>
+	
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.sql</file>
+		</sql>
+	</install>	
+	
+	<uninstall>
+		<sql>
+			<file driver="mysql">uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	
+	<languages>
+			<language tag="de-DE">de-DE.com_resetpassword.ini</language>
+			<language tag="el-GR">el-GR.com_resetpassword.ini</language>
+            <language tag="en-GB">en-GB.com_resetpassword.ini</language>
+			<language tag="es-ES">es-ES.com_resetpassword.ini</language>
+			<language tag="fi-FI">fi-FI.com_resetpassword.ini</language>
+			<language tag="fr-FR">fr-FR.com_resetpassword.ini</language>
+			<language tag="it-IT">it-IT.com_resetpassword.ini</language>
+			<language tag="nl-NL">nl-NL.com_resetpassword.ini</language>
+			<language tag="pl-PL">pl-PL.com_resetpassword.ini</language>
+			<language tag="pt-PT">pt-PT.com_resetpassword.ini</language>
+    </languages>
+	
+</install>

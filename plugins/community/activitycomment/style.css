@@ -1,0 +1,163 @@
+
+/**
+ * @package		ActivityComment
+ * @copyright	Copyright (C) 2009 - 2010 SocialCode. All rights reserved.
+ * @license		GNU/GPL
+ * ActivityComment is free software. This version may have been modified pursuant to the
+ * GNU General Public License, and as distributed it includes or is derivative
+ * of works licensed under the GNU General Public License or other free or open
+ * source software licenses.
+ */
+
+div#activity-stream-container div.app-box{
+	float: none !important;
+}
+
+div#activity-share-photos,div#activity-share-videos,div#activity-share-links
+{
+	display: none;
+}
+
+div#share-url-meta{
+	background: #f4f4f4;
+	-moz-border-radius: 6px;
+	display: none;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+#share-url-button
+{
+	display: none;
+}
+
+div.share-url-meta-info
+{
+	font-size: 10px;
+}
+span.fetching-content
+{
+	margin-left: 10px;
+}
+span.share-selected
+{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+span#post-message
+{
+	background: #f4f4f4;
+	-moz-border-radius: 6px;
+	margin-right: 10px;
+	padding: 5px;
+	font-size: 10px;
+	display: none;
+	font-weight: bold;
+}
+
+p.activity-share-info
+{
+	font-size: 10px !important;
+}
+
+.activity-share-note-wrapper,
+.activity-share-photos-wrapper,
+.activity-share-links-wrapper
+{
+	padding: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	background: #eee;
+}
+
+.activity-share-note
+{
+	background: url( addnote.png ) no-repeat;
+	padding: 0 0 2px 20px;
+	cursor: pointer;
+}
+
+.activity-share-photo
+{
+	background: url( addphoto.png ) no-repeat;
+	padding: 0 0 2px 20px;
+	cursor: pointer;
+}
+.activity-share-links
+{
+	background: url( addurl.png ) no-repeat;
+	padding: 0 0 2px 20px;
+	cursor: pointer;
+}
+.activity-share-video
+{
+	background: url( addvideo.png ) no-repeat;
+	padding: 0 0 2px 20px;
+	cursor: pointer;
+}
+
+div.activity-share-content
+{
+	margin-top: 20px;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	background: #eee;
+	border: 1px solid #ccc;
+}
+
+.activity-comments
+{
+	background: url( addcomment.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.activity-like
+{
+	background: url( like.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.activity-subscribe{
+	background: url( subscribe.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.activity-unsubscribe{
+	background: url( unsubscribe.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.activity-repost{
+	background: url( repost.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.activity-unlike
+{
+	background: url( unlike.png ) no-repeat;
+	padding: 0 0 2px 20px;
+}
+
+.noicon
+{
+	background: none;
+	padding: 0;
+}
+
+.likes-content
+{
+	-moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+	background: #F6F6F6;
+	margin: 5px 0 5px 0;
+	padding: 5px;
+	border: medium none;
+}
+
+.wall-content
+{
+	-moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}

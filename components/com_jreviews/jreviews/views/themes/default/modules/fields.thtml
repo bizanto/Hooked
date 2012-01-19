@@ -1,0 +1,96 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * Ideas for customizing the link list
+ * http://www.alistapart.com/articles/taminglists/
+ */
+?>
+
+<?php 
+/**********************************************************************************
+ * 								CONFIGURATION & SETUP
+ **********************************************************************************/
+$display_mode = Sanitize::getString($this->params['module'],'display_mode');
+$before_text = Sanitize::getString($this->params['module'],'before_text');
+
+$links = array();
+$listOptions = array();
+$tag = 'index.php?option='.S2Paths::get('jreviews','S2_CMSCOMP').'%s&amp;url=';
+$p1 = $menu_id ? '&amp;Itemid='.$menu_id : '';
+$p2 = "'+this[this.selectedIndex].value+'";
+$p3 = substr($field,3);
+$p4 = $menu_id ? '_m'.$menu_id.'/' : '/';
+$params = arrayToParams(array('dir'=>$dir_id,'criteria'=>$criteria_id,'cat'=>$category_ids,'section'=>$section_ids));
+$p5 = $params != '' ? $params .'/' : '';
+$p6 = $custom_params;
+
+foreach($field_options AS $option){
+	extract(current($option));
+	$url = sprintf($tag,$p1).'tag/'.$p3.'/'.urlencode($value).$p4.$p5.$p6;
+	$links[] = $Html->link($text,$url);
+	$listOptions[] = array('value'=>cmsFramework::route($url),'text'=>$text);
+}
+
+if(isset($this->params['tag']['field']) &&  $this->params['tag']['field'] == substr($field,3)) {
+	$value = Sanitize::getString($this->params['tag'],'value');
+} else {
+	$value = Sanitize::getString($this->params,$field,'');
+}
+
+$preselected = cmsFramework::route(sprintf($tag,$p1).'tag/'.$p3.'/'.urlencode($value).$p4.$p5.$p6);
+?>
+
+<?php 
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+	<?php if($before_text != ''):?>
+	<div><?php echo $before_text;?></div>
+	<?php endif;?>
+
+	<?php if($display_mode == 'links_horiz'):?>
+	<!-- HORIZONTAL LIST -->
+	<div class="jr_pgContainer jr_fields_mod_horiz">
+		<div class="jr_listScope roundedPanel">
+			 <div class="box_upperOuter">
+			    <div class="box_upperInner">	
+					<ul><li><?php echo implode('</li><li>',$links);?></li></ul>
+					<div class="clr"></div>
+		    	</div>
+			 </div>
+			 <div class="box_lowerOuter">
+			    <div class="box_lowerInner">&nbsp;</div>
+			 </div>
+		</div>
+	</div>
+	<?php elseif($display_mode=='links_vert'):?>
+	<!-- VERTICAL LIST -->
+	<div class="jr_pgContainer jr_fields_mod">
+		<ul><li><?php echo implode('</li><li>',$links);?></li></ul>
+	</div>	
+	<?php else:?>
+	<!-- DROPDOWN LIST -->	
+	<div class="jr_pgContainer jr_fields_mod">
+		<?php echo $Form->select(
+				$field,
+				array_merge(array('FieldOption'=>array('value'=>'','text'=>__t("Select",true))),$listOptions),
+				$preselected,
+				array(
+					'class'=>'inputbox',
+					'size'=>1,
+					'onchange'=>'window.location=this.value'	
+		));?>
+	</div>
+	<?php endif;?>
+

@@ -1,0 +1,24 @@
+
+RewriteEngine on 
+RewriteCond %{HTTP_HOST} ^hooked.no [NC]
+RewriteRule ^(.*)$ http://www.hooked.no/$1 [R=301,NC]
+RewriteCond %{HTTP_HOST} hooked.client.sysedata.no [NC]
+RewriteRule ^(.*)$ http://www.hooked.no/$1 [R=301,NC]
+
+#AuthUserFile /home/hook/.htpasswd
+#AuthType Basic
+#AuthName hooked.no
+#Require valid-user
+
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+allow from all
+</Limit>
+

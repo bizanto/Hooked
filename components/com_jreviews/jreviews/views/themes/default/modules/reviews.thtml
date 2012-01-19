@@ -1,0 +1,183 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**********************************************************************************
+ * 								CONFIGURATION AND SETUP
+ **********************************************************************************/
+$ajax_nav = Sanitize::getInt($this->params['module'],'ajax_nav',1);
+$columns = Sanitize::getInt($this->params['module'],'columns',1);
+$tn_width = Sanitize::getInt($this->params['module'],'tn_width',50);
+$tn_show = Sanitize::getInt($this->params['module'],'tn_show',1);
+$tn_mode = Sanitize::getString($this->params['module'],'tn_mode','scale');
+$slider_width = Sanitize::getInt($this->params['module'],'slider_width',200); ; // px
+$slider_height = Sanitize::getInt($this->params['module'],'slider_height',250); ; // px
+
+// position of sliding arrows {side|bottom}
+$arrows = Sanitize::getString($this->params['module'],'nav_position','bottom'); 
+if ($arrows == 'side') {
+	$slider_width = $slider_width-50;
+	$margin_top = (int) ($slider_height/2)-20;
+} else if ($arrows == 'bottom') {
+	$slider_height = $slider_height-50;
+	$margin_top = 5 ;
+}
+
+$column_width = $ajax_nav ? ($slider_width/$columns-5*$columns).'px' : (99/$columns).'%'; // In percentage
+$list_item_style = 'style="width:'.$column_width.';'.($ajax_nav ? '' : 'padding:0px;').'"';
+$width_style =  'style="width:'.($slider_width).'px;"';
+$module_id = Sanitize::getVar($this->params,'module_id','');
+$page = $this->module_page;
+$limit = $this->module_limit;
+$show_comments = Sanitize::getInt($this->params['module'],'show_comments',1);
+$show_numbers = Sanitize::getInt($this->params['module'],'show_numbers',0);
+$extension = Sanitize::getString($this->params['module'],'extension');
+$link_title_format = Sanitize::getString($this->params['module'],'link_title','{listing_title}');
+// Process link title output format
+//listing title
+$regex = '/{listing_title\s([0-9].*?)}/i';
+preg_match( $regex, $link_title_format, $matches );
+$listing_title_chars = isset($matches[1]) ? $matches[1] : null;
+$link_title_format = isset($matches[0]) ? str_replace($matches[0],'{listing_title}',$link_title_format) : $link_title_format;
+//review_title
+$regex = '/{review_title\s([0-9].*?)}/i';
+preg_match( $regex, $link_title_format, $matches );
+$review_title_chars = isset($matches[1]) ? $matches[1] : null;
+$link_title_format = isset($matches[0]) ? str_replace($matches[0],'{review_title}',$link_title_format) : $link_title_format;
+$rankModifier = ($this->module_page-1)*$this->module_limit;
+$page_count = ceil($total/$limit);
+$item_count = count($reviews);
+?>
+
+<?php if(empty($reviews)) { __t("No entries were found") . '<br /><br />'; return; } ?>
+
+<?php
+/**********************************************************************************
+ * 								AJAX PAGINATION SETUP
+ **********************************************************************************/?>
+ <?php if(!$this->ajaxRequest && $ajax_nav):?>
+
+    <script type="text/javascript">  
+    jQuery(document).ready(function() 
+    {
+        jreviews.module.pageNavInit(<?php echo $module_id;?>,<?php echo $page;?>,<?php echo $page_count;?>);
+    });
+    </script>
+    
+     <form id="jr_mod<?php echo $module_id;?>" method="post" action="">
+        <input type="hidden" id="jr_modController<?php echo $module_id;?>" name="controller" value="<?php echo $this->name;?>" />
+        <input type="hidden" id="jr_modAction<?php echo $module_id;?>" name="action" value="<?php echo $this->action;?>" />
+        <input type="hidden" id="jr_modPage<?php echo $module_id;?>" name="page" value="<?php echo $page;?>" />
+        <input type="hidden" id="jr_modLimit<?php echo $module_id;?>" name="limit" value="<?php echo $limit;?>" />
+        <input type="hidden" id="jr_modExtension<?php echo $module_id;?>" name="extension" value="<?php echo $extension;?>" />
+        <input type="hidden" id="jr_modPageCount<?php echo $module_id;?>" name="page_count" value="<?php echo $page_count;?>" />       
+    </form>
+
+<?php endif;?>
+
+<?php 
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/?>
+
+<?php if(!$this->ajaxRequest && $ajax_nav):?>  
+
+    <?php if($page_count>1 && $arrows == 'side'):?>
+        <!-- prev link -->
+        <a id="jr_modPrev<?php echo $module_id;?>" href="#prev" onclick="return false;" class="jr_modPrev" style="margin-top:<?php echo $margin_top;?>px;"></a>
+    
+    <?php endif;?>   
+
+<div id="jr_modSlider<?php echo $module_id;?>" class="jr_modSlider" style="width:<?php echo $slider_width;?>px;height:<?php echo $slider_height;?>px; float: left;"> 
+     
+    <!-- root element for the items --> 
+    <div class="jr_modItems"> 
+
+<?php endif;?>
+
+        <div class="jr_modContainer jr_reviews_mod" <?php if($ajax_nav) echo $width_style;?>>
+
+            <?php $i=0;$j=0;foreach($reviews AS $review):$i++;$j++;?>
+                
+               <?php // Process link title
+               $listing_title = ($listing_title_chars && mb_strlen($review['Listing']['title'])>$listing_title_chars) ? $Text->truncate($review['Listing']['title'],$listing_title_chars) : $review['Listing']['title']; 
+               $review_title = ($review_title_chars && mb_strlen($review['Review']['title'])>$review_title_chars) ? $Text->truncate($review['Review']['title'],$review_title_chars) : $review['Review']['title']; 
+               $link_title = str_replace('{listing_title}',$listing_title,$link_title_format);
+               $link_title = str_replace('{review_title}',$review_title,$link_title);
+               ?>
+               
+                <div class="listItem" <?php echo $list_item_style;?>>
+	             
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	                 <tr>
+                        <?php if($show_numbers):?><td class="jr_modColumn0"><?php echo $rankModifier+$j;?>.</td><?php endif;?>
+	         	        <?php $thumb = $Thumbnail->thumb($review, 0, $tn_mode, 'module'.$tn_width, array($tn_width),array('border'=>0,'alt'=>$review['Listing']['title']));?>
+	                    <?php if($tn_show && $thumb):?>
+	                    <td class="jr_modColumn1" valign="top" style="width:<?php echo $tn_width+10;?>px;">
+	                       <div class="contentThumbnail"> <?php echo $Html->sefLink($thumb,$review['Listing']['url']);?> </div>
+					        <?php // Uncomment line below to show reviewer avatar. You can comment or remove the thumbnail code above
+						        //echo $Community->avatar($review);?>
+	                    </td>
+	                    <?php endif;?>
+	                    <td class="jr_modColumn2" valign="top">
+					        <div class="contentTitle" style="white-space:normal;"><?php echo $Html->sefLink($link_title,$review['Listing']['url']);?> <?php echo Sanitize::getString($review['Listing'],'tag') ? '(' .Sanitize::getString($review['Listing'],'tag') . ')' : '';?></div>	        
+					        <!--<div class="jr_pathway"><?php echo $review['Category']['title'];?></div>-->
+					        <?php if ( $review['Criteria']['state'] == 1 ):?>
+                            <table border="0" cellpadding="0" cellspacing="0" class="rating_table">
+	                          <tr>
+	                          <?php if($review['Review']['editor'] == 1):?>
+	                             <td class="rating_label"><?php echo $Html->image($this->viewImages.'review_editor.png',array('width'=>14,'height'=>14,'title'=>__t("Editor rating",true),'alt'=>__t("Editor rating",true)));?></td>
+	                             <td class="rating_stars" title="<?php __t("Editor rating");?>" style="cursor:help;"><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'editor');?></td>
+	                             <td class="rating_value"><?php echo $Rating->round($review['Rating']['average_rating'],$this->Config->rating_scale);?></td>
+					          <?php else:?>
+	                             <td class="rating_label"><?php echo $Html->image($this->viewImages.'review_user.png',array('width'=>14,'height'=>14,'title'=>__t("User rating",true),'alt'=>__t("User rating",true)));?></td>
+	                             <td class="rating_stars" title="<?php __t("User rating");?>" style="cursor:help;"><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'user');?></td>
+	                             <td class="rating_value"><?php echo $Rating->round($review['Rating']['average_rating'],$this->Config->rating_scale);?></td>
+	                          <?php endif;?>
+	                          </tr>
+	                       </table>
+                           <?php endif;?>
+			               <?php //echo $review['Review']['title'] . '<br />';?>
+			               <span class="reviewer"><?php __t("Reviewed by");?> <?php echo $Community->screenName($review);?></span><br />
+			               <?php if($show_comments && trim($review['Review']['comments'])!=''):?><span class="comments">"<?php echo $Text->truncate($review['Review']['comments'],100,'...');?>"</span><?php endif;?>
+			            </td>
+	                 </tr>
+	              </table>
+                  
+	           </div>
+               
+               <?php if($i==$columns || $item_count == $j):?><div class="jr_divider"></div><?php $i=0;endif;?><!-- end of row , start new row -->       
+	       
+            <?php endforeach;?>
+
+        </div>        
+
+<?php if(!$this->ajaxRequest && $ajax_nav):?>  
+        
+    </div> <!-- end items root element -->
+     
+</div> <!-- end scrollable root element -->
+
+<?php if($page_count>1):?>
+
+     <?php if($arrows == 'bottom'): ?> 
+        <div style="clear: both;"></div>
+        <!-- prev link -->
+        <a id="jr_modPrev<?php echo $module_id;?>" href="#prev" onclick="return false;" class="jr_modPrev" style="margin-top:<?php echo $margin_top;?>px;"></a>
+     <?php endif;?>   
+    
+    <!-- next link -->
+    <a id="jr_modNext<?php echo $module_id;?>" href="#next" onclick="return false;" class="jr_modNext" style="<?php if($arrows == 'bottom') echo 'float: left; margin-left:0px; ';?>margin-top:<?php echo $margin_top;?>px;"></a>
+
+<?php endif;?>       
+
+<div style="clear: both;"></div>
+
+<?php endif;?>

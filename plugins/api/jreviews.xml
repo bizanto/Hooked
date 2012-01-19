@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="api" method="upgrade">
+    <name>Api - JReviews</name>
+    <version>1.0</version>
+    <creationDate>February 2011</creationDate>
+    <author>Brian Edgerton</author>
+    <authorEmail>brian@edgewebworks.com</authorEmail>
+    <authorUrl>http://www.edgewebworks.com</authorUrl>
+    <copyright>2010 Edge Web Works, LLC</copyright>
+    <license>GNU General Public License v2</license>
+    <description>This plugin exposes com_content to the Joomla! API</description>
+    
+    <files>
+        <filename plugin="jreviews">jreviews.php</filename> 
+    </files>
+    
+	<params>
+
+	</params>
+</install>

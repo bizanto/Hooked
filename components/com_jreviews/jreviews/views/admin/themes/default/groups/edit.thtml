@@ -1,0 +1,36 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+  
+<form name="groupsForm" id="groupsForm" class="adminForm">
+	<table class="admin_list" border="0" cellpadding="3" cellspacing="0" style="width:400px;">
+		<tr>
+			<td>Field type:</td>
+			<td><?php echo inflector::camelize($type) == 'Content' ? 'Listing' : inflector::camelize($type);?></td>
+		</tr>
+		<tr>
+			<td>Group Name: </td>
+			<td><input id="group_name" type="text" size="50" maxsize="50" name="data[Group][name]" value="<?php echo $row['name']; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Title: </td>
+			<td><input id="group_title" type="text" size="50" maxsize="200" name="data[Group][title]" value="<?php echo $row['title']; ?>" /></td>
+		</tr>
+      
+	</table>	                  
+    <input type="hidden" name="data[controller]" value="admin/groups" />
+    <input type="hidden" name="data[action]" value="_save" />    
+	<input type="hidden" id="groupid" name="data[Group][groupid]" value="<?php echo $row['group_id'];?>" />
+	<input type="hidden" id="type" name="data[Group][type]" value="<?php echo $type;?>" />
+	<input type="hidden" id="limitstart" name="data[offset]" value="<?php echo $this->offset;?>" />
+	<input type="hidden" id="limit" name="data[limit]" value="<?php echo $this->limit;?>" />
+	<input type="hidden" id="page" name="data[page]" value="<?php echo $this->page;?>" />
+</form>
