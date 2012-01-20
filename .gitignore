@@ -10,6 +10,6 @@ logs/
 
 dev/
 
-./cache/
+cache/
 testing/
 tmp/
