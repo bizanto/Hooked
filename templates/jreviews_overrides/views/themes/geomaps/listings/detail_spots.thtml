@@ -299,13 +299,13 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
     
 	    <div class="clear"></div>
         <ul class="listing-quicklinks">
-                <li><a class=""><span id="jr_favoriteCount<?php echo $listing['Listing']['listing_id'];?>"> <?php echo $listing['Favorite']['favored'];?></span>&nbsp;<?php __t("favorites"); ?></a></li>
-                <?php if ($isAdmin && !1) : ?>
-                <li><a class="rel8win" href="<?php echo JURI::base(); ?>index.php?option=com_relate&view=edit&id=<?php echo $listing['Listing']['listing_id']; ?>"><?php __t("Edit Relations"); ?></a></li>
-                <?php endif; ?>
-                <?php if($this->Config->favorites_enable):?>
-                <li><?php echo $this->element('favorite_widget',array('listing'=>$listing));?></li>
-            </ul>
+            <li><a class=""><span id="jr_favoriteCount<?php echo $listing['Listing']['listing_id'];?>"> <?php echo $listing['Favorite']['favored'];?></span>&nbsp;<?php __t("favorites"); ?></a></li>
+            <?php if ($isAdmin && !1) : ?>
+            <li><a class="rel8win" href="<?php echo JURI::base(); ?>index.php?option=com_relate&view=edit&id=<?php echo $listing['Listing']['listing_id']; ?>"><?php __t("Edit Relations"); ?></a></li>
+            <?php endif; ?>
+            <?php if($this->Config->favorites_enable):?>
+            <li><?php echo $this->element('favorite_widget',array('listing'=>$listing));?></li>
+        </ul>
     </div>
 
 	<?php if ($userReviewShow) : ?>
