@@ -339,8 +339,8 @@ jQuery(function ($) {
                <?php if ($listing['Listing']['summary']) : ?>
 				<div class="contentIntrotext">
                 	<?php
-						$introtext = nl2br(strip_tags($listing['Listing']['summary']));
-						$introtext = substr($introtext, 0, $maxchar);
+						$introtext = strip_tags($listing['Listing']['summary']);
+						$introtext = nl2br(substr($introtext, 0, $maxchar));
 						echo $introtext;
 						if (strlen($introtext) > $maxchar) {
 							echo '... ';	

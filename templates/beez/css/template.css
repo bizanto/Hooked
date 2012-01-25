@@ -418,7 +418,7 @@ img.jomtips { width: 60px; }
 
 
 /* SPOTS DETAIL PAGE */
-#doc .vis-alle, .bait-summary .rel8win, .technique-summary .rel8win, .fish-summary .rel8win, .spot-summary .rel8win { margin-top: -15px; color: #666; font-size: 85%; }
+#doc .vis-alle, .bait-summary .rel8win, .technique-summary .rel8win, .fish-summary .rel8win, .spot-summary .rel8win, .insect-summary .rel8win, .hatch-summary .rel8win, .fly-summary .rel8win { margin-top: -15px; color: #666; font-size: 85%; }
 #doc .rating_star_user { display: inline-block; margin: 0; vertical-align: text-top; }
 
 #add_catches table, #add_catches table td { text-align: left; padding: 4px; }
@@ -499,6 +499,9 @@ ul.listing-quicklinks li { width: 33%; display: inline; white-space: nowrap; lis
 .listing-relations ul li, .catchrelations ul li  { margin: 0; padding: 0; list-style: none; background: none; }
 
 .small-thumb { width: 16px; }
+
+.list-thumb { width: 32px; margin-right: 10px; }
+.insect-summary ul { line-height: 32px; }
 
 /* DETAIL MAP */
 #gm_map_wrapper, .map-box, body #community-wrap .profile-avatar img.prof-av { background: #666948; padding: 5px; -moz-box-shadow: 0 0 5px #666; -webkit-box-shadow: 0 0 5px #666; box-shadow: 0 0 5px #666; border: 0; }

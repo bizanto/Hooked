@@ -2489,3 +2489,9 @@ msgstr "Søk i klekkerapporter"
 
 msgid "Catch Summary"
 msgstr "Fangstoppsummering"
+
+msgid "Hatches"
+msgstr "Klekkinger"
+
+msgid "Fly Tying patterns"
+msgstr "Fluebindemønster"

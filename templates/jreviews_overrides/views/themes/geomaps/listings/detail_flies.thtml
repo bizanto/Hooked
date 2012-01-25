@@ -338,7 +338,7 @@ $overviewtab = 0;
         <li><a href="#video"><?php __t("Videos"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], "videos"); ?>)</a></li>
 <?php endif; $tabcount++; $videostab = $tabcount; ?>
 		
-        <li><a href="#oversikt"><?php __t("Reviews"); ?></a></li>
+        <li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
         
 <?php if ($is_location && $jr_lat && $jr_long &&!1) : ?><li><a href="#vaer">
         <?php __t("Weather"); ?></a></li>
@@ -416,11 +416,6 @@ $overviewtab = 0;
     </div>
     <?php endif; ?>
     <div id="oversikt"><!--overview-->
-			<?php if ($userReviewShow) : ?> 
-            <div class="listing-reviews">
-                <?php require_once("detail-reviews.php"); ?>
-            </div>
-            <?php endif; ?>
             <div class="clear"></div> 
 		</div>
     <?php if ($is_location && !1): ?>
@@ -494,7 +489,7 @@ $overviewtab = 0;
     <?php endif; ?>
     <div class="clear"></div>
 </div>
-    <div class="">
+    <div class="listing-relations fr">
       <!-- LISTING IMAGES -->
         <?php // LICENSE INFO
 		if ($listing['Section']['section_id']=="1" && $listing['Category']['cat_id']!="100" && $listing['Category']['cat_id']!="3") {
@@ -587,27 +582,34 @@ $overviewtab = 0;
         <?php // RELATED INSECT
         $insects = getRelatedList($listing['Listing']['listing_id'],$insect_type); 
         ?>
-        <div class="technique-summary paper-light">
+        <div class="insect-summary paper-light">
            <h3><?php __t("Insect"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], explode(',', $insect_type)); ?>)</h3>
             <ul>       
             <?php foreach ($insects as $insect) : ?>
             <?php
-            $insectcount = 0;
-            foreach ($insect->photos as $photo) {
-                 if (!$insectcount) $thumb = $photo->thumbnail;
-            }
+         	$tn = getRelatedThumb($insect->id, 1);
+         	if (count($tn)) $thumb = $tn[0]->thumbnail;
+         	else $thumb = false;
+         	
             $insectlink = ContentHelperRoute::getArticleRoute($insect->id,$insect->catid,$insect->sectionid);
             ?>
-                <li><?php if ($thumb) echo '<a href="'.$insectlink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $insectlink; ?>"><?php echo $insect->title; ?></a></li>
+                <li><?php if ($thumb) echo '<a href="'.$insectlink.'"><img class="list-thumb fl" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $insectlink; ?>"><?php echo $insect->title; ?></a></li>
             <?php endforeach; ?>
             </ul>
             <?php if ($isAdmin) : ?>
+            <div class="clr"></div>
             <a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=<?php echo $insect_type; ?>" class="rel8win fr"><?php __t("Add/edit"); ?></a>
             <?php endif; ?>
         </div>
         
         
     </div>
+    
+    <?php if ($userReviewShow) : ?> 
+    <div class="listing-reviews">
+        <?php require_once("detail-reviews.php"); ?>
+    </div>
+    <?php endif; ?>
         
 	<div class="clr"></div>
 	<!-- END LISTING DETAILS -->

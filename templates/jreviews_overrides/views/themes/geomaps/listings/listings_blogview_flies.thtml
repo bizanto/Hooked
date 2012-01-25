@@ -120,7 +120,6 @@ jQuery(function ($) {
 						$jr_state_value = $CustomFields->fieldValue('jr_state', $listing, false, false);
 						$jr_state_value = $jr_state_value[0];
 
-						if ($jr_state) $jr_state=$jr_state;
 						?>
 						<?php 
                         if ($jr_area) echo '<div>'.$jr_area.'</div>';
