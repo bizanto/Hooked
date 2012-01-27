@@ -431,6 +431,9 @@ $overviewtab = 0;
         $spots = getRelatedList($listing['Listing']['listing_id'],14); ?>
 	        <?php if ($spots) : ?>
             <strong><?php __t("Catch Reports"); ?></strong>:             
+            <?php if ($isOwner || $isAdmin): ?>
+    		<a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=14" class="rel8win smalltext"><?php __t("Add/edit"); ?></a>
+			<?php endif; ?>
             <ul class="catchrelations">
             <?php foreach ($spots as $spot) : ?>
             <?php
