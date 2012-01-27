@@ -1,6 +1,8 @@
 *.rar
 *.zip
 
+Thumbs.db
+
 configuration.php
 
 error_log
@@ -10,6 +12,6 @@ logs/
 
 dev/
 
-cache/*
+cache/
 testing/
 tmp/

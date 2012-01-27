@@ -3,8 +3,9 @@ function getRelatedThumb($content_id,$limit) {
 	
 	$db =& JFactory::getDBO();
 	$sql = "SELECT p.id, p.caption, p.creator, p.image, p.thumbnail, p.created, p.storage, u.username ".
-		   "FROM #__community_photos p, #__users u WHERE ".
-		   "p.id IN (SELECT photo_id FROM #__relate_photos WHERE listing_id = '".$content_id."') ".
+		   "FROM #__community_photos p, #__users u ".
+		   "LEFT JOIN #__relate_photos rp ON rp.listing_id = '".$content_id."'".
+		   "WHERE p.id = rp.photo_id ".
 		   "AND p.creator = u.id ORDER BY p.id asc";
 
 	if ($limit) {

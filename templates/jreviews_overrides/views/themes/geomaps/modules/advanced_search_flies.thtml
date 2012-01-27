@@ -48,7 +48,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/search/related_items.
 
 <div id="spot-search" class="txt">     
 	<div class="tar"><a href="javascript:void(0);" class="smalltext intro-trigger"><?php __t("Hide"); ?></a></div>
-	<h2>Søk i fluemønsterbasen</h2> 
+	<h2>Søk i fluebindebasen</h2> 
 	
 	
 		<form name="JreviewsAdvSearch_<?php echo $module_id;?>" action="<?php echo WWW_ROOT;?>index.php?option=<?php echo S2Paths::get('jreviews','S2_CMSCOMP');?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>" method="post">		
@@ -95,7 +95,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/search/related_items.
 				<input type="hidden" name="criteria" id="criteria<?php echo $module_id;?>" value="<?php echo $criteria_id;?>" />
                 <input type="hidden" name="data[form_id]" id="form_id<?php echo $module_id;?>" value="JreviewsAdvSearch_<?php echo $module_id;?>" />
                 <input type="hidden" name="data[module_id]" id="module_id<?php echo $module_id;?>" value="<?php echo $module_id;?>" />   
-
+				<input type="hidden" name="data[tmpl_suffix]" id="tmpl_suffix" value="_flies" />
                 <?php
                 /*****************************************************************************************************
                 * Example html code for limiting results to certain categories only if you decide to remove 

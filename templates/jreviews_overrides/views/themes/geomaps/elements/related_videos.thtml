@@ -3,8 +3,9 @@ defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed
 
 $db =& JFactory::getDBO();
 $sql = "SELECT v.id, v.title, v.description, v.creator, v.storage, v.created, v.hits, v.thumb, u.username ".
-       "FROM #__community_videos v, #__users u WHERE ".
-       "v.id IN (SELECT video_id FROM #__relate_videos WHERE listing_id = '".$listing['Listing']['listing_id']."') ".
+       "FROM #__community_videos v, #__users u ".
+       "LEFT JOIN #__relate_videos rv ON rv.listing_id = '".$listing['Listing']['listing_id']."' ".
+       "WHERE v.id = rv.video_id ".
        "AND v.creator = u.id";
 $db->setQuery($sql);
 
@@ -31,7 +32,7 @@ $related_videos = $db->loadObjectList();
 			}
 		}
         ?>
-        <?php if ($video->storage == "s3") $prefix=""; else $prefix =""; ?>
+        <?php if ($video->storage == "s3") $prefix="http://hooked.no.s3.amazonaws.com/"; else $prefix =""; ?>
         <li>
             <a class="vidleft jomTips" href="index.php?option=com_community&view=videos&task=video&videoid=<?php echo $video->id; ?>&Itemid=101" title="<?php echo $video->title; ?>::<?php echo $video->description; ?>"><img class="vidthumb" src="<?php echo $prefix; echo $video->thumb; ?>" alt="<?php echo $video->title; ?>" title="<?php echo $video->title; ?>" /></a>
             <div class="vidright">

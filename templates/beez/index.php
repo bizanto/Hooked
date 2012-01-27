@@ -332,8 +332,9 @@ function onLoginWindowLoad() {
                                     $this->addCustomTag($html);
                                     ?>
                                     <?php endif; ?>
-
+                                    
                                     <jdoc:include type="component" />
+                                    
                                     <div class="content-bottom">
                                     <?php if ($this->countModules('content-bottom')) : ?>
                                         <jdoc:include type="modules" name="content-bottom" style="xhtml" />

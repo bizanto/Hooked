@@ -315,6 +315,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
    
 </div>
 
+</div>
 
 <style type="text/css" media="all">
 @import url('/templates/yoo_expo/css/custom-tabs.css');
@@ -326,7 +327,11 @@ $overviewtab = 0;
 ?>
 	<ul>
     
+<<<<<<< HEAD
 <li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
+=======
+<li><a href="#oversikt"><?php __t("Reviews"); ?></a></li>
+>>>>>>> f9cb046ff93cfa1c76e86fe5414504bfb44b7824
 <?php if ($is_location && $jr_lat && $jr_long) : ?>
         <li><a href="#kart"><?php __t("Map"); ?></a></li>
 <?php endif; $tabcount++; $maptab = $tabcount; ?>
@@ -380,7 +385,12 @@ $overviewtab = 0;
     <div class="clear"></div>
     <?php if($this->name != 'listings'): // Only show when in com_content page?>
 	<div id="oversikt"><!--overview-->
-        <?php echo $this->element('related_listings',array('com_relate'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','ajax'=>'0','limit'=>'25')); ?>
+		<?php if ($userReviewShow) : ?> 
+	    <div class="listing-reviews">
+		   	<?php require_once("detail-reviews.php"); ?>
+		</div>
+	    <?php endif; ?>
+        <?php //echo $this->element('related_listings',array('com_relate'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','ajax'=>'0','limit'=>'25')); ?>
         <div class="clear"></div> 
     </div>
     <?php if ($hasPhotos) : ?>
@@ -408,12 +418,6 @@ $overviewtab = 0;
     <?php endif; ?> 
     <div class="clear"></div>
 </div>
-	
-	<?php if ($userReviewShow) : ?> 
-        <div class="listing-reviews">
-            <?php require_once("detail-reviews.php"); ?>
-        </div>
-        <?php endif; ?>
         
     <div class="">
       <!-- LISTING IMAGES -->
@@ -492,8 +496,8 @@ $overviewtab = 0;
         
         <?php // RELATED HATCH REPORTS
         $trips = getRelatedList($listing['Listing']['listing_id'],15); ?>
-        <div class="fish-summary paper-light">
-            <h3><?php __t("Hatch Reports"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], 15); ?>)</h3>
+        <div class="hatch-summary paper-light width45 fl">
+            <h3><?php __t("Hatches"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], 15); ?>)</h3>
             <ul>       
             <?php foreach ($trips as $trip) : ?>
             <?php
@@ -519,8 +523,8 @@ $overviewtab = 0;
         
         <?php // RELATED FLYTYING PATTERNS
         $patterns = getRelatedList($listing['Listing']['listing_id'],'82,144,83,84,85,86,145'); ?>
-        <div class="fish-summary paper-light">
-            <h3><?php __t("Fluer"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], array(82,144,83,84,85,86,145)); ?>)</h3>
+        <div class="fly-summary paper-light width45 fr">
+            <h3><?php __t("Fly Tying patterns"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], array(82,144,83,84,85,86,145)); ?>)</h3>
             <ul>       
             <?php foreach ($patterns as $pattern) : ?>
 	            <?php
@@ -535,7 +539,7 @@ $overviewtab = 0;
             </ul>
             <p>&nbsp;</p>
             <?php if ($pattern) : ?>
-            <a class="vis-alle fl" href="/index.php?option=com_jreviews&Itemid=270&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:82,144,83,84,85,86,145/order:rhits/tmpl_suffix:_hatch">
+            <a class="vis-alle fl" href="/index.php?option=com_jreviews&Itemid=270&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:82,144,83,84,85,86,145/order:rhits/tmpl_suffix:_flies">
             <?php __t("view all"); ?>
             </a>
             <?php endif; ?>
@@ -547,11 +551,6 @@ $overviewtab = 0;
         
     </div>
     
-    <?php if ($userReviewShow) : ?> 
-    <div class="listing-reviews">
-	   	<?php require_once("detail-reviews.php"); ?>
-	</div>
-    <?php endif; ?>
     
 	<div class="clr"></div>
 	<!-- END LISTING DETAILS -->
