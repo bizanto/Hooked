@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Latest News Intro Text</name>
+	<author>Joomla! Project amends by Lee Tempest</author>
+	<creationDate>July 2004, modified May 2009</creationDate>
+	<copyright>Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>admin@joomla.org, lee@litchfieldmorris.co.uk</authorEmail>
+	<authorUrl>www.joomla.org, www.litchfieldmorris.co.uk</authorUrl>
+	<version>1.5</version>
+	<description>This module is a modification of the Joomla Latest News module to include the Intro Text</description>
+	<files>
+		<filename module="mod_latestnewsintrotext">mod_latestnewsintrotext.php</filename>
+		<filename module="helper">helper.php</filename>
+		<filename module="index">index.html</filename>
+		<filename module="default">tmpl/default.php</filename>
+		<filename module="tmplindex">tmpl/index.html</filename>
+	</files>
+	<params>
+		<param name="count" type="text" default="5" label="Count" description="The number of items to display (default 5)" />
+		<param name="ordering" type="list" default="create_dsc" label="Ordering" description="Ordering options">
+			<option value="c_dsc">Recently Added First</option>
+			<option value="m_dsc">Recently Modified First</option>
+	  	</param>
+		<param name="user_id" type="list" default="0" label="Authors" description="A filter for the authors">
+			<option value="0">Anyone</option>
+			<option value="by_me">Added or modified by me</option>
+			<option value="not_me">Not added or modified by me</option>
+	  	</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="show_front" type="radio" default="1" label="Frontpage Items" description="PARAMFRONTPAGEITEMS">
+			<option value="1">show</option>
+			<option value="0">hide</option>
+		</param>
+		
+		<param name="show_date" type="radio" default="1" label="Show Created Date Time" description="Select whether to show created date of the content of this module">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="show_date_type" type="radio" default="0" label="Show Date Type" description="Type of date time will be displaying">
+			<option value="0">Date and Time</option>
+			<option value="1">Date Only</option>
+			<option value="2">Time Only</option>
+		</param>
+
+		<param name="datecss" type="text" default="" label="Date CSS" description="PARAMULCSS" />
+
+		<param name="secid" type="text" default="" label="Section ID" description="PARAMSECTIONID" />
+		<param name="catid" type="text" default="" label="Category ID" description="PARAMCATEGORYID" />
+		<param name="characters" type="text" default="" label="Number of characters to display" description="PARAMCHARACTERS" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ullistcss" type="text" default="" label="List class (UL tag)" description="PARAMULCSS" />
+		<param name="lilistcss" type="text" default="" label="List class (LI tag)" description="PARAMLICSS" />
+		<param name="titlecss" type="text" default="" label="Article title class" description="PARAMTITLECSS" />
+		<param name="introcss" type="text" default="" label="Intro text class" description="PARAMINTROCSS" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="truncated" type="radio" default="0" label="Truncated text" description="Display some text for truncated words">
+			<option value="0">Yes</option>
+			<option value="1">No</option>
+		</param>
+		<param name="truncatedtext" type="text" default="..." label="Truncated characters" description="Display some text after the truncated words" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="readmoreoption" type="radio" default="0" label="Display read more" description="Display the read more text">
+			<option value="0">Yes</option>
+			<option value="1">No</option>
+		</param>
+		<param name="readmore" type="text" default="" label="Read more" description="PARAMREADMORE" />
+		<param name="readmorecss" type="text" default="" label="Read more CSS" description="PARAMREADMORECSS" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

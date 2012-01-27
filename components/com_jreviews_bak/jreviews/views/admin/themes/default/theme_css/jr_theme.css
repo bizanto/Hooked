@@ -1,0 +1,258 @@
+input,  select{font-size:11px!important;}
+/*******************************
+* Icons
+********************************/
+#icon-legend {margin-bottom:10px;}
+#icon-legend span {float:left;}
+.jr-icon {
+    height:16px;
+    width:16px;    
+    margin: 0 auto;
+    display:block;
+}
+.jr-icon-tick {
+    background-image:url(images/tick.png);
+}
+.jr-icon-cross {
+    background-image:url(images/cross.png);
+}
+.jr-icon-lock{
+    background-image:url(images/lock.png);
+}
+.jr-icon-wrench{
+    background-image:url(images/wrench.png);
+}
+.jr-icon-clock-play{
+    background-image:url(images/clock_play.png);
+}
+.jr-icon-clock-pause{
+    background-image:url(images/clock_pause.png);
+}
+.jr-icon-clock-stop{
+    background-image:url(images/clock_stop.png);
+}
+.jr-icon-clock-red{
+    background-image:url(images/clock_red.png);
+}
+/*******************************
+* UI Additions
+********************************/
+.ui-button { 
+    outline: 0; 
+    margin:0 -1px 0 0; 
+    padding: .4em 1em .5em; 
+    text-decoration:none!important; 
+    cursor:pointer;  
+    text-align: center; }
+
+.ui-button-small { 
+    outline: 0; 
+    margin:0 -1px 0 0; 
+    padding: 0; 
+    text-decoration:none!important; 
+    cursor:pointer;  
+    text-align: center; 
+}
+    
+/*******************************
+* UI Overrides
+********************************/
+.ui-widget {font-size:1em!important;}
+
+
+.ui-widget-header {
+    padding: 0.5em;    
+}
+
+
+.jr_pointer {cursor:pointer;}
+
+table#jr_adminPage {}
+
+table#jr_adminPage a { font-size: 1em;}
+
+div.jr_pgContainer div.clear    { 
+    clear:both;
+    font-size: 1px; 
+    line-height:1px !important; 
+    }      
+div.jr_pgContainer a {font-size: 11px!important;}
+
+table.jr_moderation .button {
+    padding:2px;
+    font-size:12px;}
+    
+table.jr_moderation th, 
+table.jr_moderation td {
+    text-align:left;}    
+    
+table.jr_moderation th.jr_column1 {
+    width: 65%;}
+table.jr_moderation th.jr_column2 {
+    width: 35%;
+}
+
+div.jr_textArea {
+    border: 1px solid silver;
+    padding: 4px;
+    margin: 0px;
+    height: 70px;
+    background-color: #F5F5F5;
+    overflow:auto;
+    color: #2F2F2F;}
+
+div.jr_textAreaAutoHeight {
+    border: 1px solid silver;
+    padding: 4px;
+    margin: 0px;
+    background-color: #F5F5F5;
+    overflow:auto;
+    color: #2F2F2F;}
+ 
+span.jr_title {
+    margin-left:5px;
+    font-weight:bold;
+    font-size: 1.2em;
+}    
+    
+/* ###################### RATING INDICATORS ###################### */
+/* rating stars common */
+.rating_star_user {width: 79px; background: url(images/rating_star_empty_alt.png) 0 0 repeat-x !important; margin-top: 3px; font-size: 1px;}
+.rating_star_user div { height: 14px; background: url(images/rating_star_green_alt.png) 0 0 repeat-x !important; font-size: 1px;}
+
+.rating_star_editor { width: 79px; background: url(images/rating_star_empty_alt.png) 0 0 repeat-x !important; margin-top: 3px; font-size: 1px;}
+.rating_star_editor div { height: 14px; background: url(images/rating_star_orange_alt.png) 0 0 repeat-x !important; font-size: 1px;}
+
+/* used in list and detail pages */
+table.rating_table td    {font-size:90%;}
+td.rating_label    {
+    font-weight:bold;
+    white-space:nowrap;
+    text-align:left;
+    padding: 2px 5px 2px 0;
+    }
+
+td.rating_value    {
+    font-weight:normal;
+    white-space:nowrap;
+    text-align:left;
+    padding: 2px 10px 2px 2px;
+    }
+    
+/*used in review form*/
+table.jr_ratingsTable td {
+    line-height: 2em;
+    text-align:left;
+    padding-right: 4px;
+}
+
+table.jr_ratingsTable td select {
+    width: auto !important;
+}
+
+/*************************************
+CUSTOM FIELDS PRESENTATION
+It is recommended that you attempt to align these styles with other form/field displays in your site
+*************************************/
+div.jr_customFields {margin-top:5px;} /*container for all custom field groups that appear with use of the {CUSTOMFIELDS} tag */
+
+div.fieldGroup { /* container div for individual field group */
+    padding-bottom: 0.5em; 
+    }
+    
+.fieldGroupTitle, h3.fieldGroupTitle {
+    display:none;
+    text-transform: uppercase; 
+    font-size: 9.5px; 
+    padding: 0 0 3px 0; 
+    margin-top: 0 !important;
+    margin-bottom: .3em; 
+    }
+    
+/****** table that contains custom fields values and labels ******/
+div.fieldGroup table.fieldGroupTable    {}
+
+div.fieldGroup table.fieldGroupTable td    {
+    padding: 0px .5em 2px 0; 
+    vertical-align: top; 
+    }
+
+table.fieldGroupTable td.fieldLabel { /*set width so that columns align even in different field groups */
+    padding-right: .5em; 
+    width: 9em; 
+    font-size: 10px; 
+    font-weight: bold; 
+    text-align:left;
+    white-space:nowrap;        
+    }
+    
+div.fieldGroup table.fieldGroupTable td.fieldValue {
+    font-size: 9.5px;}
+
+
+/*************************************
+ROUNDED CORNER BOX (OPTIONAL - USED FOR DEFAULT TEMPLATE ONLY)
+Tip: For visual consistency, you can use this in other areas of your site. These classes are purely for visual styling, and do not affect JReviews functionality.
+*************************************/
+.roundedPanel {} 
+
+.roundedPanel .box_upperOuter    {
+    background: url(images/box_upperOuter.gif) top right no-repeat; 
+    }
+    
+.roundedPanel .box_upperInner    {
+    background: url(images/box_upperInner.gif) top left no-repeat; 
+    padding: 5px 10px; 
+    }
+    
+.roundedPanel .box_lowerOuter    {
+    background: url(images/box_lowerOuter.gif) bottom right no-repeat; 
+    }
+
+.roundedPanel .box_lowerInner    {
+    background: url(images/box_lowerInner.gif) bottom left no-repeat; 
+    height: 6px; 
+    line-height: 10px; 
+    font-size: 1px; 
+    overflow:hidden}
+
+.roundedPanel h2 {
+    margin-bottom: 10px;
+    font-weight: bold !important; 
+    }
+
+.roundedPanel h2 a {
+    font-weight: bold !important; 
+    }
+
+/*************************************
+ROUNDED CORNER BOX, LIGHT GRAY (OPTIONAL - USED FOR DEFAULT TEMPLATE ONLY)
+Tip: For visual consistency, you can use this in other areas of your site. These classes are purely for visual styling, and do not affect JReviews functionality.
+*************************************/
+.roundedPanelLt    {
+    margin: 0 0 10px 0; 
+    } 
+    
+.roundedPanelLt .box_upperOuter    {
+    background: url(images/boxLt_upperOuter.gif) top right no-repeat; 
+    }
+
+.roundedPanelLt .box_upperInner    {
+    background: url(images/boxLt_upperInner.gif) top left no-repeat; 
+    padding: 5px 10px; 
+    }
+
+.roundedPanelLt .box_lowerOuter    {
+    background: url(images/boxLt_lowerOuter.gif) bottom right no-repeat; 
+    }
+
+.roundedPanelLt .box_lowerInner    {
+    background: url(images/boxLt_lowerInner.gif) bottom left no-repeat; 
+    height: 6px; 
+    line-height: 10px; 
+    font-size: 1px; 
+    overflow:hidden}
+
+.roundedPanelLt    h2 {
+    margin-bottom: 10px; 
+    }

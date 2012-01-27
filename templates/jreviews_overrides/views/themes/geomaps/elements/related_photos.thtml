@@ -1,0 +1,95 @@
+<?php
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+$related_photos = getRelatedThumb($listing['Listing']['listing_id']);
+if (count($related_photos)) {
+	$document =& JFactory::getDocument();
+	$document->addHeadLink($related_photos[0]->thumbnail, "image_src");
+}
+?>
+
+<div class="related-photos">
+    <ul>
+    <?php
+    $photocount="";
+	$listing_link = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'], JRequest::getString('catid'),1);
+	
+	?>
+    <?php foreach ($related_photos as $photo): ?>
+    <?php
+    $photocount++;
+	$spots="";
+	$parentSpots="";
+	$thisdate="";
+	
+	if ($photo->created) {
+		$thisdate = date("d/m/Y", strtotime($photo->created));
+	}
+	else
+		$thisdate = "";
+			
+	// RELATED SPOTS
+	$jr_catchanonymous = $CustomFields->fieldValue('jr_catchanonymous', $listing, false, false);
+	$jr_catchanonymous = $jr_catchanonymous[0];
+	if ($jr_catchanonymous=="ja")
+		$anon_location = 1;
+	else
+		$anon_location = "";
+					
+
+	if ($anon_location == "") {
+		if (JRequest::getString("catid") != 17 ) { // dont show the related SPOT for fish photos/videos
+			$spots = getRelatedList($listing['Listing']['listing_id'],array(3,4));
+			$parentSpots = getRelatedList($listing['Listing']['listing_id'],array(1,2,100));
+		}
+	}
+	?>
+    <li>
+    <a href="<?php echo $photo->image; ?>" rel="gallery" class="fancybox" title="<?php echo $photo->caption; ?>"><img src="<?php echo $photo->thumbnail; ?>" alt="<?php echo $photo->caption; ?>" class="vidthumb jomTips" title="<?php echo $photo->caption; ?>::<?php echo JText::_('Uploaded'); ?> <?php echo $thisdate; ?> by <?php echo $photo->username; ?>" /></a>
+    <span><?php echo '<div>'.$thisdate.'</div>';
+	__t("by"); echo ' '.$photo->username; ?><br />
+	<a class="spot-title" href="<?php echo $listing_link; ?>"><div><?php echo $listing['Listing']['title']; ?></div></a>
+
+    </span>
+    </li>
+    
+    <?php endforeach; ?>
+    
+    <?php if ($spots) : ?>
+		<?php $spotcount= 0; foreach ($spots as $spot) : ?>
+		<?php
+		$spotlink = ContentHelperRoute::getArticleRoute($spot->id,$spot->catid,1);
+		if ($spot->title) $spottitle=$spot->title; else $spottitle="";
+		
+		$parentSpots = getRelatedList($spot->id,array(1,2,100));
+		
+		$spot_photos = getRelatedThumb($spot->id);
+		foreach ($spot_photos as $photo):
+		
+		if ($photo->created) {
+			$thisdate = date("d/m/Y", strtotime($photo->created));
+		}
+		else
+			$thisdate = "";
+		?>
+			<li>
+			<a href="<?php echo $photo->image; ?>" rel="gallery" class="fancybox" title="<?php echo $photo->caption; ?>"><img src="<?php echo $photo->thumbnail; ?>" alt="<?php echo $photo->caption; ?>" class="vidthumb jomTips" title="<?php echo $photo->caption; ?>::<?php echo JText::_('Uploaded'); ?> <?php echo $thisdate; ?> by <?php echo $photo->username; ?>" /></a>
+			<span><?php echo '<div>'.$thisdate.'</div>';
+			__t("by"); echo ' '.$photo->username; ?><br />
+			<a class="spot-title" href="<?php echo $spotlink; ?>"><div><?php echo $spottitle; ?></div>
+			<?php 
+			if (isset($parentSpots))
+				foreach ($parentSpots as $parentSpot)
+					echo ' @ '.$parentSpot->title.'';
+			?>
+			</a>
+			</span>
+			</li>
+		<?php endforeach; ?>
+		<?php $spotcount++; endforeach; ?>
+	<?php endif; ?>
+	
+    <div class="clear"></div>
+    </ul>
+    <div class="clear"></div>
+</div>

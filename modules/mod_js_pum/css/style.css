@@ -1,0 +1,23 @@
+#pum_main{width:99%;}
+#pum_main div.pum_case{float:left;border:1px solid #CCC;margin:1px;overflow:hidden;}
+#pum_main div.pum_avatar{float:left;margin:0;text-align:left;width:30%;}
+#pum_main div.pum_avatar_spac{margin:0; padding:3px;}
+#pum_main div.pum_user_info{float:left;margin: 0;padding:0;text-align:left;width:70%;position:relative;}
+div.pum_case div.pum_user_name{padding:5px;width:auto;}
+div.pum_user_name span{/*display:block;*/}
+div.pum_user_name span.pum_friends{padding:3px 0;}
+/*div#pum_main a.pum_button:link, div#pum_main a.pum_button:visited {background: url(../images/add.png) no-repeat left center;display:block;margin:0;padding:4px 0 4px 20px;text-decoration:none;float:left;}
+div#pum_main a.pum_button:hover, div#pum_main a.pum_button:focus,div#pum_main a.pum_button:active {background: url(../images/add.png) no-repeat left center;display:block;margin:0;padding:4px 0 4px 20px;text-decoration:none;float:left;}*/
+
+div#pum_main a.pum_button:link, div#pum_main a.pum_button:visited {display:block;margin:0;text-decoration:none;float:left;}
+div#pum_main a.pum_button:hover, div#pum_main a.pum_button:focus,div#pum_main a.pum_button:active {display:block;margin:0;text-decoration:none;float:left;}
+
+div.pum_user_info input.pum_but {background:url(../images/fbcross.gif) no-repeat center center;border:medium none;color:#0B3768;cursor:pointer;display:block;font-size:0;height:16px;line-height:0;margin:0;padding:0;position:absolute;right:0;text-indent:-5000px;top:0;width:11px;z-index:10;}
+/*div#pum_main a:link, div#pum_main a.pum_link:visited{background:none;padding:0;text-decoration:none;}*/
+div#pum_main a:link, div#pum_main a.pum_link:visited{padding:0;text-decoration:none;}
+div#pum_main a.pum_link:hover, div#pum_main a.pum_link:focus, div#pum_main a.pum_link:active{background:none;padding:0;text-decoration:none;}
+div#pum_main a:link, div#pum_main a:visited{color:#006699;}
+div#pum_main a:hover, div#pum_main a:focus, div#pum_main a:active{color:#000;}
+
+span.mf_chaton a{background:url(../images/green.gif) no-repeat 3px 7px;display:block;margin:0; padding:3px 0 0 15px ;text-decoration:none;}
+span.mf_chatoff a{background:url(../images/offline.jpg) no-repeat 3px 7px;display:block;margin:0; padding:3px 0 0 15px ;text-decoration:none;}

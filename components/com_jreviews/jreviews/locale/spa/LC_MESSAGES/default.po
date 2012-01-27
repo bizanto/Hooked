@@ -1,0 +1,2187 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jReviews 2.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-04 11:21-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: ClickFWD <support@reviewsforjoomla.com>\n"
+"Language-Team: ClickFWD\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: f:\\components\\\n"
+"X-Poedit-KeywordsList: __t\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SearchPath-0: com_jreviews\\jreviews\\views\n"
+"X-Poedit-SearchPath-1: com_jreviews\\jreviews\\controllers\n"
+"X-Poedit-SearchPath-2: com_jreviews\\jreviews\\models\n"
+"X-Poedit-SearchPath-3: com_s2framework\\s2framework\\libs\\view\n"
+"X-Poedit-SearchPath-4: com_jreviews\\jreviews\\plugins\n"
+"X-Poedit-SearchPath-5: com_jreviews_addons\\geomaps\\views\n"
+"X-Poedit-SearchPath-6: com_jreviews_addons\\geomaps\\controllers\n"
+"X-Poedit-SearchPath-7: com_jreviews_addons\\geomaps\\plugins\n"
+"X-Poedit-SearchPath-8: com_jreviews_addons\\paidlistings\\views\n"
+"X-Poedit-SearchPath-9: com_jreviews_addons\\paidlistings\\plugins\n"
+"X-Poedit-SearchPath-10: com_jreviews_addons\\paidlistings\\controllers\n"
+
+#: com_jreviews\jreviews\views/helpers/assets.php:138
+msgid "Compare All"
+msgstr "Comparar Todos"
+
+#: com_jreviews\jreviews\views/helpers/assets.php:139
+msgid "Remove All"
+msgstr "Borrar Lista"
+
+#: com_jreviews\jreviews\views/helpers/assets.php:140
+msgid "You need to select more than one listing for comparison!"
+msgstr "Debes seleccionar más de un listado para comparar!"
+
+#: com_jreviews\jreviews\views/helpers/assets.php:220
+#: com_jreviews\jreviews\views/helpers/assets.php:365
+#: com_jreviews\jreviews\views/helpers/assets.php:408
+msgid "Publish to Facebook"
+msgstr "Publicar a Facebook"
+
+#: com_jreviews\jreviews\views/helpers/community.php:50
+msgid "Guest"
+msgstr "Invitado"
+
+#: com_jreviews\jreviews\views/helpers/custom_fields.php:439
+msgid "*"
+msgstr "*"
+
+#: com_jreviews\jreviews\views/helpers/custom_fields.php:472
+#: com_jreviews\jreviews\views/helpers/custom_fields.php:650
+msgid "Submit"
+msgstr "Enviar"
+
+#: com_jreviews\jreviews\views/helpers/custom_fields.php:503
+#: com_jreviews\jreviews\views/helpers/custom_fields.php:681
+msgid "between"
+msgstr "entre"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:26
+msgid "Featured"
+msgstr "Patrocinados"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:27
+msgid "Title"
+msgstr "Título"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:30
+#: com_jreviews\jreviews\views/helpers/jreviews.php:101
+#: com_jreviews\jreviews\views/helpers/jreviews.php:134
+msgid "Most recent"
+msgstr "Más recientes"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:32
+msgid "Most popular"
+msgstr "Más populares"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:34
+#: com_jreviews\jreviews\views/helpers/jreviews.php:103
+msgid "Highest user rating"
+msgstr "Mejor puntuación de usuarios"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:35
+#: com_jreviews\jreviews\views/helpers/jreviews.php:104
+msgid "Lowest user rating"
+msgstr "Peor puntuación de usuarios"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:36
+msgid "Highest editor rating"
+msgstr "Mejor puntuación del editor"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:37
+msgid "Lowest editor rating"
+msgstr "Peor puntuación del editor"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:38
+msgid "Most reviews"
+msgstr "Más comentados"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:39
+msgid "Author"
+msgstr "Autor"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:60
+msgid "Distance"
+msgstr "Distance"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:80
+msgid "ASC"
+msgstr "ASC"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:81
+msgid "DESC"
+msgstr "DESC"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:102
+#: com_jreviews\jreviews\views/helpers/jreviews.php:133
+msgid "Oldest"
+msgstr "Antiguo"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:105
+msgid "Most helpful"
+msgstr "Más útiles"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:106
+msgid "Least helpful"
+msgstr "Menos útiles"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:181
+msgid "#1 Reviewer"
+msgstr "#1 Votante"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:182
+msgid "Top 10 Reviewer"
+msgstr "Top 10 Votantes"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:183
+msgid "Top 50 Reviewer"
+msgstr "Top 50 Votante"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:184
+msgid "Top 100 Reviewer"
+msgstr "Top 100 Votantes"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:185
+msgid "Top 500 Reviewer"
+msgstr "Top 500 Votante"
+
+#: com_jreviews\jreviews\views/helpers/jreviews.php:186
+msgid "Top 1000 Reviewer"
+msgstr "Top 1000 Votante"
+
+#: com_jreviews\jreviews\views/helpers/paginator.php:103
+#: com_jreviews\jreviews\views/helpers/paginator.php:106
+msgid "&laquo; Previous"
+msgstr "&laquo; Previo"
+
+#: com_jreviews\jreviews\views/helpers/paginator.php:144
+#: com_jreviews\jreviews\views/helpers/paginator.php:150
+#, php-format
+msgid "Go to page %s"
+msgstr "Ir a la pagina %s"
+
+#: com_jreviews\jreviews\views/helpers/paginator.php:145
+#: com_jreviews\jreviews\views/helpers/paginator.php:151
+#, php-format
+msgid "Go to page %s of %s"
+msgstr "Ir a la pagina %s of %s"
+
+#: com_jreviews\jreviews\views/helpers/paginator.php:170
+#: com_jreviews\jreviews\views/helpers/paginator.php:174
+msgid "Next &raquo;"
+msgstr "Siguiente &raquo;"
+
+#: com_jreviews\jreviews\views/helpers/paginator.php:265
+#: com_jreviews\jreviews\views/helpers/paginator.php:291
+msgid "Results per page"
+msgstr "Resultados por página"
+
+#: com_jreviews\jreviews\views/helpers/rating.php:31
+msgid "No rating"
+msgstr "Sin puntuación"
+
+#: com_jreviews\jreviews\views/helpers/rating.php:82
+msgid "Not rated"
+msgstr "No votado"
+
+#: com_jreviews\jreviews\views/helpers/rating.php:82
+msgid "N/A"
+msgstr "N/D"
+
+#: com_jreviews\jreviews\views/helpers/routes.php:73
+#: com_jreviews\jreviews\views/helpers/routes.php:101
+#: com_jreviews\jreviews\views/helpers/routes.php:103
+#: com_jreviews\jreviews\views/helpers/routes.php:105
+#: com_jreviews\jreviews\views/helpers/routes.php:136
+#: com_jreviews\jreviews\views/helpers/routes.php:181
+#: com_jreviews\jreviews\views/helpers/routes.php:240
+#: com_jreviews\jreviews\views/helpers/routes.php:319
+#: com_jreviews\jreviews\views/helpers/routes.php:320
+#: com_jreviews\jreviews\views/helpers/routes.php:467
+#: com_jreviews\jreviews\views/helpers/routes.php:478
+#: com_jreviews\jreviews\views/helpers/routes.php:490
+#: com_jreviews\jreviews\views/helpers/routes.php:492
+msgid "and"
+msgstr "y"
+
+#: com_jreviews\jreviews\views/helpers/routes.php:278
+#: com_jreviews\jreviews\views/helpers/routes.php:292
+#, php-format
+msgid "%s listing feeds"
+msgstr "Feeds de artículos para %s"
+
+#: com_jreviews\jreviews\views/helpers/routes.php:351
+msgid "Edit review"
+msgstr "Editar opinión"
+
+#: com_jreviews\jreviews\views/helpers/routes.php:459
+#: com_jreviews\jreviews\views/helpers/routes.php:470
+#: com_jreviews\jreviews\views/helpers/routes.php:481
+#: com_jreviews\jreviews\views/helpers/routes.php:497
+#, php-format
+msgid "%s review feeds"
+msgstr "Feeds de opiniones para %s"
+
+#: com_jreviews\jreviews\controllers/categories_controller.php:421
+#, php-format
+msgid "Listings by %s"
+msgstr "Listings by %s"
+
+#: com_jreviews\jreviews\controllers/categories_controller.php:439
+#, php-format
+msgid "Favorites by %s"
+msgstr "Favoritos por %s"
+
+#: com_jreviews\jreviews\controllers/categories_controller.php:490
+#: com_jreviews\jreviews\controllers/categories_controller.php:500
+#, php-format
+msgid "ordered by %s"
+msgstr "ordenado por %s"
+
+#: com_jreviews\jreviews\controllers/categories_controller.php:496
+#, php-format
+msgid "ordered by %s desc"
+msgstr "ordenado por %s desc"
+
+#: com_jreviews\jreviews\controllers/categories_controller.php:569
+msgid "No listings selected for comparison."
+msgstr "No seleccionaste ningún listado para comparar."
+
+#: com_jreviews\jreviews\controllers/claims_controller.php:94
+msgid "Your claim was submitted, thank you."
+msgstr "Tu solicitud fue enviada, gracias."
+
+#: com_jreviews\jreviews\controllers/claims_controller.php:106
+msgid "The message is empty."
+msgstr "El mensaje esta vacío."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:61
+msgid "The comment has been removed."
+msgstr "El comentario fue eliminado."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:65
+msgid "There was a problem removing the comment."
+msgstr "No se pudo eliminar el comentario."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:87
+msgid "The comment was not found"
+msgstr "No se encontro el comentario."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:116
+msgid "Your comment has been updated."
+msgstr "El comentario fue actualizado."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:123
+msgid "There was an error saving the comment."
+msgstr "No se pudo salvar el comentario."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:146
+msgid "You are not allowed to submit comments."
+msgstr "No tienes permiso para enviar comentarios."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:150
+#: com_jreviews\jreviews\controllers/listings_controller.php:1009
+#: com_jreviews\jreviews\controllers/reviews_controller.php:255
+msgid "You must fill in your name."
+msgstr "Introduzca su nombre."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:152
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:59
+#: com_jreviews\jreviews\controllers/listings_controller.php:1010
+#: com_jreviews\jreviews\controllers/reviews_controller.php:256
+msgid "You must fill in a valid email address."
+msgstr "Introduzca su dirección de correo válida."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:154
+#: com_jreviews\jreviews\controllers/listings_controller.php:1063
+#: com_jreviews\jreviews\controllers/reviews_controller.php:280
+msgid "You must fill in your comment."
+msgstr "Favor llenar su comentario."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:161
+#: com_jreviews\jreviews\controllers/discussions_controller.php:171
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:66
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:76
+#: com_jreviews\jreviews\controllers/listings_controller.php:1076
+#: com_jreviews\jreviews\controllers/listings_controller.php:1087
+#: com_jreviews\jreviews\controllers/reviews_controller.php:287
+#: com_jreviews\jreviews\controllers/reviews_controller.php:297
+msgid "The security code you entered was invalid."
+msgstr "El código de seguridad introducido no es válido."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:165
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:70
+#: com_jreviews\jreviews\controllers/listings_controller.php:1081
+#: com_jreviews\jreviews\controllers/reviews_controller.php:291
+msgid "You must fill in the security code."
+msgstr "Debe introducir el código de seguridad."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:212
+#: com_jreviews\jreviews\controllers/listings_controller.php:1278
+#: com_jreviews\jreviews\controllers/reviews_controller.php:344
+msgid "Thank you for your submission. It will be published once it is verified."
+msgstr "Gracias por darnos su opinión. Su comentario sera publicado luego de un proceso de verificación."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:230
+#: com_jreviews\jreviews\controllers/listings_controller.php:1265
+#: com_jreviews\jreviews\controllers/reviews_controller.php:396
+msgid "Thank you for your submission."
+msgstr "Gracias por darnos su opinión."
+
+#: com_jreviews\jreviews\controllers/discussions_controller.php:279
+msgid "Latest comments"
+msgstr "Ultimos comentarios"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:34
+#, php-format
+msgid "submitted a new listing titled %s"
+msgstr "contribuyó un nuevo listado titulado %s"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:35
+#, php-format
+msgid "wrote a review for %s"
+msgstr "escribió una opinión sobre %"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:36
+msgid "posted a new comment"
+msgstr "escribió un comentario nuevo"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:37
+#, php-format
+msgid "liked this review for %s"
+msgstr "consideró útil esta opinión sobre %"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:118
+#: com_jreviews\jreviews\controllers/facebook_controller.php:210
+#: com_jreviews\jreviews\controllers/facebook_controller.php:302
+msgid "Website"
+msgstr "Website"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:132
+msgid "Read more"
+msgstr "Leer más"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:211
+#: com_jreviews\jreviews\controllers/facebook_controller.php:303
+msgid "Rating"
+msgstr "Puntuación"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:211
+#: com_jreviews\jreviews\controllers/facebook_controller.php:303
+#, php-format
+msgid "%s stars"
+msgstr "%s estrellas"
+
+#: com_jreviews\jreviews\controllers/facebook_controller.php:225
+#: com_jreviews\jreviews\controllers/facebook_controller.php:317
+msgid "Read review"
+msgstr "Leer opinión"
+
+#: com_jreviews\jreviews\controllers/field_options_controller.php:40
+msgid "The field is empty."
+msgstr "El campo está vacío."
+
+#: com_jreviews\jreviews\controllers/field_options_controller.php:63
+#, php-format
+msgid "%s already exists"
+msgstr "%s ya existe"
+
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:180
+#, php-format
+msgid "New inquiry for: %s"
+msgstr "New inquiry for: %s"
+
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:181
+#, php-format
+msgid "From: %s"
+msgstr "From: %s"
+
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:182
+#, php-format
+msgid "Email: %s"
+msgstr "Email: %s"
+
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:184
+#, php-format
+msgid "Listing: %s"
+msgstr "Listing: %s"
+
+#: com_jreviews\jreviews\controllers/inquiry_controller.php:185
+#, php-format
+msgid "Listing link: %s"
+msgstr "Listing link: %s"
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:578
+msgid "The main image was successfully changed."
+msgstr "La imagen principal ha sido actualizada."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:652
+msgid "The listing has been removed."
+msgstr "El listado ha sido eliminado."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:864
+msgid "The category selected is invalid."
+msgstr "La categoría seleccionada no es válida"
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:877
+msgid "You are not allowed to submit listings in this category."
+msgstr "No tienes permiso de enviar listados en esta categoría"
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:979
+msgid "A listing with that title already exists."
+msgstr "Un listado con este título ya existe."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1002
+msgid "You need to select both a section and a category."
+msgstr "Hay que seleccionar sección y categoría."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1019
+msgid "You must fill in a title for the new listing."
+msgstr "Introduzca un título para el nuevo listado."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1024
+msgid "You must fill in a summary for the new listing."
+msgstr "Introduzca un resumen para el nuevo listado."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1025
+msgid "You must fill in a description for the new listing."
+msgstr "Introduzca una descripción para el nuevo listado."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1040
+#: com_jreviews\jreviews\controllers/reviews_controller.php:257
+msgid "You must fill in a title for the review."
+msgstr "Debe introducir un título para su opinión."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1055
+#: com_jreviews\jreviews\controllers/reviews_controller.php:273
+#, php-format
+msgid "You are missing a rating in %s criteria."
+msgstr "Ha olvidado votar el criterio %s ."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1165
+#, php-format
+msgid "The total number of images is limited to %s"
+msgstr "El número total de imágenes esta limitado a %s"
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1201
+msgid "The was a problem saving the listing"
+msgstr "The was a problem saving the listing"
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1265
+msgid "The listing was successfully saved."
+msgstr "El listado fue enviado exitósamente."
+
+#: com_jreviews\jreviews\controllers/listings_controller.php:1266
+msgid "Click here to view the listing"
+msgstr "Haz click aquí para ver el listado"
+
+#: com_jreviews\jreviews\controllers/my_controller.php:90
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: com_jreviews\jreviews\controllers/owner_replies_controller.php:120
+msgid "A reply for this review already exists."
+msgstr "Ya existe una respuesta para esta opinión."
+
+#: com_jreviews\jreviews\controllers/owner_replies_controller.php:137
+msgid "Your reply was submitted and has been approved."
+msgstr "Tu respuesta fue enviada y fue aprobada."
+
+#: com_jreviews\jreviews\controllers/owner_replies_controller.php:139
+msgid "Your reply was submitted and will be published once it is verified."
+msgstr "Tu respuesta fue enviada y será publicada una vez la misma sea revisada."
+
+#: com_jreviews\jreviews\controllers/owner_replies_controller.php:155
+msgid "The reply is empty."
+msgstr "Favor escribir una respuesta."
+
+#: com_jreviews\jreviews\controllers/related_fields_controller.php:17
+#: com_jreviews\jreviews\controllers/related_fields_controller.php:32
+msgid "Select"
+msgstr "Seleccione"
+
+#: com_jreviews\jreviews\controllers/reports_controller.php:98
+msgid "Your report was submitted, thank you."
+msgstr "Su listado ha sido enviado, gracias."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:168
+msgid "You are not allowed to review your own listing."
+msgstr "No puedes opinar sobre tu listado."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:199
+#: com_jreviews\jreviews\controllers/reviews_controller.php:251
+msgid "You already submitted a review."
+msgstr "Ya enviaste una opinión."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:412
+msgid "Your changes were saved."
+msgstr "Sus cambios han sido guardados."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:422
+msgid "Thank you for your submission. Refresh the page to see your review."
+msgstr "Gracias por tu contribución. Refresca la página para ver tu opinión."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:436
+msgid "Your changes were saved, refresh the page to see them."
+msgstr "Los cambios fueron salvados, refresca la página para verlos."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:499
+msgid "Latest user reviews"
+msgstr "Ultimas opiniones de usuarios"
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:503
+msgid "Latest editor reviews"
+msgstr "Ultimas opiniones de editores"
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:506
+msgid "Latest reviews"
+msgstr "Ultimas opiniones"
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:516
+#: com_jreviews\jreviews\controllers/reviews_controller.php:595
+msgid "No reviews were found."
+msgstr "No se ha encontrado ninguna opinion."
+
+#: com_jreviews\jreviews\controllers/reviews_controller.php:604
+#, php-format
+msgid "Reviews written by %s"
+msgstr "Comentarios escritos por %s"
+
+#: com_jreviews\jreviews\controllers/votes_controller.php:94
+msgid "You already voted."
+msgstr "Usted ya ha votado."
+
+#: com_jreviews\jreviews\controllers/votes_controller.php:103
+msgid "Thank you for your vote."
+msgstr "Gracias por votar"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:130
+msgid "New listing"
+msgstr "Nuevo Listado"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:130
+msgid "Edited listing"
+msgstr "Listado editado"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:176
+#, php-format
+msgid "New listing: %s"
+msgstr "Nuevo listado: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:176
+#, php-format
+msgid "Edited listing: %s"
+msgstr "Listado editado: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:246
+#: com_jreviews\jreviews\controllers/components/notifications.php:294
+#: com_jreviews\jreviews\controllers/components/notifications.php:338
+#, php-format
+msgid "New review: %s"
+msgstr "Nueva opinión: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:246
+#: com_jreviews\jreviews\controllers/components/notifications.php:294
+#: com_jreviews\jreviews\controllers/components/notifications.php:338
+#, php-format
+msgid "Edited review: %s"
+msgstr "Opinión editada: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:389
+#, php-format
+msgid "Owner review reply submitted for listing %s"
+msgstr "Respuesta a opinión enviada para el listado %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:450
+msgid "A new report has been submitted"
+msgstr "Se ha recibido un nuevo reporte"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:511
+#, php-format
+msgid "New comment for review: %s"
+msgstr "Nuevo comentario para la opinion: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:513
+#, php-format
+msgid "Edited comment for review: %s"
+msgstr "Comentario editado para la opinion: %s"
+
+#: com_jreviews\jreviews\controllers/components/notifications.php:566
+#, php-format
+msgid "Listing claim submitted for %s"
+msgstr "Se ha recibido un nuevo reclamo para el listado %s"
+
+#: com_jreviews\jreviews\controllers/components/uploads.php:89
+#, php-format
+msgid "is %s Kb."
+msgstr "son %s Kb."
+
+#: com_jreviews\jreviews\controllers/components/uploads.php:90
+msgid "Some files exceed the allowed size, please correct this and resubmit the form:"
+msgstr "Algunos archivos exceden el tamaño permitido. Por favor corríjalos e inténtelo de nuevo:"
+
+#: com_jreviews\jreviews\controllers/components/uploads.php:97
+#, php-format
+msgid "%s is not an image file."
+msgstr "%s no es una imagen."
+
+#: com_jreviews\jreviews\controllers/components/uploads.php:98
+msgid "Some files are not images, please correct this and resubmit the form:"
+msgstr "Algunos archivos no son imágenes. Por favor corríjalos e inténtelo de nuevo:"
+
+#: com_jreviews\jreviews\controllers/components/uploads.php:108
+msgid "Possible file upload attack."
+msgstr "Posible ataque subiendo un archivo."
+
+#: com_jreviews\jreviews\models/category.php:142
+msgid "Select Category"
+msgstr "Seleccione categoría"
+
+#: com_jreviews\jreviews\models/field.php:1185
+#, php-format
+msgid "You must fill in a valid value for %s."
+msgstr "Debe introducir un valor válido para %s."
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_bookmarks.php:74
+msgid "BOOKMARKS_TAG"
+msgstr "Website"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_catalog.php:78
+msgid "JXCATALOG_TAG"
+msgstr "Catalog"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_community_access.php:116
+msgid "JOMSOCIAL_TAG"
+msgstr "Usuario"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_comprofiler.php:148
+msgid "COMMUNITY_BUILDER_TAG"
+msgstr "Miembro"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_content.php:127
+msgid "Listing"
+msgstr "Listado"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_eventlist_event.php:78
+msgid "EVENTLIST_EVENT_TAG"
+msgstr "Evento"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_eventlist_venue.php:74
+msgid "EVENTLIST_VENUE_TAG"
+msgstr "Local"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_ezrealty_profile.php:105
+msgid "EZREALTY_PROFILE_TAG"
+msgstr "Perfil"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_ezrealty_property.php:98
+msgid "EZREALTY_PROPERTY_TAG"
+msgstr "Propiedad"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_hotproperty.php:91
+msgid "HOTPROPERTY_TAG"
+msgstr "Propiedad"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_jomres.php:68
+msgid "JOMRES_TAG"
+msgstr "Hotel"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_joomgallery.php:74
+msgid "JOOMGALLERY_TAG"
+msgstr "Galería"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_k2.php:82
+msgid "K2_TAG"
+msgstr "k2"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_mtree.php:84
+msgid "MTREE_TAG"
+msgstr "Listado"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_myblog.php:81
+msgid "MYBLOG_TAG"
+msgstr "Blog"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_resman.php:72
+msgid "RESMAN_TAG"
+msgstr "Property"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_resource.php:87
+msgid "RESOURCE_TAG"
+msgstr "Listado"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_sobi2.php:90
+msgid "SOBI2_TAG"
+msgstr "Negocio"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_virtuemart.php:77
+msgid "VIRTUEMART_TAG"
+msgstr "Producto"
+
+#: com_jreviews\jreviews\models/everywhere/everywhere_com_zoo.php:85
+msgid "ZOO_TAG"
+msgstr "Listing"
+
+#: com_jreviews\jreviews\models/everywhere/_everywhere_com_seyret.php:69
+msgid "SEYRET_TAG"
+msgstr "Video"
+
+#: com_s2framework\s2framework\libs\view/helpers/time.php:79
+msgid "%B %d, %Y"
+msgstr "%d %B , %Y"
+
+#: com_s2framework\s2framework\libs\view/helpers/time.php:105
+msgid "%b %d, %Y"
+msgstr "%d %b, %Y"
+
+#: com_s2framework\s2framework\libs\view/helpers/time.php:429
+#, php-format
+msgid "on %s"
+msgstr "en %s"
+
+#: com_s2framework\s2framework\libs\view/helpers/time.php:463
+#, php-format
+msgid "%s ago"
+msgstr "hace %s"
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:39
+#, php-format
+msgid "{actor} added new listing %1$s in %2$s."
+msgstr "{actor} añadió un nuevo listado %1$s in %2$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:40
+#, php-format
+msgid "{actor} updated listing %1$s."
+msgstr "{actor} actualizó el listado %1$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:41
+#, php-format
+msgid "{actor} reviewed %1$s."
+msgstr "{actor} escribió su opinión sobre %1$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:42
+#, php-format
+msgid "{actor} updated review for %1$s."
+msgstr "{actor} actualizó su opinión sobre %1$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:43
+#, php-format
+msgid "{actor} added %1$s to favorites."
+msgstr "{actor} añadió %1$s a sus favoritos."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:44
+#, php-format
+msgid "{actor} removed %1$s from favorites."
+msgstr "{actor} eliminó %1$s de sus favoritos."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:45
+#, php-format
+msgid "{actor} voted as helpful a review, %1$s, written by %2$s."
+msgstr "A {actor} le pareció útil la opinión, %1$s, escrita por %2$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:46
+#, php-format
+msgid "{actor} voted as not helpful a review, %1$s, written by %2$s."
+msgstr "A {actor} no le pareció útil a opinión, %1$s, escrita por %2$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:47
+#, php-format
+msgid "{actor} commented on a %1$s for %2$s."
+msgstr "{actor} escribió un comentario para la %1$s en %2$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:48
+#, php-format
+msgid "{actor} updated comment on a %1$s for %2$s."
+msgstr "{actor} actualizó su comentario para la %1$s en %2$s."
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:82
+msgid "A guest"
+msgstr "Una persona"
+
+#: com_jreviews\jreviews\plugins/jomsocial.php:172
+#: com_jreviews\jreviews\plugins/twitter.php:164
+msgid "review"
+msgstr "opinión"
+
+#: com_jreviews_addons\geomaps\controllers/modules/module_geomaps_controller.php:88
+#, fuzzy
+msgid "You selected the Custom Center mode, but did not specify the coordinates."
+msgstr "You selected the Custom Center mode, but did not specify the coordintes."
+
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:108
+msgid "Miles"
+msgstr "Miles"
+
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:108
+msgid "Km"
+msgstr "Km"
+
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:188
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:203
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:279
+msgid "Map it"
+msgstr "Map it"
+
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:189
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:203
+#: com_jreviews_addons\geomaps\plugins/geomaps.php:279
+msgid "Clear LatLng"
+msgstr "Clear LatLng"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:18
+msgid "Days"
+msgstr "Días"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:19
+msgid "Weeks"
+msgstr "Semanas"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:20
+msgid "Months"
+msgstr "Meses"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:21
+msgid "Years"
+msgstr "Años"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:22
+msgid "Never Expires"
+msgstr "No vence"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:29
+msgid "Incomplete"
+msgstr "Incompleta"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:30
+msgid "Pending"
+msgstr "Pendiente"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:31
+msgid "Processing"
+msgstr "Procesando"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:32
+msgid "Complete"
+msgstr "Completada"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:33
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:34
+msgid "Fraud"
+msgstr "Fraude"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:35
+msgid "Failed"
+msgstr "Fallido"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:42
+msgid "One Time Payment"
+msgstr "Pago único"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:43
+msgid "Subscription"
+msgstr "Suscripción"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:44
+msgid "Free or Trial"
+msgstr "De prueba o grátis"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:51
+msgid "New Listing"
+msgstr "Nuevo listado"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid.php:52
+msgid "Upgrade Listing"
+msgstr "Añadir Opciones"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid_routes.php:165
+#: com_jreviews_addons\paidlistings\views/helpers/paid_routes.php:171
+msgid "Order Upgrade"
+msgstr "Ordernar Más Opciones"
+
+#: com_jreviews_addons\paidlistings\views/helpers/paid_routes.php:188
+msgid "Order Plan"
+msgstr "Ordernar Plan"
+
+#: com_jreviews_addons\paidlistings\plugins/paid_listings.php:558
+msgid "Order renewal set."
+msgstr "Fecha de renovación fue fijada."
+
+#: com_jreviews_addons\paidlistings\plugins/paid_listings.php:571
+msgid "Order processing error."
+msgstr "Error de procesamiento de la orden."
+
+#: com_jreviews_addons\paidlistings\plugins/paid_listings.php:647
+#, php-format
+msgid "Listing expiration: %s"
+msgstr "Fecha expiración: %s"
+
+#: com_jreviews_addons\paidlistings\plugins/paid_listings.php:648
+#: com_jreviews_addons\paidlistings\plugins/paid_listings.php:690
+#, php-format
+msgid "Listing state: %s"
+msgstr "Estado: %s"
+
+#: com_jreviews_addons\paidlistings\controllers/paidlistings_plans_controller.php:51
+#, php-format
+msgid "Plans for %s"
+msgstr "Planes para %s"
+
+#: com_jreviews_addons\paidlistings\controllers/components/handler_authorize_net.php:132
+msgid "Transaction invalid"
+msgstr "Transacción inválida"
+
+#: com_jreviews_addons\paidlistings\controllers/components/handler_authorize_net.php:133
+msgid "We have detected an invalid attempt to bypass the payment system. If you feel this is mistake please contact us."
+msgstr "Se ha detectado un intento de evasión del pago. Si crees que esto es un error favor ponerse en contacto con nosotros."
+
+#: com_jreviews_addons\paidlistings\controllers/components/handler_paypal.php:303
+msgid "New subscription"
+msgstr "Nueva suscripción"
+
+#: com_jreviews_addons\paidlistings\controllers/components/paidlistings_notifications.php:220
+msgid "Never"
+msgstr "Nunca"
+
+#: com_jreviews\jreviews\views/admin/themes/default/categories/index.thtml:98
+#: com_jreviews\jreviews\views/admin/themes/default/categories/index_j16.thtml:101
+#, php-format
+msgid "%1$s results - showing %2$s - %3$s"
+msgstr "%1$s resultados - mostrando %2$s - %3$s"
+
+#: com_jreviews\jreviews\views/admin/themes/default/listings/create_form.thtml:35
+msgid "Title Alias"
+msgstr "Alias del título"
+
+#: com_jreviews\jreviews\views/admin/themes/default/listings/create_form.thtml:108
+msgid "Delete"
+msgstr "Borrar"
+
+#: com_jreviews\jreviews\views/admin/themes/default/listings/create_form.thtml:108
+msgid "Are you sure you want to delete this image?"
+msgstr "Esta seguro que desea borrar esta imagen?"
+
+#: com_jreviews\jreviews\views/admin/themes/default/owner_replies/moderation.thtml:34
+#: com_jreviews\jreviews\views/admin/themes/default/owner_replies/moderation.thtml:35
+#: com_jreviews\jreviews\views/admin/themes/default/reports/reports.thtml:67
+#: com_jreviews\jreviews\views/admin/themes/default/reports/reports.thtml:68
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/moderation_review.thtml:51
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/moderation_review.thtml:52
+msgid "Editor rating"
+msgstr "Puntuación del editor"
+
+#: com_jreviews\jreviews\views/admin/themes/default/owner_replies/moderation.thtml:37
+#: com_jreviews\jreviews\views/admin/themes/default/owner_replies/moderation.thtml:38
+#: com_jreviews\jreviews\views/admin/themes/default/reports/reports.thtml:70
+#: com_jreviews\jreviews\views/admin/themes/default/reports/reports.thtml:71
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/moderation_review.thtml:54
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/moderation_review.thtml:55
+msgid "User rating"
+msgstr "Puntuación del usuario"
+
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/create.thtml:24
+msgid "Reviewer"
+msgstr "Votante"
+
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/create.thtml:26
+msgid "You can change the author of this review. Start typing the reviewer's name to see a list of suggestions."
+msgstr "Puedes cambiar el autor de esta opinion. Comienza a escribir el nombre del nuevo autor para ver una lista de sugerencias."
+
+#: com_jreviews\jreviews\views/admin/themes/default/reviews/create.thtml:62
+msgid "Rate it"
+msgstr "Opinar"
+
+#: com_jreviews\jreviews\views/themes/default/claims/create.thtml:3
+msgid "Please provide some information that will allow us to verify your ownership claim"
+msgstr "Favor incluir alguna información que permita verificar su reclamo"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:43
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:43
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myreviews.thtml:43
+msgid "No entries were found"
+msgstr "No se ha encontrado ninguna entrada"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:111
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:111
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:89
+msgid "New"
+msgstr "Nuevo"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:114
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:114
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:92
+msgid "Hot"
+msgstr "Reciente"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:128
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:128
+msgid "User reviews"
+msgstr "Comentarios de los usuarios"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:134
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:134
+msgid "Category"
+msgstr "Categoría"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:169
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myfavorites.thtml:177
+msgid "View all my favorites"
+msgstr "Ver todos mis favoritos"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:169
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_mylistings.thtml:177
+msgid "View all my listings"
+msgstr "Ver todos mis artículos"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myreviews.thtml:126
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:135
+msgid "Reviewed by"
+msgstr "Opinión de"
+
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myreviews.thtml:160
+#: com_jreviews\jreviews\views/themes/default/community_plugins/community_myreviews.thtml:168
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:144
+msgid "View all my reviews"
+msgstr "Ver todos mis comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/directories/directory.thtml:58
+msgid "The directory is empty."
+msgstr "El directorio esta vacío."
+
+#: com_jreviews\jreviews\views/themes/default/directories/directory.thtml:91
+#: com_jreviews\jreviews\views/themes/default/directories/directory.thtml:92
+msgid "Search"
+msgstr "Buscar"
+
+#: com_jreviews\jreviews\views/themes/default/directories/directory.thtml:93
+msgid "Advanced search"
+msgstr "Búsqueda avanzada"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/create.thtml:6
+#, php-format
+msgid "Reply to %s's comment"
+msgstr "Responder al comentario de %s"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/create.thtml:11
+msgid "Name"
+msgstr "Nombre"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/create.thtml:18
+msgid "Email"
+msgstr "Email"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/create.thtml:27
+msgid "Please enter the security code."
+msgstr "Por favor introduzca el código de seguridad."
+
+#: com_jreviews\jreviews\views/themes/default/discussions/latest.thtml:67
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:213
+msgid "Ordering"
+msgstr "Ordenar"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/parent_popover.thtml:11
+msgid "Comment not found"
+msgstr "No se encontro el comentario"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post.thtml:26
+#, php-format
+msgid "In reply to an %searlier comment%s"
+msgstr "En respuesta a un %comentario anterior%s"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post.thtml:33
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:103
+msgid "Written by"
+msgstr "Escrito por"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post.thtml:37
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:157
+msgid "Last updated"
+msgstr "Ultima actualización"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post.thtml:44
+msgid "Report this comment"
+msgstr "Reportar este comentario"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post.thtml:60
+msgid "Reply to this comment"
+msgstr "Contestar a esta opinión"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post_manager.thtml:28
+msgid "Edit"
+msgstr "Editar"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/post_manager.thtml:32
+msgid "Are you sure you want to delete this comment?"
+msgstr "Estas seguro que quieres borrar este comentario?"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:54
+#, php-format
+msgid "Review for %s, %s"
+msgstr "Opinion para %s, %s"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:71
+msgid "Review Detail"
+msgstr "Detalle de la opinión"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:105
+msgid "Hits"
+msgstr "Vistas"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:150
+msgid "Report this review"
+msgstr "Reportar este comentario"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:166
+#, php-format
+msgid "%s of %s people found the following review helpful"
+msgstr "%s de %s personas han encontrado útil esta opinión"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:181
+msgid "Owner's reply"
+msgstr "Respuesta del autor"
+
+#: com_jreviews\jreviews\views/themes/default/discussions/review.thtml:225
+msgid "Add new comment"
+msgstr "Añadir nuevo comentario"
+
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings.thtml:66
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings.thtml:91
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings_compare_header.thtml:44
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings_compare_header.thtml:49
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings_editor.thtml:69
+#: com_jreviews\jreviews\views/themes/default/elements/detailed_ratings_editor.thtml:94
+msgid "Overall rating"
+msgstr "Puntuacíon promedio"
+
+#: com_jreviews\jreviews\views/themes/default/elements/favorite_widget.thtml:1
+msgid "Favorites"
+msgstr "Favoritos"
+
+#: com_jreviews\jreviews\views/themes/default/elements/favorite_widget.thtml:9
+msgid "Remove from favorites"
+msgstr "Borrar de favoritos"
+
+#: com_jreviews\jreviews\views/themes/default/elements/favorite_widget.thtml:19
+#: com_jreviews\jreviews\views/themes/default/elements/favorite_widget.thtml:27
+msgid "Add to favorites"
+msgstr "Añadir a favoritos"
+
+#: com_jreviews\jreviews\views/themes/default/elements/favorite_widget.thtml:28
+msgid "Register to add this entry to your favorites"
+msgstr "Regístrese para añadir este listado en sus favoritos"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:4
+msgid "Your name"
+msgstr "Tu nombre"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:5
+msgid "Please fill in your name"
+msgstr "Favor llenar tu nombre"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:11
+msgid "Your email"
+msgstr "Tu email"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:12
+msgid "Please fill in your email"
+msgstr "Favor llenar tu email"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:18
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_notification.thtml:40
+msgid "Comments"
+msgstr "Comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:19
+msgid "Please fill in your comments"
+msgstr "Favor llevar tus comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/elements/inquiry_widget.thtml:36
+msgid "Your inquiry has been submitted."
+msgstr "Tu pregunta fue enviada."
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:18
+#, php-format
+msgid "To submit a listing please %sregister%s or log in."
+msgstr "Para escribir un listado debes %sregistrate%s o accesar el sitio."
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:20
+#, php-format
+msgid "To write a review please %sregister%s or log in."
+msgstr "Para escribir una opinión debes %sregistrate%s o accesar el sitio."
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:22
+#, fuzzy, php-format
+msgid "To write a comment please %sregister%s or log in."
+msgstr "Para escribir una opinión debes %sregistrate%s o accesar el sitio."
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:24
+#, php-format
+msgid "Access restricted to members. To continue %sregister%s or log in."
+msgstr "Acceso limitado a miembros. Para continuar %sregistrarse%s or accesar al sitio."
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:30
+msgid "LOGIN"
+msgstr ""
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:35
+msgid "form.token"
+msgstr ""
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:38
+msgid "username"
+msgstr "usuario"
+
+#: com_jreviews\jreviews\views/themes/default/elements/login.thtml:40
+msgid "Username"
+msgstr "Usuario"
+
+#: com_jreviews\jreviews\views/themes/default/elements/voting_widget.thtml:1
+msgid "Was this review helpful to you?"
+msgstr "Te ha interesado esta opinión?"
+
+#: com_jreviews\jreviews\views/themes/default/elements/voting_widget.thtml:5
+msgid "Yes"
+msgstr "Si"
+
+#: com_jreviews\jreviews\views/themes/default/elements/voting_widget.thtml:9
+msgid "No"
+msgstr "No"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:14
+msgid "You will find this claim in Claims Moderation."
+msgstr "Encontrara esta solicitud en Claims Moderation"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:18
+msgid "Claimed by"
+msgstr "Reclamado por"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:22
+msgid "Claimant's email"
+msgstr "Email del reclamante"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:26
+msgid "Claim text"
+msgstr "Texto del reclamo"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:30
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_notification.thtml:27
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_notification.thtml:28
+msgid "IP address"
+msgstr "Dirección IP"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:34
+msgid "Current owner"
+msgstr "Actual dueño"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:38
+msgid "Owner email"
+msgstr "Email del dueño"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:46
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_notification.thtml:35
+msgid "Section"
+msgstr "Sección"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:54
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_notification.thtml:43
+msgid "Summary"
+msgstr "Resumen"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_claim.thtml:60
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_notification.thtml:49
+msgid "Description"
+msgstr "Descripción"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_listing_notification.thtml:15
+msgid "You will find this entry in the content moderation list."
+msgstr "Encontrara esta entrada en la lista de moderación de listados."
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:13
+msgid "You will find this owner reply in the owner reply moderation list."
+msgstr "Encontrara esta respuesta en Owner Reply Moderation"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:17
+msgid "Owner's name"
+msgstr "Nombre del dueño"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:25
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:25
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:25
+msgid "IP Address"
+msgstr "Dirección IP"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:29
+msgid "Owner's reply text"
+msgstr "Texto de la respuesta del dueño"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:37
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:37
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:37
+msgid "Listing title"
+msgstr "Título del listado"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:41
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:41
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:41
+msgid "Review title"
+msgstr "Título de la opinión"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_owner_reply_notification.thtml:45
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:45
+msgid "Review Comments"
+msgstr "Revisar Comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:13
+msgid "You will find this report in the reports moderation list."
+msgstr "Encontrara este reporte en Reports Moderation"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:17
+msgid "Reporter"
+msgstr "Usuario que reporta"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_report_notification.thtml:29
+msgid "Report text"
+msgstr "Texto a reportar"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:17
+msgid "User name"
+msgstr "Nombre de usuario"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:29
+msgid "Comment"
+msgstr "Comentario"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_discussion_post.thtml:45
+msgid "Review"
+msgstr "Opininión"
+
+#: com_jreviews\jreviews\views/themes/default/email_templates/admin_review_notification.thtml:32
+msgid "Entry"
+msgstr "Entrada"
+
+#: com_jreviews\jreviews\views/themes/default/errors/error404.thtml:15
+#: com_jreviews\jreviews\views/themes/default/errors/error404.thtml:18
+msgid "404 Not Found"
+msgstr "404 No Encontrado"
+
+#: com_jreviews\jreviews\views/themes/default/errors/error404.thtml:19
+msgid "The page you requested was not found."
+msgstr "La página solicitada no se encuentra disponible."
+
+#: com_jreviews\jreviews\views/themes/default/everywhere/reviews.thtml:22
+#: com_jreviews\jreviews\views/themes/default/everywhere/reviews.thtml:96
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:417
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:485
+msgid "View all user reviews"
+msgstr "Ver todos los comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/everywhere/reviews.thtml:41
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:430
+#, php-format
+msgid "Average user rating from: %s user(s)"
+msgstr "Puntaje promedio de: %s user(s)"
+
+#: com_jreviews\jreviews\views/themes/default/everywhere/reviews.thtml:47
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:435
+msgid "There are no user reviews for this listing."
+msgstr "No hay comentarios para este listado."
+
+#: com_jreviews\jreviews\views/themes/default/everywhere/reviews.thtml:52
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:257
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:443
+msgid "Add new review"
+msgstr "Opinar"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create.thtml:44
+#: com_jreviews\jreviews\views/themes/default/listings/create_hidden_section_cat_lists.thtml:59
+msgid "Submission instructions"
+msgstr "Instrucciones"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create.thtml:46
+msgid "Select the section and category where you want to submit the new item."
+msgstr "Selecciona la sección y la categoría adonde quiere enviar un nuevo elemento."
+
+#: com_jreviews\jreviews\views/themes/default/listings/create.thtml:47
+#: com_jreviews\jreviews\views/themes/default/listings/create_hidden_section_cat_lists.thtml:61
+msgid "All fields marked with asterisks are required."
+msgstr "Los campos con arterisco son obligatorios."
+
+#: com_jreviews\jreviews\views/themes/default/listings/create.thtml:48
+#: com_jreviews\jreviews\views/themes/default/listings/create_hidden_section_cat_lists.thtml:62
+msgid "Make sure any image files conform to the required specifications (.jpg,.gif,.png)"
+msgstr "Asegurese de que los ficheros son .jpg,.gif o .png"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create.thtml:59
+msgid "Select Section"
+msgstr "Seleccione Sección"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:89
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:120
+msgid "Images"
+msgstr "Imagenes"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:94
+msgid "Image Manager - Use the radio buttons to set the main image shown in lists."
+msgstr "Gestor de imágenes - Utilize los radio buttons para cambiar la imagen principal."
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:120
+#, php-format
+msgid "Max. size %s Kb"
+msgstr "Tamaño maximo %s Kb"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:134
+msgid "Meta Data"
+msgstr "Meta Data"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:136
+msgid "Meta Description"
+msgstr "Meta Descripción"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:140
+msgid "Meta Keywords"
+msgstr "Meta Palabras Claves"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:159
+msgid "I will submit my review later on"
+msgstr "I will submit my review later on"
+
+#: com_jreviews\jreviews\views/themes/default/listings/create_form.thtml:174
+msgid "Ratings (the higher the better)"
+msgstr "Asignar una puntuación (mientras más alta mejor es)"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:48
+#, php-format
+msgid "User Reviews: %s"
+msgstr "Opiniones de Usuarios: %s"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:49
+#, php-format
+msgid "Editor Reviews: %s"
+msgstr "Opiniones de Editors: %s"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:50
+#: com_jreviews\jreviews\views/themes/default/listings/listings_header.thtml:35
+#, php-format
+msgid "%s - Page %s"
+msgstr "%s - Página %s"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:141
+msgid "Claim this listing"
+msgstr "Reclamar este listado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:142
+msgid "Claim listing"
+msgstr "Reclamar listado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:228
+msgid "Editor reviews"
+msgstr "Opiniones editoriales"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:228
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:257
+msgid "Editor review"
+msgstr "Comentario del editor"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:233
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:395
+msgid "View all editor reviews"
+msgstr "Ver todas las opiniones editoriales"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:236
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:421
+msgid "Back to Listing"
+msgstr "Regresar al listado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/detail.thtml:249
+#, php-format
+msgid "Average editor rating from: %s user(s)"
+msgstr "Puntaje promedio de editores: %s opinione(s)"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:123
+msgid "Compare"
+msgstr "Comparar"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:153
+msgid "Read reviews"
+msgstr "Leer opiniones"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:156
+msgid "Write review"
+msgstr "Opinar"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:193
+msgid "Your search did not return any results. Try adjusting your search values.<br /><br /><a href=\"javascript:window.history.go(-1)\">Click here to go back.</a>"
+msgstr "Su búsqueda no ha devuelto ningún resultado. Intente ajustar su búsqueda.<br /><br /><a href=\"javascript:window.history.go(-1)\">Haga click para ir atras.</a>"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:196
+msgid "Your favorites list is empty."
+msgstr "No se encontraron favoritos."
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_blogview.thtml:210
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:200
+msgid "Listings for comparison"
+msgstr "Listados a comparar"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:42
+#, php-format
+msgid "%s Comparison"
+msgstr "Comparación de %s"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:44
+msgid "Go back to previous page"
+msgstr "Regresar a la página anterior"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:60
+msgid "Editor Ratings"
+msgstr "Puntuación del editor"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:70
+msgid "User Ratings"
+msgstr "Puntuación del usuario"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:117
+#: com_jreviews\jreviews\views/themes/default/listings/listings_compare.thtml:180
+msgid "Remove item"
+msgstr "Eliminar"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_header.thtml:179
+msgid "Add new listing"
+msgstr "Añadir nuevo listado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_tableview.thtml:67
+msgid "Details"
+msgstr "Detalles"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listings_tableview.thtml:70
+msgid "Ratings"
+msgstr "Votos"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:62
+msgid "Unpublished"
+msgstr "No publicado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:62
+msgid "Published"
+msgstr "Publicado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:68
+msgid "Not featured"
+msgstr "No patrocinado"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:70
+msgid "Not frontpaged"
+msgstr "No en portada"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:70
+msgid "Frontpaged"
+msgstr "En portada"
+
+#: com_jreviews\jreviews\views/themes/default/listings/listing_manager.thtml:76
+msgid "Are you sure you want to delete this listing?"
+msgstr "Estas seguro que quieres eliminar este listado?"
+
+#: com_jreviews\jreviews\views/themes/default/modules/favorite_cbusers.thtml:88
+#, php-format
+msgid "Other users interested in %s"
+msgstr "Otros usuarios interesados en %s"
+
+#: com_jreviews\jreviews\views/themes/default/modules/totals.thtml:1
+#, php-format
+msgid "There are %s listings and %s reviews."
+msgstr "Hay %s listados y %s opiniones."
+
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:17
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:39
+msgid "Reviewers"
+msgstr "Votantes"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:55
+msgid "Rank"
+msgstr "Ranking"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:66
+msgid "Number of reviews written:"
+msgstr "Número de comentarios escritos:"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:72
+msgid "Percentage helpful votes"
+msgstr "Porcentaje de votos útiles"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/rankings.thtml:72
+msgid "votes"
+msgstr "votos"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/reviews.thtml:127
+#, php-format
+msgid "Comments (%s)"
+msgstr "Comentarios (%s)"
+
+#: com_jreviews\jreviews\views/themes/default/reviews/reviews.thtml:148
+msgid "Reply to this review"
+msgstr "Responder a esta opinión"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:29
+msgid "Listing summary"
+msgstr "Resumen del listado"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:35
+msgid "Listing description"
+msgstr "Descripción del listado"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:41
+msgid "Review comments"
+msgstr "Revisar comentarios"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:52
+msgid "Any"
+msgstr "Cualquiera"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:56
+msgid "All"
+msgstr "Todos"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:60
+msgid "Exact"
+msgstr "Exacto"
+
+#: com_jreviews\jreviews\views/themes/default/search/advanced.thtml:66
+msgid "Listing author"
+msgstr "Autor del listado"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:64
+msgid "Swap Start/End"
+msgstr "Intercambiar Comienzo/Fin"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:65
+msgid "Start Address"
+msgstr "Dirección de partida"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:70
+msgid "End"
+msgstr "Destino"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:71
+msgid "Driving"
+msgstr "Driving"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:71
+msgid "Walking"
+msgstr "Walking"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_detail.thtml:76
+msgid "Get Directions"
+msgstr "Get Directions"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_infowindow_google_tabs.thtml:16
+msgid "Detail"
+msgstr "Detail"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:41
+msgid "Stop following"
+msgstr "Stop following"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:41
+msgid "Follow me"
+msgstr "Follow me"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:78
+msgid "&#171; Large Map"
+msgstr "&#171; Large Map"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:79
+msgid "Small Map &#187;"
+msgstr "Small Map &#187;"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:83
+msgid "Enable and click on a marker to see the streetview"
+msgstr "Enable and click on a marker to see the streetview"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:83
+msgid "Streetview"
+msgstr "Streetview"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/geomaps/map_results.thtml:89
+msgid "Click on a marker to show it's street view."
+msgstr "Click on a marker to show it's street view."
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/modules/geomaps.thtml:64
+msgid "Type an address to move the map"
+msgstr "Type an address to move the map"
+
+#: com_jreviews_addons\geomaps\views/themes/geomaps/modules/geomaps.thtml:65
+msgid "Go!"
+msgstr "Go!"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:28
+msgid "Available plans in this category:"
+msgstr "Planes disponibles para esta categoría:"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:36
+msgid "Free and Trial Plans"
+msgstr "Plans de prueba o grátis"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:45
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:66
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:87
+msgid "more..."
+msgstr "más..."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:57
+msgid "Single Payment Plans"
+msgstr "Planes de pago único"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/elements/paidlistings_listing_plans.thtml:78
+msgid "Subscription Plans"
+msgstr "Planes de Suscripción"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:22
+msgid "Listings Pending Payment"
+msgstr "Listados con Pagos Pendientes"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:70
+msgid "Incomplete Orders"
+msgstr "Ordenes incompletas"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:85
+msgid "Orders Expiring Soon"
+msgstr "Ordenes que expiran pronto"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:100
+msgid "Listings"
+msgstr "Listado"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:101
+msgid "Orders"
+msgstr "Ordenes"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:102
+msgid "Invoices"
+msgstr "Recibos"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account.thtml:103
+msgid "Account Details"
+msgstr "Detalles de la Cuenta"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:26
+msgid "Your account information was saved."
+msgstr "La información de tu cuenta fue guardada."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:30
+msgid "There was a problem saving your account information."
+msgstr "Hubo un problema guardando la información de tu cuenta."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:45
+msgid "Business"
+msgstr "Negocio"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:50
+msgid "Address"
+msgstr "Dirección"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:55
+msgid "Country"
+msgstr "País"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:60
+msgid "Tax ID"
+msgstr "Número fiscal"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_account_details.thtml:64
+msgid "Save"
+msgstr "Guardar"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:46
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:172
+msgid "Invoice #"
+msgstr "Recibo #"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:47
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:47
+msgid "Order #"
+msgstr "Orden #"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:48
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:37
+msgid "Created"
+msgstr "Creada"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:49
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:39
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:146
+msgid "Plan"
+msgstr "Plan"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:50
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:193
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:38
+msgid "Expires"
+msgstr "Vence"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoices.thtml:67
+msgid "Print"
+msgstr "Imprimir"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:150
+msgid "Invoice"
+msgstr "Recibo"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:176
+msgid "Date"
+msgstr "Fecha"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:185
+msgid "Item"
+msgstr "Detalle"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:187
+msgid "Amount"
+msgstr "Monto"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:205
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:162
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:211
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:166
+#, php-format
+msgid "Tax (%s%%)"
+msgstr "Impuesto (%s%%)"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:219
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:171
+msgid "Total"
+msgstr "Total"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_invoice_detail.thtml:227
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:18
+msgid "Thank you for your business!"
+msgstr "Gracias por su negocio!"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_listings.thtml:45
+msgid "Plan Info"
+msgstr "Información del Plan"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_listings.thtml:81
+msgid "Base Plan"
+msgstr "Plan Base"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_listings.thtml:83
+msgid "Upgrade Plans"
+msgstr "Planes para Agregar Opciones"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:36
+#, fuzzy
+msgid "Order"
+msgstr "Ordenes"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:40
+#, fuzzy
+msgid "Payment"
+msgstr "Pago único"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:52
+msgid "Expiring Soon!"
+msgstr "Vence Pronto!"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:54
+msgid "Expired"
+msgstr "Vencido"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_orders.thtml:73
+msgid "Renew Order"
+msgstr "Renovar Orden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:16
+msgid "Your order is complete"
+msgstr "Tu órden fue completada"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:17
+#, php-format
+msgid "%s, we have received your payment and you may now check the status of your listing in your <a href=\"%s\">account</a>."
+msgstr "%s, tu pago fue recibido y puedes revisar el estado de tu listado en tu <a href=\"%s\">cuenta</a>."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:21
+msgid "Your order is pending"
+msgstr "Tu órden está pendiente"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:22
+#, php-format
+msgid "%s, your order is under review at the payment processor and will be processed once payment is confirmed."
+msgstr "%s, tu pago esta siendo revisado por el procesador de pagos y será procesada tan pronto sea confirmada."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:25
+msgid "Your order failed"
+msgstr "No se completo la órden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:26
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:33
+#, php-format
+msgid "%s, your order failed to pass our security validations. If you feel this is an error, please contact us with your order number."
+msgstr "%s, tu pago no pasó los chequeos de seguridad. Si consideras que esto es un error comúnicate con nosotros con tu número de órden."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:29
+msgid "Your order is incomplete"
+msgstr "Tu órden está incompleta"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:37
+msgid "Your order is being processed"
+msgstr "Tu órden está siendo procesada"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:38
+#, php-format
+msgid "%s, you will receive an email in a few minutes when your order is finalized and your listing is updated. You can also check the account page for the status of your listings."
+msgstr "%s, vas a recibir un email en unos minutos cuando tu órden sea procesada y el listado actualizado. También puedes visitar la página de tu cuenta para revisar el estado de tus listados."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:44
+msgid "Order details"
+msgstr "Detalles de la órden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:46
+msgid "Go to my account"
+msgstr "Ir a tu cuenta"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:49
+msgid "Order status"
+msgstr "Estado de la órden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_complete.thtml:54
+msgid "Expiration"
+msgstr "Expiración"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:20
+msgid "There are no plans available for this listing."
+msgstr "No hay planes disponibles para este listado"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:39
+msgid "Step 1: Select a Plan"
+msgstr "Paso 1: Seleccionar Plan"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:53
+#, php-format
+msgid "You have %s free submission(s) left out of %s"
+msgstr "Te quedan %s envio(s) grátis de %s"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:70
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:130
+msgid "Continue"
+msgstr "Continuar"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:74
+msgid "Please select a plan to continue."
+msgstr "Selecciona un plan para continuar."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:78
+msgid "Step 2: Select Payment Method"
+msgstr "Paso 2: Seleccionar el método de pago"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:124
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:212
+msgid "Back"
+msgstr "Atrás"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:134
+msgid "Please select a payment method to continue."
+msgstr "Selecciona un método de pago para continuar"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:138
+msgid "Step 3: Confirm order"
+msgstr "Step 3: Confirmar órden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:153
+msgid "Plan Price"
+msgstr "Precio"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:157
+msgid "Discount"
+msgstr "Descuento"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:180
+msgid "Coupon"
+msgstr "Cupón"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:181
+msgid "Apply"
+msgstr "Aplicar"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:182
+msgid "Coupon invalid or expired."
+msgstr "El cupón no es válido o ya venció"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:183
+msgid "The coupon was applied to your order."
+msgstr "El cupón fue aplicado a tu órden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:189
+msgid "Terms of Service"
+msgstr "Condiciones del Servicio"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:201
+msgid "Click the submit button to finalize your order. You will be taken to the payment processor site to make your payment."
+msgstr "Hacer click en el botón de enviar para finalizar tu órden y enviarte a la página del procesador de pagos para "
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:203
+#, php-format
+msgid "By clicking on %sSubmit Order%s you are agreeing to the %sTerms of Service%s above."
+msgstr "Al enviar tu órden estas aceptando las %sCondiciones del Servicio%s detalladas arriba."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:206
+#, php-format
+msgid "I have read and agree to the %sTerms of Service%s above."
+msgstr "He leído y acepto las %sCondiciones del Servicio%s detalladas arriba."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:218
+msgid "Submit Order"
+msgstr "Enviar Orden"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:221
+msgid "There is already an unpaid order for this listing."
+msgstr "Ya existe una órden para este listado"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:222
+msgid "The plan selected for this listing is not valid."
+msgstr "El plan seleccionado para este listado no es válido"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:223
+msgid "You have exceeded your quota of listings for the selected plan."
+msgstr "Ya excediste el número de listados permitidos para el plan seleccionado."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_order_form.thtml:228
+msgid "You need to agree to the Terms of Service."
+msgstr "Debes aceptar las Condiciones del Servicio."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:18
+msgid "The selected category doesn't have any plans."
+msgstr "No hay planes en la categoría seleccionada."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:24
+msgid "Select a category to see the available plans."
+msgstr "Selecciona una categoría para ver los planes disponibles."
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:32
+msgid "One time payment plans"
+msgstr "Planes de pago único"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:41
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:65
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:88
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:103
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:118
+msgid "Free"
+msgstr "Grátis"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:43
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:67
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:89
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:104
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:119
+msgid "Never expires"
+msgstr "Nunca expira"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:57
+msgid "Subscription plans"
+msgstr "Planes de Suscripción"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:80
+msgid "Upgrades"
+msgstr "Más opciones"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:83
+msgid "Free or trial"
+msgstr "De prueba o grátis"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:98
+msgid "One time payment"
+msgstr "Pago único"
+
+#: com_jreviews_addons\paidlistings\views/themes/paid_addon/paidlistings/paidlistings_plans.thtml:113
+msgid "Subscriptions"
+msgstr "Suscripciones"
+
+#~ msgid "There was a problem updating the listing's images"
+#~ msgstr "There was a problem updating the listing's images"
+
+#~ msgid "Select category"
+#~ msgstr "Seleccione categoría"
+
+#~ msgid "Invalid request."
+#~ msgstr "Petición invalida."
+
+#~ msgid ""
+#~ "Access denied due to insufficient rights or the user session expired."
+#~ msgstr ""
+#~ "Permiso denegado. No tiene permisos o puede que su sesión haya caducado."
+
+#~ msgid ""
+#~ "There was a problem removing the listing. Please contact the site "
+#~ "administrator."
+#~ msgstr ""
+#~ "Ha habido un problema mientras se eliminaba el listado. Por favor "
+#~ "contacte con el administrador."
+
+#~ msgid "Thank you for your vote, it will be processed soon."
+#~ msgstr "Gracias por su voto. En breve sera procesado."
+
+#~ msgid "To write a review please register or login."
+#~ msgstr ""
+#~ "Para escribir un comentario, por favor regístrese o entre como usuario."
+
+#~ msgid "JOOMUNITY_TAG"
+#~ msgstr "Miembro"
+
+#~ msgid "Item successfully saved."
+#~ msgstr "Listado guardado."
+
+#~ msgid ""
+#~ "You already submitted a review, thank you. We don't allow duplicates."
+#~ msgstr ""
+#~ "Usted ya ha opinado, lo sentimos pero sólo esta permitido opinar una vez."
+
+#~ msgid "Duplicates not allowed."
+#~ msgstr "No se permiten duplicados."
+
+#~ msgid "View all favorites"
+#~ msgstr "Ver todos mis favoritos"
+
+#~ msgid "View all reviews"
+#~ msgstr "View all reviews"
+
+#~ msgid ""
+#~ "This action cannnot be undone, are you sure you want to delete this "
+#~ "listing?"
+#~ msgstr ""
+#~ "Esta acción no se puede deshacer, esta seguro que quiere borrar este "
+#~ "listado?"
+
+#, fuzzy
+#~ msgid ""
+#~ "<h1 class=\"contentheading\">Submission instructions</h1><ul><li>Select "
+#~ "the section and category where you want to submit the new item.</"
+#~ "li><li>All fields marked with asterisks are required.</li><li>Make sure "
+#~ "any image files conform to the required specifications (.jpg,.gif,.png)</"
+#~ "li></ul>"
+#~ msgstr ""
+#~ "<h1 class=\"contentheading\">Submission instructions</"
+#~ "h1><ul><li>Selecciona la seccion y la categoria adonde quiere enviar un "
+#~ "nuevo elemento.</li><li>Los campos con arterisco son obligatorios.</"
+#~ "li><li>Asegurese de que los ficheros son .jpg,.gif o .png</li></ul>"
+
+#~ msgid "M jS Y"
+#~ msgstr "M jS Y"
+
+#~ msgid "Today"
+#~ msgstr "Hoy"
+
+#~ msgid "Yesterday"
+#~ msgstr "Ayer"
+
+#~ msgid "&raquo; Next"
+#~ msgstr "&raquo; Siguiente"

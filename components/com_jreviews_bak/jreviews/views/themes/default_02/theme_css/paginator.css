@@ -1,0 +1,156 @@
+/* MODULE PAGINATION CONTROLS  */
+a.jr_modPrev, 
+a.jr_modNext
+{
+	width: 13px;
+	height: 22px;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+a.jr_modPrev:link,
+a.jr_modPrev:active,
+a.jr_modPrev:visited
+{
+	background: url(images/slider_left.png);
+	float: left;
+	margin-right: 9px;
+
+}  
+  
+a.jr_modNext:link,
+a.jr_modNext:active,
+a.jr_modNext:visited
+{
+	background: url(images/slider_right.png);
+	float: right;
+	margin-left: 9px;
+}
+
+a.jr_modPrev.jr_modDisabled {
+   background: url(images/slider_left_disabled.png);
+   cursor: default;
+}    
+
+a.jr_modNext.jr_modDisabled {
+   background: url(images/slider_right_disabled.png);
+   cursor: default;
+}    
+
+
+/*  
+    root element for the scrollable.  
+    when scrolling occurs this element stays still.  
+*/ 
+div.jr_modSlider { 
+    /* required settings */ 
+    position:relative; 
+    overflow:hidden;
+	margin: 0;
+	padding: 0;
+} 
+ 
+/*  
+    root element for scrollable items. Must be absolutely positioned 
+    and it should have a super large width to accomodate scrollable items. 
+    it's enough that you set width and height for the root element and 
+    not for this element. 
+*/ 
+div.jr_modSlider div.jr_modItems {     
+    /* this cannot be too large */ 
+    width:20000em;     
+    position:absolute;         
+} 
+ 
+/*  
+    a single item. must be floated on horizontal scrolling 
+    typically this element is the one that *you* will style 
+    the most. 
+*/ 
+div.jr_modSlider div.jr_modItems div.jr_modContainer,
+div.jr_modSlider div.jr_modItems div.jr_plugContainer
+ { 
+    float:left;
+    overflow:hidden;
+    /*width: 1000px!important;*/ /*it's added as style in each module based on defined width*/
+} 
+ 
+/* you may want to setup some decorations to active item */ 
+div.jr_modItems div.active {}    
+
+/* PAGINATION CONTROLS  */
+table.jr_pagination {
+	width:100%; 
+	line-height:1.5em; 
+	font-weight:normal; 
+	border-top:1px solid #CCC; 
+	border-bottom:1px solid #CCC; 
+	margin-bottom: 10px;
+	}
+	
+table#jr_pagination_top { 
+	border-top:0; 
+	border-bottom:0; 
+	margin-bottom: 5px;
+	}
+	
+table.jr_pagination td	{
+	padding:5px; 
+	vertical-align:middle;
+	white-space: nowrap; 
+	font-size: 90%;
+	}
+
+td.jr_pagenav_results {
+	width: 20%
+	}
+
+td.jr_pagenav_pages {
+	text-align:center;  
+	}
+
+td.jr_pagenav_limitbox {
+	width: 20%;
+	text-align:right; 
+	}
+	
+td.jr_pagenav_limitbox select {
+	font-size: 10px !important; 
+	height: 1.7em;
+	width: auto !important;
+	}
+
+td.jr_pagenav_limitbox select option {
+	padding-right: 5px;
+	}	
+	
+table.jr_pagination a.paginate:link,
+table.jr_pagination a.paginate:active,
+table.jr_pagination a.paginate:visited {
+    border: 1px solid #999;
+	padding: 0 2px;
+    text-decoration: none;
+    color: #000080;
+}
+
+table.jr_pagination a.current:link,
+table.jr_pagination a.current:active,
+table.jr_pagination a.current:visited {
+	color:#000;
+	border: solid 1px #999;
+	padding: 0 2px;
+	background-color: #eee;
+	text-decoration:none;   
+	}
+	
+table.jr_pagination a.paginate:hover,
+table.jr_pagination a.current:hover {
+	background-color: #ddd;
+	text-decoration:none;
+	}
+	
+table.jr_pagination span.inactive {
+	color:#999;
+	border: solid 1px #999;
+    padding: 2px 4px 2px 4px;
+	}

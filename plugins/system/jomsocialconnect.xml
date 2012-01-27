@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+	<name>System - Jomsocial Facebook Connect</name>
+	<version>1.0</version>
+	<creationDate>23 March 2009</creationDate>
+	<author>JomSocial</author>
+	<authorEmail>support@jomsocial.com</authorEmail>
+	<authorUrl>http://www.jomsocial.com</authorUrl>
+	<copyright>Copyright (C) 2008 - 2009. All rights reserved.</copyright>
+	<license>Commercial</license>
+	<description>JomSocial Facebook Connect Namespace is required to embed the necessary namespace codes in the HTML element.</description>
+	<files>
+		<filename plugin="jomsocialconnect">jomsocialconnect.php</filename>
+	</files>
+	<params/>
+</install>

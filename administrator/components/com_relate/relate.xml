@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0">
+	<name>Relate</name>
+	<creationDate>January 2011</creationDate>
+	<version>0.1</version>
+	<author>Kevin Strong</author>
+	<authorEmail>kevin.strong@wearehathway.com</authorEmail>
+	<authorUrl>http://wearehathway.com/</authorUrl>
+	<copyright>Copyright (C) 2011 Hathway. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>
+	Create/Manage Many-to-Many relationships between JReviews Listings and 
+	JomSocial content. 
+    </description>
+    
+    <install>
+		<queries>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__relate_listings` (
+				`id1` INT NOT NULL,
+				`id2` INT NOT NULL,
+				`creator` INT,
+				INDEX(`id1`, `id2`)
+			) ;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__relate_categories` (
+				`catID` INT NOT NULL,
+				`relatable` TEXT,
+				`author` INT NOT NULL,
+				`featured` INT NOT NULL,
+				`can_add` INT NOT NULL,
+				PRIMARY KEY( `catID` ) 
+			) ;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__relate_photos` (
+				`listing_id` INT NOT NULL ,
+				`photo` INT NOT NULL ,
+				`creator` INT NOT NULL ,
+				INDEX ( `listing_id` , `video_id` ) 
+			) ;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__relate_videos` (
+				`listing_id` INT NOT NULL ,
+				`video_id` INT NOT NULL ,
+				`creator` INT NOT NULL ,
+				INDEX ( `listing_id` , `video_id` ) 
+			) ;
+			</query>
+		</queries>
+	</install>
+    
+    <files folder="site">
+    	<filename>controller.php</filename>
+    	<filename>relate.php</filename>
+	<filename>index.html</filename>
+
+	<filename>assets/index.html</filename>
+	<filename>assets/edit.css</filename>
+	<filename>assets/relate.js</filename>
+
+    	<filename>models/edit.php</filename>
+    	<filename>models/relate.php</filename>
+    	<filename>models/index.html</filename>
+    	
+    	<filename>views/index.html</filename>
+		
+		<filename>views/edit/index.html</filename>
+		<filename>views/edit/view.html.php</filename>
+		<filename>views/edit/tmpl/index.html</filename>
+		<filename>views/edit/tmpl/default.php</filename>
+    </files>
+    
+    <administration>
+    	<menu link="option=com_relate">Relations</menu>
+    	<submenu>
+    		<menu view="categories">Categories</menu>
+    		<menu view="relations">Category Relations</menu>
+    		<menu view="rules">Access Rules</menu>
+    	</submenu>
+    	<files folder="admin">
+	    	<filename>controller.php</filename>
+	    	<filename>relate.php</filename>
+    		<filename>index.html</filename>
+    		
+    		<filename>controllers/index.html</filename>
+    		<filename>controllers/categories.php</filename>
+    		<filename>controllers/relations.php</filename>
+    		<filename>controllers/rules.php</filename>
+    		
+    		<filename>views/index.html</filename>
+    		
+    		<filename>views/categories/index.html</filename>
+			<filename>views/categories/view.html.php</filename>
+			<filename>views/categories/tmpl/index.html</filename>
+			<filename>views/categories/tmpl/default.php</filename>
+			
+			<filename>views/relations/index.html</filename>
+			<filename>views/relations/view.html.php</filename>
+			<filename>views/relations/tmpl/index.html</filename>
+			<filename>views/relations/tmpl/default.php</filename>
+			
+			<filename>views/rules/index.html</filename>
+			<filename>views/rules/view.html.php</filename>
+			<filename>views/rules/tmpl/index.html</filename>
+			<filename>views/rules/tmpl/default.php</filename>
+    	</files>
+    </administration>
+</install>

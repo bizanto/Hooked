@@ -1,0 +1,26 @@
+table.csvimport_heading {
+	font-weight:normal;
+	width: 100%;
+	text-align:left;}
+	
+table.csvimport_heading td {
+	padding: 0 0 10px 0;}
+	
+table.csvimport_subheading {
+	border-top: solid 1px #ccc;
+	font-weight:normal;
+	padding: 10px 0 5px 0;
+	width: 100%;
+	text-align:left;}
+	
+table.csvimport_heading h1, table.csvimport_subheading h1 {
+	font-size: 16px;
+	margin: 0 0 .5em 0;}
+	
+table.adminform td {
+	white-space:nowrap;
+	padding: 5px .5em 5px .5em;}
+
+table.adminform td.container {
+	white-space:nowrap;
+	padding: 0 0 7px 0;}

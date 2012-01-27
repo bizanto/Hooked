@@ -1,0 +1,50 @@
+<?php 
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+if(!$json_data) return;
+$width = isset($width) ? (strstr($width,'%') ? $width : $width.'px') : '600px';
+$height = isset($height) ? (strstr($height,'%') ? $height : $height.'px') : '600px';
+$infowindow_suffix = '_'.Sanitize::getString($this->Config,'geomaps.infowindow','google');
+$directions = Sanitize::getBool($this->Config,'geomaps.directions_detail',true);
+$streetview = Sanitize::getBool($this->Config,'geomaps.streetview_detail',true);
+?>
+
+<?php 
+/**********************************************************************************
+ *                                 JAVASCRIPT & CSS
+ **********************************************************************************/
+?>               
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery("a.mapLightbox").fancybox({
+       'hideOnContentClick': false,
+       'frameWidth':600,
+       'frameHeight':400,
+       'callbackOnShow':function(){
+           var GeomapsBox = new GeomapsDisplayMap('fancy_div',{
+              'directions':false,
+              'streetview':false,
+              'streetview_overlay': false
+           });
+           GeomapsBox.setData(<?php echo $json_data;?>);
+           GeomapsBox.init();
+            if(jQuery('#gm_infowindowContainer').length == 0)
+            {
+                jQuery('body').append('<?php echo Sanitize::stripWhitespace($this->renderControllerView('Geomaps','map_infowindow'.$infowindow_suffix));?>');  
+            }
+       }        
+    });
+});
+</script>
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?> 
+
+<a class="mapLightbox" href="#mapLightbox">OPEN MAP</a>   
+<div id="mapLightbox" style="display:none;"></div>
+

@@ -1,0 +1,119 @@
+<?php 
+ /**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+if(!$json_data) return;
+$width = Sanitize::getString($this->params['module'],'map_width','100%');
+$height = Sanitize::getString($this->params['module'],'map_height','400px');
+$width = is_numeric($width) ? $width.'px' : $width;
+$height = is_numeric($height) ? $height.'px' : $height;
+$clustering = Sanitize::getVar($this->params['module'],'clustering',true);
+$clustering_min_markers = Sanitize::getInt($this->params['module'],'clustering_min_markers',250);
+$zoom = Sanitize::getInt($this->params['module'],'zoom');
+$search_bar = Sanitize::getBool($this->params['module'],'search_bar',false);
+$infowindow_suffix = '_'.Sanitize::getString($this->Config,'geomaps.infowindow','google');
+$google_url = Sanitize::getString($this->Config,'geomaps.google_url','http://maps.google.com');
+/**
+* You can use the $geoLocation array to display info about the user's location gathered via the GeoTargeting service
+* Use prx($geoLocation); to see the available info
+*/
+?>
+    
+<?php 
+/**********************************************************************************
+ *                                 JAVASCRIPT & CSS
+ **********************************************************************************/
+$Html->css(array('theme','geomaps')); // Load the geomaps css file
+cmsFramework::addScript('<script src="'.$google_url.'/maps?file=api&amp;v=2&amp;sensor=false&amp;key='.Sanitize::getString($this->Config,'geomaps.google_key').'" type="text/javascript"></script>');
+$js = array('jquery','geomaps');
+if($clustering) $js[] = 'markerclusterer_packed';  
+$Html->js(arrayFilter($js,$Libraries->js())); 
+?>
+<script type="text/javascript">    
+var gm_search_map = null;
+var gm_search_geocoder = null;
+jQuery(document).ready(function()
+{
+    GeomapsModule = new GeomapsDisplayMap('gm_module_results',
+        {
+            'clustering':<?php if($clustering):?>true<?php else:?>false<?php endif;?>,
+            'clusteringMinMarkers':<?php echo $clustering_min_markers;?>
+        }
+    );           
+    GeomapsModule.setData(<?php echo $json_data;?>);
+    GeomapsModule.init();    
+    <?php if(!empty($GeomapsCenter) && (int) $zoom > 0):?>                      
+    GeomapsModule.setCenterAndZoom(<?php echo $GeomapsCenter['lat'];?>,<?php echo $GeomapsCenter['lon'];?>,<?php echo $zoom;?>);
+    <?php endif;?>
+    // Add marker infowindow theme
+    if(jQuery('#gm_infowindowContainer').length == 0)
+    {
+        jQuery('body').append('<?php echo Sanitize::stripWhitespace($this->renderControllerView('Geomaps','map_infowindow'.$infowindow_suffix));?>');  
+    }    
+
+    <?php if($search_bar):?>
+    /*****************************************
+    * Begin add search control
+    ******************************************/
+    function GeomapsSearchControl() {}
+    GeomapsSearchControl.prototype = new GControl();
+    GeomapsSearchControl.prototype.initialize = function() 
+    {
+      var container = document.createElement('div');
+      container.innerHTML = '<div id="gm_address_search">';
+      container.innerHTML += '<input id="gm_module_address" type="text" size="50" name="gm_module_address" value="<?php __t("Type an address to move the map");?>" />';
+      container.innerHTML += '<input type="button" id="gm_module_address_submit" class="jr-button ui-state-default ui-priority-primary ui-corner-all" value="<?php __t("Go!");?>" />';
+      container.innerHTML += '</div>';
+      container.id = "gm_module_search_container";
+      container.style.zIndex = "1";
+      gm_search_map.getContainer().appendChild(container);
+      return container;
+    }
+
+    GeomapsSearchControl.prototype.getDefaultPosition = function() {
+      return new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(75, 5));
+    }
+    gm_search_map = GeomapsModule.getMap();
+    gm_search_map.addControl(new GeomapsSearchControl(gm_search_map));
+    gm_search_geocoder = new GClientGeocoder();
+    jQuery('#gm_module_search_container').css('-moz-user-select','');
+    jQuery('#gm_module_address').click(function(){jQuery(this).val('')});
+    jQuery("#gm_module_address").keyup(function(e) {
+        if(e.keyCode == 13) {
+            GeomapsShowAddress(jQuery(this).val())
+        }
+    });
+    jQuery('#gm_module_address_submit').click(function()
+    {
+        GeomapsShowAddress(jQuery('#gm_module_address').val())
+    });
+    <?php endif;?>
+});
+
+<?php if($search_bar):?>
+function GeomapsShowAddress(address) 
+{
+    if (gm_search_geocoder) {
+        gm_search_geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert(address + " not found");
+            } else {
+              gm_search_map.setCenter(point, 11);
+            }
+          }
+        );
+    }
+}
+<?php endif;?>
+</script>
+
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>     
+<!-- Map canvas -->    
+<div id="gm_module_results" style="width:<?php echo $width;?>;height:<?php echo $height;?>;border: 1px solid #CCCCCC;"></div>

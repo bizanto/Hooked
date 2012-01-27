@@ -1,0 +1,101 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * This view element outputs the detailed ratings for reviews and review summary
+ * $reviewType can be 'editor' or 'user'
+ */
+
+//prx($review);
+
+/**********************************************************************************
+ *                                 SETTINGS AND PRE-PROCESSING
+ **********************************************************************************/
+$isReview = isset($review['Review']); // It's user or editor review
+$reviewType = 'editor';
+$isEditorReview = true;
+$showDetailedCriteriaRatings = !$isReview || (($isUserReview && $this->Config->user_ratings) || ($isEditorReview && $this->Config->author_ratings));
+    
+# Overwrite user review ratings with the editor ratings
+$review['Rating']['average_rating'] = $review['Review']['editor_rating'];    
+$review['Rating']['criteria_rating_count'] = explode(',',$review['Review']['editor_criteria_rating_count']);    
+$review['Rating']['ratings'] = explode(',',$review['Review']['editor_criteria_rating']);    
+
+# Remove all na rated criteria
+if($this->Config->rating_hide_na)
+{
+    foreach($review['Criteria']['criteria'] AS $key=>$value)
+    {
+        if($review['Rating']['ratings'][$key] == 'na') { unset($review['Criteria']['criteria'][$key]); }
+    }    
+}
+?>
+	
+<?php
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+<table class="rating_table" border="0" cellpadding="0" cellspacing="0">
+	<?php if(count($review['Criteria']['criteria']) == 1): // Only one criterion defined ?>
+	<tr>
+	   <td class="rating_label"><?php echo $review['Criteria']['criteria'][0];?>:</td>
+	   <td><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></td>
+	   <td class="rating_value"><?php echo $Rating->round($review['Rating']['average_rating'],$this->Config->rating_scale);?>
+			<?php // rating count for criterion
+			if ( 
+				( $this->Config->show_criteria_rating_count == 2
+					|| ( $this->Config->show_criteria_rating_count == 1 
+						&& in_array(0, $review['Criteria']['required']) ) )
+				&& !empty($review['summary'])
+			)
+			{
+				echo '&nbsp;&nbsp;(',(int) $review['Rating']['criteria_rating_count'][0],')';
+			}
+		   ?>
+	   </td>
+	</tr>
+	<?php elseif($showDetailedCriteriaRatings): // More than one criterion, display detailed ratings ?>
+		<tr>
+		   <td class="rating_label"><?php __t("Overall rating");?>:&nbsp;</td>
+		   <td><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></td>
+		   <td class="rating_value"><?php echo $Rating->round($review['Rating']['average_rating'],$this->Config->rating_scale);?></td>
+		</tr>
+ 		<?php foreach($review['Criteria']['criteria'] AS $key=>$value):?>		
+		<tr>                                                                
+		   <td class="rating_label"><?php echo $value;?>:</td>
+		   <td><?php echo $Rating->drawStars($review['Rating']['ratings'][$key], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></td>
+		   <td class="rating_value"><?php echo $Rating->round($review['Rating']['ratings'][$key],$this->Config->rating_scale);?>
+			   <?php // rating count for criterion 
+				if ( 
+					( $this->Config->show_criteria_rating_count == 2 
+						|| ( $this->Config->show_criteria_rating_count == 1 
+							&& in_array(0, $review['Criteria']['required']) ) )
+					    && !empty($review['summary'])
+				)
+				{
+					echo '&nbsp;&nbsp;(',(int) $review['Rating']['criteria_rating_count'][$key],')';  
+				}
+			   ?>
+		   </td>
+		</tr>
+		<?php endforeach;?>
+	<?php else: // Don't display detailed ratings ?>
+	<tr>
+	   <td class="rating_label"><?php __t("Overall rating");?>:&nbsp;</td>
+	   <td><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></td>
+	   <td class="rating_value"><?php echo $Rating->round($review['Rating']['average_rating'],$this->Config->rating_scale);?></td>
+	</tr>			
+	<?php endif;?>
+</table>
+
+<div class="clr"></div>

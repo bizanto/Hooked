@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>jReviews Listings Module</name>
+	<author>ClickFWD LLC</author>
+	<creationDate>October 2008</creationDate>
+	<copyright>Copyright (C) ClickFWD LLC. All rights reserved.</copyright>
+	<license>Commercial</license>
+	<authorEmail>sales@reviewsforjoomla.com</authorEmail>
+	<authorUrl>www.reviewsforjoomla.org</authorUrl>
+	<version>2.1</version>
+	<description>jReviews Listings Module: provides multiple functionality for display of listings.</description>
+	<files>
+		<filename module="mod_jreviews_listings">mod_jreviews_listings.php</filename>
+		<filename>index.html</filename>	
+		<filename>info.html</filename>			
+		<filename>en-GB.mod_jreviews_listings.ini</filename>		
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_jreviews_listings.ini</language>
+	</languages>
+	<params>
+        <param name="slider_width" type="text" default="200" label="Module width (px)" description="" />
+        <param name="slider_height" type="text" default="250" label="Module height (px)" description="" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />    
+		<param name="listing_order" type="list" default="latest" label="Listings Ordering" description="As shown for each mode, some of them only work for com_content, while others work for all the Everywhere extensions including com_content.">
+			<option value="rdate">Latest Listings (everywhere)</option>
+			<option value="rating">Top User Rated (everywhere)</option>
+			<option value="rrating">Worst User Rated (everywhere)</option>
+			<option value="topratededitor">Top Editor Rated (com_content)</option>
+			<option value="reviews">Most Reviewed (everywhere)</option>
+			<option value="random">Random (everywhere)</option>
+			<option value="featuredrandom">Featured Random (com_content)</option>
+			<option value="rhits">Popular (com_content)</option>
+		</param>
+		<param name="extension" type="text" default="com_content" label="Everywhere Extension" description="If you want to limit results to a specific extension, then enter it here (i.e. com_content, com_virtuemart, com_sobi2, etc.). Only ONE extension at a time!" />
+		<param name="custom_where" type="text" default="" size="70" label="Custom WHERE" description="Custom WHERE for query. (i.e. Field.jr_brand LIKE '%Agfa%' OR Field.jr_brand LIKE '%Canon%'" />				
+		<param name="custom_order" type="text" default="" size="70" label="Custom ORDER BY" description="Overrides Listing Ordering. (i.e. Field.jr_brand DESC)" />		
+		<param name="@spacer" type="spacer" default="" label="" description="" />		
+		<param name="tmpl_suffix" type="text" default="" label="jReviews Template Suffix" description="This suffix will be applied to the module view file and is useful to create multiple instances of the module that have different outputs." />
+        <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ajax_nav" type="radio" default="1" label="Enable Ajax Pagination" description="Allows users to navigate to other pages inside the module without page reloads.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+        <param name="nav_position" type="radio" default="bottom" label="Positioning of Pagination" description="">
+            <option value="bottom">Bottom</option>
+            <option value="side">Sides</option>
+        </param>          		
+		<param name="module_limit" type="text" default="5" label="Limit results" description="Sets the number of results shown in the module" />
+		<param name="columns" type="text" default="1" label="Columns" description="Number of columns or items per row to show." />
+		<param name="spacer" type="spacer" default="" label="" description="" />		
+		<param name="cat_auto" type="radio" default="0" label="Category Autodetect" description="Filters results for current category.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>			
+		</param>	
+		<param name="dir" type="text" default="" label="Directory IDs (com_content)" description="Comma separated list, no spaces." />
+		<param name="section" type="text" default="" label="Section IDs (com_content)" description="Comma separated list, no spaces." />
+		<param name="category" type="text" default="" label="Category IDs (everywhere)" description="Comma separated list, no spaces." />
+		<param name="listing" type="text" default="" label="Listing IDs (everywhere)" description="Comma separated list, no spaces." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="tn_show" type="radio" default="1" label="Show Thumbnail" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>		
+		<param name="tn_mode" type="radio" default="crop" label="Thumbnail Type" description="Scale creates thumbnail with specified width and height is scaled proportionately. Crop takes a square from the center of the image and scales to the specified width.">
+			<option value="crop">Crop</option>
+			<option value="scale">Scale</option>
+		</param>		
+		<param name="tn_width" type="text" default="100" label="Thumbnail Width (px)" description="Thumbnail width in pixels" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="filter_listing_period" type="text" default="" label="Filter: Listings submitted in past x days" description="With this setting you can filter the results to use listings submitted in the past x days. The setting works for: all modes." />
+        <param name="filter_review_period" type="text" default="" label="Filter: Listings with reviews submitted in past x days" description="With this setting you can filter the results to use reviews submitted in the past x days. The setting works for: [top editor rated], [top/worst user rated] and [custom] modes." />
+        <param name="filter_review_count" type="text" default="" label="Filter: Listings with review count higher than" description="With this setting you can filter the results to listings with having at least the defined number of reviews. The setting works for: [top/worst user rated] and [custom] modes." />
+        <param name="filter_avg_rating" type="text" default="" label="Filter: Avg rating higher than" description="The setting works for: [top user rated] and [custom] modes." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="show_numbers" type="radio" default="0" label="Show numbers" description="Adds numbers before each review.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>   
+    </params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

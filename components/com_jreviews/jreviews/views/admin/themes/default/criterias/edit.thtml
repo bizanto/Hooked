@@ -1,0 +1,495 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+?>
+
+<style type="text/css">
+#adminForm .ui-tabs .ui-tabs-panel {
+    padding:1em 0.5em;
+}
+</style>
+<?php
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+$radioOptions = array(
+    '-1'=>'Global',
+    '0'=>'No',
+    '1'=>'Yes'
+)
+?>
+
+<div class="admin_header">Setup Listing Types</div>
+
+    <div class="ui-widget">
+        <?php if($criteria['Criteria']['criteria_id']):?>
+            <div style="padding: 0pt 0.7em;" class="ui-state-error ui-corner-all"> 
+                <p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span> 
+                You can change the descriptions, but you cannot change the number of rating criteria if you already have reviews in the system.
+            </p></div>
+        <?php else:?>
+            <div style="padding: 0pt 0.7em;" class="ui-state-error ui-corner-all"> 
+                <p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span> 
+                Think carefully before entering the rating criteria, because once you have the first review, you cannot add or remove rating criteria.
+            </p></div>
+        <?php endif;?>
+    </div>   
+    <br />
+    
+    <div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="status" class="jr_floatLeft">&nbsp;</span>        
+        <button class="ui-button ui-corner-all" onclick="jreviews_admin.criteria.save('adminForm');return false;">Save</button>
+        <?php if(Sanitize::getInt($criteria['Criteria'],'criteria_id')):?>
+        &nbsp;
+        <button class="ui-button ui-corner-all" onclick="jreviews_admin.apply = true; jreviews_admin.criteria.save('adminForm');return false;">Apply</button>
+        <?php endif;?>
+        &nbsp;
+        <button class="ui-button ui-corner-all" onclick="jreviews_admin.menu.load('criterias','index');return false;">Cancel</button>
+    </div>
+    
+
+<form name="adminForm" id="adminForm" class="adminForm">
+<table width="100%"border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td valign="top"><!-- Listing type main setup -->
+
+            <table class="admin_list">
+
+                <tr><th colspan="5">General Settings</th></tr>                 
+                <tr>
+                    <td>Listing Type Title<span class="required">*</span></td>            
+                    <td colspan="4">
+                        <input type="text" size="50" maxsize="50" name="data[Criteria][title]" value="<?php echo $criteria['Criteria']['title']; ?>" />
+                    </td>            
+                </tr>  
+                
+                <tr>
+                    <td>Comments &amp; Ratings:</td>
+                    <td colspan="4">
+                         <select id="criteria_state" name="data[Criteria][state]">
+                            <option value=1 <?php echo $criteria['Criteria']['state'] == 1 ? 'selected' : '';?>>Allow comments and ratings</option>
+                            <option value=2 <?php echo $criteria['Criteria']['state'] == 2 ? 'selected' : '';?>>Allow comments without ratings</option>
+                            <option value=0 <?php echo $criteria['Criteria']['state'] == 0 ? 'selected' : '';?>>Disable comments and ratings</option>
+                        </select>
+                    </td>
+                </tr>          
+            </table>
+            
+            <br />            
+         
+            
+            <table class="admin_list" name="criteria_list" id="criteria_list">
+                <tr>           
+                    <th>
+                        <div class="ui-content">Rating Criterion</div>
+                    </th>            
+                    <th>
+                        <div style="" title="If you uncheck this field, the user will be able not to rate this criterion (a 'N/A' option will be added to the rating scale). N/A criteria are omitted from the average, and weights are being proportionally recalculated.">
+                        Required</div>
+                    </th>
+                    <th>
+                        <div style="" title="Criteria weights for average rating calculation. The total must add to 100, do not enter the % character. If left blank a simple average will be calculated.">
+                        Weight (optional)</div>
+                    </th>            
+                    <th>
+                        <div style="" title="These are hints for users to have a better idea how to rate in the review form.">
+                        Tooltip (optional)</div>
+                    </th>
+                    
+                    <th>&nbsp;</td>
+                </tr>
+                    <?php    
+                    foreach ( $criteriaDisplay['criteria'] as $k => $v )
+                    {    
+                        echo '
+                            <tr id="',$k,'">
+                                <td><input size="35" name="data[Criteria][criteria][',$k,']" value="',$criteriaDisplay['criteria'][$k],'" /></td>
+                                    <td style="text-align:center"><input type="hidden" name="data[Criteria][required][',$k,']" value="0" /><input type="checkbox" id="required',$k,'" value="1" name="data[Criteria][required][',$k,']" ',empty($criteriaDisplay['required'][$k]) && !empty($criteriaDisplay['criteria'][$k]) ? '' : 'checked',' /></td>
+                                    <td><input id="weight',$k,'" size=5 name="data[Criteria][weights][',$k,']" value="',$criteriaDisplay['weights'][$k],'" onkeyup="sumWeights()" /></td>
+                                    <td><input size="50" name="data[Criteria][tooltips][',$k,']" value="',empty($criteriaDisplay['tooltips'][$k]) ? '' : $criteriaDisplay['tooltips'][$k],'" /></td>
+                                    <td>',empty($reviewsExist) ? '<button class="ui-button ui-corner-all" onclick="removeCriteria('.$k.');return false;">Remove</button>' : '&nbsp;','</td>
+                            </tr>
+                            ';
+                    } 
+                    ?>
+                </table>
+                              
+            <div name="title_weights" id="title_weights" style="display:none; float:left; margin: 0 0 2px 2px">Weights sum:&nbsp;</div>
+            <div name="sum_weights" id="sum_weights" style="margin-bottom:2px">&nbsp;</div>
+            <div><?php echo empty($reviewsExist) ? '<button class="ui-button ui-corner-all" onclick="rowId=addNewCriteria(rowId);return false;">Add Another Criterion</button>' : '* You cannot add or remove criteria once you have reviews in the system.'; ?></div>
+
+            <br />
+
+            <table class="admin_list">
+                <tr><th colspan="5">Custom Fields - In addition to standard fields, you can select the field groups you want to associate to this listing type</th></tr>                             
+                <tr>
+                    <td style="font-size:14px;font-weight:bold;">Custom Field Groups Association: <br />
+                        <?php 
+                            echo $Form->select(
+                                'data[Criteria][groupid]',
+                                $groups,
+                                explode(',',$criteria['Criteria']['group_id']),
+                                array('size'=>'20','multiple'=>'multiple', 'style'=>'width:300px;font-size:110%;line-height:1.5em;')
+                            );                    
+                        ?>
+                    </td>
+                    <td valign="top">
+                        <div class="ui-widget">
+                            Select one or more field groups (hold CTRL key)(optional)<br />
+                            <div style="padding: 0pt 0.7em;" class="ui-state-highlight ui-corner-all"> 
+                                <p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span> 
+                                <strong>IMPORTANT!</strong>: This is where you associate the custom fields. When you assign the criteria to the categories in the category manager, the field groups you select here will be associated with those categories.
+                                </p></div>
+                        </div>            
+                    </td>
+                </tr>
+            </table>
+                
+        </td>
+        
+        <td valign="top" style="width:320px;padding: 0 0 0 5px;">
+
+            <div id="jr_tabs" class="jr_tabs">
+                
+                <ul>
+                    <li><a href="#listing-type-config"><span><?php __a("Configuration Overrides");?></span></a></li>
+                    <li><a href="#listing-type-access"><span><?php __a("Access Overrides");?></span></a></li>
+                    <li><a href="#listing-type-seo"><span><?php __a("SEO Manager");?></span></a></li>
+                 </ul>
+                
+                <div id="listing-type-config">
+                    <table class="admin_list"><!-- Configuration overrides -->
+
+                        <tr><th colspan="2">Listings</th></tr>                 
+                        <tr>
+                            <td>Listing Comparison</td>            
+                            <td>
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][list_compare]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'list_compare',-1),)
+                                );
+                                ?>
+                            </td>
+                        </tr>
+                            <td>Default List Ordering</td>
+                            <td>
+                                <?php
+                                echo $Form->select(
+                                    'data[Criteria][config][list_order_default]',
+                                    array('-1'=>'Global')+$Jreviews->orderingList(null,null,null,true),
+                                    Sanitize::getVar($criteria['ListingType']['config'],'list_order_default','-1'),
+                                    array('size'=>'1','class'=>'inputbox')
+                                );                
+                                ?>
+                            </td>                
+                        </tr>
+                        <tr>
+                            <td>Order by field - Overrides default ordering</td>
+                            <td>
+                                <?php echo $Form->text(
+                                    'data[Criteria][config][list_order_field]',
+                                    array('value'=>Sanitize::getVar($criteria['ListingType']['config'],'list_order_field'))
+                                );?>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr><th colspan="2"><?php __a("Listing Form");?></th></tr>                 
+                        <tr>
+                            <td width="200" height="40"><?php __a("Summary");?></td>
+                            <td>
+                                <?php
+                                    echo $Form->select(
+                                        'data[Criteria][config][content_summary]',
+                                        array('-1'=>'Global')+array(
+                                            'required'=>'Required',
+                                            'optional'=>'Optional',
+                                            'hidden'=>'Hidden'                        
+                                        ),
+                                        Sanitize::getVar($criteria['ListingType']['config'],'content_summary','-1'),
+                                        array('size'=>'1','class'=>'inputbox')
+                                    );                    
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="200" height="40"><?php __a("Description");?></td>
+                            <td>
+                                <?php echo $Form->select(
+                                        'data[Criteria][config][content_description]',
+                                        array('-1'=>'Global')+array(
+                                            'required'=>'Required',
+                                            'optional'=>'Optional',
+                                            'hidden'=>'Hidden'                                              
+                                            ),
+                                        Sanitize::getVar($criteria['ListingType']['config'],'content_description','-1'),
+                                        array('size'=>'1','class'=>'inputbox')
+                                    );?>            
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="200" height="40"><?php echo __a("Review form access");?></td>
+                            <td>
+                                <?php
+                                    echo $Form->select(
+                                        'data[Criteria][config][content_show_reviewform]',
+                                        array('-1'=>'Global')+array(
+                                            'authors'=>'Editors',                        
+                                            'noteditors'=>'Everyone except editors',                        
+                                            'all'=>'Everyone',
+                                            'none'=>'Don\'t show'
+                                            ),
+                                        Sanitize::getVar($criteria['ListingType']['config'],'content_show_reviewform','-1'),
+                                        array('size'=>'1','class'=>'inputbox')
+                                    );                    
+                                ?>            
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><?php __a("Make review optional");?></td>
+                            <td>        
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][reviewform_optional]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'reviewform_optional',-1),)
+                                );                            
+                                ?>
+                            </td>
+                        </tr>         
+                                     
+                        <tr>
+                            <td># image upload fields</td>
+                            <td>
+                                <?php echo $Form->text(
+                                    'data[Criteria][config][content_images]',
+                                    array('style'=>'width:3em;','value'=>Sanitize::getVar($criteria['ListingType']['config'],'content_images'))
+                                    );
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Image upload on edit</td>
+                            <td>
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][content_images_edit]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'content_images_edit',-1))
+                                );                            
+                                ?>                            
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enforce image limit</td>
+                            <td>
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][content_images_total_limit]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'content_images_total_limit',-1))
+                                );                            
+                                ?> 
+                            </td>
+                        </tr>                     
+                                        
+                        <tr><th colspan="2"><?php __a("Reviews");?></th></tr>                 
+                         <tr>
+                            <td>Rating increment:</td>
+                            <td><?php echo $Form->select('data[Criteria][config][rating_increment]',array('-1'=>'Global','1'=>1,'0.5'=>0.5),array('id'=>'rating_increment','selected'=>$criteria['ListingType']['config'],'rating_increment'));?></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Enable Editor Reviews</td>
+                            <td><?php
+                                echo $Form->select(
+                                    'data[Criteria][config][author_review]',
+                                    array(
+                                        '-1' => 'Global',
+                                        '0' => 'No editor reviews',
+                                        '1' => 'One editor review per listing',
+                                        '2' => 'Multiple editor reviews per listing'
+                                        ),
+                                    Sanitize::getVar($criteria['ListingType']['config'],'author_review','-1'),    
+                                    array('size'=>'1','class'=>'inputbox','style'=>'width:150px;')
+                                );
+                            ?></td>
+                        </tr>
+                        
+                        </tr>
+                            <td>User Review Order</td>
+                            <td>
+                                <?php
+                                echo $Form->select(
+                                    'data[Criteria][config][user_review_order]',
+                                    array('-1'=>'Global')+$Jreviews->orderingListReviews(null,null,array('return'=>true)),
+                                    Sanitize::getVar($criteria['ListingType']['config'],'user_review_order','-1'),
+                                    array('size'=>'1','class'=>'inputbox')
+                                );                
+                                ?>
+                            </td>                
+                        </tr>
+                        
+                    <tr><th colspan="2">Review Form</th></tr>
+                    <tr>
+                        <td width="200"><?php __a("Title");?></td>
+                        <td>
+                            <?php echo $Form->select(
+                                    'data[Criteria][config][reviewform_title]',
+                                    array('-1'=>'Global')+array(
+                                        'required'=>'Required',
+                                        'optional'=>'Optional',
+                                        'hidden'=>'Hidden'                        
+                                        ),
+                                    Sanitize::getVar($criteria['ListingType']['config'],'reviewform_title','-1'),
+                                    array('size'=>'1','class'=>'inputbox')
+                                );?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?php __a("Comment");?></td>
+                        <td>
+                            <?php echo $Form->select(
+                                    'data[Criteria][config][reviewform_comment]',
+                                    array('-1'=>'Global')+array(
+                                        'required'=>'Required',
+                                        'optional'=>'Optional',
+                                        'hidden'=>'Hidden'                        
+                                        ),
+                                    Sanitize::getVar($criteria['ListingType']['config'],'reviewform_comment','-1'),
+                                    array('size'=>'1','class'=>'inputbox')
+                                );?>
+                        </td>
+                    </tr>                    
+                        
+                        <tr><th colspan="2">Detail Page Images</th></tr>
+                        <tr>
+                            <td>Show main image:</td>
+                            <td>
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][content_intro_img]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'content_intro_img','-1'),)
+                                );
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Main image width:</td>
+                            <td><input type="text" size="4" maxsize="4" name="data[Criteria][config][content_intro_img_size]" value="<?php echo Sanitize::getVar($criteria['ListingType']['config'],'content_intro_img_size','');?>" />px</td>
+                        </tr>
+                        <tr>
+                            <td>Show gallery:</td>
+                            <td>
+                                <?php 
+                                echo $Form->radio(
+                                    'data[Criteria][config][content_gallery]',
+                                    $radioOptions,
+                                    array('div'=>false,'value'=>Sanitize::getVar($criteria['ListingType']['config'],'content_gallery','-1'),)
+                                );
+                                ?>
+                            </td>
+                        </tr>                                
+                        <tr>
+                            <td>Gallery thumb width:</td>
+                            <td><input type="text" size="4" maxsize="4" name="data[Criteria][config][content_thumb_size]" value="<?php echo Sanitize::getVar($criteria['ListingType']['config'],'content_thumb_size','');?>" />px</td>
+                        </tr>                    
+                    </table>    
+                </div>
+                <!-- END CONFIGUGRATION OVERRIDES -->
+                
+                <div id="listing-type-access">
+                    <table class="admin_list">
+                        <tr><th colspan="2">Listings</th></tr>                 
+                        <tr valign="top">
+                            <td width="200">
+                                <?php __a("Submit new listing");?>
+                                <br /><i><?php __a("Use CTRL key to select multiple options");?></i>                        
+                            </td>
+                            <td>
+                                <?php echo $Form->select(
+                                        'data[Criteria][config][addnewaccess]',
+                                        array('global'=>array('value'=>-1,'text'=>'Global'),'guest'=>array('value'=>0,'text'=>'Guest'))+$accessGroups,
+                                        explode(',',Sanitize::getVar($criteria['ListingType']['config'],'addnewaccess','-1')),
+                                        array('multiple'=>'multiple','size'=>8, 'style'=>'width:150px;')                            
+                                    );
+                                    
+                                ?>                                        
+                            </td>
+                        </tr>
+                        
+                        <tr><th colspan="2">Reviews</th></tr>
+                        <tr valign="top">
+                            <td width="200">
+                                <?php __a("Submit new review");?>
+                                <br /><i><?php __a("Use CTRL key to select multiple options");?></i>                        
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $Form->select(
+                                        'data[Criteria][config][addnewaccess_reviews]',
+                                        array('global'=>array('value'=>-1,'text'=>'Global'),'guest'=>array('value'=>0,'text'=>'Guest'))+$accessGroups,
+                                        explode(',',Sanitize::getVar($criteria['ListingType']['config'],'addnewaccess_reviews','-1')),
+                                        array('multiple'=>'multiple','size'=>8, 'style'=>'width:150px;')                            
+                                    );
+                                ?>                    
+                            </td>
+                        </tr>                                      
+                    </table>
+                </div>
+                <!-- END ACCESS OVERRIDES -->
+                
+                <div id="listing-type-seo">
+                    <table class="admin_list">
+                        <tr><td>Valid tags: {title},{section},{category},{metadesc},{metakey} and any custom field by using the syntax {jr_field}.</td></tr>
+                        <tr><th>Title</th></tr>                 
+                        <tr valign="top">
+                            <td>
+                                <?php echo $Form->textarea(
+                                        'data[Criteria][config][type_metatitle]',
+                                        array('style'=>'width:98%;height:5em','value'=>Sanitize::getString($criteria['ListingType']['config'],'type_metatitle'))
+                                    );
+                                ?>                                        
+                            </td>
+                        </tr>
+                        <tr><th>Meta Keywords</th></tr>                 
+                        <tr valign="top">
+                            <td>
+                                <?php echo $Form->textarea(
+                                        'data[Criteria][config][type_metakey]',
+                                        array('style'=>'width:98%;height:10em;','value'=>Sanitize::getString($criteria['ListingType']['config'],'type_metakey'))
+                                    );
+                                ?>                                        
+                            </td>
+                        </tr>
+                        <tr><th>Meta Description</th></tr>                 
+                        <tr valign="top">
+                            <td>
+                                <?php echo $Form->textarea(
+                                        'data[Criteria][config][type_metadesc]',
+                                        array('style'=>'width:98%;height:10em;','value'=>Sanitize::getString($criteria['ListingType']['config'],'type_metadesc'))
+                                    );
+                                ?>                                        
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+    
+             </div><!-- end tabs-->                 
+
+        </td>
+    </tr>
+    
+
+
+    <input type="hidden" name="data[Criteria][id]" value="<?php echo $criteria['Criteria']['criteria_id']; ?>" />
+    <input type="hidden" name="data[controller]" value="admin/criterias" />
+    <input type="hidden" name="data[action]" value="_save" />
+    </div>
+ </form>

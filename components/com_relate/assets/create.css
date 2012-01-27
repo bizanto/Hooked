@@ -1,0 +1,101 @@
+
+.progress { text-align: center; }
+.nav { float: right; }
+.tab-wrap { float: left; margin: 0 5px; }
+.prog-tab { background: url('progress_tabs.png') no-repeat scroll left bottom transparent; display: block; width: 130px; height: 21px; }
+.cur-tab { background-position: left top; }
+div.odd, .step-msg { color: #000; display: block; margin: 20px 0; padding: 10px; }
+#step-error { color: #F00; font-weight: bold; text-align: center; }
+.reqField { color: #F00; }
+
+.locationSelect { padding: 10px 0; }
+	.locationSelect input { padding: 10px 10px 10px 8px; } 
+#locationsList { border: 1px solid #CCCCCC; display: none; float: left; height: 200px; list-style-type: none; overflow: auto; padding: 5px 10px; }
+#locName { float: left; margin: 0 10px; }
+#states { /* float: left; */ }
+
+.locItemDel { float: right; }
+
+#nudge { font-weight: bold; }
+
+.marker-desc { margin: 10px 0; }
+.marker-desc div { line-height: 40px; margin: 0 5px; }
+.marker { background: url('/components/com_jreviews_addons/geomaps/icons/blue.png') 0 0 no-repeat; display: block; float: left; width: 28px; height: 40px; }
+.marker-red { background: url('/components/com_relate/assets/marker.png') 0 0 no-repeat; display: block; float: left; width: 20px; height: 34px; }
+
+#name_it div { padding: 10px 0; }
+.cal-div { float: left; margin: 0 30px 0 0; }
+#name_it .cal-div label { display: block; }
+
+#gm_mapPopupCanvas { height: 400px; }
+
+.fbook { background: url("http://hooked.no.s3.amazonaws.com/social-media-icons.png") no-repeat scroll 0 -99px transparent; display: block; height: 33px; line-height: 33px; margin: 0 0 5px; padding: 0 0 0 30px;}
+
+td { text-align: center; }
+#catches input { padding: 10px 10px 10px 8px; }
+#catches input, select { margin: 0 10px; }
+
+#catches .fieldRow { display: block; margin: 15px 0;}
+
+#catches .fieldRow label { font-weight: bold; margin: 5px 0; }
+#catches .r1 label { width: 28%;  display: block; float: left;  }
+#catches .r2 label { width: 42%;  display: block; float: left; }
+#catches .r2 label.full { width: 80%;  display: block; float: left; }
+#catches .r3 label { float: none; width: 28%; }
+
+#catches .prv label { margin-right: 30px; }
+
+#add_catches #catches #desc { width: 64%; padding: 1%; margin: 0; }
+#catches input.checkbox {  }
+
+#add_hatches input { padding: 10px 10px 10px 8px; }
+#add_hatches input, select { margin: 0 10px; }
+
+#add_hatches .fieldRow { display: block; margin: 15px 0;}
+#add_hatches .fieldRow div { display: block; margin: 5px 0;}
+#add_hatches .fieldRow label { font-weight: bold; margin: 5px 0; }
+#add_hatches .r1 label { width: 28%;  display: block; float: left;  }
+#add_hatches .r2 label { width: 42%;  display: block; float: left; }
+#add_hatches .r2 label.full { width: 80%;  display: block; float: left; }
+#add_hatches .r3 label { float: none; width: 28%; }
+
+.insect-support { float: left; } 
+
+#catches .prv label { margin-right: 30px; }
+
+.catch-summary { margin: 10px 0; }
+#jr_catchsummary { width: 300px; }
+
+.add-category { margin: 10px 0; }
+.rel-items { margin: 0 0 10px 0; }
+.cat-title { font-size: 120%; font-weight: bold; }
+img.listingThumb { float: left; margin-right: 5px; width: 58px; }
+.rel8Item { line-height: 58px; margin: 5px 0; padding: 5px; }
+div.odd { background-color: #999; color: #000; -moz-border-radius: 10px 10px 10px 10px; }
+.rel8ItemDel { float: right; }
+
+#cWindowContentWrap { background-color: #3D3E18 }
+
+.remove { float: right; }
+.photo-item { display: inline; }
+#photoupload-container { background-color: #999; padding: 10px; -moz-border-radius: 10px 10px 0 0; }
+.upload-photo { background: url(/templates/beez/images/media-icons.png) top left no-repeat; text-indent: -9999px; display: block; float: left; width: 14px; height: 12px; margin: 10px 5px 0 0; } 
+.upload-video { background: url("addvideo.png") no-repeat scroll left center transparent; padding: 0 0 0 25px; }
+.upload-form { margin: 10px 0; }
+
+.add-uploads { background-color: #999; padding: 0 0 0 10px; -moz-border-radius: 0 0 10px 10px; }
+	.add-uploads button { color: #FFF; }
+.add-img, .add-vid { background: #B1B693 url("/images/bg-rel8-plus.png") no-repeat 5px 50%; border: 0; line-height: 100%; padding: 10px 10px 10px 35px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;  font-weight: bold; }
+.add-img:hover, .add-vid:hover { color: #333; }
+span.loading { background: url("../../com_community/assets/images/wait.gif") no-repeat scroll 0 0 transparent; height: 11px; width: 50px; }
+
+#thank_you { text-align: center; }
+#thank_you .loading { background: url("/components/com_community/assets/window/wait.gif") center center no-repeat; display: block; margin: 50px auto; width: 43px; height: 11px; }
+
+.listingTitle { float: left; padding: 5px; }
+.listingLink { float: left; padding: 5px; }
+
+#name_it #description { width: 300px; }
+
+.addmore { line-height: 25px; }
+.addmore img { vertical-align: text-bottom; }

@@ -1,0 +1,222 @@
+#<?php die('Direct Access To Log Files Not Permitted'); ?>
+#Version: 1.0
+#Date: 2011-07-05 17:12:30
+#Fields: date	time	level	c-ip	status	comment
+#Software: Joomla! 1.5.20 Stable [ senu takaa ] 18-July-2010 18:00 GMT
+2011-07-05	17:12:30	-	8.17.84.205	OK	Activating Subscription
+2011-07-05	17:12:30	-	8.17.84.205	OK	Array
+(
+    [customer_url] => https://sites.fastspring.com/hooked/order/s/HOO110705-4561-58137S
+    [task] => activate
+    [option] => com_saasy
+    [subscription_ref] => HOO110705-4561-57135S
+    [security_data] => 13098859500051309885949969
+    [security_hash] => 23b85c18336c19a22a9908006244b690
+)
+
+2011-07-05	17:12:30	-	8.17.84.205	OK	Key is valid
+2011-07-05	17:12:30	-	8.17.84.205	OK	Subscription URL
+2011-07-05	17:12:30	-	8.17.84.205	OK	https://api.fastspring.com/company/hooked/subscription/HOO110705-4561-57135S?user=Administrator&pass=kencintifi
+2011-07-05	17:12:30	-	8.17.84.205	OK	Subscription Object
+2011-07-05	17:12:30	-	8.17.84.205	OK	SimpleXMLElement Object
+(
+    [status] => active
+    [statusChanged] => 2011-07-05T17:12:29.885Z
+    [cancelable] => true
+    [test] => true
+    [customer] => SimpleXMLElement Object
+        (
+            [firstName] => Bernt
+            [lastName] => Nor
+            [email] => bernt@hooked.no
+            [phoneNumber] => 1234567890
+        )
+
+    [customerUrl] => https://sites.fastspring.com/hooked/order/s/HOO110705-4561-58137S
+    [productName] => Hooked.no
+    [quantity] => 1
+    [nextPeriodDate] => 2012-07-05Z
+)
+
+2011-07-05	17:12:30	-	8.17.84.205	OK	User Found: 1
+2011-07-05	17:12:30	-	8.17.84.205	OK	No Update Required
+2011-07-05	17:12:30	-	8.17.84.205	OK	UserID: 64
+2011-07-05	17:12:30	-	8.17.84.205	OK	Creating Saasy Record: insert into #__saasy (userid,subscription_ref,customer_url) values
+								(64,'HOO110705-4561-57135S','https://sites.fastspring.com/hooked/order/s/HOO110705-4561-58137S')
+2011-08-08	18:12:08	-	8.12.42.128	OK	Working With HOO110808-4651-72141S
+2011-08-08	18:12:08	-	8.12.42.128	OK	User Lookup Query: select userid from #__saasy where subscription_ref='HOO110808-4651-72141S'
+2011-08-08	18:12:08	-	8.12.42.128	OK	User Lookup Result: stdClass Object
+(
+    [userid] => 3511
+)
+
+2011-08-08	18:12:08	-	8.12.42.128	OK	User Update Query: update #__users set usertype='Registered' where id=3511
+2011-08-08	22:25:43	-	8.17.84.13	OK	Listing Update Query: update #__content set state=1 where created_by= and sectionid=3
+2011-08-08	22:30:00	-	8.17.84.13	OK	Activating Subscription
+2011-08-08	22:30:00	-	8.17.84.13	OK	Array
+(
+    [customer_url] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-54238S
+    [task] => activate
+    [option] => com_saasy
+    [subscription_ref] => HOO110808-9639-26223S
+    [security_data] => 13128426000101312842599972
+    [security_hash] => 44ea62711d57e51e7f6be823a69e7a8a
+)
+
+2011-08-08	22:30:00	-	8.17.84.13	OK	Key is valid
+2011-08-08	22:30:00	-	8.17.84.13	OK	Subscription URL
+2011-08-08	22:30:00	-	8.17.84.13	OK	https://api.fastspring.com/company/hooked/subscription/HOO110808-9639-26223S?user=Administrator&pass=kencintifi
+2011-08-08	22:30:00	-	8.17.84.13	OK	Subscription Object
+2011-08-08	22:30:00	-	8.17.84.13	OK	SimpleXMLElement Object
+(
+    [status] => active
+    [statusChanged] => 2011-08-08T22:29:59.924Z
+    [cancelable] => true
+    [test] => true
+    [customer] => SimpleXMLElement Object
+        (
+            [firstName] => hath
+            [lastName] => way
+            [company] => hathway
+            [email] => nathan@wearehathway.com
+            [phoneNumber] => 1234567890
+        )
+
+    [customerUrl] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-54238S
+    [productName] => Hooked.no
+    [quantity] => 1
+    [nextPeriodDate] => 2012-08-08Z
+)
+
+2011-08-08	22:30:00	-	8.17.84.13	OK	User Found: 1
+2011-08-08	22:30:00	-	8.17.84.13	OK	No Update Required
+2011-08-08	22:30:00	-	8.17.84.13	OK	UserID: 62
+2011-08-08	22:30:00	-	8.17.84.13	OK	Creating Saasy Record: insert into #__saasy (userid,subscription_ref,customer_url) values
+								(62,'HOO110808-9639-26223S','https://sites.fastspring.com/hooked/order/s/HOO110808-9639-54238S')
+2011-08-08	22:30:00	-	8.17.84.13	OK	Listing Update Query: update #__content set state=1 where created_by= and sectionid=3
+2011-08-08	22:33:00	-	8.17.84.13	OK	Activating Subscription
+2011-08-08	22:33:00	-	8.17.84.13	OK	Array
+(
+    [customer_url] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-88256S
+    [task] => activate
+    [option] => com_saasy
+    [subscription_ref] => HOO110808-9639-70249S
+    [security_data] => 13128427800221312842779981
+    [security_hash] => c3a450c7c61f702843644f05b2c921d7
+)
+
+2011-08-08	22:33:00	-	8.17.84.13	OK	Key is valid
+2011-08-08	22:33:00	-	8.17.84.13	OK	Subscription URL
+2011-08-08	22:33:00	-	8.17.84.13	OK	https://api.fastspring.com/company/hooked/subscription/HOO110808-9639-70249S?user=Administrator&pass=kencintifi
+2011-08-08	22:33:00	-	8.17.84.13	OK	Subscription Object
+2011-08-08	22:33:00	-	8.17.84.13	OK	SimpleXMLElement Object
+(
+    [status] => active
+    [statusChanged] => 2011-08-08T22:32:59.943Z
+    [cancelable] => true
+    [test] => true
+    [customer] => SimpleXMLElement Object
+        (
+            [firstName] => Test
+            [lastName] => User
+            [company] => Test User
+            [email] => nathan@wearehathway.com
+            [phoneNumber] => 1234567890
+        )
+
+    [customerUrl] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-88256S
+    [productName] => Hooked.no
+    [quantity] => 1
+    [nextPeriodDate] => 2012-08-08Z
+)
+
+2011-08-08	22:33:00	-	8.17.84.13	OK	User Found: 1
+2011-08-08	22:33:00	-	8.17.84.13	OK	No Update Required
+2011-08-08	22:33:00	-	8.17.84.13	OK	UserID: 62
+2011-08-08	22:33:00	-	8.17.84.13	OK	Creating Saasy Record: insert into #__saasy (userid,subscription_ref,customer_url) values
+								(62,'HOO110808-9639-70249S','https://sites.fastspring.com/hooked/order/s/HOO110808-9639-88256S')
+2011-08-08	22:33:00	-	8.17.84.13	OK	Listing Update Query: update #__content set state=1 where created_by=62 and sectionid=3
+2011-08-08	22:34:32	-	8.17.84.13	OK	Activating Subscription
+2011-08-08	22:34:32	-	8.17.84.13	OK	Array
+(
+    [customer_url] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-57267S
+    [task] => activate
+    [option] => com_saasy
+    [subscription_ref] => HOO110808-9639-20264S
+    [security_data] => 13128428720041312842871968
+    [security_hash] => 9179f723eeca85a99c8d33b1ad84300f
+)
+
+2011-08-08	22:34:32	-	8.17.84.13	OK	Key is valid
+2011-08-08	22:34:32	-	8.17.84.13	OK	Subscription URL
+2011-08-08	22:34:32	-	8.17.84.13	OK	https://api.fastspring.com/company/hooked/subscription/HOO110808-9639-20264S?user=Administrator&pass=kencintifi
+2011-08-08	22:34:32	-	8.17.84.13	OK	Subscription Object
+2011-08-08	22:34:32	-	8.17.84.13	OK	SimpleXMLElement Object
+(
+    [status] => active
+    [statusChanged] => 2011-08-08T22:34:31.915Z
+    [cancelable] => true
+    [test] => true
+    [customer] => SimpleXMLElement Object
+        (
+            [firstName] => nathan
+            [lastName] => jones
+            [company] => hathway
+            [email] => nathan@wearehathway.com
+            [phoneNumber] => 1234567890
+        )
+
+    [customerUrl] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-57267S
+    [productName] => Hooked.no
+    [quantity] => 1
+    [nextPeriodDate] => 2012-08-08Z
+)
+
+2011-08-08	22:34:32	-	8.17.84.13	OK	User Found: 1
+2011-08-08	22:34:32	-	8.17.84.13	OK	No Update Required
+2011-08-08	22:34:32	-	8.17.84.13	OK	UserID: 62
+2011-08-08	22:34:32	-	8.17.84.13	OK	Creating Saasy Record: insert into #__saasy (userid,subscription_ref,customer_url) values
+								(62,'HOO110808-9639-20264S','https://sites.fastspring.com/hooked/order/s/HOO110808-9639-57267S')
+2011-08-08	22:34:32	-	8.17.84.13	OK	Listing Update Query: update #__content set state=1 where created_by=62 and sectionid=3
+2011-08-08	22:35:45	-	8.17.84.13	OK	Activating Subscription
+2011-08-08	22:35:45	-	8.17.84.13	OK	Array
+(
+    [customer_url] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-45302S
+    [task] => activate
+    [option] => com_saasy
+    [subscription_ref] => HOO110808-9639-76285S
+    [security_data] => 13128429448701312842944833
+    [security_hash] => 9ab4e4f19abf8dd13c296df66a60b728
+)
+
+2011-08-08	22:35:45	-	8.17.84.13	OK	Key is valid
+2011-08-08	22:35:45	-	8.17.84.13	OK	Subscription URL
+2011-08-08	22:35:45	-	8.17.84.13	OK	https://api.fastspring.com/company/hooked/subscription/HOO110808-9639-76285S?user=Administrator&pass=kencintifi
+2011-08-08	22:35:45	-	8.17.84.13	OK	Subscription Object
+2011-08-08	22:35:45	-	8.17.84.13	OK	SimpleXMLElement Object
+(
+    [status] => active
+    [statusChanged] => 2011-08-08T22:35:44.744Z
+    [cancelable] => true
+    [test] => true
+    [customer] => SimpleXMLElement Object
+        (
+            [firstName] => nathan
+            [lastName] => jones
+            [company] => hathway
+            [email] => anotheruser@anotheruser.com
+            [phoneNumber] => 1234567890
+        )
+
+    [customerUrl] => https://sites.fastspring.com/hooked/order/s/HOO110808-9639-45302S
+    [productName] => Hooked.no
+    [quantity] => 1
+    [nextPeriodDate] => 2012-08-08Z
+)
+
+2011-08-08	22:35:45	-	8.17.84.13	OK	User Found: 1
+2011-08-08	22:35:45	-	8.17.84.13	OK	Updating User: update user set usertype='Author' where id=3518
+2011-08-08	22:35:45	-	8.17.84.13	OK	UserID: 3518
+2011-08-08	22:35:45	-	8.17.84.13	OK	Creating Saasy Record: insert into #__saasy (userid,subscription_ref,customer_url) values
+								(3518,'HOO110808-9639-76285S','https://sites.fastspring.com/hooked/order/s/HOO110808-9639-45302S')
+2011-08-08	22:35:45	-	8.17.84.13	OK	Listing Update Query: update #__content set state=1 where created_by=3518 and sectionid=3

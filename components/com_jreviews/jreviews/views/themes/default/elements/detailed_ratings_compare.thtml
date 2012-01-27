@@ -1,0 +1,65 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**
+ * This view element outputs the detailed ratings for reviews and review summary
+ * $reviewType can be 'editor' or 'user'
+ */
+
+//prx($review);
+
+/**********************************************************************************
+ *                                 SETTINGS AND PRE-PROCESSING
+ **********************************************************************************/
+$isReview = isset($review['Review']); // It's user or editor review
+$isUserReview = $isReview && !$review['Review']['editor'];
+$isEditorReview = $isReview && $review['Review']['editor'];
+$showDetailedCriteriaRatings = true;
+
+
+if ($reviewType == 'editor') {
+
+	$isEditorReview = true;
+	
+	# Overwrite user review ratings with the editor ratings
+	$review['Rating']['average_rating'] = $review['Review']['editor_rating'];    
+	$review['Rating']['criteria_rating_count'] = explode(',',$review['Review']['editor_criteria_rating_count']);    
+	$review['Rating']['ratings'] = explode(',',$review['Review']['editor_criteria_rating']);    
+	
+}
+
+# Remove all na rated criteria
+if($this->Config->rating_hide_na)
+{
+    foreach($review['Criteria']['criteria'] AS $key=>$value)
+    {
+        if($review['Rating']['ratings'][$key] == 'na') { unset($review['Criteria']['criteria'][$key]); }
+    }    
+}
+?>
+	
+<?php
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?>
+
+             
+	<?php if(count($review['Criteria']['criteria']) == 1): // Only one criterion defined ?>
+	   <div class="itemUserRating compareField"><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></div>
+	<?php elseif($showDetailedCriteriaRatings): // More than one criterion, display detailed ratings ?>
+		   <div class="itemUserRating compareField"><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></div>
+ 		<?php $i = 0; foreach($review['Criteria']['criteria'] AS $key=>$value):?>		                                                              
+		   <div class="itemUserRating compareField<?php echo fmod($i, 2) ? '' : ' alt' ?>"><?php echo $Rating->drawStars($review['Rating']['ratings'][$key], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></div>
+		<?php $i++; endforeach;?>
+	<?php else: // Don't display detailed ratings ?>
+	   <div class="itemUserRating compareField"><?php echo $Rating->drawStars($review['Rating']['average_rating'], $this->Config->rating_scale, $this->Config->rating_graph, ($reviewType ? $reviewType : ($review['Review']['editor'] ? 'editor' : 'user')));?></div>		
+	<?php endif;?>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="community">
+    <name>My Listings</name>
+    <author>ClickFWD LLC</author>
+    <creationDate>February 2010</creationDate>
+    <copyright>Copyright (C) 2006-2010. All rights reserved.</copyright>
+    <license>http://www.reviewsforjoomla.com</license>
+    <authorEmail>sales@reviewsforjoomla.com</authorEmail>
+    <authorUrl>www.reviewsforjoomla.com</authorUrl>
+    <version>1.6</version>
+    <isapplication>true</isapplication>
+    <description>Jreviews mylistings List</description>
+    <files>
+        <file plugin="jreviews_mylistings">jreviews_mylistings.php</file>
+        <file>jreviews_mylistings/favicon.png</file>
+        <file>jreviews_mylistings.xml</file>
+    </files>
+    
+    <params>
+        <param name="coreapp" type="list" default="0" label="Core Application" description="Causes this application to not appearin the users applications list but it will allow this application to appear in the user profile automatically if selected.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+        <param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this plugin">
+            <option value="1">Use global</option>
+            <option value="0">No caching</option>
+        </param>
+        <param name="listings_order" type="list" default="latest" label="Ordering" description="">
+            <option value="latest">Latest</option>
+            <option value="random">Random</option>
+        </param>
+
+        <param name="spacer" type="spacer" default="" label="" description="" />
+        <param name="ajax_nav" type="radio" default="1" label="Enable Ajax Pagination" description="Allows users to navigate to other pages inside the module without page reloads.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+        <param name="nav_position" type="radio" default="bottom" label="Positioning of Pagination" description="">
+            <option value="bottom">Bottom</option>
+            <option value="side">Sides</option>
+        </param>        
+        <param name="slider_width" type="text" default="530" label="Plugin width (px)" description="Reguired for ajax pagination" />
+        <param name="slider_height" type="text" default="250" label="Plugin height (px)" description="Required for ajax pagination" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />           
+        <param name="limit" type="text" default="6" label="Limit results" description="Sets the number of results shown in the module" />
+        <param name="columns" type="text" default="2" label="Columns" description="Number of columns or items per row to show." />
+        <param name="spacer" type="spacer" default="" label="" description="" />        
+        <param name="dir" type="text" default="" label="Directory IDs" description="Comma separated list, no spaces." />
+        <param name="section" type="text" default="" label="Section IDs" description="Comma separated list, no spaces." />
+        <param name="category" type="text" default="" label="Category IDs" description="Comma separated list, no spaces." />
+        <param name="listing" type="text" default="" label="Listing IDs" description="Comma separated list, no spaces." />
+        <param name="spacer" type="spacer" default="" label="" description="" />
+        <param name="tn_show" type="radio" default="1" label="Show Thumbnail" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>        
+        <param name="tn_mode" type="radio" default="crop" label="Thumbnail Type" description="Scale creates thumbnail with specified width and height is scaled proportionately. Crop takes a square from the center of the image and scales to the specified width.">
+            <option value="crop">Crop</option>
+            <option value="scale">Scale</option>
+        </param>        
+        <param name="tn_width" type="text" default="45" label="Thumbnail Width (px)" description="Thumbnail width in pixels" />        
+    </params>
+</install>

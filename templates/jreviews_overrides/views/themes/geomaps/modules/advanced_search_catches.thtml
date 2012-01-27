@@ -1,0 +1,203 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php 
+/**********************************************************************************
+ * 								CONFIGURATION & SETUP
+ * Read instructions towards the bottom of the file to limit results to certain
+ * categories or sections when the select list is not shown in the form
+ **********************************************************************************/
+$module_id = Sanitize::getVar($this->params,'module_id','');
+$dir_id = Sanitize::getVar($this->params['module'],'dir_id','');
+$criteria_id = Sanitize::getVar($this->params['module'],'criteriaid');
+$query_type = 'all'; // all|exact|any
+$search_review_comments = false;    
+?>
+
+<?php
+/**********************************************************************************
+ * 								JAVASCRIPT
+ **********************************************************************************/
+$Assets->Html = &$Html;
+$Assets->load();
+
+include('templates/jreviews_overrides/views/themes/geomaps/search/related_items.php');
+
+?>
+
+<?php 
+/**********************************************************************************
+ * 						HTML BEGINS HERE
+ **********************************************************************************/
+
+if (preg_match("/keywords:([\w\s]+)/", $this->params['url']['url'], $matches)) {
+    $keywords = $matches[1];
+}
+
+if (preg_match("/related:([\d_]+)/", $this->params['url']['url'], $matches)) {
+    $related = explode('_', $matches[1]);
+}
+
+if (preg_match("/jr_state:([\w-]+)/", $this->params['url']['url'], $matches)) {
+    $jr_state = $matches[1];
+}
+?>
+
+
+<script type="text/javascript">
+/*
+function countChecked() {
+
+      jQuery("div").text(n + (n <= 1 ? " is" : " are") + " checked!");
+    }
+*/
+
+jQuery(function ($) {
+	$('.trigger').click(function() {
+		$(this).parent().siblings('.fields').slideToggle('fast');
+    });	
+    
+	$('.intro-trigger').click(function() {
+		$(this).parent().parent().toggle();
+		$(this).parent().parent().siblings('.txt').toggle();
+    });
+
+    <?php if (isset($related)) { foreach ($related as $relid) { ?>
+    $('select option[value=<?php echo $relid; ?>]').closest('select').val(<?php echo $relid; ?>);
+    <?php } } ?>
+
+    <?php if (isset($jr_state)): ?>
+    $('#jr_state').val('<?php echo $jr_state; ?>');
+    <?php endif; ?>
+});
+
+</script>
+<div id="show-catch-search" class="txt" style="display:none">
+	<div class="tar"><a href="javascript:void(0);" class="smalltext intro-trigger">Show search options</a></div>
+   	<div class="clear"></div>
+</div>
+
+<div id="catch-search" class="txt">     
+	<div class="tar"><a href="javascript:void(0);" class="smalltext intro-trigger"><?php __t("Hide"); ?></a></div>
+
+<form name="JreviewsAdvSearch_<?php echo $module_id;?>" action="<?php echo WWW_ROOT;?>index.php?option=<?php echo S2Paths::get('jreviews','S2_CMSCOMP');?><?php echo isset($this->params['lang'])? "&amp;lang=".$this->params['lang'] : '';?>" method="post">		
+    <?php 
+    /**********************************************************************************
+     * 						EDIT HTML BELOW THIS LINE
+     **********************************************************************************/
+    ?>		
+    <div class="fl width49">
+	    <h2><?php __t("Search catch reports"); ?></h2>
+    </div>	
+    <div class="fr width49 catchSearch">
+        <label for="advanced_button"><?php __t("Keywords"); ?>:</label>
+        <input type="text" id="jr_advSearchKeywords<?php echo $module_id;?>" name="data[keywords]" value="<?php if (isset($keywords)) echo $keywords; ?>" />
+        <ul id="locationsList">
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="fl width49 searchdiv search_states">    
+        <h4><?php __t("State"); ?> <span class="chkcount"></span></h4>
+        <div class="fields" style="display:block;">
+        	<select name="data[Field][Listing][jr_state][]" id="jr_state">
+            	<option value=""><?php __t("Select"); ?></option>
+                <option value="akershus">Akershus</option>
+                <option value="aust-agder">Aust-Agder</option>
+                <option value="buskerud">Buskerud</option>
+                <option value="finnmark">Finnmark</option>
+                <option value="hedmark">Hedmark</option>
+                <option value="hordaland">Hordaland</option>
+                <option value="more-og-romsdal">More og Romsdal</option>
+                <option value="nord-trondelag">Nord-Tr&oslash;ndelag</option>
+                <option value="nordland">Nordland</option>
+                <option value="oppland">Oppland</option>
+                <option value="oslo">Oslo</option>
+                <option value="rogaland">Rogaland</option>
+                <option value="sogn-og-fjordane">Sogn og Fjordane</option>
+                <option value="sor-trondelag">S&oslash;r-Tr&oslash;ndelag</option>
+                <option value="telemark">Telemark</option>
+                <option value="troms">Troms</option>
+                <option value="vest-agder">Vest-Agder</option>
+                <option value="vestfold">Vestfold</option>
+                <option value="ostfold">&Oslash;stfold</option>
+            </select>
+		</div>
+        <?php /*
+		<label>State:</label>
+        {jr_state} */ ?>
+    </div>
+    <div class="fr width49 searchdiv search_fish">
+        <h4><?php __t("Fish"); ?> <span class="chkcount"></span></h4>
+        <div class="fields" style="display: block;">
+        <?php echo getRelatedItemsList(17); ?>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="fl width49 searchdiv search_fish">
+        <h4><?php __t("Bait"); ?> <span class="chkcount"></span></h4>
+        <div class="fields" style="display: block;">
+        <?php echo getRelatedItemsList(101,102); ?>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="searchdiv">
+        <div class="bttn-wrap">
+            <div class="bttn-btn">
+                <input type="submit" name="advanced_button" id="advanced_button" value="<?php __t("Search");?>" class="button" />
+             </div>
+         </div>
+         <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <?php 
+    /**********************************************************************************
+     * 						EDIT HTML ABOVE THIS LINE
+     **********************************************************************************/
+    ?>
+    <input type="hidden" name="data[tmpl_suffix]" value="_catch" />
+    <input type="hidden" name="data[order]" value="rjr_startdate" />
+    <input type="hidden" name="data[categories]" value="14" />
+    
+    <input name="data[contentoptions][]" type="hidden" value="title" />		
+    <input name="data[contentoptions][]" type="hidden" value="introtext" />
+    <input name="data[contentoptions][]" type="hidden" value="fulltext" />
+    <?php if($search_review_comments):?>
+    <input name="data[contentoptions][]" type="hidden" value="reviews" />
+    <?php endif;?>					
+    <!--<input name="data[search_query_type]" type="hidden" value="<?php echo $query_type;?>" />-->
+    <input name="data[search_query_type]" type="hidden" value="any" /> 
+                                                    
+    <input type="hidden" name="data[controller]" value="search" />
+    <input type="hidden" name="data[action]" value="_process" />
+    <input type="hidden" name="Itemid" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+    <input type="hidden" name="data[menu_id]" value="<?php echo Sanitize::getInt($this->params,'Itemid');?>" />
+    <input type="hidden" name="data[dir]" id="dir<?php echo $module_id;?>" value="<?php echo $dir_id;?>" />
+    <input type="hidden" name="criteria" id="criteria<?php echo $module_id;?>" value="<?php echo $criteria_id;?>" />
+    <input type="hidden" name="data[form_id]" id="form_id<?php echo $module_id;?>" value="JreviewsAdvSearch_<?php echo $module_id;?>" />
+    <input type="hidden" name="data[module_id]" id="module_id<?php echo $module_id;?>" value="<?php echo $module_id;?>" />   
+
+    <?php
+    /*****************************************************************************************************
+    * Example html code for limiting results to certain categories only if you decide to remove 
+    * the {categories} tag for the select list. If you want to filter by section, then use the same input, 
+    * but pre-pend an "s" before the section number. For example: s29 limits results to section 29.
+    *****************************************************************************************************/
+    //<input type="hidden" name="data[categories][]" value="29" />
+    //<input type="hidden" name="data[categories][]" value="34" />
+    ?>                               			
+
+    <?php /* Change the default search result ordering */ 
+    // <input type="hidden" name="data[order]" value="rdate" />
+    ?>
+</form>
+</div>

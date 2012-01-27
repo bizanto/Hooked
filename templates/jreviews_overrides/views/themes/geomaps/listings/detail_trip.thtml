@@ -1,0 +1,605 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2009 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+                      
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+// Listing detail page: used in core articles and in "view all reviews" page for a listing
+?>                 
+
+<?php                   
+/**********************************************************************************
+ * 								CONFIGURATION AND SETUP
+ **********************************************************************************/
+// Image settings
+$enableIntroImage = $this->Config->content_intro_img;
+$enableGallery = $this->Config->content_gallery;
+$introThumbnailSize = $this->Config->content_intro_img_size;
+$galleryThumbnailSize = $this->Config->content_thumb_size;
+$introThumbnailMode = 'scale';
+$galleryThumbnailMode = 'scale';
+$imageCount = count($listing['Listing']['images']);
+
+// Review conditionals 
+$editorReviewSubmit = $Access->canAddReview() && $Access->isJreviewsEditor($User->id);    
+$editorReviewSubmitMultiple = $editorReviewSubmit && $this->Config->author_review == 2;
+$editorReviewSubmitSingle = $editorReviewSubmit && $this->Config->author_review == 1 && $listing['Review']['editor_rating_count'] == 0;                
+$editorReviewShow = $listing['Criteria']['state'] && ($this->Config->author_review == 2 || $this->Config->author_review == 1) && (!empty($editor_review) || $editorReviewSubmit);                    
+$editorReviewForm = !$User->duplicate_review && ($editorReviewSubmitSingle || $editorReviewSubmitMultiple);                                   
+$userReviewSubmit = (!$editorReviewSubmitMultiple && !$editorReviewSubmitSingle) && $Access->canAddReview($listing['User']['user_id']) && (!$Access->isJReviewsEditor($User->id) || $this->Config->author_review < 2);                    
+$userReviewShow = $listing['Criteria']['state'] && $this->Config->user_reviews;
+$userReviewForm = !$User->duplicate_review && !$editorReviewForm && $userReviewSubmit;
+?>    
+
+<s2:nocache>
+<?php         
+/**********************************************************************************
+ * 								META DATA
+ **********************************************************************************/
+if($this->action == 'detail' || $this->action == 'view') 
+{                    
+    $page_meta['title'] = $listing['Listing']['title'];
+    $page_meta['metakey'] = $listing['Listing']['metakey'];
+    $page_meta['metadesc'] = $listing['Listing']['metadesc'];
+    $review_type = Sanitize::getString($this->params,'reviewtype','user');
+    $this->action == 'detail' and $review_type == 'user' and $page_meta['title'] = sprintf(__t("User Reviews: %s",true),$page_meta['title']);
+    $this->action == 'detail' and $review_type == 'editor' and $page_meta['title'] = sprintf(__t("Editor Reviews: %s",true),$page_meta['title']);
+    if($this->page > 1) $page_meta['title'] = sprintf(__t("%s - Page %s",true),$page_meta['title'],$this->page);
+    if(Configure::read('Cache.enable') && Configure::read('Cache.view')){
+        if($cachedMeta = S2Cache::read('meta_'.md5($this->here))) {
+            $page_meta = $cachedMeta;
+        } else {
+            S2Cache::write('meta_'.md5($this->here),$page_meta,Configure::read('Cache.expires'));
+        }
+    }    
+    cmsFramework::meta('title',$page_meta['title']);
+    cmsFramework::meta('keywords',$page_meta['metakey']);
+    cmsFramework::meta('description',$page_meta['metadesc']);
+}
+?>
+</s2:nocache>
+
+<?php
+
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+//prx($listing); // Listing array
+//prx($editor_review); // Editor review array
+//prx($reviews); // User reviews array
+
+require_once("detail-config.php");
+require_once JPATH_SITE.DS.'components'.DS.'com_content'.DS.'helpers'.DS.'route.php';
+
+
+// User 
+$user =& JFactory::getUser();
+if ($user->id) {
+		$loggedin_user = $user->id;	
+		$loggedin = 1;
+}
+else { 
+	$loggedin_user = "";
+	$loggedin = "";
+}
+$isAdmin = ($user->usertype=="Super Administrator") ? 1 : 0;
+
+if ($listing["User"]["user_id"]==$loggedin_user)
+	$isOwner = 1;
+else
+	$isOwner = 0;
+	
+
+// check if user is friends with the listing owner
+if ($user) {
+	$db =& JFactory::getDBO();
+	$sql = "SELECT COUNT(*) FROM `#__community_connection` ".
+		   "WHERE connect_from = '".$user->id."' AND connect_to = '".$listing["User"]["user_id"]."'";
+	$db->setQuery($sql);
+	$isFriend = $db->loadResult();
+}
+// decide if the current logged in user can view this page or not
+$jr_privacy = $CustomFields->fieldValue('jr_privacy', $listing, false, false);
+
+switch ($jr_privacy[0]) {
+    case 'offentlig':
+		$canview = 1;
+        break;
+    case 'site-members':
+		$canview = ($user->id) ? 1 : 0;
+        break;
+    case 'friends':
+		$canview = ($isFriend || $isAdmin || $isOwner) ? 1 : 0;
+        break;
+	case 'privat':
+		$canview = ($isOwner || $isAdmin) ? 1 : 0;
+		break;
+	default:
+		$canview = 1;
+		#$canview = ($user->id) ? 1 : 0;
+		break;
+}
+
+if (!$canview) : ?>
+
+<h1 class="no-access"><?php __t("No access."); ?></h1>
+	<?php
+    if ($jr_privacy[0] == 'friends') {
+		__t("Sorry, this page can only be viewed by friends of ");
+		echo '<a href="index.php?option=com_community&view=profile&userid='.$listing["User"]["user_id"].'&Itemid=131">'.$listing["User"]["username"].'</a>.';
+	}
+	elseif ($jr_privacy[0]== 'site-members')
+		__t("Please register to view this page.");
+	else
+		__t("Sorry, but you do not have permission to view this page.");
+	?>
+	<?php else : ?>
+
+<?php
+
+// JomSocial / cWindow includes
+$document =& JFactory::getDocument();
+$document->addScript("components/com_community/assets/window-1.0.js");
+$document->addScript("components/com_community/assets/joms.jquery.js");
+$document->addScript("components/com_community/assets/script-1.2.js");
+$document->addStyleSheet("components/com_community/assets/window.css");
+
+// com_relate includes
+$document->addStyleSheet('components/com_relate/assets/edit.css');
+$document->addScript('components/com_relate/assets/relate.js');
+
+// load related fucntions
+include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php');
+//
+?>
+
+<script src="/templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
+
+<div class="jr_pgContainer jr_itemDetail hReview-aggregate">
+  
+  <?php if($extension != 'com_content'): // Show this only for EVERYWHERE extensions ?>
+  
+  
+<h1 class="contentheading"><?php echo $listing['Listing']['title']?></h1>
+	<!-- BEGIN PATHWAY -->
+	<div class="jr_pathway"><?php echo $listing['Category']['title'];?></div>
+	<div class="clr">&nbsp;</div>
+	<!-- END PATHWAY -->	
+
+<?php else: // Show this for COM_CONTENT extension ?>	
+
+    <?php if ($listing['Criteria']['state'] && $this->Config->rss_enable):?>
+    <!-- BEGIN RSS FEED -->
+    <div class="jr_rss">
+        <ul id="jr_feeds"> 
+            <li><?php echo $Routes->rssListing($listing);?></li>
+        </ul>
+    </div>            
+    <!-- END RSS FEED -->
+    <?php endif;?>    
+    
+	<div class="contentInfoContainer">			   
+    <h1 class="contentheading item header-spots">
+		<!-- BEGIN TITLE AND ICONS -->
+		<span class="fn"><?php echo $this->action == 'detail' ? $Routes->content($listing['Listing']['title'],$listing) : $listing['Listing']['title'];?></span> 
+		<span class="contentIndicators">
+		<?php if($this->Config->list_featured && $listing['Listing']['featured']):?>
+			<?php echo $Html->image($this->viewImages.'featured.png', array('width'=>43,'height'=>11,'title'=>__t("Featured",true),'alt'=>__t("Featured",true),'border'=>0));?>
+		<?php endif;?>						
+		<?php if($this->Config->list_new && $Jreviews->newIndicator($this->Config->list_new_days,$listing['Listing']['created'])):?>
+			<?php echo $Html->image($this->viewImages.'new.png', array('width'=>28,'height'=>11,'title'=>__t("New",true),'alt'=>__t("New",true),'border'=>0));?>
+		<?php endif;?>
+		<?php if($this->Config->list_hot && $this->Config->list_hot_hits <= $listing['Listing']['hits']):?>
+			<?php echo $Html->image($this->viewImages.'hot.png', array('width'=>29,'height'=>11,'title'=>__t("Hot",true),'alt'=>__t("Hot",true),'border'=>0));?>
+		<?php endif;?>
+        
+        
+		</span>
+		<!-- END TITLE AND ICONS -->		
+        
+		<?php if($this->Config->dir_show_breadcrumb || 1): // always show breadcrumbs ?>
+        <!-- BEGIN PATHWAY -->
+        <div class="jr_pathway"><?php echo $Routes->section($listing,$listing['Section']);?>
+        <?php
+			echo $Routes->category($listing,$listing['Section'],$listing['Category']);
+			if ((!$anon_location || $anon_location && $isOwner)) {
+				$plocation = getParentLocation($listing['Listing']['listing_id']);
+				if ($plocation) {
+					$plink = ContentHelperRoute::getArticleRoute($plocation->id,$plocation->catid,$plocation->sectionid);
+					echo '<a href="'.$plink.'">';
+					echo $plocation->title;
+					echo '</a>';
+				}
+			}
+        ?>
+        <?php echo $listing['Listing']['title'];?></div>
+        <!-- END PATHWAY -->
+        <?php endif;?>   
+        
+        
+	</h1>
+	  
+	  <div class="clr">&nbsp;</div>
+
+	</div>
+
+    
+           
+<?php endif;?>
+<div class="clr"></div>
+
+<div class="listing-details">
+
+	<div class="owner-info fr socials">
+	
+	<?php include("detail_social.php"); ?>
+	
+    <?php if($this->Config->list_show_author):?>			
+        <div class="listing-avatar fr"><?php echo $Community->avatar($listing); // Listing owner avatar?></div>
+        <div><strong><?php echo $Community->screenName($listing);?></strong></div>
+        <?php if($this->Config->list_show_date):?><div><?php echo $Time->nice($listing['Listing']['created']);?></div><?php endif;?>
+    <?php endif;?>
+    
+	    <div class="clear"></div>
+        
+        <ul class="listing-quicklinks">
+                <li><a class=""><span id="jr_favoriteCount<?php echo $listing['Listing']['listing_id'];?>"> <?php echo $listing['Favorite']['favored'];?></span>&nbsp;<?php __t("favorites"); ?></a></li>
+                <?php if ($isAdmin && !1) : ?>
+                <li><a class="rel8win" href="<?php echo JURI::base(); ?>index.php?option=com_relate&view=edit&id=<?php echo $listing['Listing']['listing_id']; ?>"><?php __t("Edit Relations"); ?></a></li>
+                <?php endif; ?>
+                <?php if($this->Config->favorites_enable):?>
+                <li><?php echo $this->element('favorite_widget',array('listing'=>$listing));?></li>
+            </ul>
+            
+    </div>
+
+	
+
+    	<div class="listing-intro">
+		<?php
+		$listinglink = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'],$listing['Listing']['cat_id'],$listing['Listing']['section_id']);
+		?>
+
+<script type="text/javascript">
+jQuery(function ($) {
+	$('.intro-trigger').click(function() {
+		$(this).parent().parent().toggle();
+		$(this).parent().parent().siblings('.txt').toggle();
+    });	
+});
+</script>
+			<?php if(($CustomFields->field('jr_startdate',$listing))  && ($CustomFields->field('jr_enddate',$listing))):?>
+			<div class="tripDates">
+				<p>
+                	<?php if ($jr_startdate && $jr_enddate && $jr_startdate !== $jr_enddate) : ?>
+						<strong><?php echo __t("From"); ?></strong>: 
+                    <?php else : ?>
+	                    <strong><?php echo __t("Date"); ?></strong>: 
+                    <?php endif; ?>
+					<?php echo $jr_startdate; ?>
+	
+    				<?php if ($jr_enddate && $jr_enddate !== $jr_startdate) : ?>
+                        <strong><?php echo __t("To"); ?></strong>: 
+                        <?php echo $jr_enddate; ?>
+                    <?php endif; ?>
+				</p>
+			</div>
+			<?php endif;?>
+            
+            <?php
+			if ((!$anon_location || $anon_location && $isOwner)) :
+		
+			// RELATED SPOTS
+			$spots = getRelatedList($listing['Listing']['listing_id'],explode(',',$spotType)); ?>
+                <?php if ($spots) : ?>
+				<strong><?php __t("Fishing Spots"); ?></strong>: 
+				<ul class="catchrelations">
+				<?php foreach ($spots as $spot) : ?>
+				<?php
+				$spotcount= 0;
+				$spotlink = ContentHelperRoute::getArticleRoute($spot->id,$spot->catid,1);
+				?>
+					<li><?php if ($thumb) echo '<a href="'.$spotlink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?>
+					
+					<a class="spot-title" href="<?php echo $spotlink; ?>"><?php echo $spot->title; ?>
+					<?php 
+					$parentSpots = getRelatedList($spot->id,array(1,2,100));
+					if ($parentSpots)
+						foreach ($parentSpots as $parentSpot)
+							echo ' @ '.$parentSpot->title.'';	
+					
+					?>
+					</a>
+	
+					</li>
+				<?php endforeach; ?>
+				
+				
+				<?php endif; ?>
+				</ul>
+			  <?php endif; ?> 
+            
+            <div class="fulltext txt">
+				<?php
+                echo '<strong>';
+				echo __t("Description").': ';
+				echo '</strong>';
+				?>
+				<?php echo $listing['Listing']['text']; ?>
+            </div>
+            
+
+        </div>
+
+        
+        <div class="clear"></div>
+        
+        
+
+
+    
+    <!-- LISTING MANAGER -->
+    <div class="listing-action-footer">
+	<?php if ($isAdmin || $isOwner) : ?>
+    	<div class="fl width50">
+	        <div class="edit-listing txt">
+                <div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo __t("Endre"); echo '&nbsp;&raquo;'; ?></a></div>
+            </div>
+			<div class="edit-listing txt" style="display:none;">
+				<div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo ' &laquo;&nbsp;'; echo __t("Hide options"); ?></a></div>
+				<?php echo $this->renderControllerView('listings','listing_manager',array('listing'=>$listing));?>
+            </div>
+        </div>
+    <?php endif; ?>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<style type="text/css" media="all">
+@import url('/templates/yoo_expo/css/custom-tabs.css');
+</style>
+  <div class="clear"></div>
+<div id="jr_tabs" class="jr_tabs catchtabs">
+  <?php
+$tabcount = 0;
+$overviewtab = 0;
+?>
+	<ul>
+
+		<li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
+         <?php $tabcount++ ; ?>
+		 <?php if ($is_location && $jr_lat && $jr_long && (!$anon_location || $anon_location && $isOwner)) : ?>
+        <li><a href="#kart"><?php __t("Map"); ?></a></li>
+<?php endif; $tabcount++; $maptab = $tabcount; ?>
+<?php if ($hasPhotos) : ?>
+		<li><a href="#bilder"><?php __t("Photos"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], "photos"); ?>)<!--Photos--></a></li>
+<?php endif; $tabcount++; $photostab = $tabcount; ?>
+<?php if ($hasVideos) : ?>
+        <li><a href="#video"><?php __t("Videos"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], "videos"); ?>)</a></li>
+<?php endif; $tabcount++; $videostab = $tabcount; ?>
+<?php if ($hasTrips || ($listing['Category']['cat_id']==28 && $listing['Listing']['featured'])) : ?>
+        <li><a href="#turer">
+        <?php __t("Trip Reports"); ?></a></li>
+<?php endif; $tabcount++; $tripstab = $tabcount; ?>
+
+	</ul>
+    <div class="clear"></div>
+        <?php if($this->name != 'listings'): // Only show when in com_content page?>
+        
+        
+        <div id="oversikt"><!--overview-->
+        <?php
+            $relatedThumb = getRelatedThumb($listing['Listing']['listing_id'],1);
+        	if ($relatedThumb) {
+				$preview_html = $listing['Listing']['title'].'::'.$relatedThumb[0]->caption.'';
+			   
+				if ($relatedThumb[0]->storage == "s3") {
+				   $prefix = "http://hooked.no.s3.amazonaws.com/";
+				}
+				else {
+					 $prefix = "";
+				}
+	
+	
+				echo '<div class="main-image width49 fl"><a rel="gallery" class="fancybox" href="'.$relatedThumb[0]->image.'"><img class="jomTips map-box" src="'.$relatedThumb[0]->thumbnail.'" alt="" title="'.htmlentities($preview_html, ENT_QUOTES, "UTF-8").'" /></a></div>';        
+			}
+			else echo "";
+        ?>
+		
+        <?php if ($relatedThumb) $floatthis="width50 fr"; else $floatthis=""; ?>
+        
+        <?php if ($relatedThumb) $floatthis="width50 fr"; else $floatthis=""; ?>
+        
+		<?php
+		echo '<div class="'.$floatthis.'">';
+		if ($jr_catchsummary) {
+			echo '<strong>';
+			__t("Catch Summary");
+			echo '</strong>';
+			echo '<p>'.$jr_catchsummary.'</p>';
+		}
+		
+		?>
+          
+        <?php
+        // RELATED CATCH REPORTS
+        $spots = getRelatedList($listing['Listing']['listing_id'],14); ?>
+	        <?php if ($spots) : ?>
+            <strong><?php __t("Catch Reports"); ?></strong>:             
+            <ul class="catchrelations">
+            <?php foreach ($spots as $spot) : ?>
+            <?php
+            $spotlink = ContentHelperRoute::getArticleRoute($spot->id,$spot->catid,6);
+            ?>
+                <li><?php if ($thumb) echo '<a href="'.$spotlink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $spotlink; ?>"><?php echo $spot->title; ?></a></li>
+            <?php endforeach; ?>
+            
+            </ul>
+                        
+			<?php endif;
+		
+		echo '</div>';
+			
+		?>        
+        <div class="clear"></div> 
+    </div>
+    
+		<?php if ($is_location && $jr_lat && $jr_long && (!$anon_location || $anon_location && $isOwner)) : ?>
+		<div id="kart"><!--map-->
+        <?php if ($is_location && $jr_lat && $jr_long) : ?>
+	        <?php require_once("map-categories.php"); ?>   
+        <?php endif; ?>
+        <!--  END MAP -->
+            <div class="clear"></div>
+		</div>
+        <?php endif; ?>
+    <div id="bilder"><!--photos-->
+        <?php echo $this->element('related_photos', array()); ?>
+        <div class="clear"></div>
+        <?php if ($isOwner || $isAdmin) : ?>
+    	<div class="post-catch width25"><a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=photos" class="add-new"><?php __t("Upload a photo"); ?></a></div>
+        <?php endif; ?>
+    </div>
+    <div id="video"><!--videos-->
+        <?php echo $this->element('related_videos', array()); ?>
+        <div class="clear"></div>
+        <?php if ($isOwner || $isAdmin) : ?>
+        <div class="post-catch width25"><a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=videos" class="add-new"><?php __t("Upload a video"); ?></a></div>
+        <?php endif; ?>
+    </div>
+	<?php if ($isAdmin) : ?>
+    <div class="listing-relations fr">
+    <?php // RELATED SPOTS
+        $spots = getRelatedList($listing['Listing']['listing_id'],explode(',',$spotType));
+        if ($hasSpots) : ?>
+        <div class="spot-summary paper-light">
+           <h3><?php __t("Fishing Spots"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], explode(',',$spotType)); ?>)</h3>
+            <ul>       
+            <?php foreach ($spots as $spot) : ?>
+            <?php
+            $photocount = 0;
+			
+			##
+			$maxchar = 120;
+			$ss_tooltip = $spot->title.'::';
+			
+			
+			// SUB-SPOT, RELATED FISH
+			$fishes = getRelatedList($spot->id,17);
+			$fishlist = array();
+			?>						
+				<?php foreach ($fishes as $fish) : ?>
+					<?php $fishlist[] = $fish->title; ?>
+				<?php endforeach; ?>
+				<?php
+				if ($fishlist) {
+					$fullfishlist = implode(", ", $fishlist);
+					$count=count($fishlist);
+					if (strlen($fullfishlist) > $maxchar)
+						$trimmed='...';
+					else $trimmed = '';
+					$fishlist = substr($fullfishlist,0,$maxchar);
+					$ss_tooltip .= $count.' ';
+					$ss_tooltip .= "Fiskeslag";
+					$ss_tooltip .= ': ';
+					$ss_tooltip .= $fishlist.$trimmed;					
+					$trimmed='';
+				}
+				?>
+				
+				<?php // SUB-SPOT, RELATED TECHNIQUES
+				
+			$techniques = getRelatedList($listing['Listing']['listing_id'],array(24,48,79));
+			$techlist = array();
+			?>						
+				<?php foreach ($techniques as $tech) : ?>
+					<?php $techlist[] = $tech->title; ?>
+				<?php endforeach; ?>
+				<?php
+				if ($techlist) {
+					$fulltechlist = implode(", ", $techlist);
+					$count=count($techlist);
+					if (strlen($fulltechlist) > $maxchar)
+						$trimmed='...';
+					$techlist = substr($fulltechlist,0,$maxchar);
+					
+					if ($fishlist) 
+						$ss_tooltip .= '<br /><br />';
+					$ss_tooltip .= $count.' ';
+					$ss_tooltip .= "Fisketeknikker";
+					$ss_tooltip .= ': ';
+					$ss_tooltip .= $techlist.$trimmed;	
+					$trimmed='';
+				}
+			###
+			
+			$ss_tooltip = htmlentities($ss_tooltip, ENT_QUOTES, "UTF-8");
+			
+            $spotlink = ContentHelperRoute::getArticleRoute($spot->id,$spot->catid,1);
+            ?>
+                <li><?php if ($thumb) echo '<a href="'.$spotlink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title jomTips" title="<?php echo $ss_tooltip; ?>" href="<?php echo $spotlink; ?>"><?php echo $spot->title; ?></a></li>
+            <?php endforeach; ?>
+            </ul>
+            <p>&nbsp;</p>
+            <?php if ($isAdmin) : ?>
+            <a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=<?php echo $spots_type; ?>" class="rel8win fr"><?php __t("Add/edit"); ?></a>
+            <?php endif; ?>
+            <?php if ($spot) : ?>
+            <a class="fl vis-alle" href="/index.php?option=com_jreviews&Itemid=161&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:<?php echo str_replace(',','_',$spotType) ?>/order:rhits">
+            <?php __t("view all"); ?>
+            </a>
+            <div class="clear"></div>
+            <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <?php // RELATED HATCHES
+		$trips = getRelatedList($listing['Listing']['listing_id'],15);
+		if ($hasTrips || $isAdmin) : ?>
+			<div class="fish-summary paper-light">
+				<h3><?php __t("Hatch Reports"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], 15); ?>)</h3>
+				<ul>       
+				<?php foreach ($trips as $trip) : ?>
+				<?php
+				$tripcount= 0;
+				foreach ($trip->photos as $photo) {
+					 if (!$tripcount) $thumb = $trip->thumbnail;
+				}
+				$triplink = ContentHelperRoute::getArticleRoute($trip->id,$trip->catid,6);
+				?>
+					<li><?php if ($thumb) echo '<a href="'.$triplink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $triplink; ?>"><?php echo $trip->title; ?></a></li>
+				<?php endforeach; ?>
+				</ul>
+                <p>&nbsp;</p>
+                <?php if ($trips) : ?>
+				<a class="fl vis-alle" href="/index.php?option=com_jreviews&Itemid=19&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:15/order:rhits/tmpl_suffix:_map_hatch">
+				<?php __t("view all"); ?>
+				</a>
+                <?php endif; ?>
+				<?php if ($isOwner || $isAdmin) : ?>
+				<a href="index.php?option=com_relate&id=<?php echo $listing['Listing']['listing_id']; ?>&cat=15" class="rel8win fr"><?php __t("Add/edit"); ?></a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+    </div>
+    <?php endif; ?>
+    
+	<?php if ($userReviewShow) : ?> 
+    <div class="listing-reviews">
+        <?php require_once("detail-reviews.php"); ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="clear"></div>
+</div>
+        
+	<div class="clr"></div>
+	<!-- END LISTING DETAILS -->
+	<?php endif;?>
+</div>
+<?php endif; ?>
+<?php endif; // end showing of page based on privacy settings ?>

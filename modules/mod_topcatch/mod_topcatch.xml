@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Top Catch</name>
+	<author>Hathway</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2011 Hathway. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>kevin.strong@wearehathway.com</authorEmail>
+	<authorUrl>http://www.wearehathway.com/</authorUrl>
+	<version>1.0</version>
+	<description>Display the top catch for a certain type of fish in a module</description>
+	<files>
+	<filename module="mod_topcatch">mod_topcatch.php</filename>
+	<filename>index.html</filename>
+	<filename>helper.php</filename>
+	<filename>tmpl/index.html</filename>
+	<filename>tmpl/default.php</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="filterby" type="list" default="" label="Filter by Fish Species?" description="If filtering by fish species, choose from the list below">
+			<option value="species">Fish species</option>
+			<option value="none">No filter</option>
+		</param>
+		<param name="species_id" type="sql" default="" label="Fish Species" description="type of fish for top catch" query="SELECT id, title FROM #__content WHERE catid = 17 ORDER BY title ASC" key_field="id" value_field="title" />
+		<param name="orderby" type="list" default="weight" label="Ordering" description="What order should the results be returned in?">
+			<option value="weight">Catch weight, recent</option>
+			<option value="date">Recent, catch weight</option>
+		</param>
+		<param name="minweight" type="text" default="" label="Minimum weight" description="minimum catch weight (numbers only)" />
+		<param name="limit" type="text" default="1" label="Number of Catches" description="number of catches to display" />
+	</params>
+</install>

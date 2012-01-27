@@ -1,0 +1,87 @@
+Patching activity comments 2.x on a custom template
+===============================================
+1. Look for the codes from line 1 onwards,
+
+---------------------------------------------------------------------------------
+<?php
+/**
+ * @packageJomSocial
+ * @subpackage Template 
+ * @copyright (C) 2008 by Slashes & Dots Sdn Bhd - All rights reserved!
+ * @license		GNU/GPL, see LICENSE.php
+ */
+defined('_JEXEC') or die();
+?>
+---------------------------------------------------------------------------------
+
+Replace with
+
+---------------------------------------------------------------------------------
+<?php
+/**
+ * @packageJomSocial
+ * @subpackage Template 
+ * @copyright (C) 2008 by Slashes & Dots Sdn Bhd - All rights reserved!
+ * @license		GNU/GPL, see LICENSE.php
+ */
+defined('_JEXEC') or die();
+JPlugin::loadLanguage( 'plg_activitycomment', JPATH_ADMINISTRATOR );
+?>
+<?php include( JPATH_PLUGINS.DS.'community'.DS.'activitycomment'.DS.'dependency.php');?>
+<?php include( JPATH_PLUGINS.DS.'community'.DS.'activitycomment'.DS.'share.php');?>
+---------------------------------------------------------------------------------
+
+2. Look for the codes from line 55 onwards,
+
+---------------------------------------------------------------------------------
+<?php
+if(!empty($act->content) && $showMore )
+{
+if( $config->getBool('showactivitycontent'))
+{
+?>
+<div id="<?php echo $idprefix; ?>profile-newsfeed-item-content-<?php echo $act->id;?>" class="newsfeed-content-hidden" style="display:block">
+<?php echo $act->content; ?>
+</div>
+
+<?php
+} 
+else
+{
+?>
+<div id="<?php echo $idprefix; ?>profile-newsfeed-item-content-<?php echo $act->id;?>" class="small profile-newsfeed-item-action" style="display:block">
+<a href="javascript:void(0);" id="newsfeed-content-<?php echo $act->id;?>" onclick="joms.activities.getContent('<?php echo $act->id;?>');"><?php echo JText::_('CC MORE');?></a>
+</div>
+<?php
+}
+}
+?>
+---------------------------------------------------------------------------------
+
+Replace with
+
+---------------------------------------------------------------------------------
+<?php
+if(!empty($act->content) && $showMore )
+{
+if( $config->getBool('showactivitycontent'))
+{
+?>
+<div id="<?php echo $idprefix; ?>profile-newsfeed-item-content-<?php echo $act->id;?>" class="newsfeed-content-hidden" style="display:block">
+<?php echo $act->content; ?>
+</div>
+
+<?php
+} 
+else
+{
+?>
+<div id="<?php echo $idprefix; ?>profile-newsfeed-item-content-<?php echo $act->id;?>" class="small profile-newsfeed-item-action" style="display:block">
+<a href="javascript:void(0);" id="newsfeed-content-<?php echo $act->id;?>" onclick="joms.activities.getContent('<?php echo $act->id;?>');"><?php echo JText::_('CC MORE');?></a>
+</div>
+<?php
+}
+}
+?>
+	<?php include( JPATH_PLUGINS.DS.'community'.DS.'activitycomment'.DS.'lib.php');?>
+---------------------------------------------------------------------------------

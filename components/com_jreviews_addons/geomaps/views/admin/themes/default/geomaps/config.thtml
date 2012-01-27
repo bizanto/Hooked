@@ -1,0 +1,438 @@
+<?php
+/**
+ * jReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+      
+<div class="admin_header"><?php __a("Configuration");?></div>
+
+<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+    <span id="status" class="jr_floatLeft">&nbsp;</span>        
+    <button class="ui-button ui-corner-all" onclick="
+        jQuery.post(s2AjaxUri,jQuery('#adminForm').serialize(),function(response){
+                jQuery('#s2AjaxResponse').html(response);
+                jQuery('#status').html('<?php __a("The new settings have been saved.");?>').fadeIn('medium',function(){jQuery(this).fadeOut(3000);});
+            },'html');return false;">Save</button>
+</div>
+
+<form id="adminForm" name="adminForm">
+    <div id="jr_tabs" class="jr_tabs"><!-- BEGIN TABS SECTION -->
+        <ul>
+            <li><a href="#basic-setup"><span><?php __a("Basic Setup");?></span></a></li>
+            <li><a href="#map-ui"><span><?php __a("Map UI");?></span></a></li> 
+        </ul>    
+           
+        <div id="basic-setup">
+            <table class="admin_list">
+                <tr><th colspan="3">Google Maps</th></tr>
+                <tr>
+                    <td style="width:200px;">Google Maps API url</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.google_url]',array('value'=>Sanitize::getString($this->Config,'geomaps.google_url','http://maps.google.com'),'style'=>'width:34em;'));?></td>
+                    <td>To add a country bias to geocoding requests you can use the Google url for that country. For example: http://maps.google.es, http://maps.google.it, http://maps.google.de</td>
+                </tr>
+                <tr>
+                    <td width="190">Google Maps API Key</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.google_key]',array('value'=>Sanitize::getString($this->Config,'geomaps.google_key'),'style'=>'width:45em;'));?></td>
+                    <td><a href="http://code.google.com/apis/maps/signup.html" target="_blank">Get a key here</a></td>
+                </tr>
+                <tr><th colspan="3">Address Fields</th><tr>  
+                <tr><td colspan="3">
+                <div class="ui-widget">
+                    <div style="padding: 0pt 0.7em;" class="ui-state-highlight ui-corner-all"> 
+                        <p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span> 
+                        It's not necessary to have all of the fields below setup in JReviews. If you have only one address field, you can fill in the Address 1 input below and leave the rest empty. GeoMaps concatenates all the fields together to form the address.
+                        <br /><strong>If you want to use the section and/or category titles as part of the address just enter "section" and "category" as the field name.</strong>
+                        </p>
+                    </div>
+                </div>                 
+                </td></tr>          
+                <tr>
+                    <td>Address 1 field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.address1]',array('value'=>Sanitize::getString($this->Config,'geomaps.address1'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                        <span></span></td>
+                    <td>i.e. jr_addressone</td>
+                </tr>
+                <tr>
+                    <td>Address 2 field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.address2]',array('value'=>Sanitize::getString($this->Config,'geomaps.address2'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                        <span></span></td>
+                    <td>i.e. jr_addresstwo</td>
+                </tr>
+                <tr>
+                    <td>City field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.city]',array('value'=>Sanitize::getString($this->Config,'geomaps.city'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                        <span></span></td>
+                    <td>i.e. jr_city, section, category</td>
+                </tr>
+                <tr>
+                    <td>State field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.state]',array('value'=>Sanitize::getString($this->Config,'geomaps.state'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                        <span></span></td>
+                    <td>i.e. jr_state, section, category</td>
+                </tr>
+                <tr>
+                    <td>Postal code field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.postal_code]',array('value'=>Sanitize::getString($this->Config,'geomaps.postal_code'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>i.e. jr_zip</td>
+                </tr>
+                <tr>
+                    <td>Country field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.country]',array('value'=>Sanitize::getString($this->Config,'geomaps.country'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>i.e. jr_country, section, category</td>
+                </tr>
+                <tr>
+                    <td>Default Country</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.default_country]',array('value'=>Sanitize::getString($this->Config,'geomaps.default_country'),'style'=>'width:15em;'));?>
+                    <td>Used for geocoding if the country field above is not specified or if the address field value is left empty for a listing.</td>
+                </tr>        
+               <tr><th colspan="3">Geo Location fields</th><tr>    
+                <tr>
+                    <td>Latitude field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.latitude]',array('value'=>Sanitize::getString($this->Config,'geomaps.latitude'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>Must be a decimal field i.e. jr_latitude</td>
+                </tr>
+                <tr>
+                    <td>Longitude field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.longitude]',array('value'=>Sanitize::getString($this->Config,'geomaps.longitude'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>Must be a decimal field i.e. jr_longitude</td>
+                </tr>
+                <tr>
+                    <td>Map it field</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.mapit_field]',array('value'=>Sanitize::getString($this->Config,'geomaps.mapit_field'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>A [Map it] button will be appended to this field in new/edit listing forms. Clicking this button will automatically geocode the address and popup a map so the user can adjust the marker location on the map.</td>
+                </tr>
+                <tr>
+                    <td>Automatic Geocoding on new submissions</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.autogeocode_new]','',Sanitize::getString($this->Config,'geomaps.autogeocode_new',0));?>
+                    <td>You can enable automatic geocoding of addresses if you don't want to use the Map it field or if your users are not using this feature. Geocoding will only be performed on new listing submissions when the address has not already been geocoded.</td>
+                </tr>                 
+                <tr><th colspan="3">Distance search</th><tr>
+                <tr>
+                    <td>Enable distance search</td>
+                    <td><?php echo $Form->radio('data[Config][geomaps.search_method]',array('disabled'=>'No','address'=>'Yes'),array('div'=>false,'value'=>Sanitize::getString($this->Config,'geomaps.search_method','address')));?></td>
+                    <td>Disabling this defaults to regular text searches on the address field.</td>
+                </tr>    
+                <tr>
+                    <td>Adv. search address input</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.advsearch_input]',array('value'=>Sanitize::getString($this->Config,'geomaps.advsearch_input'),'class'=>'autoComplete','style'=>'width:15em;'));?>
+                    <span></span></td>
+                    <td>If using the address search method above you need to manually add the field in the advanced search module (i.e. {jr_address})
+                </tr>            
+                <tr>   
+                    <td>Default radius</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.radius]',array('value'=>Sanitize::getInt($this->Config,'geomaps.radius',5),'style'=>'width:5em;'));?></td>
+                    <td></td>
+                </tr> 
+                <tr>   
+                    <td>Radius metric</td>
+                    <td><?php echo $Form->radio('data[Config][geomaps.radius_metric]',array('mi'=>'Mi','km'=>'Km'),array('div'=>false,'value'=>Sanitize::getString($this->Config,'geomaps.radius_metric','mi')));?></td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>Publish distance on search results</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.publish_distance]','',Sanitize::getString($this->Config,'geomaps.publish_distance',1));?>
+                    <td>If you want to customize the distance output, set this setting to No, and use this code in the theme file to output the distance:<br />
+                    <code>&lt;?php echo $CustomFields->field('jr_gm_distance',$listing);?&gt;</code>
+                    </td>
+                </tr> 
+                <tr><th colspan="3">Search Theme</th><tr>
+                <tr>   
+                    <td>GeoMaps search theme suffix</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.search_suffix]',array('value'=>Sanitize::getString($this->Config,'geomaps.search_suffix',''),'style'=>'width:10em;'));?></td>
+                    <td>Useful if you only want to show the map with markers in results for address searches.</td>
+                </tr>                    
+             </table>
+        </div>
+        <div id="map-ui">
+          <table class="admin_list">
+                <tr><th colspan="3">Markers &amp; Infowindow</th></tr>
+                <tr>
+                    <td width="190">Marker icon path</td>
+                    <td width="190"><?php echo $Form->text('data[Config][geomaps.marker_path]',array('value'=>Sanitize::getString($this->Config,'geomaps.marker_path','components/com_jreviews_addons/geomaps/icons'),'style'=>'width:30em;'));?></td>
+                    <td>Default: components/com_jreviews_addons/geomaps/icons</td>  
+                </tr>    
+                <tr>
+                    <td>Marker infowindow</td>
+                    <td>
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.infowindow]',
+                            array(
+                                'google'=>'Google default',
+                                'google_tabs'=>'Google tabbed',
+                                'callout'=>'Callout (0,0)',
+                                'custom'=>'Custom (-15,100)'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.infowindow','_google'),
+                            array('id'=>'geomaps.infowindow')                            
+                        );
+                    ?>
+                    </td>
+                    <td>Choose the marker infowindow (tooltip) you want to use. Each one has a different theme file that can be found in the themes /geomaps folder.</td>  
+                </tr> 
+                <tr>
+                    <td>Infowindow anchor X offset:<br />Not used for Google infowindow</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.infowindow_x]',array('value'=>Sanitize::getString($this->Config,'geomaps.infowindow_x','-8'),'class'=>'','style'=>'width:4em;')
+                        );?>px</td>
+                    <td>Adjust to fine-tune the position of the infowindow relative to the marker.
+                    <br />For example, use -15 for custom infowindow and 0 for callout infowindow.</td>
+                </tr>                   
+                <tr>
+                    <td>Infowindow anchor Y offset:<br />Not used for Google infowindow</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.infowindow_y]',array('value'=>Sanitize::getString($this->Config,'geomaps.infowindow_y','0'),'class'=>'','style'=>'width:4em;')
+                        );?>px</td>
+                    <td>Adjust to fine-tune the position of the infowindow relative to the marker.
+                    <br />For example, use 100 for custom infowindow and 0 for callout infowindow.</td>
+                </tr>   
+          </table>
+          <br />
+          <table class="admin_list">
+                <tr><th>Map Settings</th><th>List Pages</th><th>Detail Page</th><th>Module<br /><span style="font-weight:normal;font-size:90%;">Override in module settings</span></th><th></th></tr>
+                <tr>
+                    <td width="190">Show map types</td>
+                    <td width="190">
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_list]',
+                            array(
+                                'buttons'=>'Buttons',
+                                'menu'=>'Menu',
+                                'none'=>'None'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_list','buttons'),
+                            array('id'=>'geomaps.ui.maptype_list')                            
+                        );
+                    ?>
+                    </td>
+                    <td width="190">
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_detail]',
+                            array(
+                                'buttons'=>'Buttons',
+                                'menu'=>'Menu',
+                                'none'=>'None'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_detail','buttons'),
+                            array('id'=>'geomaps.ui.maptype_detail')                            
+                        );
+                    ?>
+                    </td>
+                    <td width="190">
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_module]',
+                            array(
+                                'buttons'=>'Buttons',
+                                'menu'=>'Menu',
+                                'none'=>'None'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_module','buttons'),
+                            array('id'=>'geomaps.ui.maptype_module')                            
+                        );
+                    ?>
+                    </td>
+                    <td></td>  
+                </tr>    
+                <tr>   
+                    <td>&nbsp;&nbsp;&nbsp;-&nbsp;Enable "Map" type:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.map_list]','',Sanitize::getString($this->Config,'geomaps.ui.map_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.map_detail]','',Sanitize::getString($this->Config,'geomaps.ui.map_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.map_module]','',Sanitize::getString($this->Config,'geomaps.ui.map_module',1));?></td>
+                    <td></td>
+                </tr> 
+                <tr>   
+                    <td>&nbsp;&nbsp;&nbsp;-&nbsp;Enable "Hybrid" type:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.hybrid_list]','',Sanitize::getString($this->Config,'geomaps.ui.hybrid_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.hybrid_detail]','',Sanitize::getString($this->Config,'geomaps.ui.hybrid_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.hybrid_module]','',Sanitize::getString($this->Config,'geomaps.ui.hybrid_module',1));?></td>
+                    <td></td>
+                </tr>                 
+                <tr>   
+                    <td>&nbsp;&nbsp;&nbsp;-&nbsp;Enable "Satellite" type:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.satellite_list]','',Sanitize::getString($this->Config,'geomaps.ui.satellite_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.satellite_detail]','',Sanitize::getString($this->Config,'geomaps.ui.satellite_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.satellite_module]','',Sanitize::getString($this->Config,'geomaps.ui.satellite_module',1));?></td>
+                    <td></td>
+                </tr>                 
+                <tr>   
+                    <td>&nbsp;&nbsp;&nbsp;-&nbsp;Enable "Terrain" type:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.terrain_list]','',Sanitize::getString($this->Config,'geomaps.ui.terrain_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.terrain_detail]','',Sanitize::getString($this->Config,'geomaps.ui.terrain_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.terrain_module]','',Sanitize::getString($this->Config,'geomaps.ui.terrain_module',1));?></td>
+                    <td></td>
+                </tr> 
+                
+                <tr>
+                    <td width="190">Default map type</td>
+                    <td width="190">     <?php ///prx($this->Config);?>
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_def_list]',
+                            array(
+                                'G_NORMAL_MAP'=>'Map',
+                                'G_SATELLITE_MAP'=>'Satellite',
+                                'G_HYBRID_MAP'=>'Hybrid',
+                                'G_PHYSICAL_MAP'=>'Terrain'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_def_list','G_NORMAL_MAP'),
+                            array('id'=>'geomaps.ui.maptype_def_list')                            
+                        );
+                    ?>
+                    </td>
+                    <td width="190">
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_def_detail]',
+                              array(
+                                'G_NORMAL_MAP'=>'Map',
+                                'G_SATELLITE_MAP'=>'Satellite',
+                                'G_HYBRID_MAP'=>'Hybrid',
+                                'G_PHYSICAL_MAP'=>'Terrain'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_def_detail','G_NORMAL_MAP'),
+                            array('id'=>'geomaps.ui.maptype_def_detail')                            
+                        );
+                    ?>
+                    </td>
+                    <td width="190">
+                    <?php echo $Form->select(
+                            'data[Config][geomaps.ui.maptype_def_module]',
+                                array(
+                                'G_NORMAL_MAP'=>'Map',
+                                'G_SATELLITE_MAP'=>'Satellite',
+                                'G_HYBRID_MAP'=>'Hybrid',
+                                'G_PHYSICAL_MAP'=>'Terrain'
+                            ),
+                            Sanitize::getString($this->Config,'geomaps.ui.maptype_def_module','G_NORMAL_MAP'),
+                            array('id'=>'geomaps.ui.maptype_def_module')                            
+                        );
+                    ?>
+                    </td>
+                    <td></td>  
+                </tr>                  
+                
+                
+                
+                <tr>   
+                    <td>Show Pan &amp; Zoom Controls:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.panzoom_list]','',Sanitize::getString($this->Config,'geomaps.ui.panzoom_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.panzoom_detail]','',Sanitize::getString($this->Config,'geomaps.ui.panzoom_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.panzoom_module]','',Sanitize::getString($this->Config,'geomaps.ui.panzoom_module',1));?></td>
+                    <td></td>
+                </tr>                 
+                <tr>   
+                    <td>Show Scale:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scale_list]','',Sanitize::getString($this->Config,'geomaps.ui.scale_list',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scale_detail]','',Sanitize::getString($this->Config,'geomaps.ui.scale_detail',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scale_module]','',Sanitize::getString($this->Config,'geomaps.ui.scale_module',0));?></td>
+                    <td></td>
+                </tr>                                   
+                <tr>   
+                    <td>Enable Scrollwheel Zoom:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scrollwheel_list]','',Sanitize::getString($this->Config,'geomaps.ui.scrollwheel_list',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scrollwheel_detail]','',Sanitize::getString($this->Config,'geomaps.ui.scrollwheel_detail',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.scrollwheel_module]','',Sanitize::getString($this->Config,'geomaps.ui.scrollwheel_module',0));?></td>
+                    <td></td>
+                </tr>  
+                <tr>   
+                    <td>Enable Doubleclick Zoom:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.doubleclick_list]','',Sanitize::getString($this->Config,'geomaps.ui.doubleclick_list',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.doubleclick_detail]','',Sanitize::getString($this->Config,'geomaps.ui.doubleclick_detail',1));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.doubleclick_module]','',Sanitize::getString($this->Config,'geomaps.ui.doubleclick_module',1));?></td>
+                    <td></td>
+                </tr>
+                <tr>   
+                    <td>Initial Zoom Level:</td>
+                    <td>Auto, based on markers</td>
+                    <td><?php echo $Form->text('data[Config][geomaps.ui.zoom_detail]',array('value'=>Sanitize::getString($this->Config,'geomaps.ui.zoom_detail',''),'class'=>'','style'=>'width:3em;'));?></td>
+                    <td>Settings in module</td>
+                    <td>0-20+, leave blank for auto zoom</td>
+                </tr>
+
+                <tr><th>Infowindow Data</th><th>List Pages</th><th>Detail Page</th><th>Module<br /><span style="font-weight:normal;font-size:90%;">Override in module settings</span></th><th></th></tr>
+                <tr>   
+                    <td>Truncate title:</td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.trimtitle_list]','',Sanitize::getString($this->Config,'geomaps.ui.trimtitle_list',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.trimtitle_detail]','',Sanitize::getString($this->Config,'geomaps.ui.trimtitle_detail',0));?></td>
+                    <td><?php echo $Form->radioYesNo('data[Config][geomaps.ui.trimtitle_module]','',Sanitize::getString($this->Config,'geomaps.ui.trimtitle_module',0));?></td>
+                    <td><?php echo $Form->text('data[Config][geomaps.ui.trimtitle_chars]',array('value'=>Sanitize::getString($this->Config,'geomaps.ui.trimtitle_chars','30'),'class'=>'','style'=>'width:3em;'));?>&nbsp;chars</td>
+                </tr>                                                                   
+                <tr><th>Directions</th><th>List Pages</th><th>Detail Page</th><th>Module<br /><span style="font-weight:normal;font-size:90%;">Override in module settings</span></th><th></th></tr>
+                <tr>
+                    <td width="190">Enable "Get directions"</td>
+                    <td width="190">N/A</td>
+                    <td width="190"><?php echo $Form->radioYesNo('data[Config][geomaps.directions_detail]','',Sanitize::getString($this->Config,'geomaps.directions_detail',1));?></td>
+                    <td width="190">N/A</td>
+                    <td></td>
+                </tr>                    
+                <tr><th>Streetview</th><th>List Pages</th><th>Detail Page</th><th>Module<br /><span style="font-weight:normal;font-size:90%;">Override in module settings</span></th><th></th></tr>
+                <tr>
+                    <td width="190">Enable "Streetview"</td>
+                    <td width="190"><?php echo $Form->radioYesNo('data[Config][geomaps.streetview_list]','',Sanitize::getString($this->Config,'geomaps.streetview_list',1));?></td>
+                    <td width="190"><?php echo $Form->radioYesNo('data[Config][geomaps.streetview_detail]','',Sanitize::getString($this->Config,'geomaps.streetview_detail',1));?></td>
+                    <td width="190" width="190">N/A</td>
+                    <td></td>
+                </tr>                    
+          </table>           
+                        
+        </div>
+                            
+    </div>
+    <input type="hidden" name="format" value="raw" />
+    <input type="hidden" name="tmpl" value="component" />
+    <input type="hidden" name="no_html" value="1" />     
+    <input type="hidden" name="option" value="com_jreviews" />
+    <input type="hidden" name="data[controller]" value="admin/admin_geomaps" />
+    <input type="hidden" name="data[action]" value="_saveConfig" />
+</form>     
+
+<script type="text/javascript">
+jQuery('.autoComplete').autocomplete(s2AjaxUri+'&data[controller]=admin/admin_geomaps&data[action]=fieldList', 
+    { 
+//            autoFill: true,
+        multipleInstances: true,
+        width: '200px',
+        minChars:2, 
+        matchSubset:1, 
+        matchContains:1,
+        maxItemsToShow: 20, 
+        cacheLength:10, 
+        selectOnly:1, 
+        onItemSelect: function(li)
+            {}, 
+        formatItem: function(row)
+            {
+                return row[0] + " ("+ row[1] +")";                
+            }
+    }
+);
+jQuery('.autoComplete').blur(function(){ validateField(jQuery(this)); });
+
+jQuery('.autoComplete').each(function(){ validateField(jQuery(this)); });
+
+function validateField(element)
+{
+    var field = element.val();
+    if(field!='')
+    {
+        jQuery.get(s2AjaxUri,{'data[controller]':'admin/admin_geomaps','data[action]':'_validateField','field':field},function(valid){
+            if(valid == '1')
+            {
+                var img = '<?php echo $Html->image($this->viewImages . 'tick.png');?>';
+                element.next("span").css({'color':'green'}).html(img + 'Valid field');
+            } else {
+                var img = '<?php echo $Html->image($this->viewImages . 'publish_x.png');?>';
+                element.next("span").css({'color':'red'}).html(img + ' Field doesn\'t exist');
+            }
+        },'text');
+    }    
+    
+}
+jQuery('#jr_tabs').tabs();
+</script>                    

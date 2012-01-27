@@ -1,0 +1,21 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<!-- BEGIN RATINGS -->
+<table border="0" cellpadding="0" cellspacing="0" class="rating_table">
+     <tr>       				
+        <td class="rating_label"><?php echo $Html->image($this->viewImages.'review_user.png',array('width'=>14,'height'=>14,'title'=>__t("User rating",true),'alt'=>__t("User rating",true)));?></td>
+        <td class="rating_stars"><?php echo $Rating->drawStars(Sanitize::getFloat($ratings_summary['Rating'],'average_rating'), $this->Config->rating_scale, $this->Config->rating_graph, 'user');?></td>
+        <td class="rating_value"><?php echo $Rating->round(Sanitize::getFloat($ratings_summary['Rating'],'average_rating'),$this->Config->rating_scale);?> (<?php echo (int) $user_rating_count;?>)</td>
+     </tr>
+  </table>
+<!-- END RATINGS  -->

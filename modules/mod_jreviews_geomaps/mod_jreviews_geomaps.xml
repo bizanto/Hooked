@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>jReviews GeoMaps Module</name>
+	<author>Alejandro schmeichler</author>
+	<creationDate>December 2009</creationDate>
+	<copyright>Copyright (C) 2006 - 2009 Alejandro Schmeichler. All rights reserved.</copyright>
+	<license>Commercial</license>
+	<authorEmail>sales@reviewsforjoomla.com</authorEmail>
+	<authorUrl>www.reviewsforjoomla.org</authorUrl>
+	<version>0.2.9</version>
+	<description>jReviews GeoMaps Module: shows listing locations in a map.</description>
+	<files>
+		<filename module="mod_jreviews_geomaps">mod_jreviews_geomaps.php</filename>
+		<filename>index.html</filename>	
+	</files>
+	<languages>
+	</languages>
+	<params>
+		<param name="tmpl_suffix" type="text" default="" label="Theme Suffix" description="Create different module outputs by using theme suffixes. The module theme file is in the themes folder under geomaps/map_module.thtml" />
+        <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="cache_map" type="radio" default="0" label="Caching" description="Recommended for large number of markers.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>    
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="mode" type="list" default="0" label="Functionality Mode" description="Select from different types of module functionality.">
+            <option value="0">Normal (Use filtering settings)</option>
+            <option value="1">Geo Targeting (IP Address to Location)</option>            
+            <option value="2">Custom center &amp; zoom</option>            
+        </param>
+        <param name="radius" type="text" default="" label="Radius" description="Defines the radius for listings lookup around the center found via Geo Targeting or Custom Center modes. Will use Miles or Km based on the GeoMaps configuration. If left blank all listings in the database are added to the map which can affect site performance if there are thousands of markers." />
+        <param name="zoom" type="text" default="" label="Zoom (0-20+)" description="Default zoom level for Geo Targeting and Custom Center modes. If left blank center and zoom levels are automatically calculated considering all markers found within the specified radius." />
+        <param name="custom_lat" type="text" default="" label="Custom Latitude" description="Used when Custom Center &amp; Zoom option selected." />
+        <param name="custom_lon" type="text" default="" label="Custom Longitude" description="Used when Custom Center &amp; Zoom option selected." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="search_bar" type="radio" default="0" label="Address Search Bar" description="Allows users to quickly find a location on the map. Uses the Google geocoder which has a free 15k per day transation limit. This feature is not fully compatible with Geo Targeting with a radius is set because not all markers are available on the map. If a user types an address outside the radius search no markers will be shown.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="filter" type="radio" default="none" label="Featured only" description="Shows only featured listings on the map.">
+            <option value="none">No</option>
+            <option value="featured">Yes</option>            
+        </param>
+        <param name="custom_where" type="text" default="" size="100" label="Custom WHERE" description="Custom WHERE for query. Example: (Field.jr_brand LIKE '%Agfa%' OR Field.jr_brand LIKE '%Canon%')" />                
+        <param name="click2search_auto" type="radio" default="0" label="Click2Search Autodetect" description="Automatically filters results when in click2search pages using the value from the click2search field.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>    
+        <param name="cat_auto" type="radio" default="0" label="Category Autodetect" description="Filters results for current category.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>			
+		</param>	
+        <param name="detail_view" type="list" default="1" label="In detail view" description="Markers in listing detail view.">
+            <option value="1">Show listing marker only</option>
+            <option value="0">Show all category markers</option>            
+        </param>    
+        <param name="dir" type="text" default="" label="Directory IDs" description="Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in." />
+		<param name="section" type="text" default="" label="Section IDs" description="Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in." />
+		<param name="category" type="text" default="" label="Category IDs" description="Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in." />
+		<param name="listing" type="text" default="" label="Listing IDs" description="Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in." />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="map_width" type="text" default="100%" label="Map Width" description="Remember to include px or %. For example 100% or 500px" />
+        <param name="map_height" type="text" default="400px" label="Map Height" description="Remember to include px or %. For example 100% or 500px" />
+        <param name="custom_fields" size="100" type="text" default="" label="Custom Fields" description="Comma separated list, no spaces. To improve performance you need to specify exactly which fields you will be showing in the marker tooltips and modify the /geomaps/map_infowindow.thtml file to add these fields" />
+        <param name="limit_results" type="text" default="5000" label="Limit Results" description="Set a limit to the number of markers shown on a map. This is important for performance gains if you have too many results and all markers should not be shown on the map." />
+        <param name="clustering" type="radio" default="1" label="Enable clustering" description="Groups markers at high zoom levels. Must be used when showing a large number of markers for performance gains.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>    
+        <param name="clustering_min_markers" type="text" default="100" label="Clustering Min Markers" description="When clustering is enabled, any number of markers above this setting will trigger the marker clustering functionality." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="ui_maptype" type="list" default="2" label="Show Map Types?" description="">
+            <option value="2">Global</option>
+            <option value="buttons">Buttons</option>
+            <option value="menu">Menu</option>            
+            <option value="none">None</option>            
+        </param>
+        <param name="ui_map" type="radio" default="2" label="Enable Map Type?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>
+        <param name="ui_hybrid" type="radio" default="2" label="Enable Hybrid Type?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>            
+        <param name="ui_satellite" type="radio" default="2" label="Enable Satellite Type?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>            
+        <param name="ui_terrain" type="radio" default="2" label="Enable Terrain Type?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>            
+        <param name="ui_maptype_def" type="list" default="2" label="Default Map Type?" description="">
+            <option value="2">Global</option>
+            <option value="G_NORMAL_MAP">Map</option>
+            <option value="G_SATELLITE_MAP">Satellite</option>            
+            <option value="G_HYBRID_MAP">Hybrid</option>            
+            <option value="G_PHYSICAL_MAP">Terrain</option>            
+        </param>            
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="ui_panzoom" type="radio" default="21" label="Show Pan &amp; Zoom Controls?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>             
+        <param name="ui_scale" type="radio" default="2" label="Show Scale?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>             
+        <param name="ui_scrollwheel" type="radio" default="2" label="Enable Scrollwheel Zoom?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param> 
+        <param name="ui_doubleclick" type="radio" default="2" label="Enable Doubleclick Zoom?" description="">
+            <option value="2">Global</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param> 
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="ui_trimtitle_module" type="radio" default="0" label="Trim listing title?" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>            
+        </param>
+        <param name="ui_trimtitle_chars" type="text" default="30" label="Trim chars" description="" />            
+    </params>
+</install>

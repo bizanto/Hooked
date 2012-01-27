@@ -1,0 +1,87 @@
+/*************************************
+MAIN CONTAINER for all JReviews directory templates
+*************************************/
+div.jr_dirview {
+	border-top: solid 1px #ccc;
+	padding-top: 10px;}
+	
+div.jr_listSearch {
+    margin: 5px 0 0 5px!important;}
+ 
+div.jr_dirview h3,
+div.jr_dirview h3.contentheading { 
+	margin: 0 0 1em 0;
+	padding: 0 0 0 0; 
+	}
+	
+div.jr_dirview .jr_column {
+	margin: 0 3% 0 0;
+	float:left;
+	}
+	
+div.jr_dirview .dirSection	{
+	padding: 0 0 0 0; 
+	margin: 0 0 0 0;
+	line-height: 1.5em;
+	}
+	
+div.jr_dirview .dirSection .contentTitle	{
+	font-size: 18px; 
+	font-weight:normal; 
+	margin-bottom: .3em;}
+	
+div.jr_dirview .dirSection .contentTitle a {
+	font-size: 18px; 
+	font-weight:normal;}
+
+
+div.jr_dirview .dirSection .contentThumbnail {
+	margin: 0 0 10px 0;
+	border: solid 1px #ccc;
+	width: auto;
+	height: 100px;
+	overflow:hidden;
+	}	
+		
+div.jr_dirview .dirSection .contentThumbnail img {
+	width: auto;
+	height: 100px;
+	}	
+
+div.jr_dirview .dirSection ul	{
+	margin: 0 0 0 16px;
+	padding: 0 0 0 0;
+	}
+	
+div.jr_dirview .dirSection ul li	{
+	margin: 0 0 0 0;
+	padding: .1em 0 .1em 0;
+	list-style:circle;
+	font-size:.9em;
+	}
+	
+div.jr_dirview .dirSection ul.comma	{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	list-style:none;
+	}
+	
+div.jr_dirview .dirSection ul.comma li	{
+	list-style:none;
+	float: left;
+	background:url(images/dot.gif) right center no-repeat;
+	line-height: 1.3em;
+	padding-right: 14px;
+	margin-right: 6px;
+	font-size:.9em;
+	}
+
+div.jr_dirview  .clr	{
+	height: 30px;}
+	
+div.jr_dirview .contentDiv	{
+	margin-bottom: 15px;
+}
+	
+/* ######### VARIATION: HIDE IMAGES ########### */
+#jr_dirview_thumbNone .dirSection .contentThumbnail {display:none;}	

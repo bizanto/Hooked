@@ -1,0 +1,149 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+ 
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+
+/**********************************************************************************
+ * 								CONFIGURATION AND SETUP
+ **********************************************************************************/
+$ajax_nav = Sanitize::getInt($this->params['module'],'ajax_nav',1);
+$columns = Sanitize::getInt($this->params['module'],'columns',1);
+$tn_width = Sanitize::getInt($this->params['module'],'tn_width',50);
+$tn_show = Sanitize::getInt($this->params['module'],'tn_show',1);
+$tn_mode = Sanitize::getString($this->params['module'],'tn_mode','scale');
+$slider_width = Sanitize::getInt($this->params['module'],'slider_width',513); ; // px
+$slider_height = Sanitize::getInt($this->params['module'],'slider_height',420); ; // px
+
+// position of sliding arrows {side|bottom}
+$arrows = Sanitize::getString($this->params['module'],'nav_position','bottom'); 
+if ($arrows == 'side') {
+	$slider_width = $slider_width-50;
+	$margin_top = (int) ($slider_height/2)-15;
+} else if ($arrows == 'bottom') {
+	$slider_height = $slider_height-50;
+	$margin_top = 5 ;
+}
+
+$column_width = $ajax_nav ? ($slider_width/$columns-5*$columns).'px' : (99/$columns).'%'; // In percentage
+$list_item_style = 'style="width:'.$column_width.';'.($ajax_nav ? '' : 'padding:0px;').'"';
+$width_style =  'style="width:'.($slider_width).'px;"';
+$module_id = Sanitize::getVar($this->params,'module_id','');
+$page = $this->module_page;
+$limit = $this->module_limit;     
+$page_count = ceil($total/$limit);
+$show_numbers = Sanitize::getInt($this->params['module'],'show_numbers',0);
+$extension = Sanitize::getString($this->params['module'],'extension');
+$rankModifier = ($this->module_page-1)*$this->module_limit;      
+$item_count = count($listings);  
+?>
+
+<?php if(empty($listings)) { __t("No entries were found") . '<br /><br />'; return; } ?>
+
+<?php
+/**********************************************************************************
+ * 								AJAX PAGINATION SETUP
+ **********************************************************************************/?>
+ 
+<?php if(!$this->ajaxRequest && $ajax_nav):?>
+
+    <script type="text/javascript">  
+    jQuery(document).ready(function() 
+    {
+        jreviews.module.pageNavInit(<?php echo $module_id;?>,<?php echo $page;?>,<?php echo $page_count;?>);
+    });
+    </script>
+    
+     <form id="jr_mod<?php echo $module_id;?>" method="post" action="">
+        <input type="hidden" id="jr_modController<?php echo $module_id;?>" name="controller" value="<?php echo $this->name;?>" />
+        <input type="hidden" id="jr_modAction<?php echo $module_id;?>" name="action" value="<?php echo $this->action;?>" />
+        <input type="hidden" id="jr_modPage<?php echo $module_id;?>" name="page" value="<?php echo $page;?>" />
+        <input type="hidden" id="jr_modLimit<?php echo $module_id;?>" name="limit" value="<?php echo $limit;?>" />
+        <input type="hidden" id="jr_modExtension<?php echo $module_id;?>" name="extension" value="<?php echo $extension;?>" />
+        <input type="hidden" id="jr_modPageCount<?php echo $module_id;?>" name="page_count" value="<?php echo $page_count;?>" />       
+    </form>
+
+<?php endif;?>
+
+<?php 
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+?> 
+        
+<?php if(!$this->ajaxRequest && $ajax_nav):?>  
+
+    <?php if($page_count>1 && $arrows == 'side'):?>
+    
+        <!-- prev link -->
+        <a id="jr_modPrev<?php echo $module_id;?>" href="#prev" onclick="return false;" class="jr_modPrev" style="margin-top:<?php echo $margin_top;?>px;"></a>
+    
+    <?php endif;?>       
+   
+<div id="jr_modSlider<?php echo $module_id;?>" class="jr_modSlider" style="width:<?php echo $slider_width;?>px;height:<?php echo $slider_height;?>px; float: left;"> 
+     
+    <!-- root element for the items --> 
+    <div class="jr_modItems"> 
+
+<?php endif;?>
+
+        <div class="jr_modContainer jr_listings_mod" <?php if($ajax_nav) echo $width_style;?>>
+        <table class="fangstrapporter" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <?php if ($all_cols) : ?>
+                        <th><label><?php __t("Date/Time"); ?></label></th>
+                        <?php endif; ?>
+                        <th><label><?php __t("Fishing Spot"); ?></label></th>
+                        <th><label><a id="fish-icon"><?php __t("Fish"); ?></a></label></th>
+                        <th><label><?php __t("Weight (g)"); ?></label></th>
+                        <?php if ($all_cols) : ?>
+                        <th><label><?php __t("Length (cm)"); ?></label></th>
+                        <?php endif; ?>
+                        <th><label><?php __t("Bait"); ?></label></th>
+                        <th><a title="<?php __t("Photos"); ?>" class="media-icon media-photos"><?php __t("Photos"); ?></a></th>
+                        <th><a title="<?php __t("Videos"); ?>" class="media-icon media-videos"><?php __t("Videos"); ?></a></th>
+                        <th><a title="<?php __t("Reviews"); ?>" class="media-icon media-reviews"><?php __t("Reviews"); ?></a></th>
+                        <th><label><?php __t("Angler"); ?></label></th>
+                    </tr> 
+                    </thead>
+
+            <?php $i=0;$j=0; foreach($listings AS $listing):$i++;$j++; ?>
+                      
+                <div class="listItem" <?php echo $list_item_style;?>>
+
+                                        
+								<?php include('templates/jreviews_overrides/views/themes/geomaps/listings/catches_table.php'); ?>
+                  
+                </div>              
+            <?php endforeach;?>
+
+		</table>
+        </div>        
+
+<?php if(!$this->ajaxRequest && $ajax_nav):?>    
+        
+    </div> <!-- end items root element -->
+     
+</div> <!-- end scrollable root element -->
+
+    <?php if($page_count>1):?>
+	
+ 		<?php if($arrows == 'bottom'): ?>
+            <div style="clear: both;"></div>
+            <!-- prev link -->
+            <a id="jr_modPrev<?php echo $module_id;?>" href="#prev" onclick="return false;" class="jr_modPrev" style="margin-top:<?php echo $margin_top;?>px;"></a>
+        <?php endif;?>   
+		
+        <!-- next link -->
+        <a id="jr_modNext<?php echo $module_id;?>" href="#next" onclick="return false;" class="jr_modNext" style="<?php if($arrows == 'bottom') echo 'float: left; margin-left:0px; ';?>margin-top:<?php echo $margin_top;?>px;"></a>
+    
+    <?php endif;?>       
+    
+<div style="clear: both;"></div>
+<?php endif;?>

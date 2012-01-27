@@ -1,0 +1,27 @@
+
+.rel8Listings li a { background-color: #484926; border: 1px solid #ccc; }
+.rel8Listings li a.selected { background: #52630E url(/images/bg-rel8-add.png) right bottom no-repeat; border: 1px solid #0C0; color: #ffc; }
+.rel8Listings li a.related { background: #52630E url(/images/bg-rel8-add.png) right bottom no-repeat; border: 1px solid #2E330F; }
+.rel8Listings li a.remove { background: #ccc url(/images/bg-rel8-remove.png) right bottom no-repeat; border: 1px solid #C00; }
+
+.rel8Container { clear: both; }
+
+.rel8Categories { list-style-type: none; height: 168px; }
+	.rel8Categories li { float: left; margin: 3px 0; width: 50%; }
+		.rel8Categories li a { display: inline; margin: 0 13px; padding: 5px; } 
+		.rel8Categories li a.cselect { background: none repeat scroll 0 0 #505329; -moz-border-radius: 8px; } 
+		.rel8Categories li a:hover { background: none repeat scroll 0 0 #505329; -moz-border-radius: 8px; } 
+ 
+.rel8CatTitle { font-weight: bold; }
+
+.rel8ListingsContainer { height: 234px; overflow: auto; padding: 10px 0; margin: 10px 0; border-top: 1px solid #303110; border-bottom: 1px solid #303110; }
+.rel8Listings { list-style-type: none; padding: 0; margin: 0 auto; }
+	.rel8Listings li { background: none; display: inline; }
+		.rel8Listings li a { display: block; float: left; width: 29%; height: 60px; margin: 0 2% 10px 0; padding: 1%; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; overflow: hidden; }
+		
+		.rel8Listings li a {  background: none; }
+			.rel8Listings li a img { float: left; margin-right: 5px; width: 58px; }
+			.rel8Listings li a span { white-space: no-wrap; }
+
+
+input#lsearch, #cWindowContent .rel8button { padding: 10px; margin: 0 0 0 10px; background: #303110; font-weight: bold;border: none; padding-left: 8px; color: #cccc99; }

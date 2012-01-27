@@ -1,0 +1,46 @@
+body { padding: 0; margin: 0; text-align: left;}
+#iFrameContent{
+	font: 12px/normal Tahoma, Arial, sans-serif;
+	margin: 0;
+}
+.title{
+	font: bold 17px/normal Arial, sans-serif;
+	color: #fff;
+	padding: 10px;
+	background: #333;
+	border-bottom: 2px solid #111;
+	position: relative;
+}
+.albumList,
+.albumList li,
+.photoList,
+.photoList li {
+	border: none;
+	list-style:none;
+	padding: 0;
+	margin: 0;
+	background: none;	
+}
+.albumList { margin: 10px; }
+.albumList li { float: left; display: block; width: 50%; }
+
+.photoList { margin: 10px; }
+.photoList li  { float: left; display: block; margin: 0 5px 5px; }
+.photoList a   { float: left; display: block }
+.photoList a img { width: 60px; height: auto; border: 1px solid #aaa; opacity: 0.9; }
+.photoList a:hover img { opacity: 1; }
+
+.albumList li .inner { padding: 5px; background: #eee; border: 1px solid #ccc; font-size: 90%; }
+.albumList li .inner b { font-size: 12px; }
+.albumList li.albumLeft .inner { margin: 0 0 5px 5px; }
+.albumList li.albumRght .inner { margin: 0 5px 5px 0; }
+
+.picture, .picture img { float: left; display: block; width: 50px; height: auto; }
+.desc { margin: 0 0 0 58px; }
+
+a { color: #003399; text-decoration: none; }
+a:hover .inner { background: #ddd; }
+a img { border: 1px solid #aaa; }
+a:hover img { border: 1px solid #aaa; }
+
+.button { position: absolute; right: 10px; top: 10px; cursor: pointer; }

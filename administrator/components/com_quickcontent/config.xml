@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <params>
+		<param name="cleanfields" type="radio" default="0" label="Clean form fields after saving item (reload page after changing this value)" description="cleans form fields after saving item. Check NO for content stays in fields after saving item with AJAX. Reload page after changing this value!">
+	    	<option value="0">No</option>
+	  	    <option value="1">Yes</option>
+		</param>
+		<param name="paraformenu" type="radio" default="1" label="Use published and access parameters also for created menu " description="Sets the published and the access value you have choosed for your item also for the new menu item when link to menu is checked.">
+	    	<option value="0">No</option>
+	  	    <option value="1">Yes</option>
+		</param>		
+    </params>
+</config>

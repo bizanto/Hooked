@@ -1,0 +1,32 @@
+<style>
+div.advsearch {
+	font-size:12px;
+	font-family:arial;
+	background-color:#fff;
+	border:1px solid #CCC;
+	padding:5px;
+	margin-bottom:10px;}
+div.heading {font-weight:bold;text-decoration:underline;margin-bottom:10px;}
+div.title {font-weight:bold;}
+</style>
+<div class="advsearch">
+	<div class="heading">Form customization instructions</div>
+	
+	<p>To create your custom search form, edit the advanced_search.thtml view file in the /jreviews/views/theme/default/modules directory. 
+	You can create different forms by copying the module, using the template suffix parameter and renaming the view file accordingly.</p>
+	
+	<div class="title">Valid tags for the search template</div>
+	{jr_fieldname}: outputs the field<br />
+	{jr_fieldname_label}: outputs the field title<br /><br />
+	<div class="title">Displaying the category list</div>
+	{category}: outputs the category list<br /><br />
+	<div class="title">[Single select]<=>[Multiple select] Conversion</div>
+	{jr_fieldname|m|10}: [Single select] => [Multiple select], the last parameter (10) is the size of the field.<br />
+	{jr_fieldname|s}: [Multiple select] => [Single select]<br /><br /><br />
+	
+	<div class="heading">Behavior of search results with select lists</div>
+	<strong>Multiple select</strong>: Since multiple selects allow multiple values to be stored the search will
+	only return the records matching ALL values selected.<br /><br />
+	<strong>Single select</strong>: When a single select list is converted to a multiple select
+	the search will return records matching any of the selected values.
+</div>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+
+	<name>Saasy</name>
+	<creationDate>June 2011</creationDate>
+	<author>Hathway</author>
+	<authorEmail>chris@wearehathway.com</authorEmail>
+	<authorUrl>http://www.wearehathway.com</authorUrl>
+	<copyright>Copyright 2011</copyright>
+	<license>Commercial</license>
+	<!-- The version string is recorded in the components table -->
+	<version>0.0.1</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>Saasy Subscription E-Commerce Integration
+	</description>
+	<install>
+		<sql>
+			<file driver="mysql">sql/install.mysql.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	<files>
+		<filename>controller.php</filename>
+		<filename>saasy.php</filename>
+		<folder>views</folder>
+	</files>  
+	<administration>
+		<menu>Account Pages</menu>
+		<files folder="admin">
+			<filename>admin.saasy.php</filename>
+			<filename>admin.saasy.html.php</filename>
+			<filename>toolbar.saasy.php</filename>
+			<filename>toolbar.saasy.html.php</filename>
+			<filename>config.xml</filename>
+			<folder>sql</folder>
+			<folder>tables</folder>
+		</files>
+	</administration>  
+	
+</install>

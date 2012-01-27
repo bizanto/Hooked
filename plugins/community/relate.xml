@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="community">
+	<name>Relate</name>
+	<author>Kevin Strong</author>
+	<creationDate>February 2011</creationDate>
+	<version>1.0</version>
+	<copyright>Copyright (C) 2011 Hathway Technology Group. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>kevin.strong@wearehathway.com</authorEmail>
+	<authorUrl>http://wearehathway.com/</authorUrl>
+	
+	<description>
+		Allows relations to be established between content items and JomSocial media 
+		when adding new media directly from the relations component. 
+	</description>
+	<files>
+		<file plugin="relate">relate.php</file>
+		<file>relate.xml</file>
+	</files>
+ 
+	<params/>
+</install>

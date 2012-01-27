@@ -1,0 +1,232 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2010 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );    
+?>
+
+<?php
+/**********************************************************************************
+ * 								PAGINATION HELPER
+ **********************************************************************************/
+$Paginator->paginate(array(
+		'current_page'=>$this->page,
+		'items_per_page'=>$this->limit,
+		'items_total'=>$pagination['total'],
+));
+?>
+
+<?php 
+/**********************************************************************************
+ * 								EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+ ?>
+    
+<div class="jr_pgContainer">
+
+	<!--  BEGIN PAGE HEADER AREA -->
+	<?php echo $this->renderControllerView('listings','listings_header');?>
+	<!--  END PAGE HEADER AREA -->
+	
+	<?php if($pagination['total'] > 0):?>	
+	<!-- PAGINATION BEGINS HERE -->
+	<table class="jr_pagination" id="jr_pagination_top" width="100%" cellpadding="0" cellspacing="0">
+	 <tr>
+	    <td class="jr_pagenav_results"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></td>
+	    <?php if($pagination['total'] > $this->limit):?>
+	    <td class="jr_pagenav_pages"><?php echo $Paginator->display_pages();?></td>
+		<?php else:?>
+	    <td class="jr_pagenav_pages"></td>		
+	    <?php endif;?>
+	    <td class="jr_pagenav_limitbox">
+		    <!--  BEGIN LIST OPTIONS -->    
+			<div class="jr_listOptions">
+			<?php if($this->Config->list_show_orderselect && in_array($this->action,array('search','section','category','alphaindex','list','mylistings'))):?>	 
+				<?php $order_options = array('featured','alpha','ralpha','date','rdate','hits','rhits','rating','rrating','editor_rating','reditor_rating','reviews','author','rauthor');?>
+				<?php __t("Ordering");?>&nbsp;<?php echo $Jreviews->orderingList(Sanitize::getString($this->params,'order'), $order_options, $order_list)?>
+			<?php endif;?>
+		    </div>
+		    <!--  END LIST OPTIONS -->	    
+	    </td>		
+	 </tr>
+	</table>
+	<!-- PAGINATION ENDS HERE --> 	 	
+	<?php endif;?>
+
+	<?php if(!empty($listings)):?>
+	<!--  BEGIN TABLEVIEW   -->
+	<div class="jr_tableview">
+	    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sectiontable jr_tableview">
+			<tr class="sectiontableheader">
+				<?php if($this->Config->list_show_image):?><th class="columnFirst"></th><?php endif;?>	
+				<th class="columnMain"><?php __t("Details");?></th>
+				<?php if($this->Config->list_show_hits):?><th class="columnHits"><?php __t("Hits");?></th><?php endif;?>
+				<?php if($this->Config->list_show_user_rating):?>
+				<th class="columnLast"><?php __t("Ratings");?></th>
+				<?php endif;?>
+				
+				<?php if ($this->Config->getOverride('list_compare',$listing['ListingType']['config'])):?>
+				<th class="columnCompare"><?php __t("Compare");?></th>
+				<?php endif;?>
+			</tr>
+			<?php $i = 2; foreach($listings AS $listing): $i = $i == 2 ? 1 : 2;?>  
+			<tr class="row<?php echo $i;?>">     
+				<?php if($this->Config->list_show_image):?>
+				<td class="columnFirst">							
+					<div class="contentThumbnail">
+						<?php echo $Routes->content($Thumbnail->thumb($listing, 0, 'scale', 'list', array($this->Config->list_image_resize),array('id' => 'thumb'.$listing['Listing']['listing_id'], 'border'=>0,'alt'=>$listing['Listing']['title'],'title'=>$listing['Listing']['title'])),$listing);?>
+					</div>				
+				</td>			
+				<?php endif;?>		
+				<td class="columnMain">
+					<div class="contentTitle"><?php echo $Routes->content($listing['Listing']['title'],$listing)?>
+						<span class="contentIndicators">
+						<?php if($this->Config->list_featured && $listing['Listing']['featured']):?>
+							<?php echo $Html->image($this->viewImages.'featured.png', array('width'=>43,'height'=>11,'title'=>__t("Featured",true),'alt'=>__t("Featured",true),'border'=>0));?>
+						<?php endif;?>						
+						<?php if($this->Config->list_new && $Jreviews->newIndicator($this->Config->list_new_days,$listing['Listing']['created'])):?>
+							<?php echo $Html->image($this->viewImages.'new.png', array('width'=>28,'height'=>11,'title'=>__t("New",true),'alt'=>__t("New",true),'border'=>0));?>
+						<?php endif;?>
+						<?php if($this->Config->list_hot && $this->Config->list_hot_hits <= $listing['Listing']['hits']):?>
+							<?php echo $Html->image($this->viewImages.'hot.png', array('width'=>29,'height'=>11,'title'=>__t("Hot",true),'alt'=>__t("Hot",true),'border'=>0));?>
+						<?php endif;?>
+					   </span>			   			
+					</div>
+					<div class="contentInfo">
+					<?php if($this->action!='category'):?>
+						<!-- BEGIN SHOW LISTING SECTION AND CATEGORY -->
+						<?php echo $listing['Section']['title'];?> &raquo; <?php echo $listing['Category']['title'];?><br />
+						<!-- END SHOW LISTING SECTION AND CATEGORY -->
+					<?php endif;?>
+		            <?php if($this->Config->list_show_author):?><?php __t("Written by");?> <?php echo $Community->screenName($listing);?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?> 
+		            <?php if($this->Config->list_show_date):?><?php echo $Time->nice($listing['Listing']['created']);?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?>
+		            <?php if($this->Config->list_show_hits):?><?php __t("Hits");?>:&nbsp;<?php echo $listing['Listing']['hits']?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?>
+		            <?php if($this->Config->favorites_enable):?>
+		               <?php echo $Html->image($this->viewImages.'favorite.png',array('width'=>8,'height'=>14,'title'=>__t("Favorites",true),'alt'=>__t("Favorites",true)));?> <?php echo $listing['Favorite']['favored'];?>
+		            <?php endif;?>
+					</div>
+                           
+                    <!-- BEGIN CUSTOM FIELDS -->
+                    <?php if(isset($listing['Field']['groups'])):?>
+	                    <?php echo $this->element('custom_fields',array('entry'=>$listing,'page'=>'list'))?>
+                    <?php endif;?>	
+                    <!-- END CUSTOM FIELDS -->
+					
+                   <!-- BEGIN INTROTEXT --> 
+                    <?php if($this->Config->list_show_abstract && ($this->Config->list_abstract_trim!='' || $this->Config->list_abstract_trim>0)):?>  
+                   <div class="contentIntrotext">
+                        <?php echo $Text->truncateWords($listing['Listing']['summary'],$this->Config->list_abstract_trim);?>
+                   </div>
+                    <?php elseif($this->Config->list_show_abstract == 1):?>
+                   <div class="contentIntrotext">
+                        <?php echo $listing['Listing']['summary'];?>
+                   </div>                                               
+                    <?php endif;?>                                   
+                   <!-- END INTROTEXT -->
+			       
+			       <!-- BEGIN CONTENT ACTIONS ZONE -->					       
+					<div class="contentActions">
+					    <?php if($this->Config->list_show_readmore):?>
+						    <?php echo $Routes->content(__t("Read more",true),$listing,array('class'=>'jr_readon','rel'=>'nofollow'))?>					
+					    <?php endif;?>
+					    <?php if($this->Config->list_show_readreviews && Sanitize::getInt($listing['Criteria'],'state')):?>
+						    <?php echo $Routes->content(__t("Read reviews",true),$listing,array('class'=>'jr_rateit','rel'=>'nofollow'),'jr_reviewUserSummaryMainTitle')?>					
+					    <?php endif;?>	
+					    <?php if($this->Config->list_show_newreview && Sanitize::getInt($listing['Criteria'],'state')):?>
+						    <?php echo $Routes->content(__t("Write review",true),$listing,array('class'=>'jr_rateit','rel'=>'nofollow'),'jr_reviewUserSummaryMainTitle')?>					
+					    <?php endif;?>
+
+					    <!-- BEGIN LISTING MANAGER -->
+					    <?php echo $this->renderControllerView('listings','listing_manager',array('listing'=>$listing));?>					
+					    <!-- END LISTING MANAGER -->
+					</div>				
+			       <!-- END CONTENT ACTIONS ZONE -->
+			    </td> 
+                  
+				<?php if($this->Config->list_show_hits):?>
+				<td class="columnHits"><?php echo $listing['Listing']['hits'];?></td>
+				<?php endif;?>
+												
+				<?php if(Sanitize::getInt($listing['Criteria'],'state') && $this->Config->list_show_user_rating):?>
+				<!-- BEGIN RATINGS COLUMN -->
+				<td class="columnLast">
+					<?php if($listing['Criteria']['state'] == 1 && ($this->Config->author_review || $this->Config->list_show_user_rating)):?>
+					<table border="0" cellpadding="0" cellspacing="0" class="rating_table">
+						<?php if($this->Config->author_review):?>
+						<tr>
+							<td class="rating_label"><?php echo $Html->image($this->viewImages.'review_editor.png',array('width'=>14,'height'=>14,'title'=>__t("Editor rating",true),'alt'=>__t("Editor rating",true)));?></td>
+							<td><?php echo $Rating->drawStars($listing['Review']['editor_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'editor');?></td>
+							<td class="rating_value"><?php echo $Rating->round($listing['Review']['editor_rating'],$this->Config->rating_scale);?><?php if ( $listing['Review']['editor_rating_count'] > 1 ) echo ' (',$listing['Review']['editor_rating_count'],')';?></td>
+						</tr>
+						<?php endif;?>
+						<?php if($this->Config->list_show_user_rating):?>													
+						<tr>
+							<td class="rating_label"><?php echo $Html->image($this->viewImages.'review_user.png',array('width'=>14,'height'=>14,'title'=>__t("User rating",true),'alt'=>__t("User rating",true)));?></td>
+							<td><?php echo $Rating->drawStars($listing['Review']['user_rating'], $this->Config->rating_scale, $this->Config->rating_graph, 'user');?></td>
+							<td class="rating_value"><?php echo $Rating->round($listing['Review']['user_rating'],$this->Config->rating_scale);?> (<span style="cursor:help;" title="<?php __t("User reviews");?>"><?php echo (int) $listing['Review']['user_rating_count'];?></span>)</td>
+						</tr>
+						<?php endif;?>										
+					</table>
+					<?php endif;?>
+				</td>
+				<!-- END RATINGS COLUMN -->				
+				<?php endif;?>
+                                          
+				<?php if ($this->Config->getOverride('list_compare',$listing['ListingType']['config'])):?>
+				<td class="columnCompare"><span class="compareListing"><input type="checkbox" class="checkListing" name="<?php echo htmlspecialchars($listing['Listing']['title'],ENT_QUOTES,cmsFramework::getCharset());?>" id="listing<?php echo $listing['Listing']['listing_id'];?>" value="<?php echo $listing['Listing']['listing_id'];?>" />&nbsp;<span id="listingID<?php echo $listing['Listing']['listing_id'];?>" class="listingType<?php echo $listing['Criteria']['criteria_id'];?>" style="display:none;"><?php echo $listing['Criteria']['title'];?></span></span></td>
+				<?php endif;?>
+			</tr>
+			<?php endforeach;?>
+		</table>
+	</div>
+	<!--  END TABLEVIEW   -->	        
+	<div class="clr">&nbsp;</div>
+	<?php endif;?>  
+	
+	<?php if($pagination['total'] > 0):?>		
+	<!-- PAGINATION BEGINS HERE -->
+	<table class="jr_pagination" width="100%" cellpadding="0" cellspacing="0">
+	 <tr>
+	    <td class="jr_pagenav_results"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></td>
+	    <?php if($pagination['total'] > $this->limit):?>
+	    <td class="jr_pagenav_pages"><?php echo $Paginator->display_pages();?></td>
+		<?php else:?>
+		<td class="jr_pagenav_pages"></td>
+		<?php endif;?>		
+	    <td class="jr_pagenav_limitbox"><?php echo $Paginator->display_items_per_page();?></td>			
+	 </tr>
+	</table>
+	<!-- PAGINATION ENDS HERE -->
+	<?php endif;?>	
+</div>
+
+<?php if(empty($listings)):?>
+    <?php switch($this->action) {
+        case 'search':
+            __t("Your search did not return any results. Try adjusting your search values.<br /><br /><a href=\"javascript:window.history.go(-1)\">Click here to go back.</a>");
+            break;
+        case 'favorites':
+            echo __t("Your favorites list is empty.");
+            break; 
+        case 'section':
+            if($this->Config->list_show_sectionlist)
+                echo __t("No entries were found");
+        break;    
+        default:
+            echo __t("No entries were found");
+            break; 
+    }?>
+<?php endif;?>
+
+
+<!--  Begin Listing compare area -->
+<div id="jr_compareListings" class="fixedDiv ui-widget ui-corner-all" style="display: none;">
+	<div id="jr_compareListingsInnerTop"><div id="compareTitle"><?php __t("Listings for comparison");?></div></div>
+	<div id="jr_compareListingsInner"></div>
+</div>
+<!--  End Listing compare area -->

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Slide Show</name>
+	<author>Hathway</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2011 Hathway. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>kevin.strong@wearehathway.com</authorEmail>
+	<authorUrl>http://www.wearehathway.com/</authorUrl>
+	<version>1.0</version>
+	<description>News slide show for Hooked</description>
+	<files>
+	<filename module="mod_slideshow">mod_slideshow.php</filename>
+	<filename>index.html</filename>
+	<filename>helper.php</filename>
+	<filename>tmpl/index.html</filename>
+	<filename>tmpl/mod_slideshow.css</filename>
+	<filename>tmpl/mod_slideshow.js</filename>
+	<filename>tmpl/slideshow_arrow.png</filename>
+    <filename>tmpl/transparent_bg.png</filename>
+	<filename>tmpl/default.php</filename>
+	</files>
+	<params>
+		<param name="limit" type="text" default="8" label="limit" description="number of items" />
+		<param name="categories" type="text" default="" label="categories" description="categories to pull from" />
+		<param name="section" type="text" default="" label="section" description="section to pull from" />
+		<param name="filter" type="list" default="" label="Filter" description="Filter by article status">
+			<option value="">None</option>
+			<option value="featured">Featured (jReviews)</option>
+		</param>
+		<param name="tfield" type="text" default="jr_" label="tagline field" description="jreviews field to pull tagline from" />
+		<param name="autocycle" type="radio" default="1" label="auto cycle?" description="automatically cylce through slides?">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</param>
+		<param name="ttime" type="text" default="5000" label="transition time (ms)" description="time between slide changes" />
+		<param name="transition" type="list" default="fade" label="transition type" description="type of transition">
+			<option value="fade">fade</option>
+			<option value="slide">slide</option>
+		</param>
+	</params>
+</install>

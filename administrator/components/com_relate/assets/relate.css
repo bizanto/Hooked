@@ -1,0 +1,20 @@
+
+
+/* Relations */
+label { margin: 0; padding: 0; }
+.srcPanel,
+.rulesPanel,
+.categoryPanel,
+.relPanel { float: left; display: inline;  padding: 0 4% 0 0; width: 45%; }
+
+.categoryList {  }
+.fieldOption { float: left; margin: 0; width: 47%; padding: 5px 1%; }
+
+
+
+/* Access rules */
+#menuSelect { display: none; }
+.rulesPanel .fieldOption { float: none; display: block; }
+
+/* Overall */
+.catSelect {  }

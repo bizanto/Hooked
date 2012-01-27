@@ -1,0 +1,35 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+
+<div id="criterialist">
+
+	<div class="admin_header">Listing Type Manager (Criteria Manager)</div>
+
+		<form id="adminForm" name="adminForm">
+	
+		<div class="admin_toolbar ui-widget-header ui-corner-all ui-helper-clearfix">
+
+			<button class="ui-button ui-corner-all" onclick="xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/criterias','edit','jreviews',{data:{criteria_id:0}}]});return false;">New</button>&nbsp;
+			
+			<button class="ui-button ui-corner-all" onclick="copies=prompt('Enter the number of copies','1'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/criterias','_copy','jreviews',copies,xajax.getFormValues('adminForm',0,'criteria')]});return false;">Copy</button>
+
+            <button class="ui-button ui-corner-all" onclick="alert('This can take some time depending on the number of reviews in your system, don\'t interrupt this action.'); xajax.request({xjxfun:'xajaxDispatch'},{URI:'<?php displayXajaxUri('jreviews');?>',parameters:['admin/criterias','refreshReviewRatings','jreviews']});return false;">Sync Ratings</button>
+
+		</div>
+	
+		<br />
+		
+		<div id="criteriatable"><?php echo $table?></div>
+
+	</form>
+</div>

@@ -1,0 +1,41 @@
+<?php
+
+/*
+* Quickcontent Component for Joomla 1.5.x
+* @version 1.0.0
+* @Date 2009.08.04
+* @copyright (C) 2009 Thomas Lengler
+* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+* www.einszuzwei.de
+*/
+
+defined('_JEXEC') or die();
+
+jimport( 'joomla.application.component.view' );
+
+
+class QuickcontentViewQuickcontent extends JView
+{
+	
+	function display($tpl = null)
+	{
+	    JToolBarHelper::title(   JText::_( 'Quickcontent ajax form' ), 'generic.png' );
+        JToolBarHelper::preferences( 'com_quickcontent' );
+		
+		JHTML::_('behavior.tooltip');
+		JHTML::_('behavior.calendar');
+	    
+	    $lists=& $this->get('Data');		
+		$this->assignRef('lists', $lists);
+	    
+			
+	    $document =& JFactory::getDocument();
+		$document->addScript($this->baseurl."/components/com_quickcontent/assets/js/lorem.js");
+		$document->addScript($this->baseurl."/components/com_quickcontent/assets/js/dojo131/dojo.js");
+		$document->addScript($this->baseurl."/components/com_quickcontent/assets/js/quickcontent.js");
+		
+			
+	    parent::display($tpl);
+	}
+	
+}	

@@ -1,0 +1,8 @@
+<config>
+    <params>
+        <param type="list" name="correctcount" label="Correct Friend Count Automatically" default="No" description="This will run a routine everytime a user logs in to verify their friend count is correct">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+    </params>
+</config>

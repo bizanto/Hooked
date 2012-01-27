@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="community" method="upgrade">
+	<name>My twitter updates</name>
+	<author>JomSocial Team</author>
+	<creationDate>25/10/2010</creationDate>
+	<copyright>Copyright 2008 - 2010 by Slashes &amp; Dots Sdn Bhd. All rights reserved</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@azrul.com</authorEmail>
+	<authorUrl>http://www.jomsocial.com</authorUrl>
+	<version>2.0.0</version>
+	<isapplication>true</isapplication>
+	<isbrowseable>true</isbrowseable>
+	<description>
+		Twitter ™ application for JomSocial. Users will be able to retrieve update to display in their profile and also set to auto update Twitter when they update their profile status.
+	</description>
+	<languages>
+		<language tag="en-GB">en-GB.plg_twitter.ini</language>
+	</languages>
+	<files>
+		<file plugin="twitter">twitter.php</file>
+		<folder>twitter</folder>
+	</files>
+	
+	<menuitem>
+		<menu label="Groups" position="toolbar">
+			<link label="Groups">task=groups</link>
+		</menu>
+	</menuitem>
+	
+	<positions>
+		<position>content</position>
+		<position>sidebar_top</position>
+	</positions>
+	<params>
+		<param name="cache" type="list" default="0" label="Enable caching" description="Cache data">
+			<option value="0">No</option>
+			<option value="1">Use Global</option>
+		</param>
+		<param name="position" type="list" default="content" label="Position" description="Default position if you select this as core apps">
+			<option value="content">Main  content</option>
+			<option value="sidebar-top">Sidebar top</option>
+			<option value="sidebar-bottom">Sidebar bottom</option>
+		</param>
+		<param name="coreapp" type="list" default="0" label="Core Application" description="Causes this application to not appearin the users applications list but it will allow this application to appear in the user profile automatically if selected.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="consumerKey" type="text" default="" size="35" label="Consumer Key" description="" />
+		<param name="consumerSecret" type="text" default="" size="35" label="Consumer Secret" description="" />
+	</params>
+
+</install>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+        <params>
+                <param name="username" type="text" default="" label="Username" description="Saasy Account Username" />
+                <param name="password" type="text" default="" label="Password" description="Saasy Account Password" />
+                <param name="company" type="text" default="" label="Company" decription="Saasy Company Name" />
+                <param name="product" type="text" default="" label="Product" decription="Saasy Product Name" />
+                <param name="subscriptionURL" type="text" default="https://api.fastspring.com/company/companyname/subscription" label="Subscription URL" description="Saasy Subscription Info Retrieval URL" />
+                <param name="activatePrivateKey" type="text" default="" label="Activation Private Key" description="Private Key used for activation notifications" />
+                <param name="deactivatePrivateKey" type="text" default="" label="Deactivation Private Key" description="Private Key used for deactivation notifications" />
+                <param name="updatePrivateKey" type="text" default="" label="Update Private Key" description="Private Key used for update notifications" />
+                <param name="nonpaymentPrivateKey" type="text" default="" label="Nonpayment Private Key" description="Private Key used for non-payment notifications" />
+       			 
+       			<param name="contact" type="text" default="" label="Contact us URL" description="Contact us URL" /> 
+       			<param name="submit" type="text" default="" label="Submit listing URL" description="Submit listing URL" /> 
+       			<param name="myaccount" type="text" default="" label="Manage account URL" description="Manage account URL" /> 
+       			<param name="mylistings" type="text" default="" label="My listings URL" description="My listings URL" /> 
+        </params>
+</config>

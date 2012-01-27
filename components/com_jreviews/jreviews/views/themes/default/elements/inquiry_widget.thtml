@@ -1,0 +1,56 @@
+<div id="jr_inquiryFormOuter" class="jr_form jr_formContainer" style="width:300px;">
+<form id="jr_inquiryForm" name="jr_inquiryForm" action="" method="">
+        <div class="jr_fieldDiv">
+            <label for="jr_inquiryName"><?php __t("Your name");?>:<span class="required">*</span>
+            &nbsp;<span id="jr_inquiryNameValidation" class="jr_validation jr_hidden"><?php __t("Please fill in your name");?></span>
+            </label>            
+            <?php echo $Form->text('data[Inquiry][name]',array('id'=>'jr_inquiryName','value'=>$User->name,'class'=>'mediumField','size'=>50,'maxlength'=>100)); ?>
+        </div>            
+        
+        <div class="jr_fieldDiv">
+            <label for="jr_inquiryEmail"><?php __t("Your email");?>:<span class="required">*</span>
+            &nbsp;<span id="jr_inquiryEmailValidation" class="jr_validation jr_hidden"><?php __t("Please fill in your email");?></span>
+            </label>
+            <?php echo $Form->text('data[Inquiry][email]',array('id'=>'jr_inquiryEmail','value'=>$User->email,'class'=>'mediumField','size'=>50,'maxlength'=>100));?>
+        </div>
+        
+        <div class="jr_fieldDiv">
+            <label for="jr_inquiryText"><?php __t("Comments");?><span class="required">*</span>
+            &nbsp;<span id="jr_inquiryTextValidation" class="jr_validation jr_hidden"><?php __t("Please fill in your comments");?></span>
+            </label>
+            <?php echo $Form->textarea('data[Inquiry][text]',array('id'=>'jr_inquiryText','class'=>'smallArea','rows'=>10,'cols'=>100));?>
+        </div>        
+        
+        <?php if($Access->showCaptcha()):?>
+        <div class="jr_fieldDiv">
+            <label for="jr_inquiryCode"><?php __t("Please enter the security code.");?><span class="required">*</span> 
+            <div id="captcha_div" style="float: left;"><?php echo $captcha?></div>
+            <div>&nbsp;&nbsp;<input name="data[Captcha][code]" id="jr_inquiryCode" type="text" class="shortField" size="5" maxlength="5" /></div>
+            <div class="clr">&nbsp;</div>
+            </label>
+        </div>    
+        <?php endif;?>
+                
+        <div id="jr_inquiryCodeValidation" class="jr_validation"></div> 
+                         
+        <button id="jr_inquirySubmit" type="button" onclick="jreviews.inquiry.submit(this,{submit_text:'<?php __t("Your inquiry has been submitted.",false,true);?>'});"><?php __t("Submit");?></button>
+           
+        <span class="jr_loadingSmall jr_hidden"></span>         
+
+        &nbsp;<span id="jr_inquiryTokenValidation" class="jr_validation jr_hidden">The form could not be submitted</span> 
+
+        <input type="hidden" name="data[Inquiry][listing_id]" value="<?php echo $listing['Listing']['listing_id'];?>" />
+        <input type="hidden" name="data[Inquiry][recipient]" value="<?php echo $recipient;?>" />
+        <input type="hidden" name="data[Inquiry][bcc]" value="<?php echo (int)$bccAdmin;?>" />
+        <input type="hidden" name="data[controller]" value="inquiry" />
+        <input type="hidden" name="data[action]" value="_send" />
+        <?php echo $Form->token('jr_inquiryToken');?>        
+        
+        <input type="hidden" name="tmpl" value="component" />     
+        <input type="hidden" name="no_html" value="1" />     
+        <input type="hidden" name="format" value="raw" />     
+        <input type="hidden" name="Itemid" value="<?php echo $public_menu_id;?>" />         
+
+   </form>
+</div>
+<div id="jr_inquiryResponse" class="hidden"></div>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>jReviews Advanced Search Module</name>
+	<author>ClickFWD LLC</author>
+	<creationDate>July 2010</creationDate>
+	<copyright>Copyright (C) 2008 ClickFWD LLC. All rights reserved.</copyright>
+	<license>Commercial</license>
+	<authorEmail>sales@reviewsforjoomla.com</authorEmail>
+	<authorUrl>www.reviewsforjoomla.org</authorUrl>
+	<version>2.0</version>
+	<description>jReviews Advanced Search Module</description>
+	<files>
+		<filename module="mod_jreviews_advsearch">mod_jreviews_advsearch.php</filename>
+		<filename>index.html</filename>
+		<filename>info.html</filename>
+		<filename>en-GB.mod_jreviews_advsearch.ini</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_jreviews_advsearch.ini</language>
+	</languages>		
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class suffix" description="Suffix to be applied to the modultable class" />
+		<param name="tmpl_suffix" type="text" default="" label="Advanced search template suffix" description="Suffix to be applied to the default search template mod_jreviews_advsearch.html." />
+		<param name="@spacer" type="spacer" default="" label="Category Select List Settings" description="These settings affect the category select list if present in the form." />
+        <param name="cat_auto" type="radio" default="0" label="Category Auto-detect" description="Enabling this setting overrides all ID filters below. If you have a large number of sections and categories it is recommended you use this setting. In pages where a category or section cannot be detected only the sections will be shown on the list filtered by IDs used below.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+		<param name="dir_id" type="text" default="" label="Directory ID (optional, comma list)" description="Limits options show in category list." />
+		<param name="criteria_id" type="text" default="" label="Listing Type ID (optional, comma list)" description="Limits options show in category list." />
+		<param name="section_id" type="text" default="" label="Section Id (optional, comma list)" description="Limits options show in category list." />
+		<param name="cat_id" type="text" default="" label="Category ID (optional, comma list)" description="Limits options show in category list." />
+		<param name="@spacer" type="spacer" default="" label="Category Select List Settings" description="These settings affect the category select list if present in the form." />
+		<param name="cat_order_alpha" type="list" default="1" label="Category Order" description="Determines the ordering of the categories in the list.">
+		    <option value="0">Backend Ordering</option>
+		    <option value="1">Alphabetically</option>
+		</param>
+		<param name="option_length" type="text" default="" label="Limit category to x chars" description="Applies to sections and categories" />		
+		<param name="section_title" type="radio" default="1" label="Show sections?" description="Shows sections in list.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="section_bg" type="text" default="#DFDFDF" label="Section background color" description="" />
+		<param name="category_color" type="text" default="#000000" label="Category font color" description="" />				
+		<param name="category_bg" type="text" default="transparent" label="Category background color" description="" />
+		<param name="section_color" type="text" default="#000000" label="Section font color" description="" />
+	</params>
+
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

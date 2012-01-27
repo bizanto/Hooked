@@ -1,0 +1,34 @@
+/* JReviews */
+div.jr_pgContainer{text-align:right;}
+div.jr_dirview .jr_column{float:right;margin:0 0 0 3%;}
+.jr_itemList_new{float:left;background-position:right center;}
+.jr_itemDetail table.floatRight{float:left;}
+.jr_itemDetail div.contentInfo{float:right;}
+td.rating_label{padding:2px 0 2px 5px;text-align:right;}
+td.rating_value{padding:2px 5px 2px 15px;text-align:right;}
+.jr_itemDetail div.contentInfo img.jr_avatar{float:right;margin:0 0 0 10px;}
+div.jr_pgContainer .jr_listingManager a, div.jr_pgContainer .jr_postManager a{margin-right:0;margin-left:8px;}
+a.jr_edit, a.jr_published, a.jr_unpublished, a.jr_delete{padding:0 18px 0 0;background-position:right center;}
+div.fieldGroup table.fieldGroupTable td{padding:2px 0 2px 0.5em;}
+table.fieldGroupTable td.fieldLabel{padding-right:0;padding-left:0.5em;text-align:right;}
+#jr_reviewUserSummaryMainTitle{background-position:right top;padding-left:0;padding-right:18px;}
+div.jr_reviewContainer .jr_addReview{float:right;}
+div.itemImages{float:left;margin:0 10px 30px 0;}
+div.jr_reviewContainerSidebar{float:left;margin:0 15px 15px 20px;}
+.jr_form{text-align:right;}
+.jr_form .jr_fieldDiv{clear:right;}
+.jr_form .jr_fieldDiv .jr_fieldOption{float:right;margin:0 0 0 20px;}
+.jr_form input, .jr_form select option{padding-right:0;}
+.ui-helper-hidden-accessible{right:-1e+8px;left:auto;}
+.jr_form fieldset{padding:10px 12px 3px 10px;}
+div.jr_thumbview .listItem{float:right;margin: 0 0 0 2%;}
+div.jr_blogview table.rating_table{float:left;}
+div.jr_pgContainer a.jr_readon,div.jr_pgContainer a.jr_rateit{background-position:right center;padding-right:15px;padding-left:0;}
+div.reviewInfo img{float:right;margin-right:0;margin-left:10px;}
+.jr_itemDetail .jr_customFields{clear:none;}
+.jr_rss{float:left;margin-right:0;margin-left:5px;}
+.jr_rss li{background:none;}
+div.jr_blogview .contentColumn{float:left;margin-right:20px;margin-left:0;}
+div.jr_blogview div.contentThumbnail{clear:right;float:right;}
+div.rating_star_editor div {-moz-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: fliph; margin-right: 1px;}
+div.rating_star_user div {-moz-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: fliph;margin-right: 1px;}

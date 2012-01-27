@@ -1,0 +1,70 @@
+<?php
+$rating_graphic = $this->Config->rating_graph ? 'rating_star' : 'rating_bar';    
+?>
+
+<div id="gm_infowindowContainer" style="display:none;">
+
+    <div class="gm_infowindow gm_google">
+
+        <div class="gm_inner">
+    
+           <!-- LISTING THUMBNAIL -->
+            <div class="gm_image">
+                <img class="gm-image" src="" />
+            </div>
+
+            <div class="gm_content">
+                
+                <span class="gm_title">
+                    <a class="gm-title" href=""></a>
+                </span>                
+                
+            <?php if($this->Config->author_review > 0 || $this->Config->user_reviews):?>
+            <!-- BEGIN RATINGS -->
+            <table border="0" cellpadding="0" cellspacing="0" class="rating_table">
+                  <!-- EDITOR RATING -->
+                  <?php if($this->Config->author_review > 0):?>
+                  <tr>      
+                      <td align="left" class="rating_label">
+                        <?php echo $Html->image($this->viewImages.'review_editor.png',array('width'=>14,'height'=>14,'title'=>__t("Editor rating",true),'alt'=>__t("Editor rating",true)));?>
+                      </td>
+                      <td align="left" class="rating_stars" title="<?php __t("Editor rating");?>">
+                        <div class="<?php echo $rating_graphic;?>_editor"><div class="gm-editor-rating-star" style="width: 0%;"> </div></div>
+                      </td>
+                      <td align="left" class="rating_value">
+                        <span class="gm-editor-rating-value"></span>
+                      </td>
+                  </tr>
+                  <?php endif;?>
+                  
+                  <!-- USER RATING -->
+                  <?php if($this->Config->user_reviews):?>
+                  <tr>      
+                      <td align="left" class="rating_label">
+                        <?php echo $Html->image($this->viewImages.'review_user.png',array('width'=>14,'height'=>14,'title'=>__t("User rating",true),'alt'=>__t("User rating",true)));?>
+                      </td>
+                      <td align="left" class="rating_stars" title="<?php __t("User rating");?>">
+                        <div class="<?php echo $rating_graphic;?>_user"><div class="gm-user-rating-star" style="width: 0%;"> </div></div>
+                      </td>
+                      <td align="left" class="rating_value">
+                        <span class="gm-user-rating-value"></span>&nbsp;(<span class="gm-user-rating-count"></span>) 
+                      </td>
+                  </tr>
+                  <?php endif;?>
+            </table>
+            <?php endif;?>
+            <!-- END RATINGS-->
+       
+            <!-- EXAMPLE: Adding custom fields -->
+            <!--
+            <span class="gm-jr_address"></span>
+            <span class="gm-jr_phone"></span>
+            -->
+         </div>
+         <div class="clr"></div>
+         
+        </div><!-- end gm_inner-->
+    
+    </div><!-- end gm_infowindow-->
+
+</div>

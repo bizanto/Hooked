@@ -1,0 +1,694 @@
+<?php 
+
+/*
+* Quickcontent Component for Joomla 1.5.x
+* @version 1.0.0
+* @Date 2009.08.04
+* @copyright (C) 2009 Thomas Lengler
+* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+* www.einszuzwei.de
+*/
+
+$editor = &JFactory::getEditor(); 
+$createdate =& JFactory::getDate();
+
+$params = JComponentHelper::getParams('com_quickcontent');
+$cleanfields = $params->get('cleanfields');
+
+?>
+
+
+<script type="text/javascript">
+ 	
+dojo.require('dojo.fx');
+
+var cats;
+var joomenuitem;
+var animSecOut;
+var animSecIn;
+var clearcontent = '<?php echo $cleanfields; ?>';
+
+//set the lorem ipsum data to editor
+function setLorem(data) {
+	<?php echo $editor->setContent( 'descText', 'data' ); ?>
+	
+}
+
+//hide buttons while page is working
+function hideButtons(htask) {
+	
+	if (htask == 'hide') {
+		document.getElementById('buttAddSection').style.visibility = 'hidden';
+		document.getElementById('buttAddCat').style.visibility = 'hidden';
+		document.getElementById('buttAddArticle').style.visibility = 'hidden';
+		
+	} else if (htask == 'show') {
+		document.getElementById('buttAddSection').style.visibility = 'visible';
+		document.getElementById('buttAddCat').style.visibility = 'visible';
+		document.getElementById('buttAddArticle').style.visibility = 'visible';
+		
+	}
+}
+ 
+
+// get the Joomla menus as json
+function ajaxMenus() {
+    dojo.xhrPost({
+        url: 'index2.php?option=com_quickcontent&view=ajaxgetdata&format=raw&action=getmenus',
+        handleAs: 'json',
+        load: menusCallback,
+        error: errorHandler
+       
+    });
+}
+
+//split data and call fkt
+function menusCallback(data,ioArgs) {
+    
+    var joomenus = eval(data);
+    var joomenutype = joomenus.types;
+	
+    joomenuitem = joomenus.items;
+    selectJoomenus(joomenutype);
+}
+
+//store the added section
+function storeSection() {
+	
+	//check title field
+	if (document.getElementById('stitle').value == '') {
+		document.getElementById('messagebox').innerHTML = '<span style="color:red;"><?php echo JText::_( 'please edit a section title!' ); ?></span>';
+		return;
+	}
+	
+	//working ...
+    document.getElementById('messagebox').innerHTML = '<img id="loadinggif" src="components/com_quickcontent/assets/images/loading.gif">';
+	hideButtons('hide');
+	
+    //take content from parameter fields   
+    if (document.getElementById('publ').checked) {document.getElementById('spublished').value = '1'; }
+    if (document.getElementById('linktomenu').checked) {document.getElementById('slinkmenu').value = '1'; }
+    if (document.getElementById('blog').checked) {document.getElementById('sbloglayout').value = '1'; }
+    document.getElementById('saccess').value = document.getElementById('access').value;
+    document.getElementById('smenuname').value = document.getElementById('menuitemname').value;
+    document.getElementById('smi').value = document.getElementById('mibox').value;
+    document.getElementById('smt').value = document.getElementById('mtbox').value;
+    
+    dojo.xhrPost({
+        url: 'index2.php?option=com_quickcontent&view=ajaxgetdata&format=raw&action=storesection',
+        handleAs: 'text',
+        load: storesectionCallback,
+        error: errorHandler,
+        form: 'addSection'
+    });
+}
+
+
+function storesectionCallback(msg,ioArgs) {
+    
+    ajaxSections();
+    ajaxMenus();
+    document.getElementById('messagebox').innerHTML = msg;
+	
+	if (clearcontent == 1) {
+    	document.getElementById('stitle').value = '';
+    	document.getElementById('salias').value = '';
+    	document.getElementById('menuitemname').value = '';
+		document.getElementById('publ').checked = false;
+		document.getElementById('linktomenu').checked = false;
+		document.getElementById('blog').checked = false;
+		document.getElementById('access').selectedIndex = 0;
+	}
+	hideButtons('show');
+}
+
+//store the added category
+function storeCat() {
+	
+	//check title
+	if (document.getElementById('ctitle').value == '') {
+		document.getElementById('messagebox').innerHTML = '<span style="color:red"><?php echo JText::_( 'please edit a category title!' ); ?></span>';
+		return;
+	}
+		
+	//working
+	document.getElementById('messagebox').innerHTML = '<img id="loadinggif" src="components/com_quickcontent/assets/images/loading.gif">';
+	hideButtons('hide');
+    
+    //take content from parameter fields
+    if (document.getElementById('publ').checked) {document.getElementById('cpublished').value = '1'; }
+    if (document.getElementById('linktomenu').checked) {document.getElementById('clinkmenu').value = '1'; }
+    if (document.getElementById('blog').checked) {document.getElementById('cbloglayout').value = '1'; }
+    document.getElementById('caccess').value = document.getElementById('access').value;
+    document.getElementById('cmenuname').value = document.getElementById('menuitemname').value;
+    document.getElementById('cmi').value = document.getElementById('mibox').value;
+    document.getElementById('cmt').value = document.getElementById('mtbox').value;
+    
+    dojo.xhrPost({
+        url: 'index2.php?option=com_quickcontent&view=ajaxgetdata&format=raw&action=storecategorie',
+        handleAs: 'text',
+        load: storecatCallback,
+        error: errorHandler,
+        form: 'addCat'
+    });
+}
+
+function storecatCallback(msg,ioArgs) {
+    
+    ajaxSections();
+    ajaxMenus();
+    document.getElementById('messagebox').innerHTML = msg;
+	
+	if (clearcontent == 1) {
+		document.getElementById('ctitle').value = '';
+		document.getElementById('calias').value = '';
+		document.getElementById('menuitemname').value = '';
+		document.getElementById('publ').checked = false;
+		document.getElementById('linktomenu').checked = false;
+		document.getElementById('blog').checked = false;
+		document.getElementById('access').selectedIndex = 0;
+	}
+	
+	hideButtons('show');
+}
+
+//same story
+function storeArticle() {
+	
+	//get it from the editor
+	var textFromEditor = <?php echo $editor->getContent( 'descText' ); ?>;
+	document.getElementById('atext').value = textFromEditor;
+	
+	//check title and content
+	if (document.getElementById('atitle').value == '') {
+		document.getElementById('messagebox').innerHTML = '<span style="color:red"><?php echo JText::_( 'please edit an article title!' ); ?></span>';
+		return;
+	}
+	if (textFromEditor == '') {
+		document.getElementById('messagebox').innerHTML = '<span style="color:red"><?php echo JText::_( 'please edit article content!' ); ?></span>';
+		return;
+	}
+	
+	//working 	
+	document.getElementById('messagebox').innerHTML = '<img id="loadinggif" src="components/com_quickcontent/assets/images/loading.gif">';
+	hideButtons('hide');
+    
+    //take content from parameter fields
+    if (document.getElementById('publ').checked) {document.getElementById('astate').value = '1'; }
+    if (document.getElementById('linktomenu').checked) {document.getElementById('alinkmenu').value = '1'; }
+    
+    document.getElementById('aaccess').value = document.getElementById('access').value;
+    document.getElementById('amenuname').value = document.getElementById('menuitemname').value;
+    document.getElementById('ami').value = document.getElementById('mibox').value;
+    document.getElementById('amt').value = document.getElementById('mtbox').value;
+
+	
+	dojo.xhrPost({
+        url: 'index2.php?option=com_quickcontent&view=ajaxgetdata&format=raw&action=storearticle',
+        handleAs: 'text',
+        load: storeArticleCallback,
+        error: errorHandler,
+        form: 'addArticle'
+    });
+	
+}
+
+function storeArticleCallback(msg,ioArgs) {
+	ajaxMenus();
+	ajaxSections();
+	document.getElementById('messagebox').innerHTML = msg;
+	
+	if (clearcontent == 1) {
+		document.getElementById('atitle').value = '';
+		document.getElementById('aalias').value = '';
+		document.getElementById('acreated_by_alias').value = '';
+		document.getElementById('created').value = '<?php echo JHTML::_('date', $createdate->toUnix(), '%Y-%m-%d %H:%M:%S') ?>';
+		document.getElementById('publish_up').value = '<?php echo JHTML::_('date', $createdate->toUnix(), '%Y-%m-%d %H:%M:%S') ?>';
+		document.getElementById('publish_down').value = 'Never';
+		document.getElementById('afrontpage').checked = false;
+		document.getElementById('created_by').selectedIndex = 0;
+		var deftext = '';
+		<?php echo $editor->setContent('descText', 'deftext'); ?>
+		document.getElementById('menuitemname').value = '';
+		document.getElementById('publ').checked = false;
+		document.getElementById('linktomenu').checked = false;
+		document.getElementById('blog').checked = false;
+		document.getElementById('access').selectedIndex = 0;
+	}
+	
+	hideButtons('show');
+}
+
+     
+//Error function
+function errorHandler(data,ioArgs) {
+   alert('Ajax Error');
+   //alert('Ajax Error:' + data);
+  return data;
+}
+
+
+//get the sections and categories as json data
+function ajaxSections() {
+    dojo.xhrPost({
+        url: 'index2.php?option=com_quickcontent&view=ajaxgetdata&format=raw&action=getsections',
+        handleAs: 'json',
+        load: sectionCallback,
+        error: errorHandler
+       
+    });
+}
+
+//split data and call fkt
+function sectionCallback(data,ioArgs) {
+    
+    var seccats = eval(data);
+    var sections = seccats.s;
+    cats = seccats.c;
+    
+    selectSections(sections, 'sec', 1);
+    selectSections(sections, 'csec');
+    
+}
+
+
+// set the sections select box for article edit
+function selectSections(data, did, def) {
+    var sections = eval(data);
+    
+    //remove all
+    document.getElementById(did).length = 0;
+        
+    //place default value
+    if (def == 1) {
+    var optin=document.createElement('option');
+        optin.value = 0;
+        optin.text = '--- uncategorisised ---';
+        var docSelin = document.getElementById(did);
+        
+        try {
+          docSelin.add(optin,null); // standards compliant
+        } catch(ex) {
+          docSelin.add(optin); // IE only
+        }
+    }
+    
+    //create options
+    for (var i = 0; i < sections.length; i+=1) {
+                         
+        var opt=document.createElement('option');
+        opt.value = sections[i].id;
+        opt.text = sections[i].title;
+        var docSel = document.getElementById(did);
+        
+        try {
+          docSel.add(opt,null); // standards compliant
+        } catch(ex) {
+          docSel.add(opt); // IE only
+        }
+    }
+}
+
+
+// set the categories select box
+function selectCats() {
+    var categories = eval(cats);
+    
+    //remove all options
+    document.getElementById('cat').length = 0;
+    var secSel = document.getElementById('sec');
+    var sectionid = secSel.value;
+        
+    //build select for cats 
+    for (var i = 0; i < categories.length; i+=1) {
+         //only cats for this section        
+         if(categories[i].section == sectionid) {      
+
+            var opt=document.createElement('option');
+            opt.value = categories[i].id;
+            opt.text = categories[i].title;
+            var docCat = document.getElementById('cat');
+            
+            try {
+              docCat.add(opt,null); // standards compliant
+            } catch(ex) {
+              docCat.add(opt); // IE only
+            }
+         }
+	}
+}
+
+// set the menutypes select box
+function selectJoomenus(data) {
+    
+    var mtypes = eval(data);
+    
+    //remove all
+    document.getElementById('mtbox').length = 0;
+    document.getElementById('mibox').length = 0;
+	
+    //place default value
+	var opt=document.createElement('option');
+    opt.value = '';
+    opt.text = '--- select menu ---';
+    var docSel = document.getElementById('mtbox');
+    try {
+        docSel.add(opt,null); // standards compliant
+    } catch(ex) {
+        docSel.add(opt); // IE only
+    } 
+   
+    //create options
+    for (var i = 0; i < mtypes.length; i+=1) {
+                         
+        var opt=document.createElement('option');
+        opt.value = mtypes[i].menutype;
+        opt.text = mtypes[i].menutype;
+        var docSel = document.getElementById('mtbox');
+        try {
+          docSel.add(opt,null); // standards compliant
+        } catch(ex) {
+          docSel.add(opt); // IE only
+        }
+     } 
+}
+
+
+//set the menu items select box
+function selectMenusLink() {
+    var mItems = eval(joomenuitem);
+    //remove all options
+    document.getElementById('mibox').length = 0;
+    
+    var typeSel = document.getElementById('mtbox');
+    var typeid = typeSel.value;
+    
+    //place default value
+    var opt=document.createElement('option');
+    opt.value = 0;
+    opt.text = 'Top';
+    var docIt = document.getElementById('mibox');
+            
+    try {
+        docIt.add(opt,null); // standards compliant
+    } catch(ex) {
+        docIt.add(opt); // IE only
+    }
+    
+    //build select for menuitems 
+    for (var i = 0; i < mItems.length; i+=1) {
+         //only cats for this section        
+         if(mItems[i].menutype == typeid) {      
+            
+			
+			var ident = '';
+			
+			for (var k = 0; k < mItems[i].sublevel; k+=1) {
+				ident = ident + '--';
+			}
+              
+            var opt=document.createElement('option');
+            opt.value = mItems[i].id;
+            opt.text = ident + mItems[i].name;
+            var docIt = document.getElementById('mibox');
+            
+            try {
+              docIt.add(opt,null); // standards compliant
+            } catch(ex) {
+              docIt.add(opt); // IE only
+            }
+        }
+    }
+}
+
+
+//show / hide section area
+function sectionWipe() {
+	
+	var file = document.getElementById('secwipe').src;
+	var checking1 = file.indexOf('collapse');
+	var checking2 = file.indexOf('expand');
+	if (checking1 != -1) {
+		animSecOut.play();
+		document.getElementById('secwipe').src = 'components/com_quickcontent/assets/images/expand.png';
+	} else if (checking2 != -1) {
+		animSecIn.play();
+		document.getElementById('secwipe').src = 'components/com_quickcontent/assets/images/collapse.png';
+	}
+}
+
+//show / hide category area
+function catWipe() {
+	
+	var file = document.getElementById('catwipe').src;
+	var checking1 = file.indexOf('collapse');
+	var checking2 = file.indexOf('expand');
+	if (checking1 != -1) {
+		animCatOut.play();
+		document.getElementById('catwipe').src = 'components/com_quickcontent/assets/images/expand.png';
+	} else if (checking2 != -1) {
+		animCatIn.play();
+		document.getElementById('catwipe').src = 'components/com_quickcontent/assets/images/collapse.png';
+	}
+}
+
+
+//init dojos and call start fkt
+dojo.addOnLoad(function(){
+ 	    
+    dojo.connect(dojo.byId('buttAddSection'),'onclick',storeSection);
+    dojo.connect(dojo.byId('buttAddCat'),'onclick',storeCat);
+    dojo.connect(dojo.byId('buttAddArticle'),'onclick',storeArticle);
+    
+    ajaxMenus();
+	ajaxSections();
+	
+    animSecOut = dojo.fx.wipeOut({ node: 'sectioncontainer', delay: 10 }); 
+    animSecIn = dojo.fx.wipeIn({ node: 'sectioncontainer', delay: 10 }); 
+	animCatOut = dojo.fx.wipeOut({ node: 'catcontainer', delay: 10 }); 
+    animCatIn = dojo.fx.wipeIn({ node: 'catcontainer', delay: 10 }); 
+	
+	sectionWipe();
+	catWipe();
+});
+
+</script>
+     
+
+<fieldset class="adminform">
+	<legend><?php echo JText::_( 'Status message' ); ?></legend>
+<div id="messagebox" style="background-color:#dedede; padding:3px; font-size:12px; font-weight:bold;">&nbsp;</div>
+</fieldset>
+
+<table width="100%"  class="admintable">
+<tr>
+<td width="80%">
+	
+<fieldset class="adminform">
+	
+<legend><?php echo JText::_( 'Add Section' ); ?> <img style="cursor:pointer;" onclick="sectionWipe();" id="secwipe"  src="components/com_quickcontent/assets/images/collapse.png"></legend>	
+
+
+<div id="sectioncontainer">
+
+<form id="addSection" method="post">
+	<table width='100%'><tr><td align='left'>
+		<table class="admintable">
+			<tr>
+				<td class="key" width="1%"><label for='stitle'><?php echo JText::_( 'Title' ); ?></label></td>
+				<td><input type="text" name="title" id="stitle" size="30"></td>
+				<td class="key"><label for='salias' class='hasTip' title='<?php echo JText::_( 'Leave empty for alias same as title' ); ?>'><?php echo JText::_( 'Alias' ); ?></label></td>
+				<td><input type="text" name="alias" id="salias" size="30"></td>
+				
+			</tr>
+		</table>
+	</td>
+	<td align='right'><img id="buttAddSection" style="cursor:pointer;" src='components/com_quickcontent/assets/images/apply.png' ></td>
+	</tr></table>
+    
+    
+    <input type="hidden" name="published" id="spublished">
+    <input type="hidden" name="access" id="saccess" value="0">
+    <input type="hidden" name="linkmenu" id="slinkmenu">
+    <input type="hidden" name="bloglayout" id="sbloglayout">
+    <input type="hidden" name="menuname" id="smenuname">
+    <input type="hidden" name="mi" id="smi">
+    <input type="hidden" name="mt" id="smt">
+    <input type="hidden" name="scope" value="content">
+    
+ </form>
+</div>
+
+</fieldset>
+
+<fieldset class="adminform">
+
+<legend><?php echo JText::_( 'Add Categerory' ); ?> <img style="cursor:pointer;" onclick="catWipe();" id="catwipe"  src="components/com_quickcontent/assets/images/collapse.png"></legend>	
+
+<div id="catcontainer">
+
+<form id="addCat" method="post">
+	<table width='100%'><tr><td align='left'>
+		<table class="admintable">
+			<tr>
+				<td class="key" width="1%"><label for='ctitle'><?php echo JText::_( 'Title' ); ?></label></td>
+				<td><input type="text" name="title" id="ctitle" size="30"></td>
+				<td class="key"><label for='calias' class='hasTip' title='<?php echo JText::_( 'Leave empty for alias = title' ); ?>'><?php echo JText::_( 'Alias' ); ?></label></td>
+				<td><input type="text" name="alias" id="calias" size="30"></td>
+				<td class="key"><label for='csec'><?php echo JText::_( 'Section' ); ?></label></td>
+				<td><select name="section" id="csec"></select></td>
+				
+			</tr>
+		</table>
+	</td>
+	<td align='right'><img id="buttAddCat" style="cursor:pointer;" src='components/com_quickcontent/assets/images/apply.png' ></td>
+	</tr></table>
+    
+    <input type="hidden" name="published" id="cpublished">
+    <input type="hidden" name="access" id="caccess" value="0">
+    <input type="hidden" name="linkmenu" id="clinkmenu">
+    <input type="hidden" name="bloglayout" id="cbloglayout">
+    <input type="hidden" name="menuname" id="cmenuname">
+    <input type="hidden" name="mi" id="cmi">
+    <input type="hidden" name="mt" id="cmt">
+    
+    
+ </form>
+</div>
+</fieldset>
+
+ 
+<fieldset class="adminform">
+	<legend><?php echo JText::_( 'Add Article' ); ?></legend>
+
+<form id="addArticle" method="POST">
+
+<table width='100%'><tr><td align='left'>
+	<table class="admintable">
+		<tr>
+			<td class="key"><label for='atitle'><?php echo JText::_( 'Title' ); ?></label></td>
+			<td><input type="text" name="title" id="atitle" size="30"></td>
+			<td class="key"><label for='aalias' class='hasTip' title='<?php echo JText::_( 'Leave empty for alias same as title' ); ?>'><?php echo JText::_( 'Alias' ); ?></label></td>
+			<td><input type="text" name="alias" id="aalias" size="30"></td>
+		</tr>
+		<tr>
+			<td class="key"><label for='sec'><?php echo JText::_( 'Section' ); ?></label></td>
+			<td><select name="sectionid" id="sec" onchange="selectCats()"></select></td>
+			<td class="key"><label for='cat'><?php echo JText::_( 'Category' ); ?></label></td>
+			<td><select name="catid" id="cat"></select></td>
+		</tr>
+		<tr>
+			<td class="key"><label for='created_by'><?php echo JText::_( 'Created by' ); ?></label></td>
+			<td><?php echo $this->lists['created_by']; ?></td>
+			<td class="key"><label for='created_by_alias'><?php echo JText::_( 'Author alias' ); ?></label></td>
+			<td><input type="text" name="created_by_alias" id="acreated_by_alias" size="20"></td>
+		</tr>
+		<tr>
+			<td class="key"><label for='afrontpage'><?php echo JText::_( 'Frontpage' ); ?></label></td>
+			<td><input type="checkbox" name="frontpage" id="afrontpage" value="1"></td>
+			<td class="key"><label for='created'><?php echo JText::_( 'Created' ); ?></label></td>
+			<td><?php echo JHTML::_( 'calendar',JHTML::_('date', $createdate->toUnix(), '%Y-%m-%d %H:%M:%S'),"created","created"); ?></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td class="key"><label for='puclish_up'><?php echo JText::_( 'Published up' ); ?></label></td>
+			<td><?php echo JHTML::_( 'calendar',JHTML::_('date', $createdate->toUnix(), '%Y-%m-%d %H:%M:%S'),"publish_up","publish_up"); ?></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td class="key"><label for='publish_down'><?php echo JText::_( 'Published down' ); ?></label></td>
+			<td><?php echo JHTML::_( 'calendar',"Never","publish_down","publish_down"); ?></td>
+		</tr>
+		
+	</table>
+</td>
+<td align='right' valign='top'><img id="buttAddArticle" style="cursor:pointer;" src='components/com_quickcontent/assets/images/apply.png' ></td>
+</tr></table>	
+<br />
+
+<table class=""admintable>
+	<tr>
+		<td class="key"><label for='loremnumbers'><?php echo JText::_( 'Lorem ipsum' ); ?></label></td>
+		<td><input type="text"  id="loremnumbers" value="50" size="6"></td>
+		<td>
+			<select  id="loremtype">
+    			<option value="characters"><?php echo JText::_( 'characters' ); ?></option>
+    			<option value="words" selected="selected"><?php echo JText::_( 'words' ); ?></option>
+			</select>
+			
+		</td>
+		<td><button type="button" id="buttLorem" onclick="objectTag();"><?php echo JText::_( 'Go' ); ?></button></td>
+	</tr>
+</table>
+
+
+
+<br />
+	  <?php
+		// parameters : areaname, content, width, height, cols, rows
+		echo $editor->display( 'descText',  $row->text , '100%', '400', '75', '20' ) ;
+	  ?>
+	  <br><br>
+	  
+	  
+	  <input type="hidden" name="text" id="atext">
+	  <input type="hidden" name="state" id="astate">
+      <input type="hidden" name="access" id="aaccess" value="0">
+      <input type="hidden" name="linkmenu" id="alinkmenu">
+      <input type="hidden" name="bloglayout" id="abloglayout">
+      <input type="hidden" name="menuname" id="amenuname">
+      <input type="hidden" name="mi" id="ami">
+      <input type="hidden" name="mt" id="amt">
+	  
+</form>
+
+</fieldset>
+
+
+</td>
+<td width="20%" valign="top">
+
+
+<fieldset class="adminform">
+	<legend><?php echo JText::_( 'Preferences' ); ?></legend>
+
+<table class="admintable">
+	<tr>
+		<td class="key"><label for='publ'><?php echo JText::_( 'Published' ); ?></label></td>
+		<td><input type="checkbox" name="publ" id="publ"></td>
+	</tr>
+	<tr>
+		<td class="key"><label for='access'><?php echo JText::_( 'Access' ); ?></label></td>
+		<td><?php echo $this->lists['access']; ?> </td>
+	</tr>
+	<tr>
+		<td class="key"><label for='linktomenu' class='hasTip' title='<?php echo JText::_( 'Create a new menu item and link to content item. Select a menu is mandatorily when this is checked' ); ?>'><?php echo JText::_( 'Link to menu' ); ?></label></td>
+		<td><input type="checkbox" name="linktomenu" id="linktomenu" /></td>
+	</tr>
+	<tr>
+		<td class="key"><label for='menuitemname' class='hasTip' title='<?php echo JText::_( 'Leave empty for menu title is same as item title' ); ?>'><?php echo JText::_( 'Menu title' ); ?></label></td>
+		<td><input type="text" id="menuitemname" name="menuitemname" /></td>
+	</tr>
+	<tr>
+		<td class="key"><label for='linkmenutype'><?php echo JText::_( 'Menu' ); ?></label></td>
+		<td><select name="linkmentype" id="mtbox" onchange="selectMenusLink()"></select></td>
+	</tr>
+	<tr>
+		<td class="key"><label for='linkmenuitem' class='hasTip' title='<?php echo JText::_( 'select parent menu item for the new menu item, otherwise item is top' ); ?>'><?php echo JText::_( 'Parent' ); ?></label></td>
+		<td><select name="linkmenitem" id="mibox"></select></td>
+	</tr>
+	<tr>
+		<td class="key"><label for='blog' class='hasTip' title='<?php echo JText::_( 'blog layout is possible for section and categoty items only' ); ?>'><?php echo JText::_( 'Blog Layout' ); ?></label></td>
+		<td><input type="checkbox" name="blog" id="blog"></td>
+	</tr>
+</table>
+	
+</fieldset>	
+	
+</td>
+</tr>
+</table>
+  
+<br><br>

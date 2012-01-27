@@ -1,0 +1,268 @@
+<?php
+/**
+ * JReviews - Reviews Extension
+ * Copyright (C) 2006-2008 ClickFWD LLC
+ * This is not free software, do not distribute it.
+ * For licencing information visit http://www.reviewsforjoomla.com
+ * or contact sales@reviewsforjoomla.com
+**/
+                      
+defined( 'MVC_FRAMEWORK') or die( 'Direct Access to this location is not allowed.' );
+?>
+
+<?php
+/**********************************************************************************
+ *                                 CONFIGURATION AND SETUP
+ **********************************************************************************/
+// Image settings
+$enableIntroImage = $this->Config->content_intro_img;
+$introThumbnailSize = $this->Config->content_intro_img_size;
+$galleryThumbnailSize = $this->Config->content_thumb_size;
+$introThumbnailMode = 'scale';
+$galleryThumbnailMode = 'crop';
+$imageCount = count($listing['Listing']['images']);
+?>
+
+<?php
+/**********************************************************************************
+ *                                 PAGINATION HELPER
+ **********************************************************************************/    
+if($this->Config->review_discussions == 1)
+{
+    $Paginator->paginate(
+        array(
+            'current_page'=>$this->page,
+            'items_per_page'=>$this->limit,
+            'items_total'=>$pagination['total']
+        )
+    );
+}
+?>
+
+<s2:nocache>
+<?php         
+/**********************************************************************************
+ *                                 META DATA
+ **********************************************************************************/
+if(Configure::read('Cache.enable') && Configure::read('Cache.view')){
+    if($cachedMeta = S2Cache::read('meta_'.md5($this->here))) {
+        $listing = $cachedMeta;
+    } else {
+        S2Cache::write('meta_'.md5($this->here),array('Listing'=>array('title'=>$listing['Listing']['title'],'metakey'=>$listing['Listing']['metakey'],'metadesc'=>strip_tags($listing['Listing']['metadesc']))),Configure::read('Cache.expires'));
+    }
+}    
+cmsFramework::meta('title', sprintf(__t("Review for %s, %s",true),$listing['Listing']['title'],$review['Review']['title']));
+if(isset($listing['Listing']['metakey'])) cmsFramework::meta('keywords',$listing['Listing']['metakey']);
+if(isset($listing['Listing']['metadesc'])) cmsFramework::meta('description',strip_tags($listing['Listing']['title'] . '. ' . $review['Review']['title']));
+?>
+</s2:nocache>
+
+<?php 
+/**********************************************************************************
+ *                                 EDIT HTML BELOW THIS LINE
+ **********************************************************************************/
+//prx($listing); // Listing array
+//prx($editor_review); // Editor review array
+//prx($reviews); // User reviews array  
+$thumb = $Thumbnail->thumb($listing, 0, 'scale', '_', array($this->Config->content_intro_img_size),array('border'=>0,'alt'=>$listing['Listing']['title']));
+?>
+<div class="jr_pgContainer jr_discussion">
+                          
+    <h1 class="contentheading"><?php __t("Review Detail");?></h1>  
+    
+   <!-- BEGIN LISTING SUMMARY INFO -->
+    <div class="listItem">
+        <div class="contentColumn">
+            <div class="clr">&nbsp;</div>
+            <?php if($this->Config->list_show_image && $introThumb = $Thumbnail->thumb($listing, 0, 'scale', 'list', array($this->Config->list_image_resize),array('border'=>0,'alt'=>$listing['Listing']['title']))):;?>
+                <div class="contentThumbnail" style="text-align:center;"><?php echo $Html->sefLink($introThumb,$listing['Listing']['url']);?></div>
+            <?php endif;?>
+        </div>
+        
+        <div class="contentTitle">
+            <?php echo $Html->sefLink($listing['Listing']['title'],$listing['Listing']['url']);?> <?php echo Sanitize::getString($listing['Listing'],'tag') ? '(' .Sanitize::getString($listing['Listing'],'tag') . ')' : '';?>
+            <span class="contentIndicators">
+            <?php if(isset($listing['Listing']['featured']) && $this->Config->list_featured && $listing['Listing']['featured']):?>
+                <?php echo $Html->image($this->viewImages.'featured.png', array('width'=>43,'height'=>11,'title'=>__t("Featured",true),'alt'=>__t("Featured",true),'border'=>0));?>
+            <?php endif;?>                        
+            <?php if(isset($listing['Listing']['created']) && $this->Config->list_new && $Jreviews->newIndicator($this->Config->list_new_days,$listing['Listing']['created'])):?>
+                <?php echo $Html->image($this->viewImages.'new.png', array('width'=>28,'height'=>11,'title'=>__t("New",true),'alt'=>__t("New",true),'border'=>0));?>
+            <?php endif;?>
+            <?php if(isset($listing['Listing']['hit']) && $this->Config->list_hot && $this->Config->list_hot_hits <= $listing['Listing']['hits']):?>
+                <?php echo $Html->image($this->viewImages.'hot.png', array('width'=>29,'height'=>11,'title'=>__t("Hot",true),'alt'=>__t("Hot",true),'border'=>0));?>
+            <?php endif;?>
+            </span>           
+        </div>            
+                                                        
+        <div class="contentInfo">
+            <?php if($this->action!='category'):?>
+                <!-- BEGIN SHOW LISTING SECTION AND CATEGORY -->
+                <?php if(isset($listing['Section']['title'])):?><?php echo $listing['Section']['title'];?> &raquo; <?php endif;?><?php echo $listing['Category']['title'];?><br />
+                <!-- END SHOW LISTING SECTION AND CATEGORY -->
+            <?php endif;?>
+            <?php if(isset($listing['User']['user_id']) && $this->Config->list_show_author):?><?php __t("Written by");?> <?php echo $Community->screenName($listing);?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?> 
+            <?php if(isset($listing['Listing']['created']) && $this->Config->list_show_date):?><?php echo $Time->nice($listing['Listing']['created']);?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?>
+            <?php if(isset($listing['Listing']['hit']) && $this->Config->list_show_hits):?><?php __t("Hits");?>:&nbsp;<?php echo $listing['Listing']['hits']?>&nbsp;&nbsp;&nbsp;&nbsp;<?php endif;?>                                       
+        </div>
+    </div>
+    <div class="clr">&nbsp;</div>
+    <!-- END LISTING SUMMARY INFO -->
+    <div class="reviewColumn">    
+       <!-- BEGIN REVIEW -->    
+        <div class="roundedPanel jr_review">
+            <div class="box_upperOuter">
+                <div class="box_upperInner">                
+
+                    <!-- BEGIN REVIEW INNER -->            
+                    <h4 class="jr_reviewTitle"><?php echo $review['Review']['title'];?></h4>
+
+                    <div class="jr_reviewContainer">
+                        <div class="jr_reviewContainerSidebar">
+                                               
+                            <!-- BEGIN DETAILED USER RATINGS -->
+                            <?php echo $review['Criteria']['state'] == 1 ? $this->element('detailed_ratings',array('review'=>$review,'reviewType'=>'user')) : '&nbsp;';?>
+                            <!-- END DETAILED USER RATINGS -->
+                            
+                            <?php if($this->Config->user_vote && $this->Access->canVoteHelpful($review['User']['user_id'])):?>
+                            <!-- BEGIN VOTING WIDGET -->
+                            <?php echo $this->element('voting_widget',array('review_id'=>$review['Review']['review_id']));?>
+                            <!-- END VOTING WIDGET -->
+                            <?php endif;?>                                                        
+
+                            <div class="reviewInfo">
+                                <?php echo $Community->avatar($review);?>
+                                
+                                <?php __t("Reviewed by");?> <?php echo $Community->screenName($review);?><br />
+                                <?php echo $Time->nice($review['Review']['created']);?><br />
+
+                                <?php if($this->Config->user_rank_link && $review['User']['user_id']>0):?><?php echo $Routes->reviewers($review['User']['review_rank'],$review['User']['user_id'])?><br /><?php endif;?>
+
+                                <div class="clr"></div>
+                        
+                                <?php if($this->Config->user_myreviews_link && $this->action!='myreviews' && $review['User']['user_id'] > 0):?>    
+                                <!-- BEGIN VIEW MY REVIEWS -->    
+                                <?php echo $Routes->myReviews(__t("View all my reviews",true), $review['User'],array('class'=>'jr_myReviews'));?><br />
+                                <!-- END VIEW MY REVIEWS -->
+                                <?php endif;?>
+                                                                                            
+                                <?php if($this->Config->user_report):?>
+                                <!-- BEGIN REPORT REVIEW -->
+                                <?php echo $Routes->reportThis(__t("Report this review",true),array('listing_id'=>$review['Review']['listing_id'],'review_id'=>$review['Review']['review_id'],'extension'=>$extension));?>
+                                <!-- END REPORT REVIEW -->
+                                <?php endif;?>
+                                
+                                <div class="clr">&nbsp;</div>
+                                
+                                <?php if($review['Review']['modified'] != '' && NULL_DATE != $review['Review']['modified']):?>
+                                    <?php __t("Last updated");?>: <?php echo $Time->nice($review['Review']['modified']);?><br />
+                                <?php endif;?>                                
+                                                               
+                            </div>
+
+                        </div><!-- end sidebar-->                        
+                    
+                        <?php if($this->Config->user_vote):?>
+                        <!-- BEGIN VOTING SUMMARY -->
+                        <div class="jr_helpfulSummary"><?php echo sprintf(__t("%s of %s people found the following review helpful",true),(int)$review['Vote']['yes'],$review['Vote']['yes']+$review['Vote']['no']);?></div>
+                        <!-- END VOTING SUMMARY -->
+                        <?php endif;?>
+
+                        <?php if($review['Review']['comments']!=''):?>
+                        <div class="jr_reviewComment"><p><?php echo nl2br($review['Review']['comments']);?></p></div>
+                        <?php endif;?>
+
+                        <?php if(isset($review['Field']['groups'])):?>
+                            <?php echo $this->element('custom_fields',array('entry'=>$review,'page'=>'content'), false)?>
+                        <?php endif;?>
+                                            
+                        <?php if($this->Config->owner_replies && $review['Review']['owner_reply_approved']==1):?>
+                        <!-- BEGIN OWNER REPLY -->
+                        <div class="jr_reviewOwnerReply">
+                        <span><?php __t("Owner's reply");?></span>
+                        <p><?php echo nl2br($review['Review']['owner_reply_text']);?></p>
+                        </div>
+                        <!-- END OWNER REPLY -->
+                        <?php endif;?>
+                    
+                        <div class="clear"></div>                    
+                    </div><!-- end reviewContainer -->
+                    <!-- END REVIEW INNER -->
+
+                </div><!-- rP1 -->
+            </div><!-- rP2 -->
+            <div class="box_lowerOuter">
+                <div class="box_lowerInner">&nbsp;</div>
+            </div>
+        </div><!-- rP3 -->
+       <!-- END REVIEW --> 
+    </div>          
+    <br />
+        
+    <?php if($this->Config->review_discussions == 1 && $pagination['total'] > 0):?>
+    <!-- PAGINATION BEGINS HERE -->
+    <table class="jr_pagination" width="100%" cellpadding="0" cellspacing="0">
+     <tr>
+        <td class="jr_pagenav_results"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></td>
+        <?php if($pagination['total'] > $this->limit):?>
+        <td class="jr_pagenav_pages"><?php echo $Paginator->display_pages();?></td>
+        <?php else:?>
+        <td class="jr_pagenav_pages"></td>
+        <?php endif;?>
+        <td class="jr_pagenav_limitbox">
+            <div class="jr_listOptions">
+            <?php __t("Ordering");?>&nbsp;<?php echo $Jreviews->orderingListPosts(Sanitize::getString($this->passedArgs,'order'));?>
+            </div>
+        </td>            
+     </tr>
+    </table>
+    <!-- PAGINATION ENDS HERE --> 
+    <?php endif;?>
+            
+    <?php if($this->Config->review_discussions && $this->Access->canAddPost()):?>   
+    <!-- BEGIN COMMENT WIDGET -->
+    <div id="jr_postNewComment"> 
+        <div id="jr_postCommentAction0">
+            <button id="jr_postComment0" type="button" onclick="jreviews.discussion.showForm(this,{discussion_id:0});"><?php __t("Add new comment");?></button>
+        </div>  
+        <?php echo $this->renderControllerView('discussions','create',array('discussion_id'=>0));?>               
+    </div>        
+    <!-- END COMMENT WIDGET -->
+    <!-- Post submit action div -->
+    <div id="jr_post0" class="jr_hidden"></div>
+    <?php elseif ($this->Config->review_discussions && !$this->Access->canAddPost() && empty($this->_user->id)):?>
+        <div class="roundedPanel jr_review">
+            <div class="box_upperOuter">
+                <div class="box_upperInner">           
+                    <?php echo $this->element('login');?></div>
+            <div class="box_lowerOuter">
+                <div class="box_lowerInner">&nbsp;</div>
+            </div>
+        </div>
+        <br />                    
+    <?php endif;?>
+                                    
+    <!-- BEGIN COMMENTS -->
+    <?php 
+    if($this->Config->review_discussions && !empty($posts)){
+        foreach($posts AS $post){
+            echo $this->renderControllerView('discussions','post',array('post'=>$post));     
+        }
+    };
+    ?>                                  
+    <!-- END COMMENTS -->     
+    
+    <?php if($this->Config->review_discussions == 1 && $pagination['total'] > 0):?>    
+    <!-- PAGINATION BEGINS HERE -->
+    <table class="jr_pagination" width="100%" cellpadding="0" cellspacing="0">
+     <tr>
+        <td class="jr_pagenav_results"><?php echo sprintf(__t("%1\$s results - showing %2\$s - %3\$s",true), $pagination['total'], ($this->page-1)*$this->limit+1, min($pagination['total'],$this->page*$this->limit));?></td>
+        <?php if($pagination['total'] > $this->limit):?>
+        <td class="jr_pagenav_pages"><?php echo $Paginator->display_pages();?></td>
+        <td class="jr_pagenav_limitbox"><?php //echo $Paginator->display_items_per_page();?></td>
+        <?php endif;?>
+     </tr>
+    </table>
+    <!-- PAGINATION ENDS HERE -->
+    <?php endif;?>
+        
+</div><!-- END jr_pgContainer -->

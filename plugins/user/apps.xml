@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="user" method="upgrade">
+	<name>User - Apps</name>
+	<author>Brian Edgerton</author>
+	<creationDate>April 2011</creationDate>
+	<copyright></copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>brian@wearehathway.com</authorEmail>
+	<authorUrl>http://www.wearehathway.com</authorUrl>
+	<version>1.0</version>
+	<description>User login redirect plugin for iPhone app</description>
+	<files>
+		<filename plugin="apps">apps.php</filename>
+	</files>
+	<params/>
+</install>
