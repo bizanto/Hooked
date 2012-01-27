@@ -315,6 +315,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
    
 </div>
 
+</div>
 
 <style type="text/css" media="all">
 @import url('/templates/yoo_expo/css/custom-tabs.css');
@@ -534,7 +535,7 @@ $overviewtab = 0;
             </ul>
             <p>&nbsp;</p>
             <?php if ($pattern) : ?>
-            <a class="vis-alle fl" href="/index.php?option=com_jreviews&Itemid=270&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:82,144,83,84,85,86,145/order:rhits/tmpl_suffix:_hatch">
+            <a class="vis-alle fl" href="/index.php?option=com_jreviews&Itemid=270&url=search-results_m161/related:<?php echo $listing['Listing']['listing_id']; ?>/query:any/cat:82,144,83,84,85,86,145/order:rhits/tmpl_suffix:_flies">
             <?php __t("view all"); ?>
             </a>
             <?php endif; ?>

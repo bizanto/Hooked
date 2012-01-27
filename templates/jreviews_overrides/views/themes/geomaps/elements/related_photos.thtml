@@ -38,7 +38,8 @@ if (count($related_photos)) {
 					
 
 	if ($anon_location == "") {
-		if (JRequest::getString("catid") != 17 ) { // dont show the related SPOT for fish photos/videos
+		$catid = JRequest::getString("catid");
+		if ($catid != 17 && $catid != 13) { // dont show the related SPOT for fish photos/videos or for Trip Reports
 			$spots = getRelatedList($listing['Listing']['listing_id'],array(3,4));
 			$parentSpots = getRelatedList($listing['Listing']['listing_id'],array(1,2,100));
 		}

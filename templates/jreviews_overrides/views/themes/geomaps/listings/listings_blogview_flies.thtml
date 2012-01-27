@@ -49,7 +49,7 @@ jQuery(function ($) {
     <!--  END PAGE HEADER AREA -->
            
 	<?php
-    $position = 'search-results-top';
+    $position = 'flies-search';
     $params		= array('style'=>'');
     $document	= &JFactory::getDocument();
     $renderer	= $document->loadRenderer('module');
@@ -57,7 +57,7 @@ jQuery(function ($) {
     foreach (JModuleHelper::getModules($position) as $mod)  {	
         $contents .= $renderer->render($mod, $params);
     }
-    // echo $contents;
+    echo $contents;
     ?>
            
     <?php if(!empty($listings)):?>         

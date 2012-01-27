@@ -75,6 +75,7 @@ if($this->action == 'detail' || $this->action == 'view')
 include('templates/jreviews_overrides/views/themes/geomaps/listings/detail-config.php');
 require_once JPATH_SITE.DS.'components'.DS.'com_content'.DS.'helpers'.DS.'route.php';
 
+$showOverview = false;
 
 // User 
 $user =& JFactory::getUser();
@@ -316,8 +317,6 @@ jQuery(function ($) {
         
         <div class="clear"></div>
 
-
-
 <style type="text/css" media="all">
 @import url('/templates/yoo_expo/css/custom-tabs.css');
 </style>
@@ -327,6 +326,10 @@ $tabcount = 0;
 $overviewtab = 0;
 ?>
 	<ul>
+	<?php if ($showOverview): ?>
+    <li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
+	<?php endif; ?>
+	
     <?php if ($hasCatches) : ?>
     	<li><a href="#fangstrapporter"><?php __t("Catch Reports"); ?></a></li>
     <?php endif; ?>
@@ -337,9 +340,7 @@ $overviewtab = 0;
 <?php if ($hasVideos && !1) : ?>
         <li><a href="#video"><?php __t("Videos"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], "videos"); ?>)</a></li>
 <?php endif; $tabcount++; $videostab = $tabcount; ?>
-		
-        <li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
-        
+		        
 <?php if ($is_location && $jr_lat && $jr_long &&!1) : ?><li><a href="#vaer">
         <?php __t("Weather"); ?></a></li>
 <?php endif; $tabcount++; $weathertab = $tabcount; ?>
@@ -415,16 +416,18 @@ $overviewtab = 0;
         <div class="clear"></div>
     </div>
     <?php endif; ?>
+   	<?php if ($showOverview): ?>
     <div id="oversikt"><!--overview-->
-            <div class="clear"></div> 
-		</div>
+        <div class="clear"></div> 
+	</div>
+	<?php endif; ?>
     <?php if ($is_location && !1): ?>
     <div id="vaer"><!--weather-->
 		<?php
         // reverse geocode lat/long to get postal code for forecast widget
-        if ($jr_zip)
+        if ($jr_zip) {
 			$postalcode = $jr_zip;
-		
+		}
 		elseif ($jr_lat && $jr_long) {
             $geocode_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false';
             $geocode_url = sprintf($geocode_url, $jr_lat, $jr_long);
@@ -489,12 +492,9 @@ $overviewtab = 0;
     <?php endif; ?>
     <div class="clear"></div>
 </div>
+
     <div class="listing-relations fr">
       <!-- LISTING IMAGES -->
-        <?php // LICENSE INFO
-		if ($listing['Section']['section_id']=="1" && $listing['Category']['cat_id']!="100" && $listing['Category']['cat_id']!="3") {
-	        include('templates/jreviews_overrides/views/themes/geomaps/listings/inatur.php');
-        } ?>
        
         <?php // RELATED FISH
         $fishes = getRelatedList($listing['Listing']['listing_id'],17);
@@ -583,7 +583,7 @@ $overviewtab = 0;
         $insects = getRelatedList($listing['Listing']['listing_id'],$insect_type); 
         ?>
         <div class="insect-summary paper-light">
-           <h3><?php __t("Insect"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], explode(',', $insect_type)); ?>)</h3>
+           <h3><?php __t("Related Insects"); ?> (<?php echo getRelatedCount($listing['Listing']['listing_id'], explode(',', $insect_type)); ?>)</h3>
             <ul>       
             <?php foreach ($insects as $insect) : ?>
             <?php

@@ -2495,3 +2495,6 @@ msgstr "Klekkinger"
 
 msgid "Fly Tying patterns"
 msgstr "Fluebindemønster"
+
+msgid "Related Insects"
+msgstr "Relaterte insekter"
