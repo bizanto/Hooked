@@ -301,14 +301,14 @@ require_once JPATH_SITE.DS.'components'.DS.'com_content'.DS.'helpers'.DS.'route.
                         <!-- END RATINGS-->
 	                    <?php endif;?>
                     </div>
+                     <?php
+					$catchweight = $CustomFields->field('jr_catchweight', $listing, false, false);
+					$catchlength = $CustomFields->field('jr_catchlength', $listing, false, false);
+					$catchdate = $CustomFields->field('jr_startdate', $listing, false, false);
+					$catchtime = $CustomFields->field('jr_time', $listing, false, false);
+					?>
                     <?php if ($thumbnail && $fishthumb) : ?>
                     	<div class="fl fishthumb"><?php echo '<img src="'.$fishthumb.'" alt="" title="" />'; ?></div>
-                        <?php
-						$catchweight = $CustomFields->field('jr_catchweight', $listing, false, false);
-						$catchlength = $CustomFields->field('jr_catchlength', $listing, false, false);
-						$catchdate = $CustomFields->field('jr_startdate', $listing, false, false);
-						$catchtime = $CustomFields->field('jr_time', $listing, false, false);
-						?>
                     <?php endif; ?>
                     <div class="catch-list-relations fr">
                         <ul>
