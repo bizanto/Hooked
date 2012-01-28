@@ -327,11 +327,7 @@ $overviewtab = 0;
 ?>
 	<ul>
     
-<<<<<<< HEAD
-<li><a href="#oversikt"><?php __t("Overview"); ?></a></li>
-=======
 <li><a href="#oversikt"><?php __t("Reviews"); ?></a></li>
->>>>>>> f9cb046ff93cfa1c76e86fe5414504bfb44b7824
 <?php if ($is_location && $jr_lat && $jr_long) : ?>
         <li><a href="#kart"><?php __t("Map"); ?></a></li>
 <?php endif; $tabcount++; $maptab = $tabcount; ?>
