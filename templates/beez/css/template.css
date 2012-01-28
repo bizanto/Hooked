@@ -71,6 +71,7 @@ h4,h5 { margin: 5px 0; padding: 0; }
 span.bquote { display: block; padding-left: 20px; margin: 0 0 10px; }
 
 .clear { clear: both; }
+.clr { clear: both; }
 
 .smalltext { font-size: 80%; line-height: 135%; }
 .contentpaneopen_edit, p.buttonheading { display: none; }

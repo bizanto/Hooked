@@ -74,5 +74,5 @@ $related_videos = $db->loadObjectList();
         </li>
         <?php endforeach; ?>
     </ul>
-    <div class="clr"></div>
+    <div class="clear"></div>
 </div>
