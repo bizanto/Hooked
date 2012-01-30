@@ -504,6 +504,10 @@ ul.listing-quicklinks li { width: 33%; display: inline; white-space: nowrap; lis
 .list-thumb { width: 32px; margin-right: 10px; }
 .insect-summary ul { line-height: 32px; }
 
+div.rel-list-summary { margin-left: 42px; }
+
+.fly-summary ul li { clear: both; margin-bottom: 4px; }
+
 /* DETAIL MAP */
 #gm_map_wrapper, .map-box, body #community-wrap .profile-avatar img.prof-av { background: #666948; padding: 5px; -moz-box-shadow: 0 0 5px #666; -webkit-box-shadow: 0 0 5px #666; box-shadow: 0 0 5px #666; border: 0; }
 .map-categories { padding: 10px 0; background: #303110; color: #FFC; text-align: center; }

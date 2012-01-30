@@ -539,7 +539,7 @@ $overviewtab = 0;
          	
 	            $patternlink = ContentHelperRoute::getArticleRoute($pattern->id,$pattern->catid,6);
 	            ?>
-                <li><?php if ($thumb) echo '<a href="'.$patternlink.'"><img class="list-thumb fl" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $patternlink; ?>"><?php echo $pattern->title; ?></a><?php if ($pattern->name) echo '<br/><small>'.$pattern->name.'</small>'; ?></li>
+                <li><?php if ($thumb) echo '<a href="'.$patternlink.'"><img class="list-thumb fl" src="'.$thumb.'" alt="" /></a><div class="rel-list-summary">' ; ?><a class="spot-title" href="<?php echo $patternlink; ?>"><?php echo $pattern->title; ?></a><?php if ($pattern->name) echo '<br/><small>'.$pattern->name.'</small>'; ?><?php if ($thumb) echo '<div class="clear"></div></div>'; ?></li>
             <?php endforeach; ?>
             </ul>
             <p>&nbsp;</p>
