@@ -124,7 +124,7 @@ class RelateModelEdit extends JModel
 		if ($user->usertype != "Super Administrator") $where_acl = $this->checkACL($listing_id, $cat_id);
 		else $where_acl = '';	
 		
-		$sql = "SELECT c.id, c.title, p.thumbnail, COUNT(r.id1) AS related FROM `#__content` c ".
+		$sql = "SELECT c.id, c.title, c.images, p.thumbnail, COUNT(r.id1) AS related FROM `#__content` c ".
 		       "LEFT JOIN `#__relate_listings` r ON ".
 		       "(r.id1 = $listing_id AND r.id2 = c.id) ".
 		       "LEFT JOIN `#__relate_photos` rp ON rp.listing_id = c.id ".
@@ -144,8 +144,16 @@ class RelateModelEdit extends JModel
 
 		foreach ($listings as $idx => $listing) {
 			if ($listing->thumbnail == '') {
-				$thumb = 'images/stories/jreviews/tn/tn_list_noimage.png';
-				$listings[$idx]->thumbnail = $thumb;
+				if ($listing->images) {
+					$images = explode("|||", $listing->images);
+					$path = str_replace('jreviews/', '', $images[0]);
+					$fullpath = 'images/stories/jreviews/tn/tn_'.$listing->id.'_'.$path;
+					$listings[$idx]->thumbnail = $fullpath;
+				}
+				else {
+					$thumb = 'images/stories/jreviews/tn/tn_list_noimage.png';
+					$listings[$idx]->thumbnail = $thumb;
+				}
 			}
 		}
 
