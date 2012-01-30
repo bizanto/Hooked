@@ -13,7 +13,7 @@
 #doc .ui-state-hover a, .ui-state-hover a:hover { color: #fff; text-decoration: none; }
 #doc .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {  }
 
-#doc .ui-tabs-nav .ui-state-active a, #doc .ui-tabs-nav .ui-state-active a:link, #doc .ui-tabs-nav .ui-state-active a:visited { color: #586A11; text-decoration: none; background: url(/templates/beez/images/bg-paper.png) top left repeat; font-weight: bold; -webkit-border-top-right-radius: 6px; -moz-border-radius-topright: 6px; border-top-right-radius: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-topleft: 6px; border-top-left-radius: 6px;  }
+#doc .ui-tabs-nav .ui-state-active a, #doc .ui-tabs-nav .ui-state-active a:link, #doc .ui-tabs-nav .ui-state-active a:visited { color: #586A11; text-decoration: none; background: url(../../beez/images/bg-paper.png) top left repeat; font-weight: bold; -webkit-border-top-right-radius: 6px; -moz-border-radius-topright: 6px; border-top-right-radius: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-topleft: 6px; border-top-left-radius: 6px;  }
 
 #doc .ui-corner-tl, .ui-corner-tr, .ui-corner-bl, .ui-corner-br, .ui-corner-top, .ui-corner-bottom, .ui-corner-right, .ui-corner-left, .ui-corner-all { -moz-border-radius: 0; -webkit-border-radius: 0px; border-radius: 0; }
 
@@ -23,8 +23,8 @@
 #doc .ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; margin: 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; top: 0; }
 
 #doc .ui-tabs .ui-tabs-nav li a { float: left; padding: 10px 20px; text-decoration: none; }
-	 .ui-tabs .ui-tabs-nav li a { background: url(/templates/beez/images/bg-menu-shadow.png) 100% 100% no-repeat;  }
+	 .ui-tabs .ui-tabs-nav li a { background: url(../../beez/images/bg-menu-shadow.png) 100% 100% no-repeat;  }
 
 
-#doc .ui-tabs .ui-tabs-panel { background: url(/templates/beez/images/bg-paper.png) top left repeat; color: #4c5c0e; -webkit-border-bottom-right-radius: 6px; -moz-border-radius-bottomright: 6px; border-bottom-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -moz-border-radius-bottomleft: 6px; border-bottom-left-radius: 6px; -webkit-border-top-right-radius: 6px; -moz-border-radius-topright: 6px; border-top-right-radius: 6px; clear: both; padding: 15px; }
+#doc .ui-tabs .ui-tabs-panel { background: url(../../beez/images/bg-paper.png) top left repeat; color: #4c5c0e; -webkit-border-bottom-right-radius: 6px; -moz-border-radius-bottomright: 6px; border-bottom-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -moz-border-radius-bottomleft: 6px; border-bottom-left-radius: 6px; -webkit-border-top-right-radius: 6px; -moz-border-radius-topright: 6px; border-top-right-radius: 6px; clear: both; padding: 15px; }
 
