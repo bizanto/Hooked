@@ -3,6 +3,8 @@
 
 Thumbs.db
 
+syncdb.sh
+
 configuration.php
 
 error_log
