@@ -67,8 +67,9 @@ function getRelatedList($listing_id, $rel_categories, $limit = 4)
 		$rel_categories = implode(",", $rel_categories);
 	}
 
-	$sql = "SELECT c.id, c.title, c.catid FROM `#__content` c, `#__relate_listings` r ".
-	       "WHERE (r.id1 = $listing_id AND r.id2 = c.id) ".
+	$sql = "SELECT c.id, c.title, c.catid, c.images, u.name  ".
+	       "FROM `#__content` c, `#__relate_listings` r, `#__users` u ".
+	       "WHERE (r.id1 = $listing_id AND r.id2 = c.id) AND u.id = c.created_by ".
 	       "AND c.id != '$listing_id' AND c.state > 0 AND c.catid IN ($rel_categories) ".
 		   "ORDER BY c.id DESC ";
 

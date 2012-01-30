@@ -147,12 +147,14 @@ $document->addStyleSheet("components/com_community/assets/window.css");
 $document->addStyleSheet('components/com_relate/assets/edit.css');
 $document->addScript('components/com_relate/assets/relate.js');
 
-// load related fucntions
+$document->addScript('templates/jreviews_overrides/views/js/rel8cwindow.js');
+
+$document->addStyleSheet('templates/yoo_expo/css/custom-tabs.css');
+
+// load related functions
 include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.php');
 //
 ?>
-
-<script src="/templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
 
 <div class="jr_pgContainer jr_itemDetail hReview-aggregate">
 
@@ -317,9 +319,6 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
 
 </div>
 
-<style type="text/css" media="all">
-@import url('/templates/yoo_expo/css/custom-tabs.css');
-</style>
 <div id="jr_tabs" class="jr_tabs">
 <?php
 $tabcount = 0;
@@ -524,13 +523,23 @@ $overviewtab = 0;
             <ul>       
             <?php foreach ($patterns as $pattern) : ?>
 	            <?php
-	            $$patterncount= 0;
-	            foreach ($pattern->photos as $photo) {
-	                 if (!$patterncount) $thumb = $pattern->thumbnail;
-	            }
+	            $tn = getRelatedThumb($pattern->id, 1);
+	         	if (count($tn)) {
+	         	    $thumb = $tn[0]->thumbnail;
+	         	}
+	         	else if ($pattern->images) {
+	         	    $images = explode("|||", $pattern->images);
+					$path = str_replace('jreviews/', '', $images[0]);
+					$fullpath = 'images/stories/jreviews/tn/tn_'.$pattern->id.'_'.$path;
+					$thumb = $fullpath;
+	         	}
+	         	else {
+	                $thumb = false;
+	         	}
+         	
 	            $patternlink = ContentHelperRoute::getArticleRoute($pattern->id,$pattern->catid,6);
 	            ?>
-                <li><?php if ($thumb) echo '<a href="'.$patternlink.'"><img class="small-thumb" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $patternlink; ?>"><?php echo $pattern->title; ?></a></li>
+                <li><?php if ($thumb) echo '<a href="'.$patternlink.'"><img class="list-thumb fl" src="'.$thumb.'" alt="" /></a>' ; ?><a class="spot-title" href="<?php echo $patternlink; ?>"><?php echo $pattern->title; ?></a><?php if ($pattern->name) echo '<br/><small>'.$pattern->name.'</small>'; ?></li>
             <?php endforeach; ?>
             </ul>
             <p>&nbsp;</p>
