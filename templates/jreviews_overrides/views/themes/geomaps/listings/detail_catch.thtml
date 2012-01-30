@@ -429,6 +429,8 @@ $overviewtab = 0;
                     </li>
                 <?php endforeach; ?>
             </ul>
+            <?php else: ?>
+            <br/>
 			<?php endif; ?>
           <?php endif; ?>            
           
@@ -452,7 +454,9 @@ $overviewtab = 0;
             <?php endforeach; ?>
             
             </ul>
-                        
+            
+            <?php else: ?>
+            <br/>            
 			<?php endif;
 			
 		// RELATED BAIT
