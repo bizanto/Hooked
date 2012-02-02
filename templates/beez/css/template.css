@@ -89,7 +89,7 @@ body #cWindowContent .button { background: #1A200A !important; padding: 7px 15px
 
 #mtns { height: 172px; width: 100%; position: absolute; top: 297px; margin: 0 auto; background: url(http://hooked.no.s3.amazonaws.com/bg-mtns.png) center top no-repeat; z-index: -2; }
 
-.main-wrapper { width: 990px; margin: 0 auto; position: relative; }
+.main-wrapper { left: -35px; width: 990px; margin: 0 auto; position: relative; }
 
 .sharethis { position: fixed; left: 0; top: 25%; background: url(http://hooked.no.s3.amazonaws.com/bg-paper.png) top left repeat; color: #52630e; -webkit-border-top-right-radius: 6px; -moz-border-radius-topright: 6px; border-top-right-radius: 6px; -webkit-border-bottom-right-radius: 6px; -moz-border-radius-bottomright: 6px; border-bottom-right-radius: 6px; -moz-box-shadow: 0 2px 5px #BBB;-webkit-box-shadow: 0 2px  5px #BBB; box-shadow: 0 2px 5px #333; padding: 6px 5px 0; z-index: 9000; }
 .sharethis span span span { margin: 0 0 5px; } 
@@ -717,8 +717,8 @@ div.core-search #mod_search_searchword { margin: 10px 0; background: #51630D; bo
 	.homepageHeader a {background: #253104 url(../images/button_gethooked.png) 0 50% repeat-x; height:51px; position:absolute; right:20px; top:20px; display:block; line-height:51px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border: 1px solid #253104; font-size: 18px; color: #EFEFD4; font-weight: bold; padding: 0 15px; text-shadow: 0 0 5px #253104; }
 	.homepageHeader a:hover { color: #FFF; }
 
-#topBanner {clear:both; overflow:hidden; margin: 0 -15px 15px 0;}
-#rightBanner {position:absolute; top:179px; left:50%; margin:0 0 0 510px; }
+#topBanner {clear:both; overflow:hidden; margin: 0 -10px 15px 0;}
+#rightBanner {position:absolute; top:179px; left:50%; margin:0 0 0 505px; }
 	#rightBanner .moduletable {margin-bottom:10px;}
 
 #doc.frontpage .jr_pathway, #doc.frontpage .contentheading {display:none;};
