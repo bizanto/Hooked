@@ -46,7 +46,7 @@ $document->addScript('components/com_relate/assets/relate.js');
 <?php /* BEGIN PRICING PLANS FOR SELECTED CATEGORY */ ?>
 <?php if(isset($paid_plans) && !empty($paid_plans)):?><?php echo $this->element('paidlistings_listing_plans',array('plans'=>$paid_plans));?><?php endif;?>
 
-<script src="/templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
+<script src="<?php echo JURI::base(); ?>templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
 
 <fieldset>
 	<?php if( $User->id == 0 ):?>
