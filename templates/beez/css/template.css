@@ -791,4 +791,4 @@ fieldset.only { display: none; }
 
 /* hidden */
 .hide { display: none; }
-.ui-tabs .ui-tabs-hide { display: none; }
+.ui-tabs .ui-tabs-hide p { display: none; }
