@@ -368,10 +368,6 @@ jQuery(function ($) {
         <?php endif; ?>
         <?php endif; ?>
         </div>
-        
-        <p>
-            <a href="http://www.brufoss.no/">sjekk ut Brufossfisket Numedalslågen</a>
-        </p>
 
         <div class="extrafields">
         <?php
