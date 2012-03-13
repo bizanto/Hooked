@@ -332,7 +332,6 @@ class ComContentController extends MyController {
         /** HTGMOD - #1490 **/
    		if (isset($listing['Field']['pairs']['jr_brufoss']) && 
    		          $listing['Field']['pairs']['jr_brufoss']['value'][0] == 1) {
-   		          echo 'hei';
    			$this->viewSuffix = '_brufoss';
    		}
    		/** END HTGMOD **/
