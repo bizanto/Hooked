@@ -2170,3 +2170,9 @@ msgstr "Subscriptions"
 #~ msgstr ""
 #~ "This action cannnot be undone, are you sure you want to delete this "
 #~ "listing?"
+
+msgid "High - Low"
+msgstr "High - Low"
+
+msgid "Low - High"
+msgstr "Low - High"

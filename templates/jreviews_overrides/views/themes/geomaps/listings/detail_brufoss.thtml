@@ -152,7 +152,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
 //
 ?>
 
-<script src="/templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
+<script src="<?php echo JURI::base(); ?>templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
 
 <div class="jr_pgContainer jr_itemDetail hReview-aggregate">
 
@@ -409,7 +409,7 @@ jQuery(function ($) {
 
 
 <style type="text/css" media="all">
-@import url('/templates/yoo_expo/css/custom-tabs.css');
+@import url('<?php echo JURI::base(); ?>templates/yoo_expo/css/custom-tabs.css');
 </style>
 <div id="jr_tabs" class="jr_tabs">
 <?php
@@ -511,7 +511,56 @@ $overviewtab = 0;
             </div>
             
             <div class="listing-overview">
-                <?php echo $this->element('related_listings',array('com_relate'=>'1','relatedcatches'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','tn_width'=>'30','limit'=>'10','order'=>'jr_startdate DESC','ajax'=>'1','custom_where'=>'Field.jr_catchanonymous NOT LIKE \'%ja%\'')); ?>       
+
+<?php 
+$listing_url = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'], $listing['Category']['cat_id'], $listing['Section']['section_id']); 
+$listing_url = str_replace('&amp;', '&', $listing_url);
+?>
+
+<script type="text/javascript">
+jQuery(function ($) {
+	$('#filterForm select').change(function () {
+		if ($(this).val()) {
+			window.location = '<?php echo $listing_url; ?>&' + $('#filterForm').serialize();
+		}
+	});
+});
+</script>
+            <?php 
+            # Stokkevann http://client.haxway.com/hooked/index.php?option=com_content&view=article&catid=1:vann&id=247:stokkevann&Itemid=107 
+            # Lutvann    http://client.haxway.com/hooked/index.php?option=com_content&view=article&id=212&catid=1&Itemid=107
+            ?>
+            	<form id="filterForm" action="<?php echo $listing_url; ?>" method="post">
+            		<table class="fangstrapporter" width="100%" border="0" cellpadding="0" cellspacing="0">
+            			<tr>
+            				<td>
+            				<select name="filter_spot">
+            					<option value="">Spot</option>
+            				</select>
+            				</td>
+            				<td>
+            				<select name="filter_fish">
+	            				<option value="">Fiske</option>
+            				</select>
+            				</td>
+            				<td>
+            				<select name="order_weight">
+            					<option value="">Vekt</option>
+            					<option value="-1"><?php __t('High - Low'); ?></option>
+            					<option value="1"><?php __t('Low - High'); ?></option>
+            				</select>
+							</td>
+            				<td>
+            				<select name="filter_bait">
+            					<option value="">Agn</option>
+            				</select>
+            				</td>
+            				<?php for ($i = 0; $i <= 3; $i++) echo "<td>&nbsp;</td>"; ?>
+            			</tr>
+            		</table>
+            	</form>
+            
+                <?php echo $this->element('related_listings',array('com_relate'=>'1','relatedcatches'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','tn_width'=>'30','limit'=>'10','order'=>'jr_startdate DESC','ajax'=>'1','custom_where'=>'Field.jr_catchanonymous NOT LIKE \'%ja%\''));  ?>
                 <div class="clear"></div>
             </div>
             <div class="clear"></div> 

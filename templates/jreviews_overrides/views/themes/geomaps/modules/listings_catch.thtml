@@ -45,6 +45,20 @@ $item_count = count($listings);
 
 <?php if(empty($listings)) { __t("No entries were found") . '<br /><br />'; return; } ?>
 
+<?php 
+if ($order_weight = JRequest::getInt('order_weight')) {
+
+	function sort_weight($a, $b, $order_weight) {
+		return $order_weight * ($a['Field']['pairs']['jr_catchweight']['value'][0] - $b['Field']['pairs']['jr_catchweight']['value'][0]);
+	}
+	
+	// Le Sigh.. PHP < 5.3 fail
+	$sortfunc = create_function('$a,$b', 'return sort_weight($a, $b, '.$order_weight.');');
+	
+	usort($listings, $sortfunc);
+}
+?>
+
 <?php
 /**********************************************************************************
  * 								AJAX PAGINATION SETUP
