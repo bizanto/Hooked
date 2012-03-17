@@ -170,6 +170,8 @@ jQuery(document).ready(function($) {
 	
 	incsearch.initialize();
 
+	$('#jr_advSearchKeywords<?php echo $module_id;?>').attr('autocomplete', 'off');
+	
 	$('#jr_advSearchKeywords<?php echo $module_id;?>').keyup(function (e) {
 		var key = (e.which || e.keyCode);
 		
