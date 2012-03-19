@@ -152,7 +152,7 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
 //
 ?>
 
-<script src="/templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
+<script src="<?php echo JURI::base(); ?>templates/jreviews_overrides/views/js/rel8cwindow.js"></script>
 
 <div class="jr_pgContainer jr_itemDetail hReview-aggregate">
 
@@ -410,7 +410,7 @@ jQuery(function ($) {
 
 
 <style type="text/css" media="all">
-@import url('/templates/yoo_expo/css/custom-tabs.css');
+@import url('<?php echo JURI::base(); ?>templates/yoo_expo/css/custom-tabs.css');
 </style>
 <div id="jr_tabs" class="jr_tabs">
 <?php

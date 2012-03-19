@@ -514,21 +514,45 @@ $overviewtab = 0;
 
 <?php 
 $listing_url = ContentHelperRoute::getArticleRoute($listing['Listing']['listing_id'], $listing['Category']['cat_id'], $listing['Section']['section_id']); 
-$listing_url = str_replace('&amp;', '&', $listing_url);
 ?>
 
 <script type="text/javascript">
 jQuery(function ($) {
 	$('#filterForm select').change(function () {
-		if ($(this).val()) {
-			window.location = '<?php echo $listing_url; ?>&' + $('#filterForm').serialize();
-		}
+		var url = '<?php echo $listing_url; ?>'.replace(/&amp;/g, String.fromCharCode(38));
+		$('#filterForm select').each(function () {
+			if ($(this).val()) {
+				url += String.fromCharCode(38) + $(this).attr('name') + '=' + escape($(this).val());
+			}
+		});
+		window.location = url;
 	});
 });
 </script>
             <?php 
-            # Stokkevann http://client.haxway.com/hooked/index.php?option=com_content&view=article&catid=1:vann&id=247:stokkevann&Itemid=107 
-            # Lutvann    http://client.haxway.com/hooked/index.php?option=com_content&view=article&id=212&catid=1&Itemid=107
+                        
+            $catch_ids = getRelatedIDs($listing['Listing']['listing_id'], 14);
+                        
+            if (in_array($listing['Category']['cat_id'], array(1, 2, 100))) {
+            	$spot_ids = getRelatedIDs($listing['Listing']['listing_id'], array(3,4));
+            	
+            	if (count($spot_ids)) {
+	               	$spot_catches = getRelatedIDs($spot_ids, 14);
+	
+	            	$catch_ids = array_merge($catch_ids, $spot_catches);
+            	}
+            }
+            
+            if (count($catch_ids)) {
+                        
+	            $catches_spots = getRelatedItems($catch_ids, array(1,2,3,4,100));
+	            $catches_fish  = getRelatedItems($catch_ids, 17);
+	            $catches_bait  = getRelatedItems($catch_ids, array(101,102));
+	                        
+	            $filter_spot  = JRequest::getInt('filter_spot');
+	            $filter_fish  = JRequest::getInt('filter_fish');
+	            $order_weight = JRequest::getInt('order_weight');
+	            $filter_bait  = JRequest::getInt('filter_bait');
             ?>
             	<form id="filterForm" action="<?php echo $listing_url; ?>" method="post">
             		<table class="fangstrapporter" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -536,23 +560,38 @@ jQuery(function ($) {
             				<td>
             				<select name="filter_spot">
             					<option value="">Spot</option>
+            					<?php foreach ($catches_spots as $spot) {
+            						if ($spot->id == $filter_spot) $selected = ' selected="selected"';
+            						else $selected = '';
+            						echo '<option value="'.$spot->id.'"'.$selected.'>'.$spot->title.'</option>'."\n";
+            					} ?>
             				</select>
             				</td>
             				<td>
             				<select name="filter_fish">
 	            				<option value="">Fiske</option>
+	            				<?php foreach ($catches_fish as $fish) {
+	            					if ($fish->id == $filter_fish) $selected = ' selected="selected"';
+            						else $selected = '';
+            						echo '<option value="'.$fish->id.'"'.$selected.'>'.$fish->title.'</option>'."\n";
+            					} ?>
             				</select>
             				</td>
             				<td>
             				<select name="order_weight">
             					<option value="">Vekt</option>
-            					<option value="-1"><?php __t('High - Low'); ?></option>
-            					<option value="1"><?php __t('Low - High'); ?></option>
+            					<option value="-1"<?php if ($order_weight == -1) echo ' selected="selected"'; ?>><?php __t('High - Low'); ?></option>
+            					<option value="1"<?php if ($order_weight == 1) echo ' selected="selected"'; ?>><?php __t('Low - High'); ?></option>
             				</select>
 							</td>
             				<td>
             				<select name="filter_bait">
             					<option value="">Agn</option>
+            					<?php foreach ($catches_bait as $bait) {
+            						if ($bait->id == $filter_bait) $selected = ' selected="selected"';
+            						else $selected = '';
+            						echo '<option value="'.$bait->id.'"'.$selected.'>'.$bait->title.'</option>'."\n";
+            					} ?>
             				</select>
             				</td>
             				<?php for ($i = 0; $i <= 3; $i++) echo "<td>&nbsp;</td>"; ?>
@@ -560,7 +599,22 @@ jQuery(function ($) {
             		</table>
             	</form>
             
-                <?php echo $this->element('related_listings',array('com_relate'=>'1','relatedcatches'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','tn_width'=>'30','limit'=>'10','order'=>'jr_startdate DESC','ajax'=>'1','custom_where'=>'Field.jr_catchanonymous NOT LIKE \'%ja%\''));  ?>
+                <?php 
+	                $where = array();
+	                if ($filter_spot) {
+	                	$where[] = "\n Listing.id IN (SELECT id2 FROM #__relate_listings WHERE id1 = '$filter_spot')";
+	                }
+	                if ($filter_fish) {
+	                	$where[] = "\n Listing.id IN (SELECT id2 FROM #__relate_listings WHERE id1 = '$filter_fish')";
+	                }
+	                if ($filter_bait) {
+	                	$where[] = "\n Listing.id IN (SELECT id2 FROM #__relate_listings WHERE id1 = '$filter_bait')";
+	                }
+                
+                } // end if (count($catch_ids))
+                                
+                echo $this->element('related_listings',array('where'=>$where,'com_relate'=>'1','relatedcatches'=>'1','field'=>'','suffix'=>'_catch','cat_id'=>'14','tn_width'=>'30','limit'=>'10','order'=>'jr_startdate DESC','ajax'=>'1','custom_where'=>'Field.jr_catchanonymous NOT LIKE \'%ja%\''));
+                ?>
                 <div class="clear"></div>
             </div>
             <div class="clear"></div> 
