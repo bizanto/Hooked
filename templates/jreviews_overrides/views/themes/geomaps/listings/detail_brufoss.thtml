@@ -559,7 +559,7 @@ jQuery(function ($) {
             			<tr>
             				<td>
             				<select name="filter_spot">
-            					<option value="">Spot</option>
+            					<option value="">Fiskeplass</option>
             					<?php foreach ($catches_spots as $spot) {
             						if ($spot->id == $filter_spot) $selected = ' selected="selected"';
             						else $selected = '';
@@ -569,7 +569,7 @@ jQuery(function ($) {
             				</td>
             				<td>
             				<select name="filter_fish">
-	            				<option value="">Fiske</option>
+	            				<option value="">Art</option>
 	            				<?php foreach ($catches_fish as $fish) {
 	            					if ($fish->id == $filter_fish) $selected = ' selected="selected"';
             						else $selected = '';
