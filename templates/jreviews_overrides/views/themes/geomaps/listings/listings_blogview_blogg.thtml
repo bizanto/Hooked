@@ -42,7 +42,7 @@ jQuery(function ($) {
 });
 </script>
 
- <div class="jr_pgContainer news-list business-listings">
+ <div class="jr_pgContainer">
 
     <!--  BEGIN PAGE HEADER AREA -->
     <?php echo $this->renderControllerView('listings','listings_header');?>
@@ -58,12 +58,12 @@ jQuery(function ($) {
         $contents .= $renderer->render($mod, $params);
     }
     echo $contents;
-	?>
+    ?>
            
     <?php if(!empty($listings)):?>         
     <div id="jr_pgResults">
     <!--  BLOGVIEW  -->
-        <div id="gm_listingColumn" class="jr_blogview business-listings">
+        <div id="article-list" class="jr_blogview">
         
 	<?php if($pagination['total'] > 0):?>
     <!-- PAGINATION BEGINS HERE -->
@@ -91,14 +91,14 @@ jQuery(function ($) {
 		?>
             <div class="listItem paper-light">
                 <div class="contentInfoContainer">
-					<div class="listing-image fl">
+                	<div class="listing-image fl">
 					<?php
 					if ($listing['Listing']['images'][0]['path']) {
 	                    echo '<a href="'.$listinglink.'"><img style="margin-right: 13px;" width="64" src="/images/stories/'.$listing['Listing']['images'][0]['path'].'" alt="'.$listing['Listing']['title'].'" title="'.$listing['Listing']['title'].'" /></a>';
 					}
 					?>
                     </div>
-                    
+
             
                 	<div class="contentTitle"><?php echo $Routes->content($listing['Listing']['title'],$listing,array('id'=>'jr_listing'.$listing['Listing']['listing_id'],'class'=>'jr_listingTitle'))?>            
                         <span class="contentIndicators">
@@ -120,19 +120,21 @@ jQuery(function ($) {
 						$jr_state_value = $CustomFields->fieldValue('jr_state', $listing, false, false);
 						$jr_state_value = $jr_state_value[0];
 
-						if ($jr_state) $jr_state=$jr_state;
 						?>
 						<?php 
                         if ($jr_area) echo '<div>'.$jr_area.'</div>';
                         ?>
-						<!-- BEGIN CUSTOM FIELDS -->
+                        <?php if ($jr_state) : ?>
+                        	<?php echo __t("Located in"); ?>&nbsp;<a href="index.php?option=com_jreviews&Itemid=161&url=search-results_m161/query:any/jr_state:<?php echo $jr_state_value; ?>/order:rhits"><?php echo $CustomFields->field('jr_state', $listing, true,true); ?></a>
+                        <?php endif; ?>
+                        
+                        <!-- BEGIN CUSTOM FIELDS -->
 						<?php if(isset($listing['Field']['groups'])):?>
 							<?php echo $this->element('custom_fields',array('entry'=>$listing,'page'=>'list'))?>
 						<?php endif;?>	
 				       <!-- END CUSTOM FIELDS -->
-                        <?php if ($jr_state) : ?>
-                        	<?php echo __t("Located in"); ?>&nbsp;<a href="index.php?option=com_jreviews&Itemid=161&url=search-results_m161/query:any/jr_state:<?php echo $jr_state_value; ?>/order:rhits"><?php echo $CustomFields->field('jr_state', $listing, true,true); ?></a>
-                        <?php endif; ?>
+				       <?php echo $listing['User']['name'];?>
+				       
                     	<?php if($listing['Criteria']['state'] == 1 && ($this->Config->author_review || $this->Config->user_reviews)):?>
                             <!-- BEGIN RATINGS -->
                             <?php /* if($this->Config->author_review): // author reviews ?>
@@ -157,7 +159,7 @@ jQuery(function ($) {
                         <ul>
                         <?php
 							// tooltip max characters
-							$maxchar = 300;
+							$maxchar = 100;
 							
                             $related = getRelatedCount($listing['Listing']['listing_id'], 'photos');
                             if ($related) {
@@ -186,7 +188,7 @@ jQuery(function ($) {
 								<?php
 								if ($spotlist) {
 									$fullspotlist = implode(", ", $spotlist);
-									$count=count($spotlist);
+									$count = getRelatedCount($listing['Listing']['listing_id'], array(1,2,3,4,100));
 									if (strlen($fullspotlist) > $maxchar)
 										$trimmed='..';
 									$spotlist = substr($fullspotlist,0,$maxchar);
@@ -219,7 +221,7 @@ jQuery(function ($) {
 								<?php
 								if ($catchlist) {
 									$fullcatchlist = implode(", ", $catchlist);
-									$count=count($catchlist);
+									$count = getRelatedCount($listing['Listing']['listing_id'], 14);
 									if (strlen($fullcatchlist) > $maxchar)
 										$trimmed='..';
 									$catchlist = substr($fullcatchlist,0,$maxchar);
@@ -246,7 +248,7 @@ jQuery(function ($) {
                             <?php
                             if ($fishlist) {
                             	$fullfishlist = implode(", ", $fishlist);
-								$count=count($fishlist);
+								$count = getRelatedCount($listing['Listing']['listing_id'],17);
 								if (strlen($fullfishlist) > $maxchar)
 									$trimmed='...';
 								$fishlist = substr($fullfishlist,0,$maxchar);
@@ -274,7 +276,7 @@ jQuery(function ($) {
                             <?php
                             if ($techlist) {
                             	$fulltechlist = implode(", ", $techlist);
-								$count=count($techlist);
+								$count = getRelatedCount($listing['Listing']['listing_id'], array(24,48,79));
 								if (strlen($fulltechlist) > $maxchar)
 									$trimmed='...';
 								$techlist = substr($fulltechlist,0,$maxchar);
@@ -349,7 +351,6 @@ jQuery(function ($) {
 			else $blogcount++;
 			?>
         <?php endforeach;?>
-
         
 	        <?php if($pagination['total'] > 0):?>
             <!-- PAGINATION BEGINS HERE -->
@@ -369,14 +370,7 @@ jQuery(function ($) {
             <!-- PAGINATION ENDS HERE -->             
             <?php endif;?>  
         </div>
-		<!--  BEGIN MAP -->
-        <div id="gm_mapColumn">
-            <?php echo $this->renderControllerView('geomaps','map_results',array('width'=>'300','height'=>'300'));?>
-        <h2>test<h2/>
-        </div>
-        <!--  END MAP -->  
 		<div class="clear">&nbsp;</div>
-		
          
     </div><!-- end jr_pgResults -->
     <div class="clr">&nbsp;</div>

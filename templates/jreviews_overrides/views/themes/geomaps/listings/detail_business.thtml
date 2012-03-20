@@ -308,6 +308,17 @@ jQuery(function ($) {
             </div>
         </div>
     <?php endif; ?>
+    <?php if ($isOwner) : ?>
+    	<div class="fl width50">
+	        <div class="edit-listing txt">
+                <div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo __t("Edit"); echo '&nbsp;&raquo;'; ?></a></div>
+            </div>
+			<div class="edit-listing txt" style="display:none;">
+				<div><a href="javascript:void(0);" class="smalltext intro-trigger"><?php echo ' &laquo;&nbsp;'; echo __t("Hide options"); ?></a></div>
+				<?php echo $this->renderControllerView('listings','listing_manager',array('listing'=>$listing));?>
+            </div>
+        </div>
+    <?php endif; ?>
         <div class="clear"></div>
     </div>
 </div>

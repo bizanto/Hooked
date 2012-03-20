@@ -338,6 +338,14 @@ jQuery(function ($) {
         <input type="text" id="jr_advSearchKeywords<?php echo $module_id;?>" name="data[keywords]" value="<?php if (isset($keywords)) echo $keywords; ?>" />
     </div>	
     <div class="clear"></div>
+      <div class="fl width50">
+	  {jr_retailstoretype_label}: {jr_retailstoretype|s}&nbsp;&nbsp;
+    </div>
+ 
+       <div class="fr width50">
+	 {jr_retailtags_label}: {jr_retailtags|s}&nbsp;&nbsp;
+    </div>
+    <div class="clear"></div>
     <div class="searchdiv search_states">    
         <h4><a href="javascript:void(0);" class="trigger"><?php __t("State"); ?> <span class="chkcount"></span> +</a></h4>
         <div class="fields" style="display:block;">
@@ -347,7 +355,7 @@ jQuery(function ($) {
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_4" type="checkbox" value="finnmark">&nbsp;<label for="jr_state_4">Finnmark</label></div>
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_5" type="checkbox" value="hedmark">&nbsp;<label for="jr_state_5">Hedmark</label></div>
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_6" type="checkbox" value="hordaland">&nbsp;<label for="jr_state_6">Hordaland</label></div>
-            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_7" type="checkbox" value="more-og-romsdal">&nbsp;<label for="jr_state_7">More og Romsdal</label></div>
+            <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_7" type="checkbox" value="more-og-romsdal">&nbsp;<label for="jr_state_7">M&oslash;re og Romsdal</label></div>
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_8" type="checkbox" value="nord-trondelag">&nbsp;<label for="jr_state_8">Nord-Tr&oslash;ndelag</label></div>
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_9" type="checkbox" value="nordland">&nbsp;<label for="jr_state_9">Nordland</label></div>
             <div class="fl relchk_item"><input name="data[Field][Listing][jr_state][]" id="jr_state_10" type="checkbox" value="oppland">&nbsp;<label for="jr_state_10">Oppland</label></div>
@@ -415,7 +423,8 @@ jQuery(function ($) {
     <input type="hidden" name="criteria" id="criteria<?php echo $module_id;?>" value="<?php echo $criteria_id;?>" />
     <input type="hidden" name="data[form_id]" id="form_id<?php echo $module_id;?>" value="JreviewsAdvSearch_<?php echo $module_id;?>" />
     <input type="hidden" name="data[module_id]" id="module_id<?php echo $module_id;?>" value="<?php echo $module_id;?>" />
-    <input type="hidden" name="data[order]" value="rhits" />   
+    <input type="hidden" name="data[order]" value="rhits" />  
+    <input type="hidden" name="data[categories][]" value="29" />
 
     <?php
     /*****************************************************************************************************
@@ -425,6 +434,7 @@ jQuery(function ($) {
     *****************************************************************************************************/
     //<input type="hidden" name="data[categories][]" value="29" />
     //<input type="hidden" name="data[categories][]" value="34" />
+   
     ?>                               			
 
     <?php /* Change the default search result ordering */ 

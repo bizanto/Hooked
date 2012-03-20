@@ -229,6 +229,8 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
 	</h1>
     
         <div class="clr">&nbsp;</div>
+       
+	</div>  
 
 	</div>
 
@@ -236,10 +238,12 @@ include('templates/jreviews_overrides/views/themes/geomaps/listings/rel-summary.
            
 <?php endif;?>
 <div class="clr"></div>
+     
 
 <div class="listing-details">
 
 	<div class="owner-info fr socials">
+	
 	
         <div class="listing-avatar fr"><?php echo $Community->avatar($listing); // Listing owner avatar?></div>
         <div><strong><?php echo $Community->screenName($listing);?></strong></div>

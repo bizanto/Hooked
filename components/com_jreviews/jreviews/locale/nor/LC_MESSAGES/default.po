@@ -1209,7 +1209,7 @@ msgstr "Your inquiry has been submitted."
 #: com_jreviews\jreviews\views/themes/default/elements/login.thtml:18
 #, php-format
 msgid "To submit a listing please %sregister%s or log in."
-msgstr ""
+msgstr "For å legge til et bidrag må du være registrert og logget på."
 
 #: com_jreviews\jreviews\views/themes/default/elements/login.thtml:20
 #, php-format

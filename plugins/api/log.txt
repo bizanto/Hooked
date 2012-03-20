@@ -55841,3 +55841,2867 @@ object(JDatabaseMySQL)#11 (18) {
   array(0) {
   }
 }
+
+
+--------------
+
+Date: 2012-01-29 23:16:36
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "32e0d4fcd6fd67c97413e4c930d711d5.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpin8GQU"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(74269)
+  }
+}
+
+
+--------------
+
+Date: 2012-01-29 23:16:36
+object(stdClass)#446 (4) {
+  ["image_id"]=>
+  int(6425)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17477/cb834a7de80f70d3d8590d8a.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17477/thumb_cb834a7de80f70d3d8590d8a.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-01-29 23:16:36
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6425 AND listing_id = 60521"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-01-29 23:16:36
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60521, 6425, 4428)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:03:10
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "262675fa94143c512a34ec7742b26b51.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpNpTWpc"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(884898)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:03:11
+object(stdClass)#450 (4) {
+  ["image_id"]=>
+  int(6653)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/3a5c168001da41b203538e21.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_3a5c168001da41b203538e21.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-15 13:03:11
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6653 AND listing_id = 60579"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:03:11
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60579, 6653, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:06:03
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "ae1af626142b27fc524381365867645d.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpHXMl9k"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(902335)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:06:04
+object(stdClass)#449 (4) {
+  ["image_id"]=>
+  int(6654)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/4167f685dc512ba438810bb5.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_4167f685dc512ba438810bb5.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-15 13:06:04
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6654 AND listing_id = 60580"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:06:04
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60580, 6654, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:13:57
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "05dbe1819b50660d95c25e026ea718b2.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpoO9aYN"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1005257)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:13:58
+object(stdClass)#449 (4) {
+  ["image_id"]=>
+  int(6655)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/11425077672858585696cd9b.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_11425077672858585696cd9b.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-15 13:13:58
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6655 AND listing_id = 60581"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:13:58
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60581, 6655, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:15:20
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "16f5e2c266c0a72f9304270310d28d6f.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpCvNOwL"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1022748)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:15:21
+object(stdClass)#449 (4) {
+  ["image_id"]=>
+  int(6656)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/95e17d4db0ab07d650c0badc.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_95e17d4db0ab07d650c0badc.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-15 13:15:21
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6656 AND listing_id = 60582"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-15 13:15:21
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60582, 6656, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 14:01:29
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "49b0b161b2fafb9baf39be74d14a7b22.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpP2Q800"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(751594)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 14:01:29
+object(stdClass)#450 (4) {
+  ["image_id"]=>
+  int(6660)
+  ["image"]=>
+  string(72) "https://www.hooked.no//images/photos/0/2100/22a62011903f9f7eb03e6224.jpg"
+  ["thumbnail"]=>
+  string(77) "https://www.hooked.no/images/photos/0/2100/thumb_22a62011903f9f7eb03e6224.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-17 14:01:30
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6660 AND listing_id = 60584"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 14:01:30
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(87) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60584, 6660, 778)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 15:40:25
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "b5a791334b5acebf6d780edc1756702b.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpKWnPmm"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(581124)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 15:40:25
+object(stdClass)#450 (4) {
+  ["image_id"]=>
+  int(6661)
+  ["image"]=>
+  string(71) "https://www.hooked.no//images/photos/0/191/d19470b355f0b6c84a98cd05.jpg"
+  ["thumbnail"]=>
+  string(76) "https://www.hooked.no/images/photos/0/191/thumb_d19470b355f0b6c84a98cd05.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-17 15:40:25
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6661 AND listing_id = 60585"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-17 15:40:25
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(87) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60585, 6661, 155)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-21 18:48:44
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "734a9a5108ea4a8af4cbd562b7744271.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpfRlk7J"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(665682)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-21 18:48:44
+object(stdClass)#450 (4) {
+  ["image_id"]=>
+  int(6671)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17050/e3403d3c41cb5ae3559f172a.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17050/thumb_e3403d3c41cb5ae3559f172a.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-21 18:48:44
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6671 AND listing_id = 60605"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-21 18:48:44
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60605, 6671, 4323)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-22 12:58:15
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "1afcca4846d2afc469579f142b458615.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpki7lLH"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1366782)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-22 12:58:16
+object(stdClass)#453 (4) {
+  ["image_id"]=>
+  int(6673)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/12752/0b604a80fde78f8eba2af5f1.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/12752/thumb_0b604a80fde78f8eba2af5f1.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-22 12:58:16
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6673 AND listing_id = 60610"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-22 12:58:16
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60610, 6673, 3265)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-25 22:30:09
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "33cfc2105b49c7d2bcb226cc682f8ba6.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpYZfhce"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(53022)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-25 22:30:09
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6719)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/15303/5f58a0fac6829c64b4a0abff.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/15303/thumb_5f58a0fac6829c64b4a0abff.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-25 22:30:09
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6719 AND listing_id = 60622"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-25 22:30:09
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60622, 6719, 3895)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-26 17:05:22
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "edb0acc076f5df123f854457e762e25a.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpU8fkxR"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(699984)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-26 17:05:22
+object(stdClass)#453 (4) {
+  ["image_id"]=>
+  int(6724)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/14747/d555ecf7ffe9d0ce5e990dcd.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/14747/thumb_d555ecf7ffe9d0ce5e990dcd.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-26 17:05:22
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6724 AND listing_id = 60624"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-26 17:05:22
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60624, 6724, 3757)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-26 17:24:58
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "4c85cc7f58aee9ccce9c873b40bf15c4.JPG"
+    ["type"]=>
+    string(0) ""
+    ["tmp_name"]=>
+    string(0) ""
+    ["error"]=>
+    int(3)
+    ["size"]=>
+    int(0)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-26 17:24:58
+object(stdClass)#441 (4) {
+  ["image_id"]=>
+  NULL
+  ["image"]=>
+  NULL
+  ["thumbnail"]=>
+  NULL
+  ["storage"]=>
+  NULL
+}
+
+
+--------------
+
+Date: 2012-02-29 12:19:07
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "46983e32f4fd06ad46f6831a76c37d1f.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpGxIkCT"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(107123)
+  }
+}
+
+
+--------------
+
+Date: 2012-02-29 12:19:07
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6729)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17862/171ab607cfdc9a67a3e8cffd.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17862/thumb_171ab607cfdc9a67a3e8cffd.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-02-29 12:19:07
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6729 AND listing_id = 60640"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-02-29 12:19:07
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60640, 6729, 4523)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 21:22:29
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "71d2c8b0f5c39049ad983127c94b2ccc.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpYsSyNf"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(315439)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 21:22:30
+object(stdClass)#455 (4) {
+  ["image_id"]=>
+  int(6765)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17921/548b50c617828dbaf6d9968f.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17921/thumb_548b50c617828dbaf6d9968f.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-03 21:22:30
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6765 AND listing_id = 60705"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 21:22:30
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60705, 6765, 4538)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:36:16
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "71d2c8b0f5c39049ad983127c94b2ccc.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpyTuh9o"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(315439)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:36:16
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6789)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17921/284194ae5b00aad13663f66f.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17921/thumb_284194ae5b00aad13663f66f.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-03 22:36:16
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6789 AND listing_id = 60707"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:36:16
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60707, 6789, 4538)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:38:04
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "71d2c8b0f5c39049ad983127c94b2ccc.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpKHaEA7"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(315439)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:38:05
+object(stdClass)#455 (4) {
+  ["image_id"]=>
+  int(6790)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17922/5776c3516cb57a1889a9ef2e.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17922/thumb_5776c3516cb57a1889a9ef2e.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-03 22:38:05
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6790 AND listing_id = 60708"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-03 22:38:05
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60708, 6790, 4538)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-07 19:03:44
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "e2b2f9cb269562374eac63a542165ca1.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpemTt95"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(781588)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-07 19:03:45
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6856)
+  ["image"]=>
+  string(72) "https://www.hooked.no//images/photos/0/2840/cad2c61d7c5b64ef6ffdbea6.jpg"
+  ["thumbnail"]=>
+  string(77) "https://www.hooked.no/images/photos/0/2840/thumb_cad2c61d7c5b64ef6ffdbea6.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-07 19:03:45
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6856 AND listing_id = 60794"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-07 19:03:45
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60794, 6856, 1016)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-08 13:09:38
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "02a538988a517f6285ccb92f7bf6e0f3.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpVtVffr"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(93676)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-08 13:09:39
+object(stdClass)#455 (4) {
+  ["image_id"]=>
+  int(6868)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/18003/07f3860fa0a094748eb7b6f6.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/18003/thumb_07f3860fa0a094748eb7b6f6.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-08 13:09:39
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6868 AND listing_id = 60817"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-08 13:09:39
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60817, 6868, 4558)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:34:12
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "bfbc4d93e8a798e75bde072d45cb136a.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpOlYGow"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1926432)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:34:13
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6922)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/a8e11de0209f0e96117f9864.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_a8e11de0209f0e96117f9864.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-13 20:34:13
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6922 AND listing_id = 60874"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:34:13
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60874, 6922, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:35:59
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "31b690560994fd845353b00d07057858.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpWjo9lD"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(858871)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:36:00
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6923)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/17277/6d1a4210f3b0a03d521387c9.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/17277/thumb_6d1a4210f3b0a03d521387c9.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-13 20:36:00
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6923 AND listing_id = 60875"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(214) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-13 20:36:00
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60875, 6923, 4379)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:00
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "716ed3112979f4bb242ee054df610393.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpUyprBJ"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(517427)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:01
+object(stdClass)#454 (4) {
+  ["image_id"]=>
+  int(6925)
+  ["image"]=>
+  string(70) "https://www.hooked.no//images/photos/0/25/b4fa1423c44185bde222ee01.jpg"
+  ["thumbnail"]=>
+  string(75) "https://www.hooked.no/images/photos/0/25/thumb_b4fa1423c44185bde222ee01.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:01
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6925 AND listing_id = 60881"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:01
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(86) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60881, 6925, 64)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:02
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "1dee1d9052a6bdd7870231226cd56f98.JPG"
+    ["type"]=>
+    string(0) ""
+    ["tmp_name"]=>
+    string(0) ""
+    ["error"]=>
+    int(3)
+    ["size"]=>
+    int(0)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-15 09:27:02
+object(stdClass)#442 (4) {
+  ["image_id"]=>
+  NULL
+  ["image"]=>
+  NULL
+  ["thumbnail"]=>
+  NULL
+  ["storage"]=>
+  NULL
+}
+
+
+--------------
+
+Date: 2012-03-17 12:23:54
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "a18283f99dacb1550963ec18db1f8543.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpeYhNzi"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(863596)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-17 12:23:55
+object(stdClass)#455 (4) {
+  ["image_id"]=>
+  int(6942)
+  ["image"]=>
+  string(72) "https://www.hooked.no//images/photos/0/5264/9e62a9e19664c5a6cb4d9d56.jpg"
+  ["thumbnail"]=>
+  string(77) "https://www.hooked.no/images/photos/0/5264/thumb_9e62a9e19664c5a6cb4d9d56.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-17 12:23:55
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6942 AND listing_id = 60911"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-17 12:23:55
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60911, 6942, 1807)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-17 16:59:17
+array(1) {
+  ["photo"]=>
+  array(5) {
+    ["name"]=>
+    string(36) "6e8e0137f3e959fbbdc77dbbe675fa35.JPG"
+    ["type"]=>
+    string(24) "application/octet-stream"
+    ["tmp_name"]=>
+    string(14) "/tmp/phpwuG6Ct"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1107361)
+  }
+}
+
+
+--------------
+
+Date: 2012-03-17 16:59:18
+object(stdClass)#455 (4) {
+  ["image_id"]=>
+  int(6945)
+  ["image"]=>
+  string(73) "https://www.hooked.no//images/photos/0/18221/d561343307e443a88363f42c.jpg"
+  ["thumbnail"]=>
+  string(78) "https://www.hooked.no/images/photos/0/18221/thumb_d561343307e443a88363f42c.jpg"
+  ["storage"]=>
+  string(4) "file"
+}
+
+
+--------------
+
+Date: 2012-03-17 16:59:18
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(83) "SELECT COUNT(*) FROM jos_relate_photos WHERE photo_id = 6945 AND listing_id = 60917"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  resource(224) of type (Unknown)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
+
+
+--------------
+
+Date: 2012-03-17 16:59:18
+object(JDatabaseMySQL)#11 (18) {
+  ["name"]=>
+  string(5) "mysql"
+  ["_nullDate"]=>
+  string(19) "0000-00-00 00:00:00"
+  ["_nameQuote"]=>
+  string(1) "`"
+  ["_sql"]=>
+  string(88) "INSERT INTO jos_relate_photos (listing_id, photo_id, creator) VALUES (60917, 6945, 4612)"
+  ["_errorNum"]=>
+  int(0)
+  ["_errorMsg"]=>
+  string(0) ""
+  ["_table_prefix"]=>
+  string(4) "jos_"
+  ["_resource"]=>
+  resource(24) of type (mysql link)
+  ["_cursor"]=>
+  bool(true)
+  ["_debug"]=>
+  int(0)
+  ["_limit"]=>
+  int(0)
+  ["_offset"]=>
+  int(0)
+  ["_ticker"]=>
+  int(0)
+  ["_log"]=>
+  array(0) {
+  }
+  ["_utf"]=>
+  bool(true)
+  ["_quoted"]=>
+  array(0) {
+  }
+  ["_hasQuoted"]=>
+  bool(false)
+  ["_errors"]=>
+  array(0) {
+  }
+}
