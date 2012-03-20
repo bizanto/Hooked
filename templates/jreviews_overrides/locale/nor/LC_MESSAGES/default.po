@@ -2498,3 +2498,9 @@ msgstr "Fluebindemønster"
 
 msgid "Related Insects"
 msgstr "Relaterte insekter"
+
+msgid "High - Low"
+msgstr "Høy - Lav"
+
+msgid "Low - High"
+msgstr "Lav - Høy"

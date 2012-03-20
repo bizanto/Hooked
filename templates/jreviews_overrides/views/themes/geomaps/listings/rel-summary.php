@@ -59,6 +59,68 @@ function getRelatedCount($listing_id, $cid) {
 	return 0;
 }
 
+/**
+ * Get list of IDs of related items
+ *
+ * $listing_ids - IDs of items to find relations for. int, array, or comma separated list of IDs
+ * $rel_categories = Categories of related items. int, array, or comma separated list of IDs
+ */
+function getRelatedIDs($listing_ids, $rel_categories) 
+{
+	$db =& JFactory::getDBO();
+	
+	if (is_array($rel_categories)) {
+		$rel_categories = implode(",", $rel_categories);
+	}
+	
+	if (!is_array($listing_ids)) {
+		$listing_ids = explode(",", $listing_ids);
+	}
+	
+	$listing_ids = array_filter($listing_ids, "is_numeric");
+	$listing_ids = implode(",", $listing_ids);
+	
+	$sql = "SELECT c.id ".
+	       "FROM `#__content` c ".
+	       "INNER JOIN `#__relate_listings` r ON r.id1 IN ($listing_ids) AND r.id2 = c.id ".
+	       "WHERE c.id NOT IN ($listing_ids) AND c.state > 0 AND c.catid IN ($rel_categories) ";
+	
+	$db->setQuery($sql);
+	
+	$ids = $db->loadResultArray();
+	return $ids;
+}
+
+// like getRelatedIDs, but return id/title objects. 
+function getRelatedItems($listing_ids, $rel_categories) 
+{
+	$db =& JFactory::getDBO();
+	
+	if (is_array($rel_categories)) {
+		$rel_categories = implode(",", $rel_categories);
+	}
+	
+	if (!is_array($listing_ids)) {
+		$listing_ids = explode(",", $listing_ids);
+	}
+	
+	$listing_ids = array_filter($listing_ids, "is_numeric");
+	$listing_ids = implode(",", $listing_ids);
+	
+	$sql = "SELECT c.id, c.title ".
+	       "FROM `#__content` c ".
+	       "INNER JOIN `#__relate_listings` r ON r.id1 IN ($listing_ids) AND r.id2 = c.id ".
+	       "WHERE c.id NOT IN ($listing_ids) AND c.state > 0 AND c.catid IN ($rel_categories) ";
+	
+	$db->setQuery($sql);
+	
+	$ids = $db->loadObjectList('id');
+	return $ids;
+}
+
+/** 
+ * Get full content for related items including related images
+ */
 function getRelatedList($listing_id, $rel_categories, $limit = 4)
 {
 	$db =& JFactory::getDBO();
@@ -130,14 +192,15 @@ function getMediaLocation($content_id,$mediatype)
 	
 	$sql = "SELECT c.id, c.title, c.catid, c.sectionid, cat.title AS catname, c.images AS thumbnail ".
 	       "FROM `#__content` c, `#__categories` cat";
-	if ($mediatype=="videos") {
+	
+	if ($mediatype == "videos") {
 		$sql .= ", `#__relate_videos` rv WHERE (rv.video_id = $content_id AND rv.listing_id = c.id)";
 	}
 	else {
 		$sql .= ", `#__relate_photos` rp WHERE (rp.photo_id = $content_id AND rp.listing_id = c.id)";
-		echo $sql;
 	}
-		$sql .= " AND c.catid = cat.id AND c.state > 0 AND c.catid IN (1, 2, 3, 4, 100) GROUP BY c.id";
+	
+	$sql .= " AND c.catid = cat.id AND c.state > 0 AND c.catid IN (1, 2, 3, 4, 100) GROUP BY c.id";
 	
 	$db->setQuery($sql);
 	$location = $db->loadObjectList();
