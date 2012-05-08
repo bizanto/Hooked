@@ -342,28 +342,16 @@ jQuery(function ($) {
         ?>
 
 
-        <div class="introtext txt">
-            <?php
-            echo '<strong>';
-            echo __t("Description").': ';
-            echo '</strong>';
-            $introtext = substr($introtext, 0, $maxdesc);
-            echo nl2br($introtext);
-            if (strlen(strip_tags($listing['Listing']['text'])) > $maxdesc) {
-                echo '...';	
-            }
-            
-            ?>	
-            <div><a href="javascript:void(0);" class="intro-trigger"><?php __t("More"); echo ' &raquo;'; ?></a></div>
-        </div>
-        <div class="fulltext txt" style="display:none;">
+        
+        <div class="fulltext txt">
             <?php
             echo '<strong>';
             echo __t("Description").': ';
             echo '</strong>';
             ?>
             <?php echo nl2br($listing['Listing']['text']); ?>
-            <div><a href="javascript:void(0);" class="intro-trigger"><?php echo '&laquo; '; __t("Less"); ?></a></div>
+            <br>
+            
         </div>
         <?php endif; ?>
         <?php endif; ?>

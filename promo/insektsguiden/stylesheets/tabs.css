@@ -1,0 +1,109 @@
+/* Foundation v2.1.5 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Testing Styles
+:: Responsive Layout Adjustments
+*/
+
+
+/* -----------------------------------------
+   Testing Styles
+----------------------------------------- */
+
+	/* --------------------------------------
+	Custom Tabs Style 
+	-------------------------------------- */ 
+
+		.land-ahoy.tabs { border-bottom: solid 1px rgba(0,0,0,0.5); margin: 25px 0 30px 0; height:41px; }
+		.land-ahoy.tabs dd a {
+			padding: 5px 0 9px 0;
+			font-size: 15px;
+			font-size: 1.5rem;
+			color: rgba(255,255,255,0.5);
+			background: none;
+			border: none;
+			text-align: center;
+			width: 120px;
+			-moz-border-radius: 4px 4px 0 0;
+			-webkit-border-radius: 4px 4px 0 0;
+			border-radius: 4px 4px 0 0;
+			background-color: rgba(0,0,0,0.25);
+			margin: 0 3px;
+			position: relative;
+			top: -2px;
+		}
+		.land-ahoy.tabs dd a.active {
+			padding: 7px 0 5px 0;
+			color: #fff;
+			background: #333;
+			text-shadow: 0 -1px 1px rgba(0,0,0,0.28);
+			background-color: rgba(0,0,0,0.5);
+			border: 1px solid rgba(0,0,0,0.5);
+			-webkit-transition: background-color .15s ease-in-out;
+			-moz-transition: background-color .15s ease-in-out;
+			-o-transition: background-color .15s ease-in-out;
+			position: relative;
+			top: -3px;
+			-moz-border-radius: 4px 4px 0 0;
+			-webkit-border-radius: 4px 4px 0 0;
+			border-radius: 4px 4px 0 0;
+			margin: 0 3px;
+		}
+		.land-ahoy.tabs dd:first-child a.active, .land-ahoy.tabs dd:first-child a { margin-left: 0; }
+
+	/* --------------------------------------
+	Custom Tabs Content Style 
+	-------------------------------------- */ 
+
+	     ul.tabs-content { margin: 0; display: block; } /* Tabs Content Styling */
+	
+		/* Feature Rows Styling Sdjustments */
+			.tab-feat-top.row { padding-top: 10px; }
+			.tab-feat-bottom.row { padding-top: 20px; }
+			
+		/* Tabs Content Styling Sdjustments */
+			#nice2Tab { min-width: 400px !important; min-height: 300px !important; }
+			#nice2Tab iframe { frameborder: 0; min-width: 400px !important; min-height: 300px !important; margin: 0 auto 20px auto; }
+			#nice3Tab { min-width: 400px !important; min-height: 300px !important; }
+			#nice3Tab iframe { frameborder: 0; scrolling: no; marginheight: 0; marginwidth: 0; min-width: 400px !important; min-height: 300px !important; margin: 0 auto 20px auto; }
+
+	
+/* -----------------------------------------
+   Responsive Layout Adjustments
+----------------------------------------- */
+
+	@media only screen and (max-width: 767px) {
+
+		.land-ahoy.tabs { width: 415px; margin: 20px auto 20px; padding-left: 40px; } /* Tabs Styling */
+
+		 ul.tabs-content { max-width: 400px; max-height: 300px; margin: 0 auto 30px auto; } /* Tabs Content Styling Sdjustments */
+
+	}
+
+	@media only screen and (max-width: 542px) {
+
+		/* Tabs Styling */
+			.land-ahoy.tabs { width: 300px; margin: 20px auto 20px; padding-left: 15px; }
+			.land-ahoy.tabs dd a { padding: 3px 0 6px 0; font-size: 12px; font-size: 1.2rem; width: 90px; top: 3px; }
+			.land-ahoy.tabs dd a.active { padding: 5px 0 3px 0; top: 2px; }
+
+		 ul.tabs-content { max-width: 300px; max-height: none; margin: 0 auto 0 auto; } /* Tabs Content Styling */
+
+		/* Tabs Content Styling Sdjustments */
+			#nice2Tab { min-width: 300px !important; min-height: 225px !important; }
+			#nice2Tab iframe { min-width: 300px !important; min-height: 225px !important; margin: 0 auto 10px auto; }
+			#nice3Tab { min-width: 300px !important; min-height: 225px !important; }
+			#nice3Tab iframe { min-width: 300px !important; min-height: 225px !important; margin: 0 auto 10px auto; }
+
+	}
+
+	@media only screen and (max-width: 365px) {
+
+		/* Tabs Styling */
+			.land-ahoy.tabs { width: 263px; margin: 20px auto 20px; padding-left: 3px; }
+			.land-ahoy.tabs dd a { padding: 3px 0 6px 0; font-size: 12px; font-size: 1.2rem; width: 82px; top: 3px; }
+
+	}

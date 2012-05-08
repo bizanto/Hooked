@@ -1,0 +1,390 @@
+/* Foundation v2.1.5 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Testing Styles
+:: Shared Styles
+:: Responsive Layout Adjustments
+*/
+
+
+/* -----------------------------------------
+   Testing Styles
+----------------------------------------- */
+
+	.black-background { background-color: black; }
+	.white-background { background-color: white; }
+	.red-background   { background-color: red; }
+	.grey-background  { background-color: grey; }
+
+	.black-border { border: solid 1px black; }
+	.white-border { border: solid 1px  white; }
+	.red-border   { border: solid 1px  red; }
+	.grey-border  { border: solid 1px  grey; }
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+	
+	/* --------------------------------------
+	Clear Styles 
+	-------------------------------------- */
+		.clear   { clear: both; }
+		.clear5  { height:  5px; clear: both; }
+		.clear10 { height: 10px; clear: both; }
+		.clear15 { height: 15px; clear: both; }
+		.clear20 { height: 20px; clear: both; }
+		.clear25 { height: 25px; clear: both; }
+		.clear30 { height: 30px; clear: both; }
+		.clear40 { height: 40px; clear: both; }
+		.clear50 { height: 50px; clear: both; }
+		.dont-clear { clear: none; }
+
+	/* --------------------------------------
+	Top Margin Styles
+	-------------------------------------- */
+		.top-margin-5  { margin-top:  5px; }
+		.top-margin-10 { margin-top: 10px; }
+		.top-margin-15 { margin-top: 15px; }
+		.top-margin-20 { margin-top: 20px; }
+		.top-margin-25 { margin-top: 25px; }
+		.top-margin-30 { margin-top: 30px; }
+		.top-margin-40 { margin-top: 40px; }
+		.top-margin-50 { margin-top: 50px; }
+
+	/* --------------------------------------
+	Google Web Font Style
+	-------------------------------------- */
+		.fjord { font-family: 'Fjord One', serif; font-weight: normal !important; }
+
+	/* --------------------------------------
+	Container Elements Styles
+	-------------------------------------- */
+		.container {
+			padding: 0;
+			background: url(../images/blue-background.png) repeat;
+		}
+		.one.columns.border {
+			min-width: 20px !important;
+			display: block !important;
+		}
+		.super.row {
+			width: 100%;
+			max-width: none;
+		}
+		.ten.columns.content-wrapper .row { max-width: 960px; }
+
+	/* --------------------------------------
+	Main ROW Elements Styles
+	-------------------------------------- */
+		.logo.row { 
+			position: relative; 
+			height: 90px;
+			background-color: #000000;
+			-webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+			-moz-box-shadow:    0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+			box-shadow:         0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+			z-index: 2;
+			clear: right;
+		}
+		.hero.row { 
+			position: relative;
+			padding: 50px 0 30px 0;
+			height: auto;
+			background: url(../images/hero-background.png) no-repeat center top;
+			z-index: 1;
+			clear: left;
+		}
+		.cred.row {
+			background-color: #333333;
+			min-height: 45px;
+			text-align: center;
+			border-top: solid 1px #1b1c1f;
+			border-bottom: solid 1px #464a52;
+		}
+		.feat.row {
+			min-height: 360px;
+		}
+		.test.row {
+			min-height: 0px;
+			background-color: rgba(121, 121, 121, 0.7);
+			border-top: 1px solid #0c0f15;
+			padding: 0px 0 0 0;
+		}
+		.foot.row {
+			min-height: 40px;
+			background-color: #000000;
+		}
+
+	/* --------------------------------------
+	Logo Row Styling
+	-------------------------------------- */
+		.live-chat-button { margin: 7px 0 16px 0; padding: 6px 9px 6px !important; font-size: 13px !important; font-weight: normal !important; }
+		.call-now { float: right !important; clear: right; font-variant: small-caps; color: #999; margin: 0 !important;  }
+		.call-now-number { font-size: 28px; color: #fff; font-weight: 500; }
+		.or-call { display: inline; }
+
+	/* --------------------------------------
+	Hero Styling 
+	-------------------------------------- */
+		 img.logo { width: 215px; height: 54px; margin: 18px 0 0 0; }
+		 img.hero { float: right; margin: -7px 0 15px 0; }
+
+	/* --------------------------------------
+	Call To Action Button Styling
+	-------------------------------------- */
+		.cta-button {
+			float: left;
+			margin: 26px 0 0 0;
+			border-top: 1px solid #f0c818;
+			background: #de7c0d;
+			background: -webkit-gradient(linear, left top, left bottom, from(#e8a812), to(#de7c0d));
+			background: -webkit-linear-gradient(top, #e8a812, #de7c0d);
+			background: -moz-linear-gradient(top, #e8a812, #de7c0d);
+			background: -ms-linear-gradient(top, #e8a812, #de7c0d);
+			background: -o-linear-gradient(top, #e8a812, #de7c0d);
+			padding: 15.5px 31px;
+			-webkit-border-radius: 40px;
+			-moz-border-radius: 40px;
+			border-radius: 40px;
+			-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			box-shadow: rgba(0,0,0,1) 0 1px 0;
+			text-shadow: rgba(0,0,0,.4) 0 1px 0;
+			color: white;
+			font-size: 24px;
+			font-family: Helvetica, Arial, Sans-Serif;
+			text-decoration: none;
+			vertical-align: middle;
+		}
+		.cta-button:hover {
+			border-top-color: #e39610;
+			background: #e39610;
+			color: #ffe8b1;
+		}
+		.cta-button:active {
+			border-top-color: #e8a812;
+			background: #e8a812;
+		}
+
+	/* --------------------------------------
+	Features Styling
+	-------------------------------------- */
+		.feat-top.row { padding: 50px 0 0 0; }
+		.feat-bottom.row { padding: 40px 0 0 0; }
+		.feat-desc-text { font-size: 14px; color: #e7e7e7; }
+		.callout-wrapper { margin: 0 2% 0 0; padding: 0;  min-width: 300px !important; }
+		.callout-wrapper.last { margin-right: 0px; }
+		.callout.row { margin: 0 auto; padding: 0; }
+		.feature.icon { min-width: 34px; margin-right: 5px; }
+		.two.columns.feature-item { min-width: 34px !important; }
+
+	/* --------------------------------------
+	Credibility Statement Styling
+	-------------------------------------- */
+	 	 h3.cred { margin: 16px 0; font-size: 26px; font-weight: normal; }
+
+	/* --------------------------------------
+	Testimonials Styling
+	-------------------------------------- */
+		.four.columns.phone-two.callout {
+			min-width: 103px;
+			float: left;
+		}
+		.eight.columns.phone-two.callout {
+			min-width: 190px;
+			float: left;
+			margin: 0;
+			padding: 0 0 0 0;
+		}
+		 h4.test { font-weight: normal; margin: 0 0 18px 0; }
+		.test-pic-background {
+			width: 92px;
+			min-width: 92px;
+			height: 99px;
+			background: url(../images/test-pic-background.png) no-repeat top left;
+			padding: 8px 0 0 8px;
+		}
+		.test-callout-background {
+			width: 175px;
+			min-width: 175px !important;
+			height: 83px;
+			min-height: 83px !important;
+			background: url(../images/test-quote-background.png) no-repeat top left;
+			padding: 12px 25px 0 23px;
+			margin: 12px 0 0 0;
+		}
+		.callout-quote {
+			font-family: Georgia, Cambria, serif;
+			font-size: 11px;
+			font-weight: normal;
+			font-style: italic;
+			color: #4d4d4d; margin: 0;
+			padding: 0;
+		}
+		.callout-cred {
+			font-size: 11px;
+			font-weight: bolder;
+			color: #4a79a1;
+			margin: 10px 0 0 0;
+			padding: 0;
+		}
+
+	/* --------------------------------------
+	Form Styling
+	-------------------------------------- */
+		.form-wrapper {
+			margin: 25px 0 20px 0;
+			background-color: rgba(0,0,0,0.5);
+			-webkit-border-radius: 15px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+		}
+		.form-title {
+			font-weight: normal;
+			text-align: center;
+			margin: 10px 0 10px 0;
+		}
+		.input-width-adjustment { width: 80% !important; margin: 0 auto; }
+		 input.form-button { font-size: 15px !important; font-weight: normal; }
+		.form-submit-button { width: 100px !important; margin: 0 auto; }
+		 input, textarea { font-family: Helvetica, Arial, sans-serif; }
+
+	/* --------------------------------------
+	Footer Styling
+	-------------------------------------- */
+		.footer-text { font-size: 12px; color: #fff; margin: 10px 0 0 0; }
+		.social-icons { margin: -2px 7px 0 0; }
+		.social .footer-text { float: right; }
+		.four.columns.social { float: right; }
+		.footer-copy { max-width: 360px; }
+
+/* -----------------------------------------
+   Responsive Layout Adjustments
+----------------------------------------- */
+
+	@media only screen and (max-width: 1150px) {
+	
+		.callout-wrapper.last { margin: 5px 0 10px 0; } /* Adjust Third Callout Element Margin */
+	
+		.ten.columns.feature-item { width: 65% !important; } /* Adjust Width of Feature Items */
+
+	}
+	@media only screen and (max-width: 1024px) {
+
+		/*  Hero Styling Adjustments for 960px width Adjustment  */
+			.hero.row { padding: 25px 0 20px 0; }
+			.intro-title { font-size: 31px; font-size: 3.1rem; }
+			.subheader { font-size: 16px; font-size: 1.6rem; }
+			.cta-button { margin: 10px 0 0 0; }
+		
+		.form-title { font-size: 17px; font-size: 1.7rem; } /* Adjust Font size for Form Title */
+
+		.callout-wrapper.middle { margin-right: 0; } /* Adjust Middle Callout Element Margin */
+
+	}
+	@media only screen and (max-width: 767px) {
+
+		/*  General Page Layout Style Adjustments  */
+			.clear-one-phones { clear: both; }
+			.to-clear-on-phone { clear: both; margin: 0; }
+			.one.columns.border.hide-on-phone { display: none !important; }
+			.super.row .one.columns.border { display: none !important; }
+	
+		/*  Logo Row Style Adjustments  */
+			 img.logo { width: 215px; height: 54px; margin: 10px 0 0 10px; }
+			.live-chat-button { margin: 10px 10px 5px 0; padding: 6px 9px 6px !important; font-size: 13px !important; font-weight: normal !important; }
+			.call-now { margin-right: 5px; }
+			.call-now-number { font-size: 22px; color: #ffffff; }
+			.logo.row { height: 75px; }
+	
+		/*  Hero Row Style Adjustments  */
+			.hero.row { top: -20px; }
+			.intro-title { margin-top: 15px; text-align: center; padding: 0 15px 0; }
+			.subheader { text-align: center; padding: 0 15px 0; }
+			.cta-button { margin: 10px auto; clear: both; float: none !important; height: auto !important; }
+			.cta-on-phone-alignment { text-align: center !important; clear: both !important; height: 70px; padding: 30px 0 0 0; vertical-align: baseline !important; }
+			 img.hero { clear: both !important; margin: 0 auto !important; text-align: center !important; float: none !important; }
+			.hero-img-on-phone-alignment { text-align: center; }
+	
+		/*  Features Row Style Adjustments  */
+			.feature-item.phone-one { text-align: right; }
+			.feature-item.phone-three { text-align: left; }
+			.feat-top.row { padding-top: 25px; }
+			.feat-bottom.row { padding-top: 0; }
+	
+		/*  Forms Style Adjustments  */
+		 	 input.form-button { margin: 0 auto !important; }
+		 	.form-submit-button.centered { margin: 0 auto 15px auto !important; }
+			.form-wrapper { width: 60% !important; margin-left: auto !important; margin-right: auto !important; }
+			.form-title { font-size: 21px; font-size: 2.1rem; }
+			 input, textarea { font-size: 13px !important; font-family: Helvetica, Arial, sans-serif; }
+	
+		/*  Testimonials Style Adjustments  */
+			 h4.test { text-align: center; padding: 0 15px; }
+			.test-pic-background { float: right; }
+			.callout-wrapper { margin-bottom: 120px !important; }
+	
+		/*  Creditbility Style Adjustments  */
+		 	 h3.cred { margin: 14px 0; font-size: 22px; font-weight: normal; }
+			.cred.row { min-height: 45px; }
+
+		.footer-copy .footer-text { padding: 0 0 0 10px; } /* Footer Padding Adjustments */
+
+	}
+	@media only screen and (max-width: 678px) {
+
+		/*  Hero Row Style Adjustments  */
+			.cta-button { margin: 0 auto; clear: both; float: none !important; height: auto !important; }
+			.cta-on-phone-alignment { height: 55px; padding: 25px 0 0 0; }
+
+		.form-wrapper { width: 80% !important; } /* Form Adjustments */
+
+		.footer-copy { max-width: 330px !important; } /* Footer Adjustments */
+
+		 h4.test { font-size: 17px; font-size: 1.7rem; } /* Testimonials Font Adjustments */
+
+	}
+	@media only screen and (max-width: 542px) {
+
+		/*  Logo Row Style Adjustments  */
+			.call-now { font-size: 12px; margin-top: 15px; }
+			.call-now-number { font-size: 18px; font-size: 1.8rem; }
+			.or-call { display: none; }
+			.live-chat-button { display: none; }
+	
+		/* Footer Adjustments */
+			.footer-copy { width: 100% !important; text-align: center !important; clear: both !important; float: left !important; max-width: 100% !important; margin: 0 auto !important; height: 25px !important; }
+			.social .footer-text { float: none; margin: 20px auto 10px auto !important; max-width: 100% !important; width: 100% !important; height: 25px !important; } 
+			.social-wrapper { margin: 35px auto; width: auto; display: block; width: 180px; }
+			.four.columns.social { float: none; }
+
+		/*  Creditbility Style Adjustments  */
+		 	 h3.cred { margin: 10px 0; font-size: 20px; font-size: 2.0rem; font-weight: normal; }
+			.cred.row { min-height: 20px; }
+
+	}
+	@media only screen and (max-width: 365px) {
+
+		/*  Hero Row Style Adjustments  */
+			.call-now { font-size: 10px; margin-top: 18px; }
+			.call-now-number { font-size: 14px; font-size: 1.4rem; }
+			 img.logo { width: 160px; height: 40px; margin: 18px 0 0 10px; }
+	
+		/*  Testimonials Style Adjustments  */
+			.four.columns.phone-two.callout { max-width: 30%; }
+			.eight.columns.phone-two.callout { max-width: 70%; }
+	
+		/*  Creditbility Style Adjustments  */
+			 h3.cred { margin: 10px 0 10px 0; font-size: 16px; }
+			.cred.row { min-height: none; }
+	
+	}
+	@media only screen and (max-width: 300px) {
+	
+		.super.cred.row { display: none; } /* Creditbility Style Adjustments */
+		
+		.footer-copy .footer-text { font-size: 10px; font-size: 1.0rem; } /* Footer Font Adjustments */
+	}
