@@ -27,8 +27,8 @@ class RelateAPIHelper {
 
 	
 
-	public function getRelated($id, $cat = array()) {
-		if ($cat) $where_cat = "AND c.catid IN(".implode(",",$cat).")";
+	public function getRelated($id, $cat) {
+		if ($cat) $where_cat = "AND c.catid IN(".$cat.")";
 		else $where_cat = "";
 		
 		$db =& JFactory::getDBO();
