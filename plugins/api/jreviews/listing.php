@@ -129,6 +129,8 @@ class ApiResourceListing extends ApiResource {
 			return;
 		}
 		
+		unset($listing->email);
+		
 		JLoader::register('RelateAPIHelper', JPATH_SITE.'/plugins/api/relate/helper.php');
 		
 		if ($listing->catid == 14) { // category 14 - catch reports

@@ -178,6 +178,7 @@ class JReviewsListingsHelper extends JObject {
 			
 			$listing = $listings[$i];
 			$this->addRelations($listing);
+			unset($listing->email);
 			$filtered[] = $listing;
 			/*
 			$main = array($listing->jr_lat, $listing->jr_long);

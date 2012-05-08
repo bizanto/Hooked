@@ -47,7 +47,7 @@ class ApiResourceComments extends ApiResource {
 	private function getQuery()
 	{
 		$where = $this->buildWhere();
-		$query = "SELECT c.id, c.pid AS listing_id, c.name, c.username, c.email, c.created, c.title, c.comments, c.userid, r.ratings_sum AS rating "
+		$query = "SELECT c.id, c.pid AS listing_id, c.name, c.username, c.created, c.title, c.comments, c.userid, r.ratings_sum AS rating "
 				."FROM #__jreviews_comments AS c "
 				."LEFT JOIN #__jreviews_ratings AS r ON r.reviewid = c.id "
 				.$where
