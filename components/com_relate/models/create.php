@@ -579,7 +579,10 @@ class RelateModelCreate extends JModel
 	function createHatch($location_id, $description, $fields, $related, $media, $fb_share) 
 	{
 		if ($location_id) {
-			$sql = "SELECT id, title, catid, sectionid FROM #__content WHERE id = '$location_id'";
+			$sql = "SELECT c.id, c.title, c.catid, c.sectionid, jr.jr_state ".
+			       "FROM #__content c ".
+			       "LEFT JOIN #__jreviews_content jr ON jr.contentid = c.id ".
+			       "WHERE c.id = '$location_id'";
 			$this->_db->setQuery($sql);
 			$spot = $this->_db->loadObject();
 			$spotname = $spot->title;
@@ -608,7 +611,11 @@ class RelateModelCreate extends JModel
 			$article->title = "$insectname";
 		}
 		else {
-			$article->title = "$insectname @ $spotname";
+			$sql = "SELECT text FROM #__jreviews_fieldoptions WHERE value = '".str_replace('*', '', $spot->jr_state)."'";
+			$this->_db->setQuery($sql);
+			$statename = $this->_db->loadResult();
+			
+			$article->title = "$insectname @ $spotname - $statename";
 		}
 		$article->alias = JFilterOutput::stringURLSafe($article->title);
 		$article->introtext = $filter->clean($description);
@@ -632,6 +639,7 @@ class RelateModelCreate extends JModel
 		// contentid, email, jr_{...}
 		$fields['contentid'] = $article_id;
 		$fields['email'] = $user->email;
+		$fields['jr_state'] = $spot->jr_state;
 
 		$columns = implode(",", array_keys($fields));
 		$values  = implode("','", array_values($fields));
