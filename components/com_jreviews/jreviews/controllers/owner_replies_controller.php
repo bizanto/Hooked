@@ -130,7 +130,7 @@ class OwnerRepliesController extends MyController
             if ($this->data['OwnerReply']['owner_reply_text'] != '' && $this->data['OwnerReply']['id'] > 0) {
             
                 $this->data['OwnerReply']['owner_reply_created'] = date('Y-m-d H:i:s');
-                $this->data['OwnerReply']['owner_reply_approved'] = 0; // Replies will be moderated by default
+                $this->data['OwnerReply']['owner_reply_approved'] = 1; // Replies will be moderated by default
                 
                 if($this->OwnerReply->store($this->data)) 
                 {
