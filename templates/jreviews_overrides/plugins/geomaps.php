@@ -761,7 +761,7 @@ class GeomapsComponent extends S2Component
                 //$coords = $result["Field"]["groups"]["Location Info"]["Fields"]["jr_extracoords"]["value"][0];
 				//$xtracoords = $CustomFields->field('jr_extracoords', $listing, false, false);
 
-                if (isset($result["Field"]["groups"]["Location Info"]["Fields"]) ) {
+                if (isset($result["Field"]["groups"]["Location Info"]["Fields"]["jr_extracoords"]) ) {
 
 					
 	                $coords = $result["Field"]["groups"]["Location Info"]["Fields"]["jr_extracoords"]["value"][0];
