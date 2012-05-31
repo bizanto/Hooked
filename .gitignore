@@ -19,3 +19,6 @@ testing/
 tmp/
 
 plugins/api/log.txt
+
+.DS_Store
+*.sublime-*
