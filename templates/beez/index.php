@@ -36,8 +36,12 @@ $menu = &JSite::getMenu();
 $active = $menu->getActive();
 $default = $menu->getDefault();
 
-if (JRequest::getString("Itemid"))
+if (JRequest::getString("Itemid")) {
 	$item_id = JRequest::getVar("Itemid"); //set current itemid
+}
+else {
+    $item_id = 0;
+}
 
 if ($active == $default || $item_id==334) $isHome=1; else $isHome="";
 if (is_object( $active )) {
@@ -49,7 +53,7 @@ $regid = 211; 	// itemid of registration page
 $loginid = 231; //itemid of login
 
 
-if ($loginid == $active->id || JRequest::getString("view")=="login") $pageclass = " loginn";
+if ($active && $loginid == $active->id || JRequest::getString("view")=="login") $pageclass = " loginn";
 
 if ($item_id == $regid || $item_id==$loginid || JRequest::getString("view")=="remind" || JRequest::getString("view")=="login")   $registration_page = 1;
 
