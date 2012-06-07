@@ -81,7 +81,9 @@ class RelateModelCreate extends JModel
 		
 		foreach ($spots as $idx => $spot) {
 			$parentLoc = $this->getParentLocation($spot);
-			$spots[$idx]->category = "Spot @ ".$parentLoc->title;
+			if ($parentLoc) {
+				$spots[$idx]->category = "Spot @ ".$parentLoc->title;
+			}
 			$spots[$idx]->url = ContentHelperRoute::getArticleRoute($spot->id, $spot->catid, $spot->sectionid);
 		}
 		

@@ -22,19 +22,19 @@ class RelateViewCreate extends JView
 		$spotTags = $model->getField('jr_fspottags');
 
 		$favorites = $model->getFavorites();
-		$favorites = array_merge(array((object)array('text' => '', 'value' => '')), $favorites);
+		$favorites = array_merge(array((object)array('id' => '', 'title' => '')), $favorites);
 		$lists['favorites'] = JHTML::_('select.genericlist', $favorites, 'favoritesList', '', 'id', 'title');
 
 		$species = $model->getSpecies();
-		$species = array_merge(array((object)array('text' => '', 'value' => '')), $species);
+		$species = array_merge(array((object)array('id' => '', 'title' => '')), $species);
 		$lists['species'] = JHTML::_('select.genericlist', $species, 'related[species]', 'class="validate"', 'id', 'title');
 
 		$equip = $model->getEquipment();
-		$equip = array_merge(array((object)array('text' => '', 'value' => '')), $equip);
+		$equip = array_merge(array((object)array('id' => '', 'title' => '')), $equip);
 		$lists['equip'] = JHTML::_('select.genericlist', $equip, 'related[equipment]', '', 'id', 'title');
 		
 		$bait = $model->getBait();
-		$bait = array_merge(array((object)array('text' => '', 'value' => '')), $bait);
+		$bait = array_merge(array((object)array('id' => '', 'title' => '')), $bait);
 		$lists['bait'] = JHTML::_('select.genericlist', $bait, 'related[bait]', '', 'id', 'title');
 		
 		$insects = $model->getInsects();
