@@ -164,6 +164,14 @@ class RelateModelCreate extends JModel
 		$this->_db->setQuery($sql);
 		return $this->_db->loadObjectList();
 	}
+
+	function getTechniques()
+	{
+		$sql = "SELECT c.id, c.title FROM #__content c, #__sections section ".
+		       "WHERE section.id = c.sectionid AND section.title = 'Fisketeknikker' AND c.state > 0";
+		$this->_db->setQuery($sql);
+		return $this->_db->loadObjectList();
+	}
 	
 	function getBait()
 	{

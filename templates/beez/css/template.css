@@ -792,3 +792,13 @@ fieldset.only { display: none; }
 /* hidden */
 .hide { display: none; }
 .ui-tabs .ui-tabs-hide p { display: none; }
+
+/* Fishing Map */
+ul.map-options { width: 25%; } /*175px;*/
+ul.map-options li { background: none; margin: 0; }
+ul.map-options li h2 { margin: 10px 0; }
+ul.map-options li:first-child h2 { margin: 0 0 10px; }
+.fishing-map { float: right; position: absolute; right: 0; top: 0; width: 75%; }
+.fishing-map .add-locations { margin: 30px auto; width: 75%; }
+
+.add-locations a { background: url("../images/bg-submit.png") repeat-x scroll 0 50% transparent; border: 1px solid #878F66; border-radius: 4px 4px 4px 4px; color: #394018; line-height: 100%; margin: 0 15px; padding: 5px 10px; }

@@ -59,6 +59,7 @@ class ModuleGeomapsController extends MyController {
         $cache = 0;
         $radius = 0;
         $mode = 0;
+        $fishingmap = 0;
 
 	$this->set('listing_id', $id);
 
@@ -97,6 +98,8 @@ class ModuleGeomapsController extends MyController {
             
 			$extracoords = $this->params['module']['extracoords'];
             //$extracoords = "";
+
+            $fishingmap = Sanitize::getInt($this->params['module'], 'fishingmap', 0);
         }
               
         $in_detail_view = $id > 0 && ('article' == $view || 'view' == $task) && 'com_content' == $option;        
@@ -231,6 +234,10 @@ class ModuleGeomapsController extends MyController {
             'JreviewsCategory.marker_icon AS `Geomaps.icon`'            
         );
 
+        if ($fishingmap) {
+            $this->Listing->fields[] = 'GROUP_CONCAT(Related.id2) AS `Listing.relations`';
+        }
+
         // Geo Targeting OR Custom Center modes
         if($mode == 1 || $mode == 2)
         {
@@ -327,7 +334,11 @@ class ModuleGeomapsController extends MyController {
             "INNER JOIN #__jreviews_categories AS JreviewsCategory ON Listing.catid = JreviewsCategory.id AND JreviewsCategory.`option` = 'com_content'",
             "LEFT JOIN #__jreviews_directories AS Directory ON JreviewsCategory.dirid = Directory.id",
         );
-            
+        
+        if ($fishingmap) {
+            $this->Listing->joins[] = "LEFT JOIN #__relate_listings AS Related ON Related.id1 = Listing.id";
+        }
+
         // Don't regroup the results by model name keys to save time
         $this->Listing->primaryKey = false;
 
@@ -361,13 +372,17 @@ class ModuleGeomapsController extends MyController {
 		$conditions[] = "Field.{$this->jr_lat} <> ''";
 		$conditions[] = "Field.{$this->jr_lon} <> ''";
         $conditions[] = 'Listing.state = 1';
+
+        if ($fishingmap) {
+            $this->Listing->group = array('Listing.id');
+        }
         
         // Paid Listings - add plan cat id
         isset($this->PaidListings) and $this->PaidListings->applyBeforeFindListingChanges($this->Listing); 
         $listings = $this->Listing->findAll(array('conditions'=>$conditions,'limit'=>$limit_results),array());
         $custom_fields = array_filter(array_merge($custom_fields,array_keys($icon_fields)));
         $fields = $this->Field->getFields($custom_fields);
-    
+        
         $json_data = $this->Geomaps->makeJsonObject($listings,$fields,$this->params['module']);
 
         $this->set('json_data',$json_data);

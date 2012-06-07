@@ -330,15 +330,40 @@ function GeomapsDisplayMap(mapCanvas,options)
         return customUI;        
     }
    
-   this.toggleCategories = function(toHide) {
+   this.toggleCategories = function(toHide, relationsSelected, hideEmpty) {
     	var merged = jQuery.merge(markers_, hidden);
     	
     	markers_ = [];
     	hidden = [];
 		jQuery.each(merged, function(index, marker) {
+            var hideMarker = false;
+
 			if (jQuery.inArray(marker.criteria_id, toHide) > -1) {
-    			hidden.push(marker);	
-    		} else {
+                hideMarker = true;
+    		} 
+            else if (relationsSelected.length) {
+                if (marker.relations) {
+                    m_relations = marker.relations.split(',');
+
+                    jQuery.each(relationsSelected, function (index, related_id) {
+                        if (jQuery.inArray(related_id, m_relations) == -1) {
+                            hideMarker = true;
+                        }
+                    });
+                }
+                else {
+                    hideMarker = true;
+                }
+            }
+
+            if (hideEmpty && marker.hascontent == 0 && !marker.relations) {
+                hideMarker = true;
+            }
+            
+            if (hideMarker) {
+                hidden.push(marker);
+            }
+            else {
     			markers_.push(marker);
     		}
 		});		 	
@@ -359,8 +384,22 @@ function GeomapsDisplayMap(mapCanvas,options)
         	}
         	
         });
+
+        var related = [];
+        jQuery('.toggle_related').each(function () {
+            var related_id = jQuery(this).val();
+
+            if (related_id) {
+                related.push(related_id);
+            }
+        });
+
+        var hideEmpty = false;
+        if (jQuery('#hide_empty').attr('checked')) {
+            hideEmpty = true;
+        }
         
-        GeomapsModule.toggleCategories(hide);
+        GeomapsModule.toggleCategories(hide, related, hideEmpty);
         //map.clearOverlays();
         refreshMap();
     }
@@ -393,6 +432,8 @@ function GeomapsDisplayMap(mapCanvas,options)
         
         // Added for Hooked
         marker.criteria_id = markerData.criteria_id;
+        marker.hascontent = markerData.hascontent;
+        marker.relations = markerData.relations;
         
         marker.icon_name = markerData.icon;
         marker.id = markerData.id;

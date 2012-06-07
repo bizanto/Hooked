@@ -64,6 +64,14 @@ jQuery(document).ready(function()
 		GeomapsModule.refreshCategories();
 	});
 
+    jQuery('.toggle_related').click(function(event) {
+        GeomapsModule.refreshCategories();
+    });
+
+    jQuery('#hide_empty').click(function(event) {
+        GeomapsModule.refreshCategories();
+    });
+
 	// Attach onmouseover event to listing titles to show map Tooltip
     jQuery('.jr_listingTitle').each(function(i){
         jQuery('#'+this.id)

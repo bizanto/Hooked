@@ -834,7 +834,18 @@ class GeomapsComponent extends S2Component
           			if (isset($results[$key]["ExtraCoords"])) {
           				$infowindow['extracoords'] = $results[$key]["ExtraCoords"];
           			}
-					
+
+                    if (isset($results[$key]['Listing']['relations'])) {
+                        $infowindow['relations'] = $results[$key]['Listing']['relations'];
+                    }
+
+                    if (isset($results[$key]['Listing']['summary']) && $results[$key]['Listing']['summary'] != '') {
+                        $infowindow['hascontent'] = 1;
+                    }
+                    else {
+                        $infowindow['hascontent'] = 0;
+                    }
+
                     if(!empty($result['Field']['pairs']))
                     {
                         foreach($result['Field']['pairs'] AS $name=>$fieldArray)
@@ -846,7 +857,7 @@ class GeomapsComponent extends S2Component
                 }
             }
         }      
-     
+
          $mapUI = array();
          $zoom = '';
          switch($this->c->name)
