@@ -133,9 +133,18 @@ $lists['techniques'] = JHTML::_('select.genericlist', $techniques, 'related_tech
             </div>
 
             <div class="add-locations">
-                <a href="">Add a Lake</a>
-                <a href="index.php?option=com_relate&amp;view=create&amp;type=spot">Add a Spot</a>
-                <a href="index.php?option=com_jreviews&amp;Itemid=300">Add a Business</a>
+                <div class="btn-group">
+                    <a class="add-btn" href="">Add a Lake</a>
+                    <a class="whatis" href="#">What is this?</a>
+                </div>
+                <div class="btn-group">
+                    <a class="add-btn" href="index.php?option=com_relate&amp;view=create&amp;type=spot">Add a Spot</a>
+                    <a class="whatis" href="#">What is this?</a>
+                </div>
+                <div class="btn-group">
+                    <a class="add-btn" href="index.php?option=com_jreviews&amp;Itemid=300">Add a Business</a>
+                    <a class="whatis" href="#">What is this?</a>
+                </div>
             </div>
         </div>
 
