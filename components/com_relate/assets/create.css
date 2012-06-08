@@ -5,7 +5,7 @@
 .prog-tab { background: url('progress_tabs.png') no-repeat scroll left bottom transparent; display: block; width: 130px; height: 21px; }
 .cur-tab { background-position: left top; }
 div.odd, .step-msg { color: #000; display: block; margin: 20px 0; padding: 10px; }
-#step-error { color: #F00; font-weight: bold; text-align: center; }
+#step-error { color: #F00; font-weight: bold; margin: 0 auto; position: absolute; text-align: center; width: 100%; }
 .reqField { color: #F00; }
 
 .locationSelect { padding: 10px 0; }
