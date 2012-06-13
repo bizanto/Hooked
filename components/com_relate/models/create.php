@@ -706,7 +706,8 @@ class RelateModelCreate extends JModel
 		return $response;
 	}
 	
-	function _streamAddHatch($hatch) {
+	function _streamAddHatch($hatch) 
+	{
 		include_once( JPATH_BASE . DS . 'components' . DS . 'com_community' . DS . 'libraries' . DS . 'core.php');  
 
 		$hatch_uri = ContentHelperRoute::getArticleRoute($hatch->id, $hatch->catid, $hatch->sectionid);
@@ -721,6 +722,123 @@ class RelateModelCreate extends JModel
 		$act->actor   = $hatch->created_by;
 		$act->target  = 0;
 		$act->title   = JText::sprintf('ADDED A HATCH', $hatch_link);
+		$act->content = '';
+		$act->app     = 'wall';
+		$act->cid     = 0;
+
+		CFactory::load('libraries', 'activities');
+		CActivityStream::add($act);
+	}
+
+	function createLake($title, $description, $fields, $related, $media, $fb_share)
+	{
+		$relate   =& JModel::getInstance('relate', 'RelateModel');
+
+		// com_content:
+		$article  =& JTable::getInstance('content');
+		$filter = new JFilterInput(array(), array(), 1, 1);
+
+		$article->title = trim($title);
+		$article->alias = JFilterOutput::stringURLSafe($article->title);
+		$article->introtext = $filter->clean($description);
+		$article->fulltext = '';
+		$article->state = 1; // published
+		$article->sectionid = 1; // section 1 -> Fiskeplasser
+		$article->catid = 1; // category 1 -> Vann
+		$article->created = gmdate('Y-m-d H:i:s');
+		$article->created_by = 103; // userid 103 = HOOKED
+		$article->publish_up = $article->created;
+
+		if (!$article->store()) {
+			$this->setError($this->_db->getErrorMsg());
+			return false;
+		}
+
+		$article_id = $article->_db->insertId();
+		$article->id = $article_id;
+
+		// jreviews_content: 
+		// contentid, email, jr_{...}
+		$fields['contentid'] = $article_id;
+		$fields['email'] = 'post@hooked.no';
+
+		// run geocoder on lat/lng, get jr_state & jr_zip
+		$geodata = reverse_geocode($fields['jr_lat'], $fields['jr_long']);
+		if ($geodata && $geodata != -1) {
+			if ($geodata['state'] != '') {
+				$geodata['state'] = '*'.str_replace(' ', '-', strtolower($geodata['state'])).'*';
+			}
+
+			$fields['jr_state'] = $geodata['state'];
+			$fields['jr_zip']   = $geodata['zip'];
+		}
+
+		$columns = implode(",", array_keys($fields));
+		$values  = implode("','", array_values($fields));
+		$sql = "INSERT INTO `#__jreviews_content` ($columns) VALUES ('$values')";
+		$this->_db->setQuery($sql);
+
+		if (!$this->_db->query()) {	
+			$this->setError($this->_db->getErrorMsg());
+			return false;
+		}
+
+		$relate->add_listings($article_id, $related, false);
+
+		$this->_streamAddLake($article);
+
+		if (isset($media['photos'])) {
+			$thumbs = str_replace(JURI::base(), '', $media['photos']);
+			$sql = "SELECT id FROM #__community_photos WHERE thumbnail IN ('".implode("','", $thumbs)."')";
+			$this->_db->setQuery($sql);
+			$photo_ids = $this->_db->loadResultArray();
+			
+			$relate->add_photos($article_id, $photo_ids, false);
+		
+			if (isset($media['descriptions'])){
+				foreach ($media['descriptions'] as $thumb => $desc) {
+					$thumb = str_replace(JURI::base(), '', $thumb);
+					
+					$sql = "UPDATE #__community_photos SET caption = '$desc' WHERE thumbnail = '$thumb'";
+					$this->_db->setQuery($sql);
+					$this->_db->query();
+				}
+			}
+		}
+
+		$article_link = ContentHelperRoute::getArticleRoute($article_id, $article->catid, $article->sectionid);
+		$article->link = $article_link;
+		$thumb = '';
+		if (isset($media['photos']) && count($media['photos'])) {
+			$thumb = $media['photos'][0];
+			$article->thumbnail = $thumb;
+		}
+		$response = array();
+		$response[] = array('id' => $article_id, 'title' => $article->title, 'link' => $article_link, 'thumbnail' => $thumb);
+
+		if ($fb_share) {
+			facebook_share($article, JText::sprintf('FACEBOOK LAKE MESSAGE', $title));
+		}
+		
+		return $response;
+	}
+
+	function _streamAddLake($lake) 
+	{
+		include_once( JPATH_BASE . DS . 'components' . DS . 'com_community' . DS . 'libraries' . DS . 'core.php');  
+
+		$lake_uri = ContentHelperRoute::getArticleRoute($lake->id, $lake->catid, $lake->sectionid);
+		$lake_link = '<a href="'.$lake_uri.'">'.$lake->title.'</a>';
+		
+		// make sure the language file is loaded (if this was called from the api)
+		$lang =& JFactory::getLanguage();
+		$lang->load('com_relate');
+		
+		$act = new stdClass();
+		$act->cmd     = 'wall.write';
+		$act->actor   = $lake->created_by;
+		$act->target  = 0;
+		$act->title   = JText::sprintf('ADDED A LAKE', $lake_link);
 		$act->content = '';
 		$act->app     = 'wall';
 		$act->cid     = 0;
@@ -755,7 +873,7 @@ function facebook_share($article, $message = '')
 		'description' => $article->introtext,
 	);
 	
-	if ($article->thumbnail) {
+	if (isset($article->thumbnail)) {
 		$post['picture'] = $article->thumbnail;
 	}
 	
@@ -773,4 +891,42 @@ function facebook_share($article, $message = '')
 	{
 		return false;
 	}
+}
+
+function reverse_geocode($jr_lat, $jr_long) {
+	$geocode_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false';
+	$geocode_url = sprintf($geocode_url, $jr_lat, $jr_long);
+
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_URL, $geocode_url);
+
+	$geo_data = curl_exec($ch);
+
+	curl_close($ch);
+	$geo_data = json_decode($geo_data);
+	
+	if ($geo_data->status != "OK") {
+		var_dump($geo_data);
+		if ($geo_data->status == "OVER_QUERY_LIMIT") {
+			return -1;
+		}
+		else {
+			return 0;
+		} 
+	}
+
+	foreach ($geo_data->results as $result) {
+		foreach ($result->address_components as $component) {
+			if (!isset($postalcode) && $component->types[0] == "postal_code") {
+				$postalcode = $component->long_name;
+			}
+			if (!isset($spot_state) && $component->types[0] == "administrative_area_level_1") {
+				$spot_state = $component->long_name;
+			}
+			
+		}
+	}
+
+	return array("state" => ($spot_state) ? $spot_state : '', "zip" => ($postalcode) ? $postalcode : '');
 }

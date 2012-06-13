@@ -330,7 +330,7 @@ function GeomapsDisplayMap(mapCanvas,options)
         return customUI;        
     }
    
-   this.toggleCategories = function(toHide, relationsSelected, hideEmpty) {
+    this.toggleCategories = function(toHide, relationsSelected, hideEmpty) {
     	var merged = jQuery.merge(markers_, hidden);
     	
     	markers_ = [];
@@ -367,7 +367,7 @@ function GeomapsDisplayMap(mapCanvas,options)
     			markers_.push(marker);
     		}
 		});		 	
-   }
+    }
    
     this.refreshCategories = function() {
     	refreshCategories();

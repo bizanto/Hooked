@@ -229,7 +229,7 @@ function onLoginWindowLoad() {
 
 
 </head>
-<body<?php echo ' class="body'; if ($registration_page) echo ' simple'; if ($pageclass) echo ' '.$pageclass.''; echo '"'; ?><?php if ($iMobile) echo ' style="-webkit-text-size-adjust:none"'; ?>>
+<body<?php echo ' class="body'; if ($registration_page) echo ' simple'; if (isset($pageclass)) echo ' '.$pageclass.''; echo '"'; ?><?php if ($iMobile) echo ' style="-webkit-text-size-adjust:none"'; ?>>
 <?php if (!$registration_page) : ?><div id="mtns"></div><?php endif; ?>
 
     <div id="doc"<?php if ($isHome) echo ' class="frontpage"'; ?>>

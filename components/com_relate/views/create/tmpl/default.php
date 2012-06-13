@@ -134,6 +134,16 @@ jQuery(function ($) {
 		relate_step.message = '<?php echo JText::_('RELATE STEP MSG TRIPS'); ?>';
 		
 		thankyou_step.content_type = '<?php echo JText::_('HATCH REPORT'); ?>';
+
+<?php elseif ($this->listing_type == 'lake'): ?>
+		$('#create_title').text('<?php echo JText::_('ADD A LAKE'); ?>');
+
+		Stepper.steps = [mapmarker_step, nameit_step, relate_step, upload_step, thankyou_step];
+		tab_descs = ["<?php echo JText::_('MAP MARKER TAB'); ?>", "<?php echo JText::_('NAME DESC TAB'); ?>", "<?php echo JText::_('RELATED TAB'); ?>", "<?php echo JText::_('IMAGES TAB'); ?>", "<?php echo JText::_('CONFIRMATION TAB'); ?>"];
+
+		relate_step.message = '<?php echo JText::_('RELATE STEP MSG SPOTS'); ?>';
+		
+		thankyou_step.content_type = '<?php echo JText::_('LAKE'); ?>';
 		
 <?php endif; ?>
 
@@ -229,7 +239,7 @@ function saveDescription() {
 }
 </script>
 
-<?php if ($this->listing_type == "trip" || $this->listing_type == "spot"): ?>
+<?php if ($this->listing_type == "trip" || $this->listing_type == "spot" || $this->listing_type == "lake"): ?>
 <div id="name_it" class="step-container">
 	<span class="step-msg"><?php echo JText::_('ADD NAME AND DESC'); ?></span>
 	<div>
@@ -268,18 +278,38 @@ function saveDescription() {
 		</span>
 	<?php endif; ?>
 	<div id="other_fields">
-	<?php if ($this->listing_type == "spot"): ?>
+	<?php if ($this->listing_type == "spot" || $this->listing_type == "lake"): ?>
 		<label><?php echo JText::_('OTHER FIELDS'); ?></label><br />
 		<div class="spot-tags">
 		<?php foreach ($this->spotTags as $stag): ?>
 		<input id="<?php echo $stag->value; ?>" name="<?php echo $stag->value; ?>" type="checkbox" /><label for="<?php echo $stag->value; ?>"><?php echo $stag->text; ?></label>
 		<?php endforeach; ?>
 		</div>
+	<?php endif; ?>
+	<?php if ($this->listing_type == "lake"): ?>
+		<div>
+			<label for="jr_size">Areal (km<sup>2</sup>)</label><br />
+			<input type="text" class="mediumField" id="jr_size" name="fields[jr_size]">
+		</div>
+		<div>
+			<label for="jr_area">Område</label><br />
+			<input type="text" class="mediumField" id="jr_area" name="fields[jr_area]">
+		</div>
+		<div>
+			<label for="jr_elevation">Meter over havet</label><br />
+			<input type="text" class="mediumField" id="jr_elevation" name="fields[jr_elevation]">
+		</div>
+	<?php endif; ?>
+	<?php if ($this->listing_type == "spot"): ?>
 		<div class="privacy-settings">
 		<label><?php echo JText::_('PRIVACY SETTINGS'); ?>:</label><br />
 		<?php foreach ($this->privacySettings as $pset): ?>
 		<input id="<?php echo $pset->value; ?>" class="jr_privacy" name="jr_privacy" value="<?php echo '*'.$pset->value.'*'; ?>" type="radio" <?php if ($pset->value == "offentlig") echo 'checked="checked"'; ?> /><label for="<?php echo $pset->value; ?>"><?php echo $pset->text; ?></label>
 		<?php endforeach; ?>
+		</div>
+	<?php elseif ($this->listing_type == "lake"): ?>
+		<div class="privacy-settings" style="display:none">
+			<input type="radio" checked="checked" value="*offentlig*" name="jr_privacy" class="jr_privacy" id="offentlig" />
 		</div>
 	<?php endif; ?>
 	
@@ -482,7 +512,7 @@ var jr_lat = "jr_lat"; var jr_lon = "jr_long";
 		<textarea id="jr_catchsummary" name="jr_catchsummary"></textarea>
 		</div>
 	</div>
-<?php elseif ($this->listing_type == "spot"): ?>
+<?php elseif ($this->listing_type == "spot" || $this->listing_type == "lake"): ?>
 	<div class="add-category f-species">
 		<span class="cat-title"><?php echo JText::_('FISH SPECIES'); ?></span>
 		<div id="related-items17" class="rel-items"></div>

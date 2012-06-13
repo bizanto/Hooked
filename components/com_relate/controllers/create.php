@@ -60,6 +60,16 @@ class RelateControllerCreate extends JController
 				$response = $model->createHatch($location_id, $description, $fields, $related, $media, $fb_share);
 				echo json_encode($response);
 			break;
+			case 'lake':
+				$title = JRequest::getString('title');
+				$description = JRequest::getString('description');
+				$fields = JRequest::getVar('fields');
+				$related = JRequest::getVar('related_ids');
+				$media = JRequest::getVar('media');
+				$fb_share = JRequest::getInt('fb_share', 0);
+				$response = $model->createLake($title, $description, $fields, $related, $media, $fb_share);
+				echo json_encode($response);
+			break;
 		}
 
 		exit();

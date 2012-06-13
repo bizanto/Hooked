@@ -429,7 +429,7 @@ nameit_step = {
 			"fb_share": ( $('#fb_post').is(':checked') ? 1 : 0)
 		};
 		
-		if (Stepper.data.type == 'spot') {
+		if (Stepper.data.type == 'spot' || Stepper.data.type == 'lake') {
 			var tags = [];
 			var spottags = '';
 			var privacy = '';
@@ -453,6 +453,12 @@ nameit_step = {
 							"jr_enddate": $('#jr_enddate').val(),
 							"jr_privacy": $('.fields\\[jr_privacy\\]:checked').val() };
 		}
+
+		if (Stepper.data.type == 'lake') {
+			data.fields['jr_size'] = $('#jr_size').val();
+			data.fields['jr_area'] = $('#jr_area').val();
+			data.fields['jr_elevation'] = $('#jr_elevation').val();
+		}
 		
 		return data;
 	}
@@ -466,15 +472,33 @@ mapmarker_step = {
 			$('#' + this.id + ' .step-msg').text(this.message);
 		}
 		
-		$('#spot_title').text($('#locName').val());
-
 		var self = this;
-		$.get('index.php',
-		      { option: 'com_relate', controller: 'create',
-		        task: 'coords', id: Stepper.data.location_id },
-		      function (data) {
-			      self.initMap($.parseJSON(data));
-		      });
+
+		if (Stepper.data.type == "lake") {
+			function showMap() {
+				if (typeof GMap2 != 'function') {
+					console.log('GMap2 not available, waiting...');
+					setTimeout(showMap, 500);
+				}
+				else {
+					console.log('GMap2 loaded, initializing map...');
+					self.initMap({coords: [60.38, 5.34]});
+					geomaps.map.setZoom(6);
+				}
+			}
+
+			showMap();
+		}
+		else {
+			$('#spot_title').text($('#locName').val());
+
+			$.get('index.php',
+			      { option: 'com_relate', controller: 'create',
+			        task: 'coords', id: Stepper.data.location_id },
+			      function (data) {
+				      self.initMap($.parseJSON(data));
+			      });
+		}
 	},
 
 	initMap: function (points) {
