@@ -56,17 +56,17 @@ $lists['techniques'] = JHTML::_('select.genericlist', $techniques, 'related_tech
             <li><h2><?php __t("Users"); ?></h2></li>
             <li><label for="jr_1"><input type="checkbox" id="jr_1" name="toggle_cat[]" class="toggle_cat" value="20" checked="checked" /><?php __t("Fishing Spots"); ?></label></li>
             <li><label for="jr_5"><input type="checkbox" id="jr_5" name="toggle_cat[]" class="toggle_cat" value="24" checked="checked" /><?php __t("Catch Reports"); ?></label></li>
-            <li><label for="jr_6"><input type="checkbox" id="jr_6" name="toggle_cat[]" class="toggle_cat" value="26" checked="checked" /><?php __t("Trip Reports"); ?></label></li>
-            <li><label for="jr_7"><input type="checkbox" id="jr_7" name="toggle_cat[]" class="toggle_cat" value="25" checked="checked" /><?php __t("Hatch Reports"); ?></label></li>
+            <li><label for="jr_6"><input type="checkbox" id="jr_6" name="toggle_cat[]" class="toggle_cat" value="26" checked="checked" /><?php __t("Trip Report"); ?></label></li>
+            <li><label for="jr_7"><input type="checkbox" id="jr_7" name="toggle_cat[]" class="toggle_cat" value="25" checked="checked" /><?php __t("Hatch Report"); ?></label></li>
             
             <li><h2><?php __t("Services"); ?></h2></li>
             <li><label for="jr_2"><input type="checkbox" id="jr_2" name="toggle_cat[]" class="toggle_cat" value="27" checked="checked" /><?php __t("Accommodations"); ?></label></li>
-            <li><label for="jr_3"><input type="checkbox" id="jr_3" name="toggle_cat[]" class="toggle_cat" value="34" checked="checked" /><?php __t("Businesses"); ?></label></li>
+            <li><label for="jr_3"><input type="checkbox" id="jr_3" name="toggle_cat[]" class="toggle_cat" value="34" checked="checked" /><?php __t("Shops"); ?></label></li>
 
-            <li><h2>Fish Species</h2></li>
+            <li><h2><?php __t("species"); ?></h2></li>
             <li><?php echo $lists['species']; ?></li>
 
-            <li><h2>Technique Used</h2></li>
+            <li><h2><?php __t("Technique Used"); ?></h2></li>
             <li><?php echo $lists['techniques']; ?></li>
         </ul>
 
@@ -99,7 +99,7 @@ $lists['techniques'] = JHTML::_('select.genericlist', $techniques, 'related_tech
             'cat_auto'=>'',                 //Filters results for current category.
             'detail_view'=>'0',             //1'>Show listing marker only  0'>Show all category markers
             'dir'=>'',                      //Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in.
-            'section'=>'1,3',// implode(",", $location_sections),                  //Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in
+            'section'=>'1,3,6',// implode(",", $location_sections),                  //Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in
             'category'=>'',                   //Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in
             'listing'=>'', //$this_listing,                   //Comma separated list, no spaces. To filter by IDs only one of the id parameters needs to be filled in
             'map_width'=>'100%',            //Remember to include px or %. For example 100% or 500px
@@ -134,16 +134,16 @@ $lists['techniques'] = JHTML::_('select.genericlist', $techniques, 'related_tech
 
             <div class="add-locations">
                 <div class="btn-group">
-                    <a class="add-btn" href="index.php?option=com_relate&amp;view=create&amp;type=lake">Add a Lake</a>
-                    <a class="whatis" href="#">What is this?</a>
+                    <a class="add-btn" href="index.php?option=com_relate&amp;view=create&amp;type=lake"><?php __t('Add a Lake'); ?></a>
+                    <a class="whatis" href="#"><?php __t('What is this?'); ?></a>
                 </div>
                 <div class="btn-group">
-                    <a class="add-btn" href="index.php?option=com_relate&amp;view=create&amp;type=spot">Add a Spot</a>
-                    <a class="whatis" href="#">What is this?</a>
+                    <a class="add-btn" href="index.php?option=com_relate&amp;view=create&amp;type=spot"><?php __t('Add a Spot'); ?></a>
+                    <a class="whatis" href="#"><?php __t('What is this?'); ?></a>
                 </div>
                 <div class="btn-group">
-                    <a class="add-btn" href="index.php?option=com_jreviews&amp;Itemid=300">Add a Business</a>
-                    <a class="whatis" href="#">What is this?</a>
+                    <a class="add-btn" href="index.php?option=com_jreviews&amp;Itemid=300"><?php __t('Add a Business'); ?></a>
+                    <a class="whatis" href="#"><?php __t('What is this?'); ?></a>
                 </div>
             </div>
         </div>

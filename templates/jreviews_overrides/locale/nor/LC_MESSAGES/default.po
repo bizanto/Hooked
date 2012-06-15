@@ -2504,3 +2504,41 @@ msgstr "Høy - Lav"
 
 msgid "Low - High"
 msgstr "Lav - Høy"
+
+# fishing map
+
+msgid "Add a Lake"
+msgstr "Opprett ett vann"
+
+msgid "Add a Spot"
+msgstr "Opprett en fiskeplass"
+
+msgid "Add a Business"
+msgstr "Legg til en bedrift / tjeneste"
+
+msgid "Shops"
+msgstr "Butikker"
+
+msgid "species"
+msgstr "Fiskeart"
+
+msgid "Technique Used"
+msgstr "Fisketeknikk"
+
+msgid "Trip Report"
+msgstr "Turrapporter"
+
+msgid "Hatch Report"
+msgstr "Klekkerapporter"
+
+msgid "Users"
+msgstr "Bidrag"
+
+msgid "Hide empty records"
+msgstr "Skjul tomme objekter"
+
+msgid "Locations"
+msgstr "Lokasjoner"
+
+msgid "Services"
+msgstr "Bedrifter & tjenester"

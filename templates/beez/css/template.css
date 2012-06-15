@@ -799,8 +799,8 @@ ul.map-options li { background: none; margin: 0; }
 ul.map-options li h2 { margin: 10px 0; }
 ul.map-options li:first-child h2 { margin: 0 0 10px; }
 .fishing-map { float: right; position: absolute; right: 0; top: 0; width: 75%; }
-.fishing-map .add-locations { margin: 30px auto; width: 75%; }
+.fishing-map .add-locations { margin: 30px auto; width: 100%; }
 
-.add-locations .btn-group { display: inline-block; margin: 0 15px; }
+.add-locations .btn-group { display: inline-block; margin: 0 12px; }
 .add-locations .add-btn { background: url("../images/bg-submit.png") repeat-x scroll 0 50% transparent; border: 1px solid #878F66; border-radius: 4px 4px 4px 4px; color: #394018; display: block; line-height: 100%; padding: 5px 10px; }
 .add-locations .whatis { float: right; font-size: 75%; margin: 5px 0 0 ; }
