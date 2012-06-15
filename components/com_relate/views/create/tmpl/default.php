@@ -141,6 +141,8 @@ jQuery(function ($) {
 		Stepper.steps = [mapmarker_step, nameit_step, relate_step, upload_step, thankyou_step];
 		tab_descs = ["<?php echo JText::_('MAP MARKER TAB'); ?>", "<?php echo JText::_('NAME DESC TAB'); ?>", "<?php echo JText::_('RELATED TAB'); ?>", "<?php echo JText::_('IMAGES TAB'); ?>", "<?php echo JText::_('CONFIRMATION TAB'); ?>"];
 
+		nameit_step.message = '<?php echo JText::_('ADD NAME AND DESC LAKE'); ?>';
+
 		relate_step.message = '<?php echo JText::_('RELATE STEP MSG SPOTS'); ?>';
 		
 		thankyou_step.content_type = '<?php echo JText::_('LAKE'); ?>';
