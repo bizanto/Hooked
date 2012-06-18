@@ -145,7 +145,7 @@ jQuery(function ($) {
 
 		relate_step.message = '<?php echo JText::_('RELATE STEP MSG SPOTS'); ?>';
 		
-		thankyou_step.content_type = '<?php echo JText::_('LAKE'); ?>';
+		thankyou_step.content_type = '<?php echo JText::_('LAKE TYPE'); ?>';
 		
 <?php endif; ?>
 
