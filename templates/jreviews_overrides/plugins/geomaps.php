@@ -839,7 +839,10 @@ class GeomapsComponent extends S2Component
                         $infowindow['relations'] = $results[$key]['Listing']['relations'];
                     }
 
-                    if (isset($results[$key]['Listing']['summary']) && $results[$key]['Listing']['summary'] != '') {
+                    if ($results[$key]['Listing']['section_id'] != 1) {
+                        $infowindow['hascontent'] = 1;
+                    }
+                    else if (isset($results[$key]['Listing']['summary']) && $results[$key]['Listing']['summary'] != '') {
                         $infowindow['hascontent'] = 1;
                     }
                     else {
