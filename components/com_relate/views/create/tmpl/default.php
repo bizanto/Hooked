@@ -288,20 +288,6 @@ function saveDescription() {
 		<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
-	<?php if ($this->listing_type == "lake"): ?>
-		<div>
-			<label for="jr_size">Areal (km<sup>2</sup>)</label><br />
-			<input type="text" class="mediumField" id="jr_size" name="fields[jr_size]">
-		</div>
-		<div>
-			<label for="jr_area">Område</label><br />
-			<input type="text" class="mediumField" id="jr_area" name="fields[jr_area]">
-		</div>
-		<div>
-			<label for="jr_elevation">Meter over havet</label><br />
-			<input type="text" class="mediumField" id="jr_elevation" name="fields[jr_elevation]">
-		</div>
-	<?php endif; ?>
 	<?php if ($this->listing_type == "spot"): ?>
 		<div class="privacy-settings">
 		<label><?php echo JText::_('PRIVACY SETTINGS'); ?>:</label><br />
@@ -325,6 +311,21 @@ function saveDescription() {
 		<?php endif; ?>
 		</label>
 		</div>
+
+	<?php if ($this->listing_type == "lake"): ?>
+		<div>
+			<label for="jr_size">Areal (km<sup>2</sup>)</label><br />
+			<input type="text" class="mediumField" id="jr_size" name="fields[jr_size]">
+		</div>
+		<div>
+			<label for="jr_area">Område</label><br />
+			<input type="text" class="mediumField" id="jr_area" name="fields[jr_area]">
+		</div>
+		<div>
+			<label for="jr_elevation">Meter over havet</label><br />
+			<input type="text" class="mediumField" id="jr_elevation" name="fields[jr_elevation]">
+		</div>
+	<?php endif; ?>
 
 	</div>
 </div>
